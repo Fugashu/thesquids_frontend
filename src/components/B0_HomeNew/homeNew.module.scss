@@ -1,0 +1,354 @@
+@import "../../assets/scss/app.scss";
+
+.homeNew {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+
+  @include desktop() {
+    padding: 0;
+    min-height: 100vh;
+    @include center();
+    background-image: url(../../assets/gif/home-back.gif);
+    @media only screen and (max-width: 390px) {
+      background-image: url(../../assets/gif/home-back-mobile.gif);
+    }
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .innerWrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop() {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 1160px;
+      margin: 0px auto;
+    }
+
+    .leftBlock {
+      background-image: url(../../assets/gif/home-back-mobile.gif);
+      @media only screen and (min-width: 800px) {
+        background-image: url(../../assets/gif/home-back.gif);
+      }
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      padding: 300px 0 116px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @media only screen and (max-width: 390px) {
+        background-image: url(../../assets/gif/home-back.gif);
+      }
+      @include desktop() {
+        background: none;
+        padding: 0;
+        align-items: flex-start;
+      }
+
+      .title {
+        @include PressStart();
+        font-size: 22px;
+        line-height: 145%;
+        width: 288px;
+        text-align: center;
+
+        @include desktop() {
+          font-size: 38px;
+          line-height: 150%;
+          text-align: left;
+          width: 460px;
+        }
+      }
+
+      .texts {
+        margin-top: 10px;
+        width: 288px;
+        text-align: center;
+
+        @include desktop() {
+          margin-top: 57px;
+          width: auto;
+          text-align: left;
+        }
+
+        .text {
+          font-style: normal;
+          font-size: 12px;
+          line-height: 145%;
+
+          @include desktop() {
+            font-size: 16px;
+            line-height: 160%;
+          }
+
+          span:first-child {
+            font-weight: bold;
+          }
+
+          span:last-child {
+            color: #DCD8E1;
+          }
+        }
+      }
+
+      .timerBlock {
+        margin-top: 45px;
+
+        @include desktop() {
+          margin-top: 84px;
+        }
+
+        span {
+          @include PressStart();
+          font-size: 28px;
+          line-height: 150%;
+          color: #E7B223;
+
+          @include desktop() {
+            font-size: 48px;
+          }
+        }
+      }
+
+      .until {
+        margin-top: 5px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 140%;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+
+        @include desktop() {
+          margin-top: 8px;
+          font-size: 16px;
+          line-height: 160%;
+        }
+      }
+
+    }
+
+    .rightBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 0;
+
+      @include desktop {
+        display: block;
+        padding: 0;
+      }
+
+      .card {
+        width: 288px;
+        height: 524px;
+        background-image: url(../../assets/png/home-card-mobile.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding-top: 85px;
+        box-sizing: border-box;
+
+        @include desktop() {
+          background-image: url(../../assets/png/home-card-desktop.png);
+          width: 560px;
+          height: 544px;
+          //padding-top: 70px;
+
+        }
+
+        .minted {
+          @include PressStart();
+          font-size: 12px;
+          line-height: 160%;
+          text-align: center;
+          text-transform: uppercase;
+
+          @include desktop() {
+            font-size: 14px;
+          }
+        }
+
+        .countWrapper {
+          display: flex;
+          flex-direction: column;
+
+          margin-top: 85px;
+          padding: 0px 24px;
+
+          @include desktop() {
+            flex-direction: row;
+            //justify-content: space-between;
+            align-items: center;
+            margin-top: 92px;
+            padding: 0px 60px;
+          }
+
+          .mint {
+            @include PressStart();
+            font-size: 14px;
+            line-height: 145%;
+            text-transform: uppercase;
+            text-align: center;
+
+            @include desktop() {
+              margin-right: 45px;
+            }
+          }
+
+          .countBlock {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            @include desktop() {
+              flex-grow: 1;
+            }
+
+            .countButtons {
+              display: flex;
+              align-items: center;
+
+              .countButton {
+                width: 32px;
+                height: 32px;
+
+
+                @include desktop() {
+                  width: 40px;
+                  height: 40px;
+                }
+              }
+
+              .count {
+                @include PressStart();
+                font-size: 14px;
+                line-height: 135%;
+                margin: 0px 20px;
+
+                @include desktop() {
+                  font-size: 18px;
+                  margin: 0px 32px;
+                }
+              }
+
+
+            }
+
+            .max {
+              background-image: url(../../assets/png/home-max.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              width: 88px;
+              height: 32px;
+              @include center();
+
+              @include PressStart();
+              font-size: 9.6px;
+              line-height: 160%;
+              letter-spacing: -0.02em;
+              color: #524B60;
+              text-transform: uppercase;
+
+              @include desktop() {
+                width: 110px;
+                height: 40px;
+                font-size: 12px;
+              }
+            }
+
+          }
+
+        }
+
+        .totalBlock {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 80px;
+
+          @include desktop() {
+            justify-content: normal;
+            padding: 0px 60px;
+          }
+
+
+          .texts {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            @include desktop() {
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              flex-grow: 1;
+            }
+
+            p:first-child {
+              @include PressStart();
+              font-size: 14px;
+              line-height: 145%;
+              text-transform: uppercase;
+            }
+
+            p:last-child {
+              @include PressStart();
+              font-size: 32px;
+              line-height: 135%;
+              letter-spacing: -1px;
+              margin-top: 16px;
+
+              @include desktop() {
+                font-size: 36px;
+                margin-top: 0px;
+              }
+            }
+
+
+          }
+
+          img {
+            display: block;
+            width: 18px;
+            height: 32px;
+            margin-left: 5px;
+
+            @include desktop() {
+              width: 22.5px;
+              height: 40px;
+              margin-left: 18px;
+            }
+          }
+        }
+
+        .mintNow {
+          width: 170px;
+          height: 48px;
+          margin-top: 14px;
+          margin-left: auto;
+          margin-right: auto;
+
+          @include desktop() {
+            width: 265px;
+            height: 75px;
+            margin-top: 65px;
+          }
+
+        }
+
+
+      }
+    }
+
+  }
+}

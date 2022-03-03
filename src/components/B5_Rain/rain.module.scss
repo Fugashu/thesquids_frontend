@@ -1,0 +1,42 @@
+.rain {
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+
+  .wrapper {
+    width: 150%;
+    height: 150vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    z-index: 9999;
+    overflow: hidden;
+
+    display: flex;
+
+    .inner {
+      width: 75%;
+      height: 150vh;
+
+      & > div {
+        width: 75vw;
+        height: 150vh;
+        overflow: hidden!important;
+
+        & > div {
+          z-index: 9999;
+          background: #65616F!important;
+          animation-duration: 2s!important;
+        }
+      }
+    }
+  }
+
+
+
+
+}

@@ -1,0 +1,30 @@
+<svg width="260" height="479" viewBox="0 0 260 479" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="10" height="409" transform="matrix(-1 0 0 1 250 40)" fill="#302940"/>
+<rect width="10" height="381" transform="matrix(1 0 0 -1 250 439)" fill="#302940"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 230 50)" fill="#302940"/>
+<rect x="20" y="30" width="220" height="439" fill="#302940"/>
+<rect x="30" y="20" width="200" height="10" fill="#302940"/>
+<rect x="10" y="40" width="10" height="409" fill="#302940"/>
+<rect x="10" y="439" width="10" height="381" transform="rotate(-180 10 439)" fill="#302940"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 240 459)" fill="#1C162A"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 250 449)" fill="#1C162A"/>
+<rect x="30" y="469" width="200" height="10" fill="#1C162A"/>
+<rect x="20" y="459" width="10" height="10" transform="rotate(-180 20 459)" fill="#1C162A"/>
+<rect x="30" y="469" width="10" height="10" transform="rotate(-180 30 469)" fill="#1C162A"/>
+<rect x="10" y="449" width="10" height="10" transform="rotate(-180 10 449)" fill="#1C162A"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 230 469)" fill="#1C162A"/>
+<rect x="10" y="204" width="10" height="166" transform="rotate(-180 10 204)" fill="#302940"/>
+<rect x="20" y="214" width="10" height="194" transform="rotate(-180 20 214)" fill="#302940"/>
+<rect x="30" y="214" width="10" height="204" transform="rotate(-180 30 214)" fill="#302940"/>
+<rect width="10" height="166" transform="matrix(1 0 0 -1 250 204)" fill="#302940"/>
+<rect width="10" height="194" transform="matrix(1 0 0 -1 240 214)" fill="#302940"/>
+<rect width="10" height="204" transform="matrix(1 0 0 -1 230 214)" fill="#302940"/>
+<rect width="200" height="224" transform="matrix(1 0 0 -1 30 224)" fill="#302940"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 240 216)" fill="#1C162A"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 250 206)" fill="#1C162A"/>
+<rect x="30" y="216" width="200" height="10" fill="#1C162A"/>
+<rect x="20" y="216" width="10" height="10" transform="rotate(-180 20 216)" fill="#1C162A"/>
+<rect x="30" y="216" width="10" height="10" transform="rotate(-180 30 216)" fill="#1C162A"/>
+<rect x="10" y="206" width="10" height="10" transform="rotate(-180 10 206)" fill="#1C162A"/>
+<rect width="10" height="10" transform="matrix(1 0 0 -1 230 216)" fill="#1C162A"/>
+</svg>

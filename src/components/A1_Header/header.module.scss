@@ -1,0 +1,106 @@
+@import "../../assets/scss/app.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  overflow: hidden;
+  z-index: 90;
+
+  .inner {
+    height: 100%;
+    box-sizing: border-box;
+    background: rgba(41, 32, 58, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 16px;
+    transition: transform 0.3s, background 0.3s;
+
+    &_hide {
+      transform: translateY(-100%);
+    }
+
+    &_transparent {
+      background: rgba(41, 32, 58, 0.0);
+    }
+
+    @include desktop() {
+      padding-right: 67px;
+      padding-left: 48px;
+    }
+
+    .logo {
+      display: block;
+      text-decoration: none;
+
+      img {
+        display: block;
+        width: 146px;
+        height: 56px;
+        margin-left: -7px;
+
+        @include desktop() {
+          width: 223px;
+          height: 77px;
+        }
+      }
+    }
+
+    .links {
+      @include onlyDesktop() {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+      }
+
+      .link {
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 150%;
+        text-shadow: 0 0 12px rgba(0, 0, 0, 0.64);
+
+        &:not(:first-child) {
+          margin-left: 48px;
+        }
+      }
+
+    }
+
+    .iconButtons {
+      @include onlyDesktop(flex) {
+        align-items: center;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        margin-left: 32px;
+      }
+
+      .connectBtn {
+        margin-left: 28px;
+        width: 142px;
+        height: 40px;
+      }
+    }
+
+    .burgerButton {
+      @include onlyMobile() {
+        position: relative;
+        z-index: 110;
+        @include button();
+      }
+    }
+  }
+
+
+
+
+}

@@ -1,0 +1,77 @@
+@import "../../assets/scss/app.scss";
+
+.home {
+  background-image: url("../../assets/gif/home-back-mobile.gif");
+  @media only screen and (min-width: 800px) {
+    background-image: url(../../assets/gif/home-back.gif);
+  }
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding: 200px 16px 25px;
+  box-sizing: border-box;
+  min-height: 100vh;
+ 
+ 
+  
+  @include desktop() {
+    padding: 0;
+    min-height: 100vh;
+    @include center();
+    background-image: url(../../assets/gif/home-back.gif);
+    //@include center();
+    padding-top: 180px;
+  }
+
+  .innerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width: 1160px) {
+      position: relative;
+      bottom: -100px;
+      left: 0;
+      right: 0;
+    }
+    .title {
+      @include PressStart();
+      color: #fff;
+      font-size: 22px;
+      line-height: 145%;
+      text-align: center;
+      width: 288px;
+
+      @include desktop() {
+        font-size: 38px;
+        line-height: 150%;
+        width: 700px;
+      }
+    }
+
+    .enterButton {
+      width: 116px;
+      height: 48px;
+      margin-top: 72px;
+
+      @include desktop() {
+        width: 192px;
+        height: 80px;
+        margin-top: 82px;
+      }
+    }
+
+    .icons {
+      @include onlyMobile(flex) {
+        justify-content: center;
+        margin-top: 72px;
+
+        .icon {
+          &:not(:first-child) {
+            margin-left: 32px;
+          }
+        }
+
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.cardAnim {
+  &:hover {
+    .iconAnim {
+      animation: storm 8s ease infinite;
+    }
+  }
+}
+
+
+
+@keyframes storm {
+  // 1 change
+  0% {
+    opacity: 1;
+  }
+  1% {
+    opacity: 0;
+  }
+
+  // 2/8 wait
+  25% {
+    opacity: 0;
+  }
+
+  // 2 change
+  26% {
+    opacity: 1;
+  }
+  27% {
+    opacity: 0;
+  }
+
+  //  1/8 wait
+  37% {
+    opacity: 0;
+  }
+
+  // 3 change
+  38% {
+    opacity: 1;
+  }
+  39% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+
+  // 2/8 wait
+  68% {
+    opacity: 1;
+  }
+
+  // 2 change
+  69% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+
+  // 3/8 wait
+  100% {
+    opacity: 1;
+  }
+}

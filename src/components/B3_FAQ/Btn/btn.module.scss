@@ -1,0 +1,62 @@
+@import "../../../assets/scss/app.scss";
+
+.btn {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+
+  @include desktop() {
+    top: 22px;
+    left: auto;
+    right: 22px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+
+    @include desktop() {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .default {
+    display: block;
+  }
+
+  .hover, .click {
+    display: none;
+  }
+
+  &_hover {
+    .hover {
+      display: block;
+    }
+
+    .default, .click {
+      display: none;
+    }
+  }
+
+  &_mouseDown {
+    .click {
+      display: block;
+    }
+
+    .default, .hover {
+      display: none;
+    }
+  }
+
+}

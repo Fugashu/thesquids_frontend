@@ -1,0 +1,54 @@
+@import "../../assets/scss/app.scss";
+
+.team {
+  padding: 56px 0 550px;
+  position: relative;
+
+  @include desktop() {
+    padding: 120px 0 636px;
+  }
+
+  .title {
+    @include h2();
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .slider {
+    @include onlyMobile() {
+      margin: 40px 0 0 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide {
+      width: 268px;
+      height: 530px;
+      padding-bottom: 30px;
+    }
+  }
+
+  .cards {
+    @include onlyDesktop() {
+      position: relative;
+      z-index: 2;
+      width: 1160px;
+      margin: 100px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 50px 76px;
+    }
+  }
+
+  .back {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+
+}

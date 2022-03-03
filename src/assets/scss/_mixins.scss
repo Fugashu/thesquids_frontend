@@ -1,0 +1,61 @@
+@mixin desktop {
+  @media all and (min-width: 1160px) {
+    @content;
+  }
+}
+
+@mixin onlyMobile($displayType: block) {
+  display: $displayType;
+  @content;
+
+  @include desktop() {
+    display: none;
+  }
+}
+
+
+@mixin onlyDesktop($displayType: block) {
+  display: none;
+
+  @include desktop {
+    display: $displayType;
+    @content;
+  }
+}
+
+@mixin center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin PressStart {
+  font-family: 'Press Start 2P', cursive;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@mixin Pridi {
+  font-family: 'Pridi', serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@mixin button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+@mixin h2 {
+  @include PressStart();
+  font-size: 22px;
+  line-height: 145%;
+  text-align: center;
+
+  @include desktop() {
+    font-size: 42px;
+    line-height: 150%;
+  }
+}

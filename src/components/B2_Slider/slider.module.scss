@@ -1,0 +1,66 @@
+@import "../../assets/scss/app.scss";
+
+.slider {
+  position: relative;
+  z-index: 2;
+
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .swiper {
+    margin-top: 16px;
+
+    @include desktop() {
+      margin-top: 32px;
+    }
+
+    &_top {
+      margin-right:-1050px;
+
+      @include desktop() {
+        margin-right: -1550px;
+      }
+    }
+
+    &_bottom {
+      margin-bottom: 16px;
+      margin-left: 16px;
+
+      @include desktop() {
+        margin-bottom: 32px;
+        margin-left: 40px;
+      }
+    }
+
+
+
+
+    .slide {
+      width: 258px;
+      height: 258px;
+
+      @include desktop() {
+        width: 410px;
+        height: 410px;
+      }
+
+      img {
+        display: block;
+        width: 258px;
+        height: 258px;
+        border-radius: 4px;
+
+        @include desktop() {
+          width: 410px;
+          height: 410px;
+        }
+
+      }
+    }
+  }
+
+}
