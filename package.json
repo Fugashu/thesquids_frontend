@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">=16.13.1"
+  },
   "homepage": "https://thesquids.io",
   "name": "squids",
   "version": "0.1.0",
