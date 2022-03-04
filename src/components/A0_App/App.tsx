@@ -41,7 +41,7 @@ export const App = () => {
     const [dir, setDir] = useState(0);
     const [headerIsTransparent, setHeaderIsTransparent] = useState(true);
 
-    const [showHomeNew, setShowHomeNew] = useState(false)
+    const [showHomeNew, setShowHomeNew] = useState(true)
 
     const onScrollHandler = throttle(() => {
         if (ref && ref.current) {
@@ -98,9 +98,11 @@ export const App = () => {
                     dir={dir}
                     headerIsTransparent={headerIsTransparent}
             />
+
             <BurgerMenu burgerMenuIsOpen={burgerMenuIsOpen}
                         onClickHandler={(open: boolean) => setBurgerMenuIsOpen(open)}
             />
+
 
             {
                 showHomeNew
@@ -141,6 +143,7 @@ export const App = () => {
                     <Faq/>
                     <Team/>
                     <Footer/>
+
                 </div>
 
             </div>

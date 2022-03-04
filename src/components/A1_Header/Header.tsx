@@ -11,7 +11,10 @@ import connectD from "../../assets/svg/buttons/connect-d.svg";
 import connectH from "../../assets/svg/buttons/connect-h.svg";
 import connectC from "../../assets/svg/buttons/connect-c.svg";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
+
+
 import clsx from "clsx";
+import MetaMaskButton from "../common/MetamaskConnection/connectToMetamaskButton";
 
 export const links = [
     "RoadMap",
@@ -56,12 +59,7 @@ export const Header: FC<IHeader> = ({burgerMenuIsOpen, onClickHandler, dir,heade
                     <SocialIcon icon="twitter" className={style.icon}/>
                     <SocialIcon icon="discord" className={style.icon}/>
 
-                    <ButtonLink  imgDefault={connectD}
-                                imgHover={connectH}
-                                imgClick={connectC}
-                                className={style.connectBtn}
-                                //href=""
-                    />
+                    <MetaMaskButton/>
 
                 </div>
 
