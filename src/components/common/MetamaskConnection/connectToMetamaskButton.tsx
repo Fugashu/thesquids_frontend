@@ -6,8 +6,7 @@ import connectH from "../../../assets/svg/buttons/connect-h.svg";
 import connectC from "../../../assets/svg/buttons/connect-c.svg";
 import style from "../../A1_Header/header.module.scss";
 import {ButtonLink} from "../ButtonLink/ButtomLink";
-import {MerkleTree} from "merkletreejs";
-import keccak256 from "keccak256";
+
 
 
 const contractAddr = "0x15Db12b6CC801d12e23fa1eE9a2C822A360b927d";
@@ -406,6 +405,7 @@ const MetaMaskButton = () => {
         let signer:ethers.Signer= await provider.getSigner()
         await loadContract(signer);
         setImage(connectC);
+        fetchAPI();
     }
 
     async function loadContract(signer:Signer) {

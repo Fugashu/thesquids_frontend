@@ -7,11 +7,6 @@ import {SocialIcon} from "../common/SocialIcon/SocialIcon";
 import {svgIcons} from "../../assets/svg/svgIcons";
 import {SvgIcon} from "../common/SvgIcon/SvgIcon";
 
-import connectD from "../../assets/svg/buttons/connect-d.svg";
-import connectH from "../../assets/svg/buttons/connect-h.svg";
-import connectC from "../../assets/svg/buttons/connect-c.svg";
-import {ButtonLink} from "../common/ButtonLink/ButtomLink";
-
 
 import clsx from "clsx";
 import MetaMaskButton from "../common/MetamaskConnection/connectToMetamaskButton";
