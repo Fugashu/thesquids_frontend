@@ -41,7 +41,9 @@ export const App = () => {
     const [dir, setDir] = useState(0);
     const [headerIsTransparent, setHeaderIsTransparent] = useState(true);
 
-    const [showHomeNew, setShowHomeNew] = useState(true)
+
+    //todo set state to true if minting should be enabled
+    const [showHomeNew, setShowHomeNew] = useState(false)
 
     const onScrollHandler = throttle(() => {
         if (ref && ref.current) {
