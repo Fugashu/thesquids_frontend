@@ -9,7 +9,7 @@ import {SvgIcon} from "../common/SvgIcon/SvgIcon";
 
 
 import clsx from "clsx";
-import MetaMaskButton from "../common/MetamaskConnection/connectToMetamaskButton";
+import MetaMaskButton from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 export const links = [
     "RoadMap",

@@ -1,11 +1,16 @@
 import React from 'react';
 import {ethers, Signer} from "ethers";
 import {useState} from "react";
-import connectD from "../../../assets/svg/buttons/connect-d.svg";
-import connectH from "../../../assets/svg/buttons/connect-h.svg";
-import connectC from "../../../assets/svg/buttons/connect-c.svg";
+import connectD from "../../../assets/png/buttons/connect-d.png";
+import connectH from "../../../assets/png/buttons/connect-h.png";
+import connectC from "../../../assets/png/buttons/connect-c.png";
+
+import connectedD from "../../../assets/png/buttons/connected-d.png";
+import connectedH from "../../../assets/png/buttons/connected-h.png";
+import connectedC from "../../../assets/png/buttons/connected-c.png";
+
 import style from "../../A1_Header/header.module.scss";
-import {ButtonLink} from "../ButtonLink/ButtomLink";
+import {ButtonLink} from "../../common/ButtonLink/ButtomLink";
 
 
 
@@ -404,8 +409,12 @@ const MetaMaskButton = () => {
         await provider.send("eth_requestAccounts", []);
         let signer:ethers.Signer= await provider.getSigner()
         await loadContract(signer);
-        setImage(connectC);
+        setConnectionActive(true);
         fetchAPI();
+    }
+
+    async function disconnectWallet(){
+        //window.location.reload(false);
     }
 
     async function loadContract(signer:Signer) {
@@ -418,7 +427,8 @@ const MetaMaskButton = () => {
 
         try{
             let price = await contract.price();
-            alert("The price of one squid is "+ price);
+            alert("testing contract call")
+            alert("The price of one squid is"+ price);
         }
         catch (err){
             alert("Fetching the price from the contract failed.");
@@ -426,7 +436,7 @@ const MetaMaskButton = () => {
     }
 
     async function fetchAPI(){
-        alert("Trying to fetch the API:");
+        alert("Trying to fetch the API: (not online yet)");
         await fetch("https://minting.dns.army/thesquids/api/whitelist")
 
             .then((response) => {response.json()})
@@ -435,15 +445,25 @@ const MetaMaskButton = () => {
     }
 
 
-    const [image, setImage] = useState(connectD);
+    const [isConnectionActive, setConnectionActive] = useState(false);
     return (
         <div>
-            <ButtonLink imgDefault={image}
-                        imgHover={connectH}
-                        imgClick={connectC}
+            {isConnectionActive ?
+            <ButtonLink imgDefault={connectedD}
+                        imgHover={connectedH}
+                        imgClick={connectedC}
                         className={style.connectBtn}
-                        onClick={connectWallet}
-            />
+                        onClick={disconnectWallet}
+            />:
+                <ButtonLink imgDefault={connectD}
+                            imgHover={connectH}
+                            imgClick={connectC}
+                            className={style.connectBtn}
+                            onClick={connectWallet}
+                />
+            }
+
+
         </div>
 
     );
