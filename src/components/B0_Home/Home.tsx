@@ -12,6 +12,7 @@ import soonC from "../../assets/png/buttons/soonC.png";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
 // @ts-ignore
 import GlitchText from 'react-glitch-effect/core/GlitchText';
+import MetaMaskButtonMobile from "../cojodi/MetamaskConnection/connectToMetamaskButtonMobile";
 
 interface IHome {
     onClickHandler: () => void
@@ -51,12 +52,16 @@ export const Home: FC<IHome> = () => {
 
                 <div className={style.icons}>
                     {
-                        ["twitter", "discord", "metamask"].map(icon => <SocialIcon key={icon}
+                        ["twitter", "discord"].map(icon => <SocialIcon key={icon}
                                                                                    icon={icon}
                                                                                    className={style.icon}
                             />
+
                         )
+
                     }
+                    <MetaMaskButtonMobile/>
+
                 </div>
             </div>
         </section>

@@ -34,6 +34,7 @@ export interface IIcons {
         hover: string
         click: string
         href: string
+
     }
 }
 
@@ -42,7 +43,7 @@ export const icons: IIcons = {
         default: metamaskD,
         hover: metamaskH,
         click: metamaskC,
-        href: "https://twitter.com/TheSquids_NFT"
+        href: "https://twitter.com/TheSquids_NFT",
     },
     "twitter": {
         default: twitterD,
