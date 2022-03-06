@@ -427,8 +427,9 @@ const MetaMaskButton = () => {
 
         try{
             let price = await contract.price();
+
             //alert("testing contract call")
-            //alert("The price of one squid is"+ price);
+            console.log("The price of one squid is"+ price);
         }
         catch (err){
             //alert("Fetching the price from the contract failed.");
