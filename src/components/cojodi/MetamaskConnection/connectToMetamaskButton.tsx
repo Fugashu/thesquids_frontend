@@ -414,7 +414,7 @@ const MetaMaskButton = () => {
     }
 
     async function disconnectWallet(){
-        //window.location.reload(false);
+        window.location.reload(false);
     }
 
     async function loadContract(signer:Signer) {

@@ -55,7 +55,7 @@
     font-size: 18px;
     line-height: 160%;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .text {
@@ -65,7 +65,7 @@
     line-height: 150%;
     text-align: center;
     color: rgba(255, 255, 255, 0.6);
-    margin-top: 8px;
+    margin-top: 5px;
     width: 234px;
 
     @include desktop() {

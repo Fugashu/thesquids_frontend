@@ -29,7 +29,7 @@ export const Home: FC<IHome> = () => {
                 <GlitchText duration={3000} color1="rgba(30, 171, 245, 1)" color2="rgba(245, 0, 87, 1)" disabled={isDisabled}>
                 <h1 className={style.title}
                     onMouseLeave={()=>setDisabled(true)}
-                    onMouseOver={()=>setDisabled(false)}>Only a game away of living debt free</h1>
+                    onMouseOver={()=>setDisabled(false)}>A game away from prosperity</h1>
                 </GlitchText>
                 
 

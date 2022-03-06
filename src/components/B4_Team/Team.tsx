@@ -70,7 +70,7 @@ const persons: ICard[] = [
     name: 'Theo “Gundy” Escriva',
     job: 'Project Lead',
     description:
-      'French entrepreneur, and digital business owner, Theo has built and directed numerous projects after entering the crypto space in 2016',
+      'After joining the crypto scene in 2016, French entrepreneur and digital business owner Theo has built and directed numerous projects',
     button: {
       href: 'https://twitter.com/Gundy__',
       icons: {
@@ -89,7 +89,7 @@ const persons: ICard[] = [
     name: 'Zozimo Neto ',
     job: 'Artist',
     description:
-      'Brazilian artist and game designer for the last 16 years, Zózimo worked for some companies in Brazil, North America and Europe, including Gameloft. A lot of his inspiration comes from old school games',
+      'For the last 16 years, the retro media-inspired Brazilian artist and game designer Zózimo has worked for companies across the globe, including Gameloft.',
     button: {
       href: 'https://linktr.ee/zozimo_nt',
       icons: {
@@ -108,7 +108,7 @@ const persons: ICard[] = [
     name: 'Jonas “Fugashu” Friesslich',
     job: 'Software engineer',
     description:
-      'German software engineer working in the medical sector, Jonas is also a c++ university tutor and blockchain enthusiast',
+      'The German blockchain enthusiast Jonas is a medical software engineer and a university tutor of C++.',
     button: {
       href: 'https://github.com/Fugashu',
       icons: {
@@ -127,7 +127,7 @@ const persons: ICard[] = [
     name: 'Dmitrij “Dimfred” Vinokour',
     job: 'Blockchain Developer',
     description:
-      'Software developer from Germany, Dimi has been working on various projects in the blockchain space since 3years. ',
+      'Three years ago, Dimi began working on various blockchain projects, gathering experience in the lead up to this project.',
     button: {
       href: 'https://github.com/dimfred',
       icons: {
@@ -146,7 +146,7 @@ const persons: ICard[] = [
     name: 'Anatoliy Demyanchuk',
     job: 'UI/UX designer',
     description:
-      'Ukrainian art director and designer since 2017, Anatoliy has been working exclusively for crypto projects like Jigen app and Garlicoin in the last 2 years',
+      'Anatoliy is a Ukrainian art director working exclusively in crypto for projects like Jigen.app for the past 2 years, gaining experience culminating to this moment.',
     button: {
       href: 'https://dribbble.com/Demianchuk',
       icons: {
@@ -162,10 +162,10 @@ const persons: ICard[] = [
       hovered: Modhover,
       
     },
-    name: 'Moderators',
+    name: 'The Squids Moderators',
     job: 'Community moderators',
     description:
-      'They will be designed during the first phase of the project. Early enthusiasts who desire to help the project reach its full potential and help the community.',
+      'Moderators will be chosen during the first phase of the project. Consisting of early enthusiasts desiring to help the project reach its full potential.',
     button: {
       href: 'https://twitter.com/TheSquids_NFT',
       icons: {

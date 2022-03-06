@@ -18,28 +18,28 @@ export const cards = [
         icon2: icon0_2,
         step: "Stage 1 - 25%",
         title: "The Lab’s creation",
-        text: "After a fine development at a molecular level, each squids will be available for mint, eager to play some games."
+        text: "After spending the majority of their lives in a lab, being meticulously crafted, The Squids are finally ready to be minted and play games!"
     },
     {
         icon1: icon1_1,
         icon2: icon1_2,
         step: "Stage 2 - 50%",
-        title: "Let the fun begins",
-        text: "Each enhanced humans have finally found a place to train. The games are ready to be played and the Genesis Squids are here to supervise them"
+        title: "Let the fun begin",
+        text: "Now that The Squids have found a headquarters and the games are officially ready to be played, the Genesis Squids will have their hands full!"
     },
     {
         icon1: icon2_1,
         icon2: icon2_2,
         step: "Stage 3 - 75%",
         title: "Winner Winner Chicken Dinner",
-        text: "The winner of the first tournament has been designated, the new in-game token launched. We are now set to make more games, rules and  prizes."
+        text: "Once the winner of the first tournament has been revealed, an in-game token will be launched. There will be new games, prizes, and rules following the launch!"
     },
     {
         icon1: icon3_1,
         icon2: icon3_2,
         step: "Stage 4 - 100%",
         title: "Total domination",
-        text: "The Squids have proven to be extremely strong in their own environment. Will they prevail in the metaverse ? Only one way to find out."
+        text: "The Squids are prepared to explore the metaverse, with a plan to take it over. Will they succeed? Only one way to find out…"
     },
 ]
 

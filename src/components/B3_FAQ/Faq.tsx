@@ -6,24 +6,24 @@ import {Btn} from "./Btn/Btn";
 
 const items = [
     {
-        title: "What are the SQUIDS ?",
-        text: "The squids are a collection of 1000 Genesis NFTs. Made out of modified human DNA, this enhanced specie is capable of playing all sorts of games on the metaverse. Each of those unique characters have an equal chance at winning the games and live debt free.",
+        title: "What are The Squids?",
+        text: "The Squids are a species consisting of 1,000 humans with altered DNA, and they love to play games. Each individual has an equal chance at winning the games and earning rewards.",
     },
     {
-        title: "How can I get a Squid ?",
-        text: "The whole collection will be available for purchase on our website through the initial sale. More details will be announced on our Discord and Twitter. Make sure to connect your metamask wallet to have a chance at getting a Squid during the mint.",
+        title: "How can I get a Squid?",
+        text: "The entirety of the collection will be available for purchase through our website. More details will be announced on our Discord and Twitter. Ensure your MetaMask wallet is connected to purchase a Squid during mint.",
     },
     {
-        title: "What are the Genesis Squids ?",
-        text: "The Genesis Squids are part of the Squid collection. 1000 Genesis Squids will be available to mint. They will hold some special power. You will be able to have a discount for the tournaments. As well as 3x more voting power when choosing games. And finally, being able to watch replays of the games to insure the security of the tournaments.",
+        title: "What are the Genesis Squids?",
+        text: "These are a collection of 1,000 Squids wielding unique powers. Some of those powers include having a discount when joining tournaments, 3x the voting power when choosing games, and the responsibility to ensure security by watching game replays.",
     },
     {
-        title: "What are the tournaments ?",
-        text: "After getting your hand on a SQUID nft, you will have access to a special section called “Tournaments”. Each tournament will last 10 Days with 5 mini games in total. You will have an equal chance at winning the games and a possibility to split the winning money prize after each game or eliminate each player until only 1 remains.",
+        title: "What are the tournaments?",
+        text: "Tournaments last for 10 days and consist of 5 mini games. Each Squid has an equal potential to win the games and holds the ability to share winnings with other players. A Squid is disqualified when they run out of lives, and a life is lost when they lose a mini game. Games will continue until there is only one remaining player.",
     },
     {
-        title: "More NFTs = Higher success ?",
-        text: "Each NFTs have an equal chance at winning a tournament. You will however get certain discounts by stacking multiple of them as well as be able to play as many times as the number of NFTs you hold. Make sure to contact us on discord if you have more questions.",
+        title: "More NFTs = Higher chance of winning?",
+        text: "You have an equal number of lives as you do Squids. You also gain an entry fee discount that grows as you stack Squids. If you have more questions, feel free to contact us on Discord!",
     },
 ];
 
