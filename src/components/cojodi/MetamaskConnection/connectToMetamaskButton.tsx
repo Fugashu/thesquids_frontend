@@ -427,21 +427,22 @@ const MetaMaskButton = () => {
 
         try{
             let price = await contract.price();
-            alert("testing contract call")
-            alert("The price of one squid is"+ price);
+            //alert("testing contract call")
+            //alert("The price of one squid is"+ price);
         }
         catch (err){
-            alert("Fetching the price from the contract failed.");
+            //alert("Fetching the price from the contract failed.");
         }
     }
 
     async function fetchAPI(){
-        alert("Trying to fetch the API: (not online yet)");
+        //alert("Trying to fetch the API: (not online yet)");
         await fetch("https://minting.dns.army/thesquids/api/whitelist")
 
             .then((response) => {response.json()})
             .then((data) => {console.log(data)})
-            .catch((error) => {alert('Failed to fetch the API with error: '+ error)});
+            .catch((error) => {
+                console.log('Failed to fetch the API with error: '+ error)});
     }
 
 
