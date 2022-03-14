@@ -43,7 +43,7 @@ export const icons: IIcons = {
         default: metamaskD,
         hover: metamaskH,
         click: metamaskC,
-        href: "https://twitter.com/squids_nft",
+        href: "",
     },
     "twitter": {
         default: twitterD,
@@ -55,13 +55,13 @@ export const icons: IIcons = {
         default: openSeaD,
         hover: openSeaH,
         click: openSeaC,
-        href: "https://twitter.com/squids_nft"
+        href: ""
     },
     "discord": {
         default: discordD,
         hover: discordH,
         click: discordC,
-        href: "https://twitter.com/squids_nft"
+        href: ""
     },
 }
 
