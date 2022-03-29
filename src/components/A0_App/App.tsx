@@ -1,4 +1,5 @@
-import React, {useRef, useState} from 'react';
+import {useRef, useState} from 'react';
+import * as React from 'react';
 import style from "./app.module.scss"
 import {Home} from "../B0_Home/Home";
 import {Roadmap} from "../B1_Roadmap/Roadmap";
@@ -20,12 +21,13 @@ import useHotjar from 'react-use-hotjar';
 // import clouds from "../../assets/gif/clouds.gif";
 export const App = () => {
 
-    const myCustomLogger = console.info;
+
 
 
     const { initHotjar } = useHotjar();
 
     React.useEffect(() => {
+        const myCustomLogger = console.info;
         initHotjar(2898980, 6, false, myCustomLogger);
     }, [initHotjar]);
 

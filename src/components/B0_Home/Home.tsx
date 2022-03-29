@@ -1,5 +1,4 @@
 import React, {FC,useState} from "react";
-import {Link} from "react-router-dom";
 import style from "./home.module.scss"
 // import background from "../../assets/gif/home-back.gif";
 import {SocialIcon} from "../common/SocialIcon/SocialIcon";
