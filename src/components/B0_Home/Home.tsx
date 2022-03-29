@@ -51,7 +51,7 @@ export const Home: FC<IHome> = () => {
                     />
                 )}
 
-                <button><Link to="/Tournaments">Tournaments</Link></button>
+                {/*<button><Link to="/Tournaments">Tournaments</Link></button>*/}
 
                 <div className={style.icons}>
                     {
