@@ -16,9 +16,19 @@ import backAir from "../../assets/png/team-back-air.png";
 import {useMediaQuery} from "@mui/material";
 import {Preloader} from "../A4_Preloader/Preloader";
 import {SliderJS2} from "../B2_Slider/SliderJS2";
+import useHotjar from 'react-use-hotjar';
 // import clouds from "../../assets/gif/clouds.gif";
-
 export const App = () => {
+
+    const myCustomLogger = console.info;
+
+
+    const { initHotjar } = useHotjar();
+
+    React.useEffect(() => {
+        initHotjar(2898980, 6, false, myCustomLogger);
+    }, [initHotjar]);
+
     const matchesDesktop = useMediaQuery('(min-width:1160px)');
 
     const top0 = matchesDesktop ? 161 : 3;
@@ -99,6 +109,7 @@ export const App = () => {
                     onClickHandler={(open: boolean) => setBurgerMenuIsOpen(open)}
                     dir={dir}
                     headerIsTransparent={headerIsTransparent}
+
             />
 
             <BurgerMenu burgerMenuIsOpen={burgerMenuIsOpen}
@@ -140,6 +151,7 @@ export const App = () => {
                 {/*</div>*/}
 
                 <div className={style.componentsWrapper}>
+
                     <Roadmap/>
                     <SliderJS2/>
                     <Faq/>
