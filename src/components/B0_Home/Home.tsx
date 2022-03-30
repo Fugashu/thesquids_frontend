@@ -12,8 +12,11 @@ import soonC from "../../assets/png/buttons/soonC.png";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
 // @ts-ignore
 import GlitchText from 'react-glitch-effect/core/GlitchText';
-import MetaMaskButtonMobile from "../cojodi/MetamaskConnection/connectToMetamaskButtonMobile";
+import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
+import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
+import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
+import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 interface IHome {
     onClickHandler: () => void
 }
@@ -61,8 +64,12 @@ export const Home: FC<IHome> = () => {
 
                         )
 
+
                     }
-                    <MetaMaskButtonMobile/>
+                    <MetaMaskButton     connectH = {connectH}
+                                        connectC = {connectC}
+                                        connectD = {connectD}/>
+
 
                 </div>
             </div>

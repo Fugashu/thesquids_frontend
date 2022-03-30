@@ -8,7 +8,6 @@ import Fetch from './fetch'
 import MetaMaskButton from "../MetamaskConnection/connectToMetamaskButton";
 import { generateTestingUtils } from "eth-testing";
 import MetaMaskButtonMobile from "../MetamaskConnection/connectToMetamaskButtonMobile";
-import {isWalletConnected} from "../MetamaskConnection/Config";
 
 
 

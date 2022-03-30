@@ -7,9 +7,11 @@ import {SocialIcon} from "../common/SocialIcon/SocialIcon";
 import {svgIcons} from "../../assets/svg/svgIcons";
 import {SvgIcon} from "../common/SvgIcon/SvgIcon";
 
-
+import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
+import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
+import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 import clsx from "clsx";
-import MetaMaskButton from "../cojodi/MetamaskConnection/connectToMetamaskButton";
+import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 export const links = [
     "RoadMap",
@@ -54,7 +56,9 @@ export const Header: FC<IHeader> = ({burgerMenuIsOpen, onClickHandler, dir,heade
                     <SocialIcon icon="twitter" className={style.icon}/>
                     <SocialIcon icon="discord" className={style.icon}/>
 
-                    <MetaMaskButton/>
+                    <MetaMaskButton     connectH = {connectH}
+                                        connectC = {connectC}
+                                        connectD = {connectD}/>
 
                 </div>
 

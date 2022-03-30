@@ -15,10 +15,14 @@ import mintNowDefault from "../../assets/svg/buttons/mint-now-d.svg";
 import mintNowHover from "../../assets/svg/buttons/mint-now-h.svg";
 import mintNowClick from "../../assets/svg/buttons/mint-now-c.svg";
 
+import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
+import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
+import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
+
 import {convertToTwoDigit, dateStart, getHours, getMins} from "./helpers";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
 import {mint} from "../cojodi/MetamaskConnection/Config";
-import MetaMaskButtonMobile from "../cojodi/MetamaskConnection/connectToMetamaskButtonMobile";
+import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 const texts = [
     ["Starts: ", "00am EST on 00.00.2022"],
@@ -85,9 +89,9 @@ export const HomeNew = () => {
                     <p className={style.until}>Until the close of sales</p>
 
                     <div className={style.icons}>
-
-                        <MetaMaskButtonMobile/>
-
+                        <MetaMaskButton     connectH = {connectH}
+                                            connectC = {connectC}
+                                            connectD = {connectD}/>
                     </div>
                 </div>
 

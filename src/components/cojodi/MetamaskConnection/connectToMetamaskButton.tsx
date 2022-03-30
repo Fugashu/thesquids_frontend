@@ -1,23 +1,27 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {useState} from "react";
-
-import connectD from "../../../assets/png/buttons/connect-d.png";
-import connectH from "../../../assets/png/buttons/connect-h.png";
-import connectC from "../../../assets/png/buttons/connect-c.png";
+import {ButtonLink} from "../../common/ButtonLink/ButtomLink";
+import {connectWallet, isWalletConnected, disconnectWallet} from "./Config";
 
 import connectedD from "../../../assets/png/buttons/connected-d.png";
 import connectedH from "../../../assets/png/buttons/connected-h.png";
 import connectedC from "../../../assets/png/buttons/connected-c.png";
 
-import style from "../../A1_Header/header.module.scss";
-import {ButtonLink} from "../../common/ButtonLink/ButtomLink";
-import {
-    connectWallet,
-    isWalletConnected, disconnectWallet
-} from "./Config";
+import style from "./connection.module.scss";
 
+interface IMetaMaskButton {
 
-const MetaMaskButton = () => {
+    connectD: string
+    connectH: string
+    connectC: string
+
+}
+export const MetaMaskButton: FC<IMetaMaskButton> = ({
+                                                connectD,
+                                                connectH,
+                                                connectC,
+                                            }) => {
+
 
     async function connectWalletCall(){
     await connectWallet();
@@ -32,14 +36,14 @@ const MetaMaskButton = () => {
             <ButtonLink imgDefault={connectedD}
                         imgHover={connectedH}
                         imgClick={connectedC}
-                        className={style.connectBtn}
+                        className={style.metaConnected}
                         role={"disconnect"}
                         onClick={()=>disconnectWallet()}
             />:
                 <ButtonLink imgDefault={connectD}
                             imgHover={connectH}
                             imgClick={connectC}
-                            className={style.connectBtn}
+                            className={style.metaDisconnected}
                             role={"connect"}
                             onClick={()=>connectWalletCall()}
                 />
@@ -48,5 +52,3 @@ const MetaMaskButton = () => {
 
     );
 };
-
-export default MetaMaskButton;

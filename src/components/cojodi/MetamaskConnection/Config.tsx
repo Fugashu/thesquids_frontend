@@ -1,7 +1,6 @@
 import keccak256 from "keccak256";
 import {MerkleTree} from "merkletreejs";
 import {ethers, Signer} from "ethers";
-import {sign} from "crypto";
 export const contractABI = [
     {
         inputs: [

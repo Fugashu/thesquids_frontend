@@ -1,20 +1,13 @@
 @import "../../../assets/scss/app.scss";
 
 
-    .icons {
-      @include onlyMobile(flex) {
-        justify-content: center;
-        margin-top: 72px;
-
-        .icon {
-          &:not(:first-child) {
-            margin-left: 32px;
-          }
-        }
-        .iconmetamaskmobile{
-          width: 142px;
-        }
-
-      }
-    }
-
+.metaConnected{
+  margin-left: 32px;
+  height: 48px;
+  width: 142px;
+}
+.metaDisconnected{
+  margin-left: 32px;
+  height: 40px;
+  width: 40px;
+}
