@@ -30,6 +30,22 @@
       width: 1160px;
       margin: 0px auto;
     }
+    .icons {
+      @include onlyMobile(flex) {
+        justify-content: center;
+        margin-top: 72px;
+
+        .icon {
+          &:not(:first-child) {
+            margin-left: 32px;
+          }
+        }
+        .iconmetamaskmobile{
+          width: 142px;
+        }
+
+      }
+    }
 
     .leftBlock {
       background-image: url(../../assets/gif/home-back-mobile.gif);

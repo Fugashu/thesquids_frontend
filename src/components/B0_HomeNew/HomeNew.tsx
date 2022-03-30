@@ -17,6 +17,8 @@ import mintNowClick from "../../assets/svg/buttons/mint-now-c.svg";
 
 import {convertToTwoDigit, dateStart, getHours, getMins} from "./helpers";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
+import {mint} from "../cojodi/MetamaskConnection/Config";
+import MetaMaskButtonMobile from "../cojodi/MetamaskConnection/connectToMetamaskButtonMobile";
 
 const texts = [
     ["Starts: ", "00am EST on 00.00.2022"],
@@ -28,8 +30,8 @@ const texts = [
 ]
 
 export const HomeNew = () => {
-    const max = 3;
-    const price = 0.21;
+    const max = 1;
+    const price = 0.15;
     const [count, setCount] = useState(0);
 
     const [timeIsOver, setTimeIsOver] = useState(false);
@@ -82,8 +84,13 @@ export const HomeNew = () => {
 
                     <p className={style.until}>Until the close of sales</p>
 
+                    <div className={style.icons}>
 
+                        <MetaMaskButtonMobile/>
+
+                    </div>
                 </div>
+
                 <div className={style.rightBlock}>
                     <div className={style.card}>
                         <p className={style.minted}>321/9000 minted</p>
@@ -136,6 +143,7 @@ export const HomeNew = () => {
                                     imgHover={mintNowHover}
                                     imgClick={mintNowClick}
                                     className={style.mintNow}
+                                    onClick={mint}
                          />
 
                     </div>

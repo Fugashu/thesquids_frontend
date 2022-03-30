@@ -21,9 +21,6 @@ import useHotjar from 'react-use-hotjar';
 // import clouds from "../../assets/gif/clouds.gif";
 export const App = () => {
 
-
-
-
     const { initHotjar } = useHotjar();
 
     React.useEffect(() => {
@@ -55,7 +52,7 @@ export const App = () => {
 
 
     //todo set state to true if minting should be enabled
-    const [showHomeNew, setShowHomeNew] = useState(false)
+    const [showHomeNew, setShowHomeNew] = useState(true)
 
     const onScrollHandler = throttle(() => {
         if (ref && ref.current) {
