@@ -52,3 +52,5 @@ export const MetaMaskButton: FC<IMetaMaskButton> = ({
 
     );
 };
+
+export default MetaMaskButton;

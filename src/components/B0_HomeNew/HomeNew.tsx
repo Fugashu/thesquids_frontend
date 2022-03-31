@@ -21,7 +21,7 @@ import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 
 import {convertToTwoDigit, dateStart, getHours, getMins} from "./helpers";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
-import {mint} from "../cojodi/MetamaskConnection/Config";
+import {mint, updateSupply} from "../cojodi/MetamaskConnection/Config";
 import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 const texts = [
@@ -33,14 +33,37 @@ const texts = [
     ["End Time: ", "00 hours"],
 ]
 
+
 export const HomeNew = () => {
     const max = 1;
     const price = 0.15;
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
 
     const [timeIsOver, setTimeIsOver] = useState(false);
     const [time, setTime] = useState(0);
     const [start, setStart] = useState(false);
+    const [amountMintedText, setAmountMintedText] = useState('????/1000 Minted')
+
+    async function updateSupplyText(){
+        let minted = await updateSupply();
+        if (minted=== -1){
+            return;
+        }
+        setAmountMintedText(minted+'/1000 minted');
+    }
+
+    const REFRESH_SUPPL_MS = 10000;
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+
+                updateSupplyText();
+
+        }, REFRESH_SUPPL_MS);
+
+        return () => clearInterval(interval);
+    }, [])
+
 
     useEffect(() => {
         const time = new Date(14 * 24 * 60 * 60 * 1000 + dateStart.getTime() - new Date().getTime()).getTime();
@@ -97,7 +120,7 @@ export const HomeNew = () => {
 
                 <div className={style.rightBlock}>
                     <div className={style.card}>
-                        <p className={style.minted}>321/9000 minted</p>
+                        <p className={style.minted}>{amountMintedText}</p>
 
                         <div className={style.countWrapper}>
 
@@ -147,7 +170,7 @@ export const HomeNew = () => {
                                     imgHover={mintNowHover}
                                     imgClick={mintNowClick}
                                     className={style.mintNow}
-                                    onClick={mint}
+                                    onClick={()=>{mint(count)}}
                          />
 
                     </div>

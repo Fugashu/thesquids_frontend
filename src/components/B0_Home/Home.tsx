@@ -57,7 +57,7 @@ export const Home: FC<IHome> = () => {
 
                 <div className={style.icons}>
                     {
-                        ["twitter", "discord"].map(icon => <SocialIcon key={icon}
+                        ["twitter"].map(icon => <SocialIcon key={icon}
                                                                                    icon={icon}
                                                                                    className={style.icon}
                             />

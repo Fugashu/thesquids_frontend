@@ -54,7 +54,6 @@ export const Header: FC<IHeader> = ({burgerMenuIsOpen, onClickHandler, dir,heade
 
                 <div className={style.iconButtons}>
                     <SocialIcon icon="twitter" className={style.icon}/>
-                    <SocialIcon icon="discord" className={style.icon}/>
 
                     <MetaMaskButton     connectH = {connectH}
                                         connectC = {connectC}

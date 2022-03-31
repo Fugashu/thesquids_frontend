@@ -384,52 +384,56 @@ export const contractABI = [
         type: "function",
     },
 ];
-export const contractAddr = "0x15Db12b6CC801d12e23fa1eE9a2C822A360b927d";
+//export const contractAddr = "0x15Db12b6CC801d12e23fa1eE9a2C822A360b927d";
+export const contractAddr = "0xaC3D006f6332981fD1a0CE2055Fa42786aAF16F9";
+
 export var isWalletConnected = false;
 export var contract:ethers.Contract;
 declare var window:any;
+var signer:ethers.Signer;
+export var numSquidsMinted:number;
 
-export async function makeMinterProof() {
-    let wladdrs:any;
-    await fetch("https://minting.dns.army/blockagents/mintpass/api/whitelist")
-        .then((response) => response.json())
-        .then((data) => {
-            wladdrs = data;
-        });
 
-    const leafNodes = wladdrs.map((addr:any) => keccak256(addr));
+export async function updateSupply(){
+    try {
+
+        numSquidsMinted = await contract.totalSupply();
+        return numSquidsMinted;
+    }
+    catch (error){
+        return -1;
+    }
+}
+
+export async function makeMinterProof(whitelistAddresses:any) {
+    console.log(whitelistAddresses);
+    const leafNodes = whitelistAddresses.map((addr:any) => keccak256(addr));
     let merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
+    console.log('hexroot');
     console.log(merkleTree.getHexRoot());
-
-    return merkleTree.getHexProof(keccak256(window.acc[0]));
+    return merkleTree.getHexProof(keccak256(await signer.getAddress()));
 }
 
 export default async function fetchAPI(apiString:string){
-    let wladdrs:any;
-
-    alert("Trying to fetch the API: (not online yet)");
+    console.log('Fetching '+ apiString);
 
 
     await fetch(apiString)
-
         .then((response) => {response.json()})
         .then((data) => {
-                console.log(data);
-                wladdrs=data;
+                return(data);
             }
-
         )
         .catch((error) => {
-            console.log('Failed to fetch the API with error: '+ error)});
+            console.log('Failed to fetch the API with error: '+ error)
+        });
 
-
-    //return (wladdrs);
 }
 
 export async function connectWallet(){
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     await provider.send("eth_requestAccounts", []);
-    let signer:ethers.Signer= await provider.getSigner()
+    signer= await provider.getSigner()
 
     console.log(signer);
     console.log(contractABI);
@@ -437,10 +441,9 @@ export async function connectWallet(){
     console.log(await signer.getAddress())
     await loadContract(signer);
     isWalletConnected = true;
-   // const wladdrs= await fetchAPI('https://minting.dns.army/thesquids/api/whitelist');
 }
 export async function disconnectWallet(){
-    window.location.reload(false);
+    window.location.reload();
 }
 export async function loadContract(signer:Signer) {
 
@@ -449,30 +452,52 @@ export async function loadContract(signer:Signer) {
         contractABI,
         signer
     );
+    console.log(contract);
 
     try{
         let price = await contract.price();
-        let wlon=await contract.isWhitelistSale();
-        alert("testing contract call")
+        let wlon  =await contract.isWhitelistSale();
+        console.log("testing contract call")
         console.log("The price of one squid is "+ price);
         console.log("Whitelist sale on "+ wlon);
     }
     catch (err){
-        alert("Fetching the price from the contract failed.");
+        console.error(err);
+        console.error("Fetching the price from the contract failed.");
     }
 }
+function getWhitelistAddresses(){
+   // return await fetchAPI(apiURL);
+    return ['0x82F1CaA00a11b9C0A7508808232455F4C3B6c9Bf', '0xf75050fB5685AEC8387a18AEA8ECc7aC941f40E6', '0x1a17C85E86415c51d3481Af0A06Ae7fa812e5137'];
+}
+export async function mint(amount:number) {
+    if (amount === 0){
+        return;
+    }
+    let isWhitelistSale = false;
+    try{
+    isWhitelistSale = await contract.isWhitelistSale();
+    }
+    catch (error){
+        alert("Please connect your Metamask wallet.")
+        return;
+    }
 
-export async function mint() {
-    let isWhitelistSale = await contract.isWhitelistSale();
-    console.log(isWhitelistSale);
-    if (isWhitelistSale) {
-        const hasClaimed = await contract.whitelistClaimed(window.acc[0]);
+    console.log('WL Sale Status: ' + isWhitelistSale);
+    if (!isWhitelistSale){
+        alert("The whitelist sale is currently not active.");
+        return;
+    }
+
+        const hasClaimed = await contract.whitelistClaimed(await signer.getAddress());
         if (hasClaimed) {
             alert("You have already successfully minted.");
             return;
         }
 
-        const minterProof = await makeMinterProof();
+        const wladdrs:any = getWhitelistAddresses();
+
+    const minterProof = await makeMinterProof(wladdrs);
         if (minterProof.length === 0) {
             alert("Your connected Account is not whitelisted.");
             return;
@@ -481,14 +506,4 @@ export async function mint() {
         let overrides = { value: await contract.price() };
         await contract.mintWhitelist(minterProof, overrides);
         return;
-    }
-
-    let isPublicSale = await contract.isPublicSale();
-    if (isPublicSale) {
-        let overrides = { value: await contract.price() };
-        await contract.mintPublic(overrides);
-        return;
-    }
-
-    alert("The sale is currently not active");
-};
+}

@@ -8,7 +8,7 @@ export const Footer = () => {
             <div className={style.inner}>
                 <div className={style.icons}>
                     {
-                        ["twitter", "discord"].map(icon => <SocialIcon key={icon} icon={icon} className={style.icon}/>)
+                        ["twitter"].map(icon => <SocialIcon key={icon} icon={icon} className={style.icon}/>)
                     }
                 </div>
                 <p className={style.text}>The Squids | All rights reserved</p>
