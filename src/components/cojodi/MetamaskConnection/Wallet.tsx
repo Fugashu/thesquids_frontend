@@ -390,7 +390,8 @@ export const contractAddr = "0xaC3D006f6332981fD1a0CE2055Fa42786aAF16F9";
 export var isWalletConnected = false;
 export var contract:ethers.Contract;
 declare var window:any;
-var signer:ethers.Signer;
+export var signer:ethers.Signer;
+export var connectedAddress:string;
 export var numSquidsMinted:number;
 
 

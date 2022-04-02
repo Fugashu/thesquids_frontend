@@ -21,7 +21,7 @@ import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 
 import {convertToTwoDigit, dateStart, getHours, getMins} from "./helpers";
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
-import {mint, updateSupply} from "../cojodi/MetamaskConnection/Config";
+import {mint, updateSupply} from "../cojodi/MetamaskConnection/Wallet";
 import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 const texts = [
