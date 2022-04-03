@@ -77,32 +77,33 @@ const RecordView = () => {
     // eslint-disable-next-line
         []);
 
+    window.onmessage = function(event) {
+        //A single message
+        if (event.data == 'MsgFromIframeToC3') {
+            console.log('Message from iFrame Received');
+
+
+        }
+        //a message with data
+        if(event.data.event_id === 'MsgFromIframeToC3WithData'){
+            console.log( "Score: "+ JSON.stringify(event.data.data));
+            console.log(event.data.data);
+            stopRecording();
+
+        }
+    }
     return (
         <div>
             {/*<p>{status}</p> */}
 
-            <button onClick={stopRecording}>Stop Recording</button>
+            {/*<button onClick={stopRecording}>Stop Recording</button>*/}
 
             {/*<video src={mediaBlobUrl || ''} controls autoPlay loop />*/}
         </div>
     );
 };
 
-window.onmessage = function(event) {
 
-    //A single message
-    if (event.data == 'MsgFromIframeToC3') {
-        console.log('Message from iFrame Received');
-
-    }
-
-    //a message with data
-    if(event.data.event_id === 'MsgFromIframeToC3WithData'){
-        console.log( "Score: "+ JSON.stringify(event.data.data));
-        console.log(event.data.data);
-
-    }
-}
 export default function Tournaments() {
     return (
         <main style={{ color:"black"}}>
@@ -110,7 +111,7 @@ export default function Tournaments() {
             <RecordView/>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <iframe title={'Game'} style={{width:'80%',height:'900px', maxHeight:'80%', overflow:'hidden'}}
-                     src={'https://catsandghostsgamesquids.on.drv.tw/cats/'}/>
+                     src={'https://catsandghostsgamesquids.on.drv.tw/ninja/'}/>
         </div>
         </main>
     );
