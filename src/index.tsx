@@ -7,13 +7,12 @@ import {
 } from "react-router-dom";
 import {App} from "./components/A0_App/App";
 import React from "react";
-//import Tournaments from "./components/Tournaments/Tournaments";
-
+import TournamentsNew from "./components/Tournaments/TournamentsNew";
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App />} />
-            {/*TODO <Route path="Tournaments" element={<Tournaments />} />*/}
+            <Route path="TournamentsNew" element={<TournamentsNew/>} />
         </Routes>
     </BrowserRouter>,
     document.getElementById('root')

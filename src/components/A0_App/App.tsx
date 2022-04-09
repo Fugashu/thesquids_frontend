@@ -17,16 +17,7 @@ import backAir from "../../assets/png/team-back-air.png";
 import {useMediaQuery} from "@mui/material";
 import {Preloader} from "../A4_Preloader/Preloader";
 import {SliderJS2} from "../B2_Slider/SliderJS2";
-import useHotjar from 'react-use-hotjar';
-// import clouds from "../../assets/gif/clouds.gif";
 export const App = () => {
-
-    const { initHotjar } = useHotjar();
-
-    React.useEffect(() => {
-        const myCustomLogger = console.info;
-        initHotjar(2898980, 6, false, myCustomLogger);
-    }, [initHotjar]);
 
     const matchesDesktop = useMediaQuery('(min-width:1160px)');
 
@@ -94,16 +85,18 @@ export const App = () => {
 
 
     return (
+
+
         <div className={clsx({
             [style.app]: true,
             [style.app_fixed]: burgerMenuIsOpen,
         })}
              onScroll={onScrollHandler}
              ref={refApp}
+
         >
 
             <Preloader/>
-
             <Header burgerMenuIsOpen={burgerMenuIsOpen}
                     onClickHandler={(open: boolean) => setBurgerMenuIsOpen(open)}
                     dir={dir}
@@ -148,8 +141,10 @@ export const App = () => {
                 {/*<div className={style.rainWrapper2}>*/}
                 {/*    <div className={style.mask}/>*/}
                 {/*</div>*/}
-
                 <div className={style.componentsWrapper}>
+
+
+
 
                     <Roadmap/>
                     <SliderJS2/>

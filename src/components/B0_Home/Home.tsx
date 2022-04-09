@@ -1,13 +1,10 @@
-import React, {FC,useState} from "react";
+import React, {FC, useCallback, useState} from "react";
 import style from "./home.module.scss"
 // import background from "../../assets/gif/home-back.gif";
 import {SocialIcon} from "../common/SocialIcon/SocialIcon";
 import enterD from "../../assets/png/buttons/button main.png";
 import enterH from "../../assets/png/buttons/button main (1).png";
 import enterC from "../../assets/png/buttons/button main (2).png";
-import soonD from "../../assets/png/buttons/soonD.png";
-import soonH from "../../assets/png/buttons/soonH.png";
-import soonC from "../../assets/png/buttons/soonC.png";
 
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
 // @ts-ignore
@@ -17,14 +14,36 @@ import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButt
 import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
 import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
 import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
+import {useNavigate} from "react-router-dom";
+import {isWalletConnected} from "../cojodi/MetamaskConnection/Wallet";
+var warningAlreadyDisplayed = false;
+
 interface IHome {
     onClickHandler: () => void
 }
 
 export const Home: FC<IHome> = () => {
     const [isDisabled, setDisabled] = useState(true);
-    const [isSoonButton, setIsSoonButton] = useState(false);
+    const navigate = useNavigate();
+    const navigateToTournament = useCallback(() => navigate('/TournamentsNew', {replace: true}), [navigate]);
 
+
+    function tryNavigateToTournament(){
+        return;
+// eslint-disable-next-line
+        if (!isWalletConnected){
+            alert('Connect your wallet to continue');
+            return;
+        }
+
+        if (warningAlreadyDisplayed){
+            navigateToTournament();
+            return;
+        }
+        warningAlreadyDisplayed = true;
+        alert("CAUTION: THE NEXT TIME YOU CLICK ON ENTER YOU WILL BE WITHIN THE TOURNAMENT");
+
+    }
     return (
         <section className={style.home}
                  // style={{backgroundImage: `url(${background})`}}
@@ -37,23 +56,15 @@ export const Home: FC<IHome> = () => {
                 </GlitchText>
                 
 
-                {isSoonButton ? (
-                        <ButtonLink imgDefault={soonD}
-                                imgHover={soonH}
-                                imgClick={soonC}
-                                className={style.enterButton}
-                                onClickHandler={() => setIsSoonButton(prev => !prev)}
-                        />
-                    ) : (
+
                     <ButtonLink imgDefault={enterD}
                         imgHover={enterH}
                         imgClick={enterC}
                         className={style.enterButton}
-                        onClickHandler={() => setIsSoonButton(prev => !prev)}
-                    />
-                )}
+                        onClick={tryNavigateToTournament}/>
 
-                {/*<button><Link to="/Tournaments">Tournaments</Link></button>*/}
+
+
 
                 <div className={style.icons}>
                     {
@@ -63,7 +74,6 @@ export const Home: FC<IHome> = () => {
                             />
 
                         )
-
 
                     }
                     <MetaMaskButton     connectH = {connectH}
