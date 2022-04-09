@@ -32,7 +32,7 @@ export const cards = [
         icon2: icon2_2,
         step: "Stage 3 - 75%",
         title: "Winner Winner Chicken Dinner",
-        text: "Once the winner of the first tournament has been revealed, an in-game token will be launched. There will be new games, prizes, and rules following the launch!"
+        text: "Once the winner of the first tournament has been revealed and the in-game token launched; There will be new games, prizes, and rules following the launch!"
     },
     {
         icon1: icon3_1,

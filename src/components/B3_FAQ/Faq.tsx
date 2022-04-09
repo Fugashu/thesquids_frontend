@@ -7,7 +7,7 @@ import {Btn} from "./Btn/Btn";
 const items = [
     {
         title: "What are The Squids?",
-        text: "The Squids are a species consisting of 1,000 humans with altered DNA, and they love to play games. Each individual has an equal chance at winning the games and earning rewards.",
+        text: "The Squids are a species consisting of 2,000 humans with altered DNA, and they love to play games. Each individual has an equal chance at winning the games and earning rewards.",
     },
     {
         title: "How can I get a Squid?",
@@ -15,7 +15,7 @@ const items = [
     },
     {
         title: "What are the Genesis Squids?",
-        text: "These are a collection of 1,000 Squids wielding unique powers. Some of those powers include having a discount when joining tournaments, 3x the voting power when choosing games, and the responsibility to ensure security by watching game replays.",
+        text: "These are a collection of 2,000 Squids wielding unique powers. Some of those powers include having a discount when joining tournaments, Voting power when choosing games, and the responsibility to ensure security by watching game replays.",
     },
     {
         title: "What are the tournaments?",
