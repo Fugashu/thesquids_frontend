@@ -5,9 +5,6 @@ import {SocialIcon} from "../common/SocialIcon/SocialIcon";
 import enterD from "../../assets/png/buttons/button main.png";
 import enterH from "../../assets/png/buttons/button main (1).png";
 import enterC from "../../assets/png/buttons/button main (2).png";
-import soonD from "../../assets/png/buttons/soonD.png";
-import soonH from "../../assets/png/buttons/soonH.png";
-import soonC from "../../assets/png/buttons/soonC.png";
 
 import {ButtonLink} from "../common/ButtonLink/ButtomLink";
 // @ts-ignore
@@ -27,13 +24,12 @@ interface IHome {
 
 export const Home: FC<IHome> = () => {
     const [isDisabled, setDisabled] = useState(true);
-    const [isSoonButton, setIsSoonButton] = useState(false);
     const navigate = useNavigate();
-    const navigateToTournament = useCallback(() => navigate('/Tournaments', {replace: true}), [navigate]);
+    const navigateToTournament = useCallback(() => navigate('/Tournaments_new', {replace: true}), [navigate]);
 
 
     function tryNavigateToTournament(){
-
+        
         if (!isWalletConnected){
             alert('Connect your wallet to continue');
             return;

@@ -25,31 +25,29 @@ import {mint, updateSupply} from "../cojodi/MetamaskConnection/Wallet";
 import {MetaMaskButton} from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 const texts = [
-    ["Starts: ", "00am EST on 00.00.2022"],
-    ["Starting Price: 0 ", "Eth"],
-    ["Price Drops By: ", "000 until sold out or reaches 0 Eth floor"],
-    ["Price Drop Frequency: ", "Every 30 Minutes"],
+    ["Starts: ", "00:00am CET on 23.04.2022"],
+    ["Mint Price: ", "0.1 Eth"],
     ["Max Mint Quantity: ", "1 per wallet"],
-    ["End Time: ", "00 hours"],
+    ["End Time: ", "00:00am CET on 24.04.2022"],
 ]
 
 
 export const HomeNew = () => {
     const max = 1;
-    const price = 0.15;
+    const price = 0.10;
     const [count, setCount] = useState(1);
 
     const [timeIsOver, setTimeIsOver] = useState(false);
     const [time, setTime] = useState(0);
     const [start, setStart] = useState(false);
-    const [amountMintedText, setAmountMintedText] = useState('????/1000 Minted')
+    const [amountMintedText, setAmountMintedText] = useState('????/2000 Minted')
 
     async function updateSupplyText(){
         let minted = await updateSupply();
         if (minted=== -1){
             return;
         }
-        setAmountMintedText(minted+'/1000 minted');
+        setAmountMintedText(minted+'/2000 minted');
     }
 
     const REFRESH_SUPPL_MS = 10000;
@@ -66,7 +64,7 @@ export const HomeNew = () => {
 
 
     useEffect(() => {
-        const time = new Date(14 * 24 * 60 * 60 * 1000 + dateStart.getTime() - new Date().getTime()).getTime();
+        const time = new Date( dateStart.getTime() - new Date().getTime()).getTime();
         if (time > 0 && !timeIsOver) {
             setTime(time);
             setStart(true);
@@ -94,7 +92,7 @@ export const HomeNew = () => {
         <section className={style.homeNew}>
             <div className={style.innerWrapper}>
                 <div className={style.leftBlock}>
-                    <h1 className={style.title}>THE SQUIDS Auction</h1>
+                    <h1 className={style.title}>THE SQUIDS Minting</h1>
                     <div className={style.texts}>
                         {
                             texts.map((text, index) => (
@@ -109,7 +107,7 @@ export const HomeNew = () => {
                         <span>{convertToTwoDigit(getMins(time))}</span>
                     </div>
 
-                    <p className={style.until}>Until the close of sales</p>
+                    <p className={style.until}>Until minting closes</p>
 
                     <div className={style.icons}>
                         <MetaMaskButton     connectH = {connectH}

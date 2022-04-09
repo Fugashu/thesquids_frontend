@@ -2,11 +2,12 @@ import {useEffect} from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import axios from "axios";
 import {signer} from "../cojodi/MetamaskConnection/Wallet";
+import * as React from "react";
 
 
 const RecordView = () => {
     const {
-        //status,
+        status,
         startRecording,
         stopRecording,
         mediaBlobUrl,
@@ -19,7 +20,6 @@ const RecordView = () => {
                     "score": 0,
                     "replay": "string"
                 }
-
             try {
                 axios({
                     method: "post",
@@ -104,14 +104,15 @@ const RecordView = () => {
 };
 
 
-export default function Tournaments() {
+export default function Tournaments_new() {
     return (
         <main style={{ color:"black"}}>
             <h2 style={{color:"black"}}>The Squids</h2>
             <RecordView/>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <iframe title={'Game'} style={{width:'80%',height:'900px', maxHeight:'80%', overflow:'hidden'}}
-                     src={'https://catsandghostsgamesquids.on.drv.tw/ninja/'}/>
+                     src={'https://minting.dns.army/debug/tournament/game/flapcat_halloween/'}/>
+
         </div>
         </main>
     );
