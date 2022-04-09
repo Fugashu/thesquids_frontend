@@ -19,7 +19,7 @@ const items = [
     },
     {
         title: "What are the tournaments?",
-        text: "Tournaments_new last for 10 days and consist of 5 mini games. Each Squid has an equal potential to win the games and holds the ability to share winnings with other players. A Squid is disqualified when they run out of lives, and a life is lost when they lose a mini game. Games will continue until there is only one remaining player.",
+        text: "TournamentsNew last for 10 days and consist of 5 mini games. Each Squid has an equal potential to win the games and holds the ability to share winnings with other players. A Squid is disqualified when they run out of lives, and a life is lost when they lose a mini game. Games will continue until there is only one remaining player.",
     },
     {
         title: "More NFTs = Higher chance of winning?",

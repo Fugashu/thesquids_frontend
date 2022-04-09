@@ -7,13 +7,12 @@ import {
 } from "react-router-dom";
 import {App} from "./components/A0_App/App";
 import React from "react";
-import LandingPageV2 from "./components/LandingPageV2/LandingPageV2";
-import Tournaments_new from "./components/Tournaments/Tournaments_new";
+import TournamentsNew from "./components/Tournaments/TournamentsNew";
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App />} />
-            <Route path="Tournaments_new" element={<Tournaments_new/>} />
+            <Route path="TournamentsNew" element={<TournamentsNew/>} />
         </Routes>
     </BrowserRouter>,
     document.getElementById('root')

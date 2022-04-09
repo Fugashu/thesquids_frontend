@@ -7,12 +7,13 @@ import * as React from "react";
 
 const RecordView = () => {
     const {
-        status,
+        //status,
         startRecording,
         stopRecording,
-        mediaBlobUrl,
+        //mediaBlobUrl,
     } = useReactMediaRecorder({ screen: true,video:true, onStop:(blobUrl,blob) => uploadFile(blobUrl,blob)})
 
+// eslint-disable-next-line
     function upload(blobUrl: string, blob: Blob){
             console.log(blob);
             const formData =
@@ -34,7 +35,7 @@ const RecordView = () => {
             }
 
         }
-
+// eslint-disable-next-line
     const saveFile = async (blob:Blob) => {
         const a = document.createElement('a');
         a.download = 'my-file.txt';
@@ -79,7 +80,7 @@ const RecordView = () => {
 
     window.onmessage = function(event) {
         //A single message
-        if (event.data == 'MsgFromIframeToC3') {
+        if (event.data === 'MsgFromIframeToC3') {
             console.log('Message from iFrame Received');
 
 
@@ -104,14 +105,14 @@ const RecordView = () => {
 };
 
 
-export default function Tournaments_new() {
+export default function TournamentsNew() {
     return (
         <main style={{ color:"black"}}>
             <h2 style={{color:"black"}}>The Squids</h2>
             <RecordView/>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <iframe title={'Game'} style={{width:'80%',height:'900px', maxHeight:'80%', overflow:'hidden'}}
-                     src={'https://minting.dns.army/debug/tournament/game/flapcat_halloween/'}/>
+                     src={''}/>
 
         </div>
         </main>

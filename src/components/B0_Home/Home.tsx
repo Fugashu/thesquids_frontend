@@ -25,11 +25,12 @@ interface IHome {
 export const Home: FC<IHome> = () => {
     const [isDisabled, setDisabled] = useState(true);
     const navigate = useNavigate();
-    const navigateToTournament = useCallback(() => navigate('/Tournaments_new', {replace: true}), [navigate]);
+    const navigateToTournament = useCallback(() => navigate('/TournamentsNew', {replace: true}), [navigate]);
 
 
     function tryNavigateToTournament(){
-        
+        return;
+// eslint-disable-next-line
         if (!isWalletConnected){
             alert('Connect your wallet to continue');
             return;
