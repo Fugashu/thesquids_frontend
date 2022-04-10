@@ -5,7 +5,7 @@ import slide1 from "../../assets/gif/sherif.gif";
 import slide2 from "../../assets/gif/megaman.gif";
 import slide3 from "../../assets/gif/geisha.gif";
 import slide4 from "../../assets/gif/female astraunaut.gif";
-import slide5 from "../../assets/gif/female adventurer.gif";
+import slide5 from "../../assets/gif/demon.gif";
 import slide6 from "../../assets/gif/tracksuit.gif";
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/swiper-bundle.min.css';

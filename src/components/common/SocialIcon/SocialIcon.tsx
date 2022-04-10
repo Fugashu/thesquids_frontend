@@ -18,8 +18,8 @@ import discordH from "../../../assets/png/buttons/discordBtnHover.png";
 import discordC from "../../../assets/png/buttons/discordBtnIPressed.png";
 
 import linktreeD from "../../../assets/png/buttons/linktreeD.png";
-import linktreeH from "../../../assets/png/buttons/linktreeD.png";
-import linktreeC from "../../../assets/png/buttons/linktreeD.png";
+import linktreeH from "../../../assets/png/buttons/linktreeH.png";
+import linktreeC from "../../../assets/png/buttons/linktreeC.png";
 
 
 import {ButtonLink} from "../ButtonLink/ButtomLink";
