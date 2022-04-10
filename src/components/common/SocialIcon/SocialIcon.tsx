@@ -17,6 +17,10 @@ import discordD from "../../../assets/png/buttons/discordBtnIdle.png";
 import discordH from "../../../assets/png/buttons/discordBtnHover.png";
 import discordC from "../../../assets/png/buttons/discordBtnIPressed.png";
 
+import linktreeD from "../../../assets/png/buttons/linktreeD.png";
+import linktreeH from "../../../assets/png/buttons/linktreeD.png";
+import linktreeC from "../../../assets/png/buttons/linktreeD.png";
+
 
 import {ButtonLink} from "../ButtonLink/ButtomLink";
 import clsx from "clsx";
@@ -62,6 +66,12 @@ export const icons: IIcons = {
         hover: discordH,
         click: discordC,
         href: ""
+    },
+    "linktree": {
+        default: linktreeD,
+        hover: linktreeH,
+        click: linktreeC,
+        href: "https://linktr.ee/thesquids"
     },
 }
 

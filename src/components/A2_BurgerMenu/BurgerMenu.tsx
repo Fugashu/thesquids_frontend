@@ -41,7 +41,7 @@ export const BurgerMenu: FC<IBurgerMenu> = ({burgerMenuIsOpen, onClickHandler}) 
 
             <div className={style.icons}>
                 {
-                    ["twitter", "discord", "metamask"].map(icon => <SocialIcon key={icon}
+                    ["twitter", "linktree", "metamask"].map(icon => <SocialIcon key={icon}
                                                                                icon={icon}
                                                                                className={style.icon}
                                                                                onClick={() => onClickHandler(!burgerMenuIsOpen)}
