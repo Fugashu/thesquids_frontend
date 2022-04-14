@@ -6,12 +6,13 @@ import * as React from "react";
 
 
 const RecordView = () => {
+    let score:any;
     const {
         //status,
         startRecording,
         stopRecording,
         //mediaBlobUrl,
-    } = useReactMediaRecorder({ screen: true,video:true, onStop:(blobUrl,blob) => uploadFile(blobUrl,blob)})
+    } = useReactMediaRecorder({ screen: true,video:true, onStop:(blobUrl,blob) => saveFile(blobUrl,blob)})
 
 // eslint-disable-next-line
     function upload(blobUrl: string, blob: Blob){
@@ -36,9 +37,10 @@ const RecordView = () => {
 
         }
 // eslint-disable-next-line
-    const saveFile = async (blob:Blob) => {
+    const saveFile = async (blobUrl:string, blob:Blob) => {
+        const accAddr:string = await signer.getAddress() || 'test';
         const a = document.createElement('a');
-        a.download = 'my-file.txt';
+        a.download = accAddr+score.toString();
         a.href = URL.createObjectURL(blob);
         a.addEventListener('click', (e) => {
             setTimeout(() => URL.revokeObjectURL(a.href), 30 * 1000);
@@ -46,6 +48,7 @@ const RecordView = () => {
         a.click();
     };
 
+// eslint-disable-next-line
     async function uploadFile(blobUrl: string, blob: Blob){
         console.log(blob);
         console.log(blobUrl);
@@ -89,6 +92,7 @@ const RecordView = () => {
         if(event.data.event_id === 'MsgFromIframeToC3WithData'){
             console.log( "Score: "+ JSON.stringify(event.data.data));
             console.log(event.data.data);
+            score = event.data.data;
             stopRecording();
 
         }
@@ -98,7 +102,6 @@ const RecordView = () => {
             {/*<p>{status}</p> */}
 
             {/*<button onClick={stopRecording}>Stop Recording</button>*/}
-
             {/*<video src={mediaBlobUrl || ''} controls autoPlay loop />*/}
         </div>
     );
@@ -112,7 +115,7 @@ export default function TournamentsNew() {
             <RecordView/>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <iframe title={'Game'} style={{width:'80%',height:'900px', maxHeight:'80%', overflow:'hidden'}}
-                     src={''}/>
+                     src={'https://catsandghostsgamesquids.on.drv.tw/gunmach/'}/>
 
         </div>
         </main>
