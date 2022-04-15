@@ -1,12 +1,7 @@
 import React from 'react';
 import {ethers, Signer} from "ethers";
-import {
-    switchToEthereum,
-    switchToMumbai,
-    switchToPolygon,
-    switchToRinkeby,
-    switchToRopsten
-} from "./MetamaskNetworkSwitcher";
+import {CojodiNetworkSwitcher} from "./CojodiNetworkSwitcher";
+import chainRpcData from './chainRpcData'
 declare var window:any;
 var signer:ethers.Signer;
 
@@ -62,11 +57,12 @@ const BackendCallsInterface = () => {
     return (
         <div>
             <button onClick={connectWallet}>ConnectWallet</button>
-            <button onClick={switchToPolygon}>SwitchToPolygon</button>
-            <button onClick={switchToEthereum}>SwitchToEthereum</button>
-            <button onClick={switchToRopsten}>SwitchToRopsten</button>
-            <button onClick={switchToRinkeby}>SwitchToRinkeby</button>
-            <button onClick={switchToMumbai}>SwitchToMumbai</button>
+            <button onClick={()=>CojodiNetworkSwitcher.switchToChain(chainRpcData.matic)}>SwitchToPolygon</button>
+            <button onClick={()=>CojodiNetworkSwitcher.switchToChain(chainRpcData.eth_mainnet)}>SwitchToEthereum</button>
+            <button onClick={()=>CojodiNetworkSwitcher.switchToChain(chainRpcData.ropsten)}>SwitchToRopsten</button>
+            <button onClick={()=>CojodiNetworkSwitcher.switchToChain(chainRpcData.rinkeby)}>SwitchToRinkeby</button>
+            <button onClick={()=>CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai)}>SwitchToMumbai</button>
+
             <button onClick={stake}>Stake</button>
             <button onClick={stake}>Unstake</button>
             <button onClick={stake}>Register</button>
