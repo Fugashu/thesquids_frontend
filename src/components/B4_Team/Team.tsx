@@ -125,7 +125,7 @@ const persons: ICard[] = [
       
     },
     name: 'Dmitrij “Dimfred” Vinokour',
-    job: 'Blockchain Developer',
+    job: 'BackendCallsInterface Developer',
     description:
       'Three years ago, Dimi began working on various blockchain projects, gathering experience in the lead up to this project.',
     button: {

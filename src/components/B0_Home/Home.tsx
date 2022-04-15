@@ -15,7 +15,7 @@ import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
 import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
 import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 import {useNavigate} from "react-router-dom";
-import {isWalletConnected} from "../cojodi/MetamaskConnection/Wallet";
+import {isWalletConnected} from "../cojodi/MetamaskConnection/Minting";
 var warningAlreadyDisplayed = false;
 
 interface IHome {

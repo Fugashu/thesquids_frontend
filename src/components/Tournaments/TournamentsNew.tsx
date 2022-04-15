@@ -1,8 +1,8 @@
-import {useEffect} from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import axios from "axios";
-import {signer} from "../cojodi/MetamaskConnection/Wallet";
+import {signer} from "../cojodi/MetamaskConnection/Minting";
 import * as React from "react";
+import BackendCallsInterface from "../cojodi/BackendCalls/BackendCallsInterface";
 
 
 const RecordView = () => {
@@ -72,12 +72,6 @@ const RecordView = () => {
     }
 
 
-    useEffect(() => {
-        startRecording();
-    },
-    // eslint-disable-next-line
-        []);
-
     window.onmessage = function(event) {
         //A single message
         if (event.data === 'MsgFromIframeToC3') {
@@ -97,7 +91,7 @@ const RecordView = () => {
         <div>
             {/*<p>{status}</p> */}
 
-            {/*<button onClick={stopRecording}>Stop Recording</button>*/}
+            <button onClick={startRecording}>Start Recording</button>
 
             {/*<video src={mediaBlobUrl || ''} controls autoPlay loop />*/}
         </div>
@@ -111,10 +105,11 @@ export default function TournamentsNew() {
             <h2 style={{color:"black"}}>The Squids</h2>
             <RecordView/>
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <iframe title={'Game'} style={{width:'80%',height:'900px', maxHeight:'80%', overflow:'hidden'}}
+            <iframe title={'Game'} style={{width:'80%',height:'300px', maxHeight:'80%', overflow:'hidden'}}
                      src={''}/>
 
         </div>
+            <BackendCallsInterface/>
         </main>
     );
 }

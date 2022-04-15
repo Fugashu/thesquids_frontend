@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {useState} from "react";
 import {ButtonLink} from "../../common/ButtonLink/ButtomLink";
-import {connectWallet, isWalletConnected, disconnectWallet} from "./Wallet";
+import {connectWallet, isWalletConnected, disconnectWallet} from "./Minting";
 
 import connectedD from "../../../assets/png/buttons/connected-d.png";
 import connectedH from "../../../assets/png/buttons/connected-h.png";

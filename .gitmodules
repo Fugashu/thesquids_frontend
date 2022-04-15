@@ -1,0 +1,3 @@
+[submodule "src/Test/squids_contracts"]
+	path = src/Test/squids_contracts
+	url = git@github.com:Cojodi/squids_contracts.git
