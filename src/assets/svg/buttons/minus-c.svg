@@ -17,8 +17,8 @@
 <rect y="8" width="4.00004" height="16.0001" fill="#605675"/>
 <rect y="20.002" width="4.00004" height="4.00004" fill="#342D42"/>
 <defs>
-<filter id="filter0_i_1482_30079" x="9.60059" y="13.6004" width="12.8003" height="1.60004" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-<feFlood floodOpacity="0" result="BackgroundImageFix"/>
+<filter id="filter0_i_1482_30079" x="9.60059" y="13.6004" width="12.8003" height="1.60004" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="0.800007"/>

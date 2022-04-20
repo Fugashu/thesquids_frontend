@@ -1,0 +1,112 @@
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+@media all and (min-width: 1440px) {
+  .roadmap {
+    padding: 0;
+    min-height: 100vh;
+    justify-content: center;
+  }
+}
+.roadmap .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 145%;
+  text-align: center;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .roadmap .title {
+    font-size: 42px;
+    line-height: 150%;
+  }
+}
+@media all and (min-width: 1440px) {
+  .roadmap .title {
+    text-align: left;
+  }
+}
+.roadmap .cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+@media all and (min-width: 1440px) {
+  .roadmap .cards {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 40px;
+  }
+}
+.roadmap .cards .card {
+  width: 260px;
+  height: 479px;
+  padding-top: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../assets/svg/roadmap-card-default.svg");
+}
+.roadmap .cards .card:hover {
+  background-image: url("../../assets/svg/roadmap-card-hover.svg");
+}
+.roadmap .cards .card:not(:first-child) {
+  margin-top: 25px;
+}
+@media all and (min-width: 1440px) {
+  .roadmap .cards .card:not(:first-child) {
+    margin-top: 0;
+  }
+}
+.roadmap .cards .card .iconWrapper {
+  width: 112px;
+  height: 112px;
+  position: relative;
+}
+.roadmap .cards .card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 112px;
+  height: 112px;
+}
+.roadmap .cards .card .step {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 25px;
+  font-size: 13px;
+  line-height: 135%;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #F6B841;
+}
+.roadmap .cards .card .title {
+  margin-top: 85px;
+  width: 220px;
+  font-size: 14px;
+  line-height: 160%;
+  text-align: center;
+}
+.roadmap .cards .card .text {
+  margin-top: 20px;
+  width: 220px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/*# sourceMappingURL=roadmap.module.css.map */

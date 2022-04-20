@@ -1,0 +1,191 @@
+.faq {
+  overflow: hidden;
+  padding: 56px 0 0;
+  position: relative;
+  z-index: 2;
+}
+@media all and (min-width: 1440px) {
+  .faq {
+    padding: 180px 0;
+  }
+}
+.faq .inner {
+  position: relative;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner {
+    width: 1160px;
+    margin: 0 auto;
+  }
+}
+.faq .inner .barrels {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .barrels {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: -85px;
+    right: -240px;
+    width: 907.09px;
+    height: 758.44px;
+  }
+}
+.faq .inner .clouds {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .clouds {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: -380px;
+    left: 100px;
+  }
+}
+.faq .inner .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 145%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .title {
+    font-size: 42px;
+    line-height: 150%;
+  }
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .title {
+    text-align: left;
+  }
+}
+.faq .inner .items {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items {
+    align-items: flex-start;
+    margin-top: 80px;
+  }
+}
+.faq .inner .items .card {
+  cursor: pointer;
+  width: 288px;
+  height: 144px;
+  position: relative;
+  background-image: url(../../assets/png/faq-card-mobile-close.png);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card {
+    width: 586px;
+    height: 94px;
+    background-image: url(../../assets/png/faq-card-desktop-close.png);
+    align-items: flex-start;
+  }
+}
+.faq .inner .items .card_open {
+  width: 288px;
+  height: 306px;
+  background-image: url(../../assets/png/faq-card-mobile-open.png);
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card_open {
+    width: 586px;
+    height: 239px;
+    background-image: url(../../assets/png/faq-card-desktop-open.png);
+  }
+}
+.faq .inner .items .card:not(:first-child) {
+  margin-top: 24px;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card:not(:first-child) {
+    margin-top: 20px;
+  }
+}
+.faq .inner .items .card .btn {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card .btn {
+    top: 22px;
+    left: auto;
+    right: 22px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+}
+.faq .inner .items .card .btn img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card .btn img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.faq .inner .items .card .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 72px;
+  font-size: 12px;
+  line-height: 160%;
+  text-align: center;
+  color: #130B25;
+  width: 220px;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card .title {
+    margin-top: 31px;
+    margin-left: 42px;
+    width: auto;
+  }
+}
+.faq .inner .items .card .text {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 150%;
+  text-align: center;
+  width: 248px;
+  color: #130B25;
+  margin-top: 12px;
+}
+@media all and (min-width: 1440px) {
+  .faq .inner .items .card .text {
+    font-size: 14px;
+    margin-top: 30px;
+    margin-left: 42px;
+    width: 454px;
+    text-align: left;
+  }
+}
+
+/*# sourceMappingURL=faq.module.css.map */

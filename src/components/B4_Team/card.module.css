@@ -1,0 +1,85 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 268px;
+  height: 530px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../../assets/svg/team-card-default-mobile.svg);
+}
+@media all and (min-width: 1440px) {
+  .card {
+    width: 360px;
+    height: 490px;
+    background-image: url(../../assets/svg/team-card-default.svg);
+  }
+}
+.card:hover {
+  background-image: url(../../assets/svg/team-card-hover-mobile.svg);
+}
+@media all and (min-width: 1440px) {
+  .card:hover {
+    background-image: url(../../assets/svg/team-card-hover.svg);
+  }
+}
+.card .person {
+  margin-top: 13px;
+  width: 230px;
+  height: 230px;
+  background-size: cover;
+}
+@media all and (min-width: 1440px) {
+  .card .person {
+    margin-top: 11px;
+    width: 220px;
+    height: 220px;
+  }
+}
+.card .name {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 160%;
+  text-align: center;
+  max-width: 258px;
+}
+.card .job {
+  font-family: "Pridi", serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 160%;
+  text-align: center;
+  margin-top: 10px;
+}
+.card .text {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 5px;
+  width: 234px;
+}
+@media all and (min-width: 1440px) {
+  .card .text {
+    width: 244px;
+  }
+}
+.card .link {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -25px;
+  width: 48px;
+  height: 48px;
+}
+
+/*# sourceMappingURL=card.module.css.map */

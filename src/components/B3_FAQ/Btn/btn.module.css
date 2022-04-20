@@ -1,0 +1,52 @@
+.btn {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+}
+@media all and (min-width: 1440px) {
+  .btn {
+    top: 22px;
+    left: auto;
+    right: 22px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+}
+.btn img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+}
+@media all and (min-width: 1440px) {
+  .btn img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.btn .default {
+  display: block;
+}
+.btn .hover, .btn .click {
+  display: none;
+}
+.btn_hover .hover {
+  display: block;
+}
+.btn_hover .default, .btn_hover .click {
+  display: none;
+}
+.btn_mouseDown .click {
+  display: block;
+}
+.btn_mouseDown .default, .btn_mouseDown .hover {
+  display: none;
+}
+
+/*# sourceMappingURL=btn.module.css.map */

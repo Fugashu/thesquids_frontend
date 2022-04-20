@@ -1,0 +1,68 @@
+.team {
+  padding: 56px 0 550px;
+  position: relative;
+}
+@media all and (min-width: 1440px) {
+  .team {
+    padding: 120px 0 636px;
+  }
+}
+.team .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 145%;
+  text-align: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+@media all and (min-width: 1440px) {
+  .team .title {
+    font-size: 42px;
+    line-height: 150%;
+  }
+}
+.team .slider {
+  display: block;
+  margin: 40px 0 0 8px;
+  position: relative;
+  z-index: 2;
+}
+@media all and (min-width: 1440px) {
+  .team .slider {
+    display: none;
+  }
+}
+.team .slider .slide {
+  width: 268px;
+  height: 530px;
+  padding-bottom: 30px;
+}
+.team .cards {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .team .cards {
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 1160px;
+    margin: 100px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 50px 76px;
+  }
+}
+.team .back {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=team.module.css.map */

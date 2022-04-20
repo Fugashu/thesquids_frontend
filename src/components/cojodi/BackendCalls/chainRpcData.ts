@@ -18,13 +18,13 @@ const rpcData = {
     blockExplorerUrls: ["https://polygonscan.com/"],
   },
   ropsten: {
-    chainId: "0x03",
+    chainId: "0x3",
   },
   rinkeby: {
-    chainId: "0x04",
+    chainId: "0x4",
   },
   eth_mainnet: {
-    chainId: "0x01",
+    chainId: "0x1",
   },
 };
 

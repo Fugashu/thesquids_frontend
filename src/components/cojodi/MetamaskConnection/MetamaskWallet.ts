@@ -1,4 +1,6 @@
 import { ContractInterface, ethers, Signer } from "ethers";
+import { CojodiNetworkSwitcher } from "../BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../BackendCalls/chainRpcData";
 
 let signer: ethers.Signer;
 
@@ -31,6 +33,7 @@ export async function getConnectedSigner() {
 
 export async function connectWallet() {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  await CojodiNetworkSwitcher.switchToChain(chainRpcData.rinkeby);
   await provider.send("eth_requestAccounts", []);
   signer = provider.getSigner();
 }

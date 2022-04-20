@@ -25,10 +25,10 @@ import { mint, updateSupply } from "../cojodi/MetamaskConnection/Minting";
 import { MetaMaskButton } from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 const texts = [
-  ["Starts: ", "00:00am CET on 23.04.2022"],
+  ["Starts: ", "6:00pm CET on 23.04.2022"],
   ["Mint Price: ", "0.1 Eth"],
   ["Max Mint Quantity: ", "1 per wallet"],
-  ["End Time: ", "00:00am CET on 24.04.2022"],
+  ["End Time: ", "6:00am CET on 24.04.2022"],
 ];
 
 export const HomeNew = () => {

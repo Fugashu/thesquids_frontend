@@ -37,6 +37,9 @@ export const MetaMaskButton: FC<IMetaMaskButton> = ({
     useEffect(() => {
       return async () => {
         setConnectionActive(await isUnlocked());
+        if (isConnectionActive) {
+          return;
+        }
         if (await isUnlocked()) {
           await connectWallet();
         }
