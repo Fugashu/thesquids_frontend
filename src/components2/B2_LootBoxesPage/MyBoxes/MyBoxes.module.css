@@ -1,27 +1,17 @@
-.myBoxes {
-  margin-top: 24px;
-}
-@media all and (min-width: 1440px) {
-  .myBoxes {
-    margin-top: 32px;
-  }
-}
-.myBoxes .boxes {
-  display: flex;
-  flex-direction: column;
-  margin-top: 24px;
-}
-@media all and (min-width: 1440px) {
-  .myBoxes .boxes {
-    flex-direction: row;
-    margin-top: 32px;
-  }
-}
-.myBoxes .boxes button {
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-}
+/* Error: Undefined mixin.
+ *    ,
+ * 86 |           @include absoluteCenter();
+ *    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   MyBoxes.module.scss 86:11  root stylesheet */
 
-/*# sourceMappingURL=MyBoxes.module.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined mixin.\a    \2577 \a 86 \2502            @include absoluteCenter();\a    \2502            ^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   MyBoxes.module.scss 86:11  root stylesheet";
+}

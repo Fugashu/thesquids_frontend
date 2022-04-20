@@ -7,6 +7,21 @@
     margin-top: 32px;
   }
 
+  .title {
+    margin-top: 24px;
+    @include PressStart();
+    font-size: 17px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #F6B841;
+
+    @include desktop() {
+      margin-top: 32px;
+      font-size: 24px;
+    }
+  }
+
   .boxes {
     display: flex;
     flex-direction: column;
@@ -17,13 +32,77 @@
       margin-top: 32px;
     }
 
-    .top {
+    .box {
+      &:not(:first-child) {
+        margin-top: 16px;
 
+        @include desktop() {
+          margin-top: 0;
+          margin-left: 40px;
+        }
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include desktop() {
+          padding-right: 27px;
+        }
+
+        .label, .value {
+          @include PressStart();
+          font-size: 14px;
+          line-height: 150%;
+          letter-spacing: -0.02em;
+        }
+
+        .value {
+          font-size: 17px;
+          color: #F6B841;
+        }
+
+      }
+
+      .openBtn {
+        margin-top: 12px;
+        @include button();
+        position: relative;
+
+        img {
+          position: relative;
+          z-index: 1;
+          display: block;
+          width: 288px;
+          height: 40px;
+
+          @include desktop() {
+            width: 260px;
+          }
+        }
+
+        p {
+          @include absoluteCenter();
+          z-index: 2;
+          @include PressStart();
+          font-size: 17px;
+          line-height: 160%;
+          letter-spacing: -0.02em;
+          text-transform: uppercase;
+          color: #715021;
+        }
+
+      }
     }
 
-    button {
-      @include button();
-    }
+
+
+
+  }
+
+  .cards {
+
   }
 
 }

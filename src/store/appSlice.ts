@@ -15,6 +15,8 @@ const initialState = {
     leaderboardModal: false,
     nickname: "",
     gameplayModal: false,
+    stakingNftErrorModal: false,
+    voteModal: false,
 }
 
 type InitialStateType = typeof initialState
@@ -47,6 +49,12 @@ export const appSlice = createSlice({
         setGameplayModal: (state, action: PayloadAction<boolean>) => {
             state.gameplayModal = action.payload
         },
+        setStakingNftErrorModal: (state, action: PayloadAction<boolean>) => {
+            state.stakingNftErrorModal = action.payload
+        },
+        setVoteModal: (state, action: PayloadAction<boolean>) => {
+            state.voteModal = action.payload
+        },
     }
 })
 
@@ -59,6 +67,9 @@ export const {
     setLeaderboardModal,
     setNickname,
     setGameplayModal,
+    setStakingNftErrorModal,
+    setVoteModal,
+
 } = appSlice.actions
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -69,5 +80,7 @@ export const selectTournamentsWarningModal = (state: RootState) => state.app.tou
 export const selectLeaderboardModal = (state: RootState) => state.app.leaderboardModal;
 export const selectNickname = (state: RootState) => state.app.nickname;
 export const selectGameplayModal = (state: RootState) => state.app.gameplayModal;
+export const selectStakingNftErrorModal = (state: RootState) => state.app.stakingNftErrorModal;
+export const selectVoteModal = (state: RootState) => state.app.voteModal;
 
 export const appReducer = appSlice.reducer

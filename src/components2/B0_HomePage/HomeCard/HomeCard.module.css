@@ -45,6 +45,10 @@
     height: 135px;
   }
 }
+.homeCard .icon img {
+  width: 180px;
+  height: 156px;
+}
 .homeCard:nth-child(1) .icon svg {
   width: 100px;
   height: 120px;

@@ -1,0 +1,79 @@
+@import "../../../../../assets/scss/app.scss";
+
+.voteModalCard {
+  width: 288px;
+  height: 436px;
+  position: relative;
+
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 32px;
+
+    .rating {
+      label:not(:first-child) {
+        margin-left: 12px;
+      }
+    }
+
+    .icon {
+      margin-top: 24px;
+
+    img{
+      width: 207px;
+      height: 195px;
+    }
+    }
+
+    .gameName {
+      margin-top: 32px;
+      @include PressStart();
+      font-size: 20px;
+      line-height: 160%;
+      text-align: center;
+      letter-spacing: -0.03em;
+      color: #000;
+    }
+
+    .voteButton {
+      margin-top: 24px;
+      @include button();
+      position: relative;
+
+      img {
+        position: relative;
+        z-index: 1;
+        width: 240px;
+        height: 40px;
+      }
+
+      p {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include buttonTextSmall();
+      }
+    }
+
+    .votesCount {
+      margin-top: 16px;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 140%;
+      color: #000000;
+    }
+
+  }
+}

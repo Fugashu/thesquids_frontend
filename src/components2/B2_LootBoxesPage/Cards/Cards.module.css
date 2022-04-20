@@ -1,0 +1,103 @@
+.cards {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media all and (min-width: 1440px) {
+  .cards {
+    margin-top: 64px;
+    flex-direction: row;
+  }
+}
+.cards .card {
+  position: relative;
+  width: 288px;
+  height: 408px;
+  box-sizing: border-box;
+  padding: 50px 24px 0;
+}
+.cards .card:not(:first-child) {
+  margin-top: 24px;
+  padding: 43px 20px 0;
+}
+@media all and (min-width: 1440px) {
+  .cards .card:not(:first-child) {
+    margin-top: 0;
+    margin-left: 40px;
+  }
+}
+@media all and (min-width: 1440px) {
+  .cards .card {
+    width: 260px;
+    height: 479px;
+  }
+}
+.cards .card .back {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.cards .card .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+.cards .card .content .icon {
+  align-self: center;
+}
+.cards .card .content .icon svg {
+  width: 120px;
+  height: 84.51px;
+}
+@media all and (min-width: 1440px) {
+  .cards .card .content .icon svg {
+    width: 142px;
+    height: 100px;
+  }
+}
+.cards .card .content .title {
+  margin-top: 34px;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 160%;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .cards .card .content .title {
+    margin-top: 36px;
+  }
+}
+.cards .card .content .priceBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+@media all and (min-width: 1440px) {
+  .cards .card .content .priceBox {
+    margin-top: 20px;
+  }
+}
+.cards .card .content .priceBox p:first-child {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+}
+.cards .card .content .priceBox p:last-child {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: #E7B223;
+}
+
+/*# sourceMappingURL=Cards.module.css.map */

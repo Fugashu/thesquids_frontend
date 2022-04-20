@@ -1,0 +1,78 @@
+.voteModalCard {
+  width: 288px;
+  height: 436px;
+  position: relative;
+}
+.voteModalCard .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.voteModalCard .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+}
+.voteModalCard .content .rating label:not(:first-child) {
+  margin-left: 12px;
+}
+.voteModalCard .content .icon {
+  margin-top: 24px;
+}
+.voteModalCard .content .icon img {
+  width: 207px;
+  height: 195px;
+}
+.voteModalCard .content .gameName {
+  margin-top: 32px;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 160%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #000;
+}
+.voteModalCard .content .voteButton {
+  margin-top: 24px;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+.voteModalCard .content .voteButton img {
+  position: relative;
+  z-index: 1;
+  width: 240px;
+  height: 40px;
+}
+.voteModalCard .content .voteButton p {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #715021;
+}
+.voteModalCard .content .votesCount {
+  margin-top: 16px;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 140%;
+  color: #000000;
+}
+
+/*# sourceMappingURL=VoteModalCard.module.css.map */

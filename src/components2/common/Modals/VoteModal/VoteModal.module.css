@@ -1,0 +1,62 @@
+.voteModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(19, 11, 37, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.voteModal .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 1012px;
+  height: 592px;
+  box-sizing: border-box;
+  padding: 32px 32px 0;
+}
+.voteModal .content .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.voteModal .content .closeButton {
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  right: 34px;
+}
+.voteModal .content .title {
+  position: relative;
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #130B25;
+}
+@media all and (min-width: 1440px) {
+  .voteModal .content .title {
+    font-size: 28px;
+  }
+}
+.voteModal .content .cards {
+  align-self: stretch;
+  position: relative;
+  z-index: 2;
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=VoteModal.module.css.map */

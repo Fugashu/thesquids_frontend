@@ -1,0 +1,1 @@
+export const desktopBreakPoint = 1440;

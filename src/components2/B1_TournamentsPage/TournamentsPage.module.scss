@@ -3,6 +3,8 @@
 .tournamentsPage {
   height: 100%;
 
+
+
   @include desktop() {
     min-height: 940px;
     height: 100vh;
@@ -181,10 +183,11 @@
         }
       }
 
+
       .sandTimer {
         margin-top: 44px;
-        width: 140px;
-        height: 190px;
+        width: 332px;
+        height: 265px;
 
         @include desktop() {
           margin-top: 57px;
@@ -206,4 +209,5 @@
     }
 
   }
+
 }

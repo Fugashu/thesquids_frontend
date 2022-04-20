@@ -1,0 +1,122 @@
+@import "../../assets/scss/app.scss";
+
+.stakingPage {
+  min-height: 1456px;
+  height: 100vh;
+
+  .inner {
+    padding: 164px 0 0;
+    width: 1160px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .titleBlock {
+      position: relative;
+      @include rowCenter();
+
+      .title {
+        @include h2();
+      }
+
+      .count {
+        @include PressStart();
+        font-size: 24px;
+        line-height: 150%;
+        text-align: right;
+        letter-spacing: -0.02em;
+        color: #F6B841;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+      }
+    }
+
+    .cards {
+      position: relative;
+      margin-top: 65px;
+
+      max-height: 1008px;
+      overflow-y: auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(auto-fill, 484px);
+      grid-row-gap: 40px;
+      grid-column-gap: 24px;
+
+      &::-webkit-scrollbar {
+        width: 21px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: #9D7200;
+        border: 3px solid #1D1D1B;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #F4BF30;
+        border: 3px solid #1D1D1B;
+      }
+
+      .card {
+        position: relative;
+        width: 360px;
+        height: 484px;
+
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .content {
+          position: relative;
+          z-index: 2;
+          @include center();
+          padding-top: 32px;
+          box-sizing: border-box;
+
+          img {
+            display: block;
+            width: 296px;
+            height: 296px;
+          }
+
+          .buttons {
+            margin-top: 74px;
+            display: flex;
+
+            button {
+              position: relative;
+              @include button();
+              width: 139px;
+              height: 40px;
+
+              &:last-child {
+                margin-left: 20px;
+              }
+
+              img {
+                position: relative;
+                z-index: 1;
+                display: block;
+                width: 139px;
+                height: 40px;
+              }
+
+              p {
+                @include absoluteCenter();
+                z-index: 2;
+                @include buttonTextSmall();
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@ export const RecordView = () => {
   } = useReactMediaRecorder({
     screen: true,
     video: true,
-    onStop: (blobUrl, blob) => saveFile(blobUrl, blob),
+    //TODO wieder rein onStop: (blobUrl, blob) => saveFile(blobUrl, blob),
   });
 
   // eslint-disable-next-line

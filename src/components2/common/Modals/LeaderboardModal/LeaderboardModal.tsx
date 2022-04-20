@@ -7,42 +7,10 @@ import {useOutsideClick} from "../../../../hooks/useOutsideClick";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {CloseButton} from "../CloseButton/CloseButton";
 import {svgIcons} from "../../../../assets/svg/svgIcons";
-import nft0 from "../../../../assets/gif/leaderboard/nft.gif";
 import replayBtnMobile from "../../../../assets/png/buttons/watch replay/mobile.png";
 import replayBtnDesktop from "../../../../assets/png/buttons/watch replay/desktop.png";
-
-const cards = [
-    {
-        nft: nft0,
-        nickname: "nickname 1",
-        address: "0xD31...9c2b",
-        score: "123454",
-        replays: 4
-    },
-    {
-        nft: nft0,
-        nickname: "nickname 2",
-        address: "0xD31...9c2b",
-        score: "123454",
-        replays: 4,
-    },
-    {
-        nft: nft0,
-        nickname: "nickname 3",
-        address: "0xD31...9c2b",
-        score: "123454",
-        replays: 4,
-    },
-    {
-        nft: nft0,
-        nickname: "nickname 4",
-        address: "0xD31...9c2b",
-        score: "123454",
-        replays: 4,
-    },
-];
-
-
+import {cards} from "./constants";
+import {desktopBreakPoint} from "../../../../constants";
 
 export const LeaderboardModal = () => {
     const ref = useRef<HTMLDivElement>(null);
@@ -56,7 +24,7 @@ export const LeaderboardModal = () => {
 
     useOutsideClick(ref, onClose);
 
-    const matchDesktop = useMediaQuery('(min-width:1440px)');
+    const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
 
     return (
         <div className={style.leaderboardModal}>
@@ -131,6 +99,8 @@ export const LeaderboardModal = () => {
                         ))
                     }
                 </div>
+
+                <div className={style.blur}/>
             </div>
         </div>
     )

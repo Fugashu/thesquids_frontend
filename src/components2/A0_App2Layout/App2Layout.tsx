@@ -6,7 +6,7 @@ import {
     selectGameplayModal,
     selectLeaderboardModal,
     selectModal,
-    selectShowChooseTheCoinModal, selectTournamentsWarningModal,
+    selectShowChooseTheCoinModal, selectStakingNftErrorModal, selectTournamentsWarningModal, selectVoteModal,
 } from "../../store/appSlice";
 import {Header2} from "../A1_Header2/Header2";
 import {BurgerMenu2} from "../A3_BurgerMenu2/BurgerMenu2";
@@ -16,6 +16,8 @@ import {Footer2} from "../A2_Footer2/Footer2";
 import {LeaderboardModal} from "../common/Modals/LeaderboardModal/LeaderboardModal";
 import {GameplayModal} from "../common/Modals/GameplayModal/GameplayModal";
 import {TournamentsWarningModal} from "../common/Modals/TournamentsWarningModal/TournamentsWarningModal";
+import {StakingNftErrorModal} from "../common/Modals/StakingNftErrorModal/StakingNftErrorModal";
+import {VoteModal} from "../common/Modals/VoteModal/VoteModal";
 
 export const App2Layout = () => {
     const showChooseTheCoinModal = useAppSelector(selectShowChooseTheCoinModal);
@@ -23,6 +25,8 @@ export const App2Layout = () => {
     const tournamentsWarningModal = useAppSelector(selectTournamentsWarningModal);
     const leaderboardModal = useAppSelector(selectLeaderboardModal);
     const gameplayModal = useAppSelector(selectGameplayModal);
+    const stakingNftErrorModal = useAppSelector(selectStakingNftErrorModal);
+    const voteModal = useAppSelector(selectVoteModal);
 
     return (
         <div className={clsx({
@@ -37,6 +41,8 @@ export const App2Layout = () => {
             {tournamentsWarningModal && <TournamentsWarningModal />}
             {leaderboardModal && <LeaderboardModal />}
             {gameplayModal && <GameplayModal/>}
+            {stakingNftErrorModal && <StakingNftErrorModal/>}
+            {voteModal && <VoteModal/>}
 
             <Outlet/>
 

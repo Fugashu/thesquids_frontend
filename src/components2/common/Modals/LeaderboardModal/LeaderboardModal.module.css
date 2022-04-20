@@ -96,15 +96,32 @@
   }
 }
 .leaderboardModal .content .cards {
+  align-self: normal;
+  position: relative;
+  margin-left: 16px;
+  margin-right: 16px;
+  z-index: 2;
   margin-top: 36px;
-  height: 440px;
-  overflow: scroll;
+  height: 426px;
+  overflow-y: auto;
 }
 @media all and (min-width: 1440px) {
   .leaderboardModal .content .cards {
+    margin-left: 32px;
+    margin-right: 32px;
     margin-top: 20px;
     height: 520px;
   }
+}
+.leaderboardModal .content .cards::-webkit-scrollbar {
+  width: 14px;
+}
+.leaderboardModal .content .cards::-webkit-scrollbar-track {
+  background-color: #9D7200;
+  border: 3px solid #1D1D1B;
+}
+.leaderboardModal .content .cards::-webkit-scrollbar-thumb {
+  background-color: #2A2437;
 }
 .leaderboardModal .content .cards .card {
   position: relative;
@@ -311,6 +328,21 @@
   .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo p:nth-child(2) {
     margin-left: 0;
     margin-top: 2px;
+  }
+}
+.leaderboardModal .content .blur {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .blur {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    bottom: 12px;
+    left: 32px;
+    width: 608px;
+    height: 79px;
+    background: linear-gradient(180deg, rgba(231, 178, 35, 0) -94.03%, #E7B223 100%);
   }
 }
 

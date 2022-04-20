@@ -1,0 +1,46 @@
+@import "../../../../assets/scss/app.scss";
+
+.voteModal {
+  @include modal();
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 1012px;
+    height: 592px;
+    box-sizing: border-box;
+    padding: 32px 32px 0;
+
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .closeButton {
+      position: absolute;
+      z-index: 2;
+      top: 40px;
+      right: 34px;
+    }
+
+    .title {
+      position: relative;
+      z-index: 2;
+      @include modalTitle();
+    }
+
+    .cards {
+      align-self: stretch;
+      position: relative;
+      z-index: 2;
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+
+    }
+  }
+}
