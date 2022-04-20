@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 // @ts-ignore
@@ -21,6 +22,7 @@ export const AppContainer = () => {
       <HashRouter>
         <Routes>
           <Route path="/" element={<App />} />
+
           <Route path="/app2" element={<App2Layout />}>
             <Route index element={<HomePage />} />
             <Route path="tournaments" element={<TournamentsPage />} />

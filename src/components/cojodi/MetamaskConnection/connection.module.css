@@ -1,13 +1,21 @@
 .metaConnected {
-  margin-left: 32px;
   height: 48px;
   width: 142px;
 }
+@media all and (min-width: 1440px) {
+  .metaConnected {
+    margin-left: 32px;
+  }
+}
 
 .metaDisconnected {
-  margin-left: 32px;
   height: 50px;
   width: 50px;
+}
+@media all and (min-width: 1440px) {
+  .metaDisconnected {
+    margin-left: 32px;
+  }
 }
 
 /*# sourceMappingURL=connection.module.css.map */

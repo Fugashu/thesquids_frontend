@@ -30,6 +30,7 @@ export const Home: FC<IHome> = () => {
     [navigate]
   );
 
+  // eslint-disable-next-line
   async function tryNavigateToTournament() {
     if (!(await isUnlocked())) {
       alert("Connect your wallet to continue");
@@ -74,13 +75,10 @@ export const Home: FC<IHome> = () => {
           onClick={() => navigate("/app2")}
         />
 
-                <div className={style.icons}>
-                    {
-                        ["twitter", "linktree"].map(icon => <SocialIcon key={icon}
-                                                                                   icon={icon}
-                                                                                   className={style.icon}
-                            />
-                        )}
+        <div className={style.icons}>
+          {["twitter", "linktree"].map((icon) => (
+            <SocialIcon key={icon} icon={icon} className={style.icon} />
+          ))}
           <MetaMaskButton
             connectH={connectH}
             connectC={connectC}
