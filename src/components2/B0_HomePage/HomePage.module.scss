@@ -1,0 +1,189 @@
+@import "../../assets/scss/app.scss";
+
+.homePage {
+  height: 100%;
+
+  @include desktop() {
+    min-height: 800px;
+    height: 100vh;
+  }
+
+  .inner {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 120px 16px 173px;
+
+    @include desktop() {
+      padding: 164px 0 0;
+      width: 1160px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      @include PressStart();
+      font-size: 22px;
+      line-height: 150%;
+      text-align: center;
+
+      @include desktop() {
+        font-size: 24px;
+      }
+    }
+
+    .timer {
+      margin-top: 16px;
+      @include PressStart();
+      font-size: 24px;
+      line-height: 150%;
+      text-align: center;
+      color: #E7B223;
+
+      @include desktop() {
+        margin-top: 24px;
+        font-size: 42px;
+      }
+    }
+
+    .links {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include desktop() {
+        margin-top: 64px;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .link {
+        text-decoration: none;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 288px;
+        height: 235px;
+
+        @include desktop() {
+          width: 260px;
+          height: 285px;
+        }
+
+        &:not(:first-child) {
+          margin-top: 24px;
+
+          @include desktop() {
+            margin-top: 0;
+          }
+        }
+
+        .imgD, .imgH, .imgMobile {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          transition: 0.3s;
+        }
+
+        .imgMobile {
+          @include onlyMobile();
+        }
+
+        .imgD, .imgH {
+          @include onlyDesktop();
+        }
+
+        .imgH {
+          display: none;
+        }
+
+        .icon {
+          position: relative;
+          z-index: 2;
+          margin-top: 32px;
+          width: 120px;
+          height: 120px;
+          @include center();
+
+          @include desktop() {
+            margin-top: 42px;
+            width: 135px;
+            height: 135px;
+          }
+        }
+
+        &:nth-child(1) .icon svg {
+          width: 100px;
+          height: 120px;
+
+          @include desktop() {
+            width: 110.83px;
+            height: 133px;
+          }
+        }
+
+        &:nth-child(2) .icon svg {
+          width: 120px;
+          height: 120px;
+        }
+
+        &:nth-child(3) .icon svg {
+          width: 120px;
+          height: 106px;
+
+          @include desktop() {
+            width: 135px;
+            height: 120px;
+          }
+        }
+
+        &:nth-child(4) .icon svg {
+          width: 160px;
+          height: 120px;
+
+          @include desktop() {
+            width: 149.33px;
+            height: 112px;
+          }
+        }
+
+        .label {
+          z-index: 2;
+          @include PressStart();
+          font-size: 13px;
+          line-height: 135%;
+          letter-spacing: -0.04em;
+          color: #F6B841;
+          text-align: center;
+          margin-top: 24px;
+          max-width: 200px;
+
+
+          @include desktop() {
+            font-size: 14px;
+            margin-top: 38px;
+          }
+        }
+
+        &:hover {
+          .imgD {
+            display: none;
+          }
+
+          .imgH {
+            @include desktop() {
+              display: block;
+            }
+          }
+        }
+
+
+      }
+
+    }
+
+  }
+
+}

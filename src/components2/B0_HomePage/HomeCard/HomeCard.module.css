@@ -1,0 +1,103 @@
+.homeCard {
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 288px;
+  height: 235px;
+}
+@media all and (min-width: 1440px) {
+  .homeCard {
+    width: 260px;
+    height: 285px;
+  }
+}
+.homeCard:not(:first-child) {
+  margin-top: 24px;
+}
+@media all and (min-width: 1440px) {
+  .homeCard:not(:first-child) {
+    margin-top: 0;
+  }
+}
+.homeCard .back {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.homeCard .icon {
+  position: relative;
+  z-index: 2;
+  margin-top: 32px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media all and (min-width: 1440px) {
+  .homeCard .icon {
+    margin-top: 42px;
+    width: 135px;
+    height: 135px;
+  }
+}
+.homeCard:nth-child(1) .icon svg {
+  width: 100px;
+  height: 120px;
+}
+@media all and (min-width: 1440px) {
+  .homeCard:nth-child(1) .icon svg {
+    width: 110.83px;
+    height: 133px;
+  }
+}
+.homeCard:nth-child(2) .icon svg {
+  width: 120px;
+  height: 120px;
+}
+.homeCard:nth-child(3) .icon svg {
+  width: 120px;
+  height: 106px;
+}
+@media all and (min-width: 1440px) {
+  .homeCard:nth-child(3) .icon svg {
+    width: 135px;
+    height: 120px;
+  }
+}
+.homeCard:nth-child(4) .icon svg {
+  width: 160px;
+  height: 120px;
+}
+@media all and (min-width: 1440px) {
+  .homeCard:nth-child(4) .icon svg {
+    width: 149.33px;
+    height: 112px;
+  }
+}
+.homeCard .label {
+  position: relative;
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 135%;
+  letter-spacing: -0.04em;
+  color: #F6B841;
+  text-align: center;
+  margin-top: 24px;
+  max-width: 200px;
+}
+@media all and (min-width: 1440px) {
+  .homeCard .label {
+    font-size: 14px;
+    margin-top: 38px;
+  }
+}
+
+/*# sourceMappingURL=HomeCard.module.css.map */

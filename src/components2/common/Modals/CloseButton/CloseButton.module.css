@@ -1,0 +1,14 @@
+.closeButton {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.closeButton svg {
+  width: 40px;
+  height: 40px;
+}
+
+/*# sourceMappingURL=CloseButton.module.css.map */

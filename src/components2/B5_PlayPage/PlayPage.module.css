@@ -1,0 +1,201 @@
+.playPage {
+  min-height: 1182px;
+  height: 100vh;
+}
+.playPage .inner {
+  padding: 164px 0 0;
+  width: 1160px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+}
+.playPage .inner .left .field {
+  position: relative;
+}
+.playPage .inner .left .playBtn {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 32px;
+  position: relative;
+}
+.playPage .inner .left .playBtn img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 861px;
+  height: 75px;
+}
+.playPage .inner .left .playBtn p {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #715021;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.playPage .inner .aside {
+  margin-left: 40px;
+  position: relative;
+}
+.playPage .inner .aside .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.playPage .inner .aside .content {
+  position: relative;
+  width: 260px;
+  height: 817px;
+  padding: 32px 12px 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+.playPage .inner .aside .content .tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid #161121;
+}
+.playPage .inner .aside .content .tabs .tab {
+  position: relative;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  padding: 0px 16px 8px;
+  font-size: 12px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+.playPage .inner .aside .content .tabs .tab::after {
+  position: absolute;
+  display: block;
+  content: "";
+  left: 0;
+  bottom: -3px;
+  right: 0;
+  height: 3px;
+  background-color: transparent;
+  transition: 0.3s;
+}
+.playPage .inner .aside .content .tabs .tab_current {
+  color: #F6B841;
+}
+.playPage .inner .aside .content .tabs .tab_current::after {
+  position: absolute;
+  display: block;
+  content: "";
+  left: 0;
+  bottom: -3px;
+  right: 0;
+  height: 3px;
+  background-color: #F6B841;
+}
+.playPage .inner .aside .content .leaderboard {
+  margin-top: 32px;
+  height: 695px;
+  overflow-y: auto;
+}
+.playPage .inner .aside .content .leaderboard::-webkit-scrollbar {
+  width: 14px;
+}
+.playPage .inner .aside .content .leaderboard::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: 1px solid #1d1d1d;
+}
+.playPage .inner .aside .content .leaderboard::-webkit-scrollbar-thumb {
+  background-color: #9D7200;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard {
+  position: relative;
+  width: 210px;
+  height: 62px;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard:not(:first-child) {
+  margin-top: 12px;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .back {
+  position: absolute;
+  z-index: 1;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent button img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent button p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 9px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent .info {
+  margin-left: 12px;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent .info p {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 9px;
+  line-height: 160%;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #F6B841;
+}
+.playPage .inner .aside .content .leaderboard .leaderboardCard .leaderboardCardContent .info p:last-child {
+  margin-top: 4px;
+  color: #FFF;
+}
+.playPage .inner .aside .content .blur {
+  position: absolute;
+  z-index: 10;
+  left: 12px;
+  bottom: 7px;
+  width: 214px;
+  height: 76px;
+  background: linear-gradient(0deg, #2A2437 24.1%, rgba(42, 36, 55, 0) 131.33%);
+}
+
+/*# sourceMappingURL=PlayPage.module.css.map */

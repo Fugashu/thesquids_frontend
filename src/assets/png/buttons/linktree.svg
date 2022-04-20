@@ -4,14 +4,14 @@
 <rect x="4.79883" y="5.09961" width="38.4" height="16.5" fill="#F3D78A"/>
 <rect x="4.79883" y="21.5996" width="38.4" height="15.6" fill="#E7B223"/>
 <g filter="url(#filter0_i_2092_1877)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M24.5257 17.2775L30.3746 27.4082H26.0626V31.75H26.0547V35H32.5547V27.2812H39.8594L29.3047 9L24.5257 17.2775ZM22.8047 27.4082V35H16.3047V27.2812H9L19.5547 9L24.3416 17.2912L18.5006 27.4082H22.8047Z" fill="#715021"/>
+<path fillRule="evenodd" clipRule="evenodd" d="M24.5257 17.2775L30.3746 27.4082H26.0626V31.75H26.0547V35H32.5547V27.2812H39.8594L29.3047 9L24.5257 17.2775ZM22.8047 27.4082V35H16.3047V27.2812H9L19.5547 9L24.3416 17.2912L18.5006 27.4082H22.8047Z" fill="#715021"/>
 </g>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_2092_1877" transform="scale(0.00625)"/>
 </pattern>
-<filter id="filter0_i_2092_1877" x="9" y="9" width="30.8594" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter0_i_2092_1877" x="9" y="9" width="30.8594" height="26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dx="1.1264" dy="1.1264"/>

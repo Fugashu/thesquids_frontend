@@ -1,0 +1,102 @@
+@import "../../assets/scss/app.scss";
+
+.header2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  overflow: hidden;
+  z-index: 90;
+  @include desktop() {
+    height: 100px;
+  }
+
+  .inner {
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    //background: rgba(41, 32, 58, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s, background 0.3s;
+
+    &_hide {
+      transform: translateY(-100%);
+    }
+
+    &_transparent {
+      background: rgba(41, 32, 58, 0.0);
+    }
+
+    @include desktop() {
+      padding-left: 54px;
+      padding-right: 54px;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        display: block;
+        text-decoration: none;
+
+        img {
+          display: block;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          width: 103px;
+          height: 48px;
+
+          @include desktop() {
+            width: 168px;
+            height: 76.95px;
+          }
+        }
+      }
+
+      .links {
+        @include onlyDesktop() {
+          margin-left: 64px;
+          display: flex;
+        }
+
+        .link {
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 140%;
+
+          &:not(:first-child) {
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .buttons {
+        @include onlyDesktop(flex) {
+          //align-items: center;
+        }
+      }
+
+      .burgerButton {
+        @include onlyMobile() {
+          position: relative;
+          z-index: 110;
+          @include button();
+        }
+      }
+
+    }
+
+
+  }
+
+
+}

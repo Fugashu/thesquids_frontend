@@ -1,0 +1,11 @@
+@import "../../assets/scss/app.scss";
+
+.app2Layout {
+  position: relative;
+  background: #130B25;
+
+  &_fixed {
+    overflow: hidden;
+    height: 100vh;
+  }
+}

@@ -1,0 +1,69 @@
+.headerButtons {
+  display: flex;
+  flex-direction: column;
+}
+@media all and (min-width: 1440px) {
+  .headerButtons {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.headerButtons .btnBlock {
+  display: flex;
+  align-items: center;
+}
+.headerButtons .btnBlock:nth-child(2) {
+  margin-top: 24px;
+}
+@media all and (min-width: 1440px) {
+  .headerButtons .btnBlock:nth-child(2) {
+    margin-top: 0;
+    margin-left: 24px;
+  }
+}
+.headerButtons .btnBlock:nth-child(3) {
+  margin-top: 24px;
+}
+@media all and (min-width: 1440px) {
+  .headerButtons .btnBlock:nth-child(3) {
+    margin-top: 0;
+    margin-left: 64px;
+  }
+}
+.headerButtons .btnBlock img {
+  display: block;
+  width: 43px;
+  height: 43px;
+}
+.headerButtons .btnBlock .right {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.headerButtons .btnBlock .right p {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.headerButtons .btnBlock .right button {
+  margin-top: 8px;
+  background: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  outline: none;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 135%;
+  letter-spacing: -0.04em;
+  color: #F6B841;
+}
+
+/*# sourceMappingURL=HeaderButtons.module.css.map */

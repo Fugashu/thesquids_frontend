@@ -1,0 +1,12 @@
+@import "../../../../assets/scss/app.scss";
+
+.closeButton {
+  @include button();
+  width: 40px;
+  height: 40px;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}

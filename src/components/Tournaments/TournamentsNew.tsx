@@ -3,8 +3,10 @@ import axios from "axios";
 import * as React from "react";
 import BackendCallsInterface from "../cojodi/BackendCalls/BackendCallsInterface";
 import { getConnectedSignerAddress } from "../cojodi/MetamaskConnection/MetamaskWallet";
+import style from "../../components2/B5_PlayPage/PlayPage.module.scss";
+import btn from "../../assets/png/buttons/play/button.png";
 
-const RecordView = () => {
+export const RecordView = () => {
   let score: any;
   const {
     //status,
@@ -38,8 +40,11 @@ const RecordView = () => {
     }
   }
   // eslint-disable-next-line
+
   const saveFile = async (blobUrl: string, blob: Blob) => {
-    const accAddr: string = (await getConnectedSignerAddress()) || "test";
+    const accAddr: string = "test";
+    //make sure user is connected
+
     const a = document.createElement("a");
     a.download = accAddr + score.toString();
     a.href = URL.createObjectURL(blob);
@@ -73,7 +78,7 @@ const RecordView = () => {
     }
   }
 
-  window.onmessage = function (event) {
+  window.onmessage = async function (event) {
     //A single message
     if (event.data === "MsgFromIframeToC3") {
       console.log("Message from iFrame Received");
@@ -82,18 +87,17 @@ const RecordView = () => {
     if (event.data.event_id === "MsgFromIframeToC3WithData") {
       console.log("Score: " + JSON.stringify(event.data.data));
       console.log(event.data.data);
-      score = event.data.data;
+      score = await event.data.data.v1;
       stopRecording();
+      alert("You scored " + score + " points.");
     }
   };
   return (
     <div>
-      {/*<p>{status}</p> */}
-
-      <button onClick={startRecording}>Start Recording</button>
-
-      {/*<button onClick={stopRecording}>Stop Recording</button>*/}
-      {/*<video src={mediaBlobUrl || ''} controls autoPlay loop />*/}
+      <button className={style.playBtn} onClick={startRecording}>
+        <img src={btn} alt="" />
+        <p>play</p>
+      </button>
     </div>
   );
 };

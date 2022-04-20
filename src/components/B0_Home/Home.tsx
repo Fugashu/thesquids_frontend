@@ -26,7 +26,7 @@ export const Home: FC<IHome> = () => {
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const navigateToTournament = useCallback(
-    () => navigate("/TournamentsNew", { replace: true }),
+    () => navigate("/home2", { replace: true }),
     [navigate]
   );
 
@@ -71,7 +71,7 @@ export const Home: FC<IHome> = () => {
           imgHover={enterH}
           imgClick={enterC}
           className={style.enterButton}
-          onClick={tryNavigateToTournament}
+          onClick={() => navigate("/app2")}
         />
 
         <div className={style.icons}>
