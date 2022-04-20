@@ -1,0 +1,10 @@
+.app2Layout {
+  position: relative;
+  background: #130B25;
+}
+.app2Layout_fixed {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=App2Layout.module.css.map */

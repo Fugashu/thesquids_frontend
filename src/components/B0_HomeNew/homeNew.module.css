@@ -1,0 +1,377 @@
+.homeNew {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+}
+@media all and (min-width: 1440px) {
+  .homeNew {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../assets/gif/home-back.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+@media only screen and (min-width: 1440px) and (max-width: 390px) {
+  .homeNew {
+    background-image: url(../../assets/gif/home-back-mobile.gif);
+  }
+}
+.homeNew .innerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 1160px;
+    margin: 0px auto;
+  }
+}
+.homeNew .innerWrapper .icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 72px;
+}
+.homeNew .innerWrapper .icons .icon:not(:first-child) {
+  margin-left: 32px;
+}
+.homeNew .innerWrapper .icons .iconmetamaskmobile {
+  width: 142px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .icons {
+    display: none;
+  }
+}
+.homeNew .innerWrapper .leftBlock {
+  background-image: url(../../assets/gif/home-back-mobile.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 300px 0 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (min-width: 800px) {
+  .homeNew .innerWrapper .leftBlock {
+    background-image: url(../../assets/gif/home-back.gif);
+  }
+}
+@media only screen and (max-width: 390px) {
+  .homeNew .innerWrapper .leftBlock {
+    background-image: url(../../assets/gif/home-back.gif);
+  }
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock {
+    background: none;
+    padding: 0;
+    align-items: flex-start;
+  }
+}
+.homeNew .innerWrapper .leftBlock .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 145%;
+  width: 288px;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock .title {
+    font-size: 38px;
+    line-height: 150%;
+    text-align: left;
+    width: 460px;
+  }
+}
+.homeNew .innerWrapper .leftBlock .texts {
+  margin-top: 10px;
+  width: 288px;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock .texts {
+    margin-top: 57px;
+    width: auto;
+    text-align: left;
+  }
+}
+.homeNew .innerWrapper .leftBlock .texts .text {
+  font-style: normal;
+  font-size: 12px;
+  line-height: 145%;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock .texts .text {
+    font-size: 16px;
+    line-height: 160%;
+  }
+}
+.homeNew .innerWrapper .leftBlock .texts .text span:first-child {
+  font-weight: bold;
+}
+.homeNew .innerWrapper .leftBlock .texts .text span:last-child {
+  color: #DCD8E1;
+}
+.homeNew .innerWrapper .leftBlock .timerBlock {
+  margin-top: 45px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock .timerBlock {
+    margin-top: 84px;
+  }
+}
+.homeNew .innerWrapper .leftBlock .timerBlock span {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 150%;
+  color: #E7B223;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock .timerBlock span {
+    font-size: 48px;
+  }
+}
+.homeNew .innerWrapper .leftBlock .until {
+  margin-top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 140%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .leftBlock .until {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 160%;
+  }
+}
+.homeNew .innerWrapper .rightBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock {
+    display: block;
+    padding: 0;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card {
+  width: 288px;
+  height: 524px;
+  background-image: url(../../assets/png/home-card-mobile.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 85px;
+  box-sizing: border-box;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card {
+    background-image: url(../../assets/png/home-card-desktop.png);
+    width: 560px;
+    height: 544px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .minted {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 160%;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .minted {
+    font-size: 14px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 85px;
+  padding: 0px 24px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .countWrapper {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 92px;
+    padding: 0px 60px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper .mint {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 145%;
+  text-transform: uppercase;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .countWrapper .mint {
+    margin-right: 45px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock {
+    flex-grow: 1;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .countButtons {
+  display: flex;
+  align-items: center;
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .countButtons .countButton {
+  width: 32px;
+  height: 32px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .countButtons .countButton {
+    width: 40px;
+    height: 40px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .countButtons .count {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+  margin: 0px 20px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .countButtons .count {
+    font-size: 18px;
+    margin: 0px 32px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .max {
+  background-image: url(../../assets/png/home-max.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 88px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 9.6px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  color: #524B60;
+  text-transform: uppercase;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .countWrapper .countBlock .max {
+    width: 110px;
+    height: 40px;
+    font-size: 12px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .totalBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .totalBlock {
+    justify-content: normal;
+    padding: 0px 60px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .totalBlock .texts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .totalBlock .texts {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .totalBlock .texts p:first-child {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 145%;
+  text-transform: uppercase;
+}
+.homeNew .innerWrapper .rightBlock .card .totalBlock .texts p:last-child {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 135%;
+  letter-spacing: -1px;
+  margin-top: 16px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .totalBlock .texts p:last-child {
+    font-size: 36px;
+    margin-top: 0px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .totalBlock img {
+  display: block;
+  width: 18px;
+  height: 32px;
+  margin-left: 5px;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .totalBlock img {
+    width: 22.5px;
+    height: 40px;
+    margin-left: 18px;
+  }
+}
+.homeNew .innerWrapper .rightBlock .card .mintNow {
+  width: 170px;
+  height: 48px;
+  margin-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media all and (min-width: 1440px) {
+  .homeNew .innerWrapper .rightBlock .card .mintNow {
+    width: 265px;
+    height: 75px;
+    margin-top: 65px;
+  }
+}
+
+/*# sourceMappingURL=homeNew.module.css.map */

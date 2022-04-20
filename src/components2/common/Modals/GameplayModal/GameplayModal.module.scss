@@ -1,0 +1,94 @@
+@import "../../../../assets/scss/app.scss";
+
+.gameplayModal {
+  @include modal();
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 320px;
+    height: 617px;
+    box-sizing: border-box;
+    padding: 24px 0 0;
+
+    @include desktop() {
+      width: 820px;
+      height: 788px;
+      padding: 32px 0 0;
+    }
+
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .closeButton {
+      position: absolute;
+      z-index: 2;
+      top: 30px;
+      right: 16px;
+
+      @include desktop() {
+        top: 35px;
+        right: 32px;
+      }
+    }
+
+    .title {
+      position: relative;
+      z-index: 2;
+      max-width: 160px;
+      text-align: center;
+
+      @include desktop() {
+        max-width: 100%;
+      }
+
+      span {
+        @include modalTitle();
+
+        &:first-child {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .field {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+
+      @include desktop() {
+        margin-top: 32px;
+      }
+    }
+
+    .buttons {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include desktop() {
+        margin-top: 32px;
+        flex-direction: row;
+      }
+    }
+
+    button:last-child {
+      margin-top: 12px;
+
+      @include desktop() {
+        margin-top: 0;
+        margin-left: 40px;
+      }
+    }
+
+  }
+}

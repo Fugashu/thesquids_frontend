@@ -1,0 +1,194 @@
+.homePage {
+  height: 100%;
+}
+@media all and (min-width: 1440px) {
+  .homePage {
+    min-height: 800px;
+    height: 100vh;
+  }
+}
+.homePage .inner {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 120px 16px 173px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner {
+    padding: 164px 0 0;
+    width: 1160px;
+    margin: 0 auto;
+  }
+}
+.homePage .inner h1 {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 150%;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner h1 {
+    font-size: 24px;
+  }
+}
+.homePage .inner .timer {
+  margin-top: 16px;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  color: #E7B223;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .timer {
+    margin-top: 24px;
+    font-size: 42px;
+  }
+}
+.homePage .inner .links {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links {
+    margin-top: 64px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.homePage .inner .links .link {
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 288px;
+  height: 235px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link {
+    width: 260px;
+    height: 285px;
+  }
+}
+.homePage .inner .links .link:not(:first-child) {
+  margin-top: 24px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link:not(:first-child) {
+    margin-top: 0;
+  }
+}
+.homePage .inner .links .link .imgD, .homePage .inner .links .link .imgH, .homePage .inner .links .link .imgMobile {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 0.3s;
+}
+.homePage .inner .links .link .imgMobile {
+  display: block;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link .imgMobile {
+    display: none;
+  }
+}
+.homePage .inner .links .link .imgD, .homePage .inner .links .link .imgH {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link .imgD, .homePage .inner .links .link .imgH {
+    display: block;
+  }
+}
+.homePage .inner .links .link .imgH {
+  display: none;
+}
+.homePage .inner .links .link .icon {
+  position: relative;
+  z-index: 2;
+  margin-top: 32px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link .icon {
+    margin-top: 42px;
+    width: 135px;
+    height: 135px;
+  }
+}
+.homePage .inner .links .link:nth-child(1) .icon svg {
+  width: 100px;
+  height: 120px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link:nth-child(1) .icon svg {
+    width: 110.83px;
+    height: 133px;
+  }
+}
+.homePage .inner .links .link:nth-child(2) .icon svg {
+  width: 120px;
+  height: 120px;
+}
+.homePage .inner .links .link:nth-child(3) .icon svg {
+  width: 120px;
+  height: 106px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link:nth-child(3) .icon svg {
+    width: 135px;
+    height: 120px;
+  }
+}
+.homePage .inner .links .link:nth-child(4) .icon svg {
+  width: 160px;
+  height: 120px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link:nth-child(4) .icon svg {
+    width: 149.33px;
+    height: 112px;
+  }
+}
+.homePage .inner .links .link .label {
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 135%;
+  letter-spacing: -0.04em;
+  color: #F6B841;
+  text-align: center;
+  margin-top: 24px;
+  max-width: 200px;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link .label {
+    font-size: 14px;
+    margin-top: 38px;
+  }
+}
+.homePage .inner .links .link:hover .imgD {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .homePage .inner .links .link:hover .imgH {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=HomePage.module.css.map */

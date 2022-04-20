@@ -1,0 +1,27 @@
+@import "../../assets/scss/app.scss";
+
+.lootBoxesPage {
+  height: 100%;
+
+  @include desktop() {
+    min-height: 1112px;
+    height: 100vh;
+  }
+
+  .inner {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 104px 16px 157px;
+
+    @include desktop() {
+      padding: 164px 0;
+      width: 1160px;
+      margin: 0 auto;
+    }
+
+    .title {
+      @include h2();
+    }
+
+  }
+}

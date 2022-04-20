@@ -1,0 +1,37 @@
+.buttonLink {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+}
+.buttonLink_button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+.buttonLink img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.buttonLink .hover, .buttonLink .click {
+  display: none;
+}
+.buttonLink_hover .default, .buttonLink_hover .click {
+  display: none;
+}
+.buttonLink_hover .hover {
+  display: block;
+}
+.buttonLink_mouseDown .default, .buttonLink_mouseDown .hover {
+  display: none;
+}
+.buttonLink_mouseDown .click {
+  display: block;
+}
+
+/*# sourceMappingURL=buttonLink.module.css.map */

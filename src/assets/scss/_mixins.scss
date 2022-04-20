@@ -1,5 +1,5 @@
 @mixin desktop {
-  @media all and (min-width: 1160px) {
+  @media all and (min-width: 1440px) {
     @content;
   }
 }
@@ -30,6 +30,13 @@
   justify-content: center;
 }
 
+@mixin rowCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 @mixin PressStart {
   font-family: 'Press Start 2P', cursive;
   font-style: normal;
@@ -44,6 +51,7 @@
 
 @mixin button {
   border: none;
+  outline: none;
   background: none;
   cursor: pointer;
 }
@@ -57,5 +65,47 @@
   @include desktop() {
     font-size: 42px;
     line-height: 150%;
+  }
+}
+
+@mixin modal() {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(19, 11, 37, 0.8);
+  @include center();
+}
+
+@mixin buttonText() {
+  @include PressStart();
+  font-size: 20px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #715021;
+}
+
+@mixin buttonTextSmall() {
+  @include PressStart();
+  font-size: 17px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #715021;
+}
+
+@mixin modalTitle() {
+  @include PressStart();
+  font-size: 16px;
+  line-height: 160%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #130B25;
+
+  @include desktop() {
+    font-size: 28px;
   }
 }

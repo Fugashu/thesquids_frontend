@@ -1,0 +1,83 @@
+.home {
+  background-image: url("../../assets/gif/home-back-mobile.gif");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding: 200px 16px 25px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+@media only screen and (min-width: 800px) {
+  .home {
+    background-image: url(../../assets/gif/home-back.gif);
+  }
+}
+@media all and (min-width: 1440px) {
+  .home {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../assets/gif/home-back.gif);
+    padding-top: 180px;
+  }
+}
+.home .innerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (max-width: 1160px) {
+  .home .innerWrapper {
+    position: relative;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+  }
+}
+.home .innerWrapper .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  color: #fff;
+  font-size: 22px;
+  line-height: 145%;
+  text-align: center;
+  width: 288px;
+}
+@media all and (min-width: 1440px) {
+  .home .innerWrapper .title {
+    font-size: 38px;
+    line-height: 150%;
+    width: 700px;
+  }
+}
+.home .innerWrapper .enterButton {
+  width: 116px;
+  height: 48px;
+  margin-top: 72px;
+}
+@media all and (min-width: 1440px) {
+  .home .innerWrapper .enterButton {
+    width: 192px;
+    height: 80px;
+    margin-top: 82px;
+  }
+}
+.home .innerWrapper .icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 72px;
+}
+.home .innerWrapper .icons .icon:not(:first-child) {
+  margin-left: 32px;
+}
+@media all and (min-width: 1440px) {
+  .home .innerWrapper .icons {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=home.module.css.map */

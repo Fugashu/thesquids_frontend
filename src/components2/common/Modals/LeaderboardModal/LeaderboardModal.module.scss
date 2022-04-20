@@ -1,0 +1,284 @@
+@import "../../../../assets/scss/app.scss";
+
+.leaderboardModal {
+  @include modal();
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 320px;
+    height: 551px;
+    box-sizing: border-box;
+    padding: 24px 0 0;
+
+    @include desktop() {
+      width: 693px;
+      height: 696px;
+      padding: 32px 0 0;
+    }
+
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .closeButton {
+      position: absolute;
+      z-index: 2;
+      top: 30px;
+      right: 16px;
+
+      @include desktop() {
+        top: 32px;
+        right: 32px;
+      }
+    }
+
+    .title {
+      position: relative;
+      z-index: 2;
+      @include modalTitle();
+    }
+
+    .cardsHeader {
+      @include onlyDesktop(flex) {
+        align-self: stretch;
+        position: relative;
+        z-index: 2;
+        margin-top: 32px;
+
+        p {
+          @include PressStart();
+          font-size: 12px;
+          line-height: 160%;
+          color: #000000;
+
+          &:nth-child(1) {
+            margin-left: 64px;
+          }
+
+          &:nth-child(2) {
+            margin-left: 60px;
+          }
+
+          &:nth-child(3) {
+            margin-left: 80px;
+          }
+
+          &:nth-child(4) {
+            margin-left: 96px;
+          }
+
+        }
+      }
+    }
+
+    .cards {
+      margin-top: 36px;
+      height: 440px;
+      overflow: scroll;
+
+      @include desktop() {
+        margin-top: 20px;
+        height: 520px;
+      }
+
+      .card {
+        position: relative;
+        width: 258px;
+        height: 201px;
+
+        @include desktop() {
+          width: 576px;
+          height: 139px;
+        }
+
+        &:not(:first-child) {
+          margin-top: 16px;
+        }
+
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .cardContent {
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          z-index: 2;
+          position: relative;
+          padding: 24px 24px 0;
+          display: flex;
+          flex-direction: column;
+
+          @include desktop() {
+            padding: 24px 32px 0;
+            flex-direction: row;
+          }
+
+          .firstBlock {
+            display: flex;
+
+            .nft {
+              width: 60px;
+              height: 60px;
+              border-radius: 4px;
+
+              @include desktop() {
+                width: 80px;
+                height: 80px;
+              }
+            }
+
+            .info {
+              @include onlyMobile(flex) {
+                margin-left: 12px;
+                flex-direction: column;
+                justify-content: space-between;
+              }
+
+              p {
+                @include PressStart();
+                font-size: 12px;
+                line-height: 160%;
+                letter-spacing: -0.02em;
+                color: #1C162B;
+              }
+
+            }
+          }
+
+          .secondBlock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 16px;
+
+            @include desktop() {
+              align-items: normal;
+              margin-top: 0;
+              margin-left: 16px;
+              flex-grow: 1;
+            }
+
+            .info {
+              @include onlyDesktop(flex) {
+                justify-content: space-between;
+
+                p {
+                  @include PressStart();
+                  font-size: 12px;
+                  line-height: 160%;
+                  letter-spacing: -0.02em;
+                  color: #1C162B;
+                }
+              }
+            }
+
+            .buttonBlock {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              @include desktop() {
+                margin-top: 21px;
+                flex-direction: row;
+              }
+
+              .replayBtn {
+                @include button();
+                @include rowCenter();
+                position: relative;
+                width: 210px;
+                height: 40px;
+
+                @include desktop() {
+                  width: 311px;
+                }
+
+                .back {
+                  position: absolute;
+                  z-index: 1;
+                  width: 210px;
+                  height: 40px;
+
+                  @include desktop() {
+                    width: 311px;
+                  }
+                }
+
+                .replayBtnContent {
+                  position: relative;
+                  z-index: 2;
+                  display: flex;
+                  align-items: center;
+
+                  p {
+                    @include PressStart();
+                    font-size: 13px;
+                    line-height: 160%;
+                    letter-spacing: -0.02em;
+                    text-transform: uppercase;
+                    color: #715021;
+
+                    @include desktop() {
+                      font-size: 17px;
+                    }
+                  }
+
+                  span {
+                    @include onlyDesktop() {
+                      margin-left: 4px;
+                      width: 20px;
+                      height: 20px;
+                      @include center();
+                    }
+                  }
+                }
+              }
+
+              .buttonBlockInfo {
+                display: flex;
+                margin-top: 8px;
+
+                @include desktop() {
+                  flex-direction: column;
+                  margin-top: 0;
+                  margin-left: 16px;
+                }
+
+                p:nth-child(1) {
+                  font-weight: 600;
+                  font-size: 12px;
+                  line-height: 160%;
+                  color: #1C162B;
+                }
+
+                p:nth-child(2) {
+                  font-weight: 400;
+                  font-size: 12px;
+                  line-height: 160%;
+                  color: rgba(0, 0, 0, 0.71);
+                  margin-left: 8px;
+
+                  @include desktop() {
+                    margin-left: 0;
+                    margin-top: 2px;
+                  }
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

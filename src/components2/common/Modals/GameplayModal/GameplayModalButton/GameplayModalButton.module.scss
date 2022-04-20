@@ -1,0 +1,40 @@
+@import "../../../../../assets/scss/app.scss";
+
+.gameplayModalButton {
+  @include button();
+  position: relative;
+  width: 283px;
+  height: 75px;
+
+  @include desktop() {
+    width: 358px;
+    height: 75px;
+  }
+
+  .back {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 283px;
+    height: 75px;
+
+    @include desktop() {
+      width: 358px;
+      height: 75px;
+    }
+  }
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    @include PressStart();
+    font-size: 20px;
+    line-height: 160%;
+    align-items: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+}

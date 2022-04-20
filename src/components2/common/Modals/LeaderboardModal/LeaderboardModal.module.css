@@ -1,0 +1,317 @@
+.leaderboardModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(19, 11, 37, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.leaderboardModal .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 320px;
+  height: 551px;
+  box-sizing: border-box;
+  padding: 24px 0 0;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content {
+    width: 693px;
+    height: 696px;
+    padding: 32px 0 0;
+  }
+}
+.leaderboardModal .content .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.leaderboardModal .content .closeButton {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  right: 16px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .closeButton {
+    top: 32px;
+    right: 32px;
+  }
+}
+.leaderboardModal .content .title {
+  position: relative;
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #130B25;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .title {
+    font-size: 28px;
+  }
+}
+.leaderboardModal .content .cardsHeader {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cardsHeader {
+    display: flex;
+    align-self: stretch;
+    position: relative;
+    z-index: 2;
+    margin-top: 32px;
+  }
+  .leaderboardModal .content .cardsHeader p {
+    font-family: "Press Start 2P", cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 160%;
+    color: #000000;
+  }
+  .leaderboardModal .content .cardsHeader p:nth-child(1) {
+    margin-left: 64px;
+  }
+  .leaderboardModal .content .cardsHeader p:nth-child(2) {
+    margin-left: 60px;
+  }
+  .leaderboardModal .content .cardsHeader p:nth-child(3) {
+    margin-left: 80px;
+  }
+  .leaderboardModal .content .cardsHeader p:nth-child(4) {
+    margin-left: 96px;
+  }
+}
+.leaderboardModal .content .cards {
+  margin-top: 36px;
+  height: 440px;
+  overflow: scroll;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards {
+    margin-top: 20px;
+    height: 520px;
+  }
+}
+.leaderboardModal .content .cards .card {
+  position: relative;
+  width: 258px;
+  height: 201px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card {
+    width: 576px;
+    height: 139px;
+  }
+}
+.leaderboardModal .content .cards .card:not(:first-child) {
+  margin-top: 16px;
+}
+.leaderboardModal .content .cards .card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.leaderboardModal .content .cards .card .cardContent {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 2;
+  position: relative;
+  padding: 24px 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent {
+    padding: 24px 32px 0;
+    flex-direction: row;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .firstBlock {
+  display: flex;
+}
+.leaderboardModal .content .cards .card .cardContent .firstBlock .nft {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .firstBlock .nft {
+    width: 80px;
+    height: 80px;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .firstBlock .info {
+  display: flex;
+  margin-left: 12px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .firstBlock .info {
+    display: none;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .firstBlock .info p {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  color: #1C162B;
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock {
+    align-items: normal;
+    margin-top: 0;
+    margin-left: 16px;
+    flex-grow: 1;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .info {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .info {
+    display: flex;
+    justify-content: space-between;
+  }
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .info p {
+    font-family: "Press Start 2P", cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 160%;
+    letter-spacing: -0.02em;
+    color: #1C162B;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock {
+    margin-top: 21px;
+    flex-direction: row;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 210px;
+  height: 40px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn {
+    width: 311px;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .back {
+  position: absolute;
+  z-index: 1;
+  width: 210px;
+  height: 40px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .back {
+    width: 311px;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent p {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #715021;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent p {
+    font-size: 17px;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent span {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent span {
+    display: block;
+    margin-left: 4px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo {
+  display: flex;
+  margin-top: 8px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo {
+    flex-direction: column;
+    margin-top: 0;
+    margin-left: 16px;
+  }
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo p:nth-child(1) {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 160%;
+  color: #1C162B;
+}
+.leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo p:nth-child(2) {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 160%;
+  color: rgba(0, 0, 0, 0.71);
+  margin-left: 8px;
+}
+@media all and (min-width: 1440px) {
+  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo p:nth-child(2) {
+    margin-left: 0;
+    margin-top: 2px;
+  }
+}
+
+/*# sourceMappingURL=LeaderboardModal.module.css.map */

@@ -1,0 +1,40 @@
+@import "../../../assets/scss/app.scss";
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 288px;
+  height: 385px;
+  box-sizing: border-box;
+  padding-top: 32px;
+
+  @include desktop() {
+    width: 360px;
+    height: 473px;
+  }
+
+  &:not(:first-child) {
+    margin-top: 24px;
+
+    @include desktop() {
+      margin-top: 0;
+      margin-left: 40px;
+    }
+  }
+
+  .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    @include center();
+
+  }
+}

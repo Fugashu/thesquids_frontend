@@ -1,0 +1,29 @@
+@import "../../../assets/scss/app.scss";
+
+.myBoxes {
+  margin-top: 24px;
+
+  @include desktop() {
+    margin-top: 32px;
+  }
+
+  .boxes {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+
+    @include desktop() {
+      flex-direction: row;
+      margin-top: 32px;
+    }
+
+    .top {
+
+    }
+
+    button {
+      @include button();
+    }
+  }
+
+}

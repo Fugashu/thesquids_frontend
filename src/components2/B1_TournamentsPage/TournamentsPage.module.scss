@@ -1,0 +1,209 @@
+@import "../../assets/scss/app.scss";
+
+.tournamentsPage {
+  height: 100%;
+
+  @include desktop() {
+    min-height: 940px;
+    height: 100vh;
+  }
+
+  .inner {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 104px 0 157px;
+
+    @include desktop() {
+      padding: 164px 0 0;
+      width: 1160px;
+      margin: 0 auto;
+    }
+
+    .titleBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include desktop() {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .title {
+        @include h2();
+      }
+
+      .btn {
+        @include button();
+        position: relative;
+        margin-top: 24px;
+
+        @include desktop() {
+          margin-top: 0;
+        }
+
+        img {
+          display: block;
+          position: relative;
+          z-index: 1;
+          width: 287px;
+          height: 75px;
+
+          @include desktop() {
+            width: 360px;
+            height: 75px;
+          }
+        }
+
+        span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          @include buttonText();
+        }
+      }
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 32px;
+
+      @include desktop() {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 64px;
+      }
+
+      .title {
+        @include PressStart();
+        font-size: 17px;
+        line-height: 160%;
+
+        @include desktop() {
+          font-size: 24px;
+        }
+      }
+
+      .items {
+        margin-top: 24px;
+
+        @include desktop() {
+          margin-top: 32px;
+        }
+
+        .item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          &:not(:first-child) {
+            margin-top: 24px;
+
+            @include desktop() {
+              margin-top: 28px;
+            }
+          }
+
+          .title {
+            @include PressStart();
+            font-size: 10px;
+            line-height: 135%;
+
+            @include desktop() {
+              font-size: 14px;
+            }
+          }
+
+          .value {
+            margin-top: 12px;
+            @include PressStart();
+            font-size: 17px;
+            line-height: 150%;
+            text-transform: uppercase;
+            color: #E7B223;
+
+            @include desktop() {
+              font-size: 24px;
+            }
+          }
+
+        }
+      }
+
+      .enterBtn {
+        position: relative;
+        @include button();
+        margin-top: 23px;
+
+        @include desktop() {
+          margin-top: 32px;
+        }
+
+        img {
+          display: block;
+          position: relative;
+          z-index: 1;
+          width: 240px;
+          height: 40px;
+
+          @include desktop() {
+            width: 294px;
+            height: 40px;
+          }
+        }
+
+        span {
+          @include buttonTextSmall();
+          position: absolute;
+          z-index: 2;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+      }
+
+      .soon {
+        margin-top: 24px;
+        @include PressStart();
+        font-size: 17px;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: #E7B223;
+
+        @include desktop() {
+          margin-top: 28px;
+          font-size: 24px;
+        }
+      }
+
+      .sandTimer {
+        margin-top: 44px;
+        width: 140px;
+        height: 190px;
+
+        @include desktop() {
+          margin-top: 57px;
+          width: 164px;
+          height: 222px;
+        }
+
+        svg {
+          width: 140px;
+          height: 190px;
+
+          @include desktop() {
+            width: 164px;
+            height: 222px;
+          }
+        }
+      }
+
+    }
+
+  }
+}

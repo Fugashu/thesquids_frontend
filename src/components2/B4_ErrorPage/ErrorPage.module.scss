@@ -1,0 +1,61 @@
+@import "../../assets/scss/app.scss";
+
+.errorPage {
+  height: 100vh;
+  @include center();
+  padding: 0 16px;
+  box-sizing: border-box;
+
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      margin-top: 24px;
+      @include PressStart();
+      font-size: 22px;
+      line-height: 140%;
+      color: #F6B841;
+    }
+
+    .description {
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 140%;
+      text-align: center;
+      color: #A19DA8;
+    }
+
+    .btn {
+      @include button();
+      margin: 32px;
+      position: relative;
+
+      img {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 288px;
+        height: 75px;
+      }
+
+      .text {
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        @include PressStart();
+        font-size: 20px;
+        line-height: 160%;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        color: #715021;
+      }
+
+    }
+  }
+
+}

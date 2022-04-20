@@ -1,0 +1,71 @@
+@import "../../../assets/scss/app.scss";
+
+.headerButtons {
+  display: flex;
+  flex-direction: column;
+
+  @include desktop() {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .btnBlock {
+    display: flex;
+    align-items: center;
+
+    &:nth-child(2) {
+      margin-top: 24px;
+
+      @include desktop() {
+        margin-top: 0;
+        margin-left: 24px;
+      }
+
+    }
+
+    &:nth-child(3) {
+      margin-top: 24px;
+
+      @include desktop() {
+        margin-top: 0;
+        margin-left: 64px;
+      }
+    }
+
+    img {
+      display: block;
+      width: 43px;
+      height: 43px;
+    }
+
+    .right {
+      margin-left: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      p {
+        @include PressStart();
+        font-size: 12px;
+        line-height: 160%;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      button {
+        margin-top: 8px;
+        background: none;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+        outline: none;
+        @include PressStart();
+        font-size: 12px;
+        line-height: 135%;
+        letter-spacing: -0.04em;
+        color: #F6B841;
+      }
+    }
+  }
+
+}

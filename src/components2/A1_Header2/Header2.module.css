@@ -1,0 +1,102 @@
+.header2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  overflow: hidden;
+  z-index: 90;
+}
+@media all and (min-width: 1440px) {
+  .header2 {
+    height: 100px;
+  }
+}
+.header2 .inner {
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s, background 0.3s;
+}
+.header2 .inner_hide {
+  transform: translateY(-100%);
+}
+.header2 .inner_transparent {
+  background: rgba(41, 32, 58, 0);
+}
+@media all and (min-width: 1440px) {
+  .header2 .inner {
+    padding-left: 54px;
+    padding-right: 54px;
+  }
+}
+.header2 .inner .left {
+  display: flex;
+  align-items: center;
+}
+.header2 .inner .left .logo {
+  display: block;
+  text-decoration: none;
+}
+.header2 .inner .left .logo img {
+  display: block;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 103px;
+  height: 48px;
+}
+@media all and (min-width: 1440px) {
+  .header2 .inner .left .logo img {
+    width: 168px;
+    height: 76.95px;
+  }
+}
+.header2 .inner .left .links {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .header2 .inner .left .links {
+    display: block;
+    margin-left: 64px;
+    display: flex;
+  }
+}
+.header2 .inner .left .links .link {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 140%;
+}
+.header2 .inner .left .links .link:not(:first-child) {
+  margin-left: 30px;
+}
+.header2 .inner .right {
+  display: flex;
+  align-items: center;
+}
+.header2 .inner .right .buttons {
+  display: none;
+}
+@media all and (min-width: 1440px) {
+  .header2 .inner .right .buttons {
+    display: flex;
+  }
+}
+.header2 .inner .right .burgerButton {
+  display: block;
+  position: relative;
+  z-index: 110;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+@media all and (min-width: 1440px) {
+  .header2 .inner .right .burgerButton {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=Header2.module.css.map */

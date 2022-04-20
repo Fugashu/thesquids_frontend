@@ -1,0 +1,89 @@
+.chooseTheCoinModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(19, 11, 37, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.chooseTheCoinModal .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 320px;
+  height: 934px;
+}
+@media all and (min-width: 1440px) {
+  .chooseTheCoinModal .content {
+    width: 640px;
+    height: 734px;
+  }
+}
+.chooseTheCoinModal .content .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.chooseTheCoinModal .content .closeButton {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  right: 16px;
+}
+@media all and (min-width: 1440px) {
+  .chooseTheCoinModal .content .closeButton {
+    top: 40px;
+    right: 40px;
+  }
+}
+.chooseTheCoinModal .content .title {
+  margin-top: 24px;
+  width: 150px;
+  position: relative;
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #130B25;
+}
+@media all and (min-width: 1440px) {
+  .chooseTheCoinModal .content .title {
+    width: auto;
+    margin-top: 38px;
+    font-size: 28px;
+  }
+}
+.chooseTheCoinModal .content .topButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-top: 24px;
+}
+@media all and (min-width: 1440px) {
+  .chooseTheCoinModal .content .topButtons {
+    margin-top: 28px;
+  }
+}
+.chooseTheCoinModal .content .topButtons button:last-child {
+  margin-left: 16px;
+}
+@media all and (min-width: 1440px) {
+  .chooseTheCoinModal .content .topButtons button:last-child {
+    margin-left: 40px;
+  }
+}
+
+/*# sourceMappingURL=ChooseTheCoinModal.module.css.map */

@@ -1,0 +1,47 @@
+.footer {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 32px;
+}
+@media all and (min-width: 1440px) {
+  .footer {
+    padding-bottom: 64px;
+  }
+}
+.footer .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media all and (min-width: 1440px) {
+  .footer .inner {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1160px;
+    margin: 0 auto;
+  }
+}
+.footer .inner .icons {
+  display: flex;
+}
+.footer .inner .icons .icon:not(:first-child) {
+  margin-left: 32px;
+}
+.footer .inner .text {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 32px;
+}
+@media all and (min-width: 1440px) {
+  .footer .inner .text {
+    margin-top: 0;
+  }
+}
+
+/*# sourceMappingURL=footer.module.css.map */
