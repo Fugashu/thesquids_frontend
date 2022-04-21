@@ -1,17 +1,134 @@
-/* Error: Undefined mixin.
- *     ,
- * 112 |                 @include absoluteCenter();
- *     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^
- *     '
- *   StakingPage.module.scss 112:17  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a     \2577 \a 112 \2502                  @include absoluteCenter();\a     \2502                  ^^^^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   StakingPage.module.scss 112:17  root stylesheet";
+.stakingPage {
+  min-height: 1456px;
+  height: 100vh;
 }
+.stakingPage .inner {
+  padding: 164px 0 0;
+  width: 1160px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.stakingPage .inner .titleBlock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stakingPage .inner .titleBlock .title {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 145%;
+  text-align: center;
+}
+@media all and (min-width: 1440px) {
+  .stakingPage .inner .titleBlock .title {
+    font-size: 42px;
+    line-height: 150%;
+  }
+}
+.stakingPage .inner .titleBlock .count {
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: right;
+  letter-spacing: -0.02em;
+  color: #F6B841;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.stakingPage .inner .cards {
+  position: relative;
+  margin-top: 65px;
+  max-height: 1008px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fill, 484px);
+  grid-row-gap: 40px;
+  grid-column-gap: 24px;
+}
+.stakingPage .inner .cards::-webkit-scrollbar {
+  width: 21px;
+}
+.stakingPage .inner .cards::-webkit-scrollbar-track {
+  background-color: #9D7200;
+  border: 3px solid #1D1D1B;
+}
+.stakingPage .inner .cards::-webkit-scrollbar-thumb {
+  background-color: #F4BF30;
+  border: 3px solid #1D1D1B;
+}
+.stakingPage .inner .cards .card {
+  position: relative;
+  width: 360px;
+  height: 484px;
+}
+.stakingPage .inner .cards .card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.stakingPage .inner .cards .card .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 32px;
+  box-sizing: border-box;
+}
+.stakingPage .inner .cards .card .content img {
+  display: block;
+  width: 296px;
+  height: 296px;
+}
+.stakingPage .inner .cards .card .content .buttons {
+  margin-top: 74px;
+  display: flex;
+}
+.stakingPage .inner .cards .card .content .buttons button {
+  position: relative;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  width: 139px;
+  height: 40px;
+}
+.stakingPage .inner .cards .card .content .buttons button:last-child {
+  margin-left: 20px;
+}
+.stakingPage .inner .cards .card .content .buttons button img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 139px;
+  height: 40px;
+}
+.stakingPage .inner .cards .card .content .buttons button p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 160%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #715021;
+}
+
+/*# sourceMappingURL=StakingPage.module.css.map */
