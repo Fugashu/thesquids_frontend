@@ -73,6 +73,7 @@
 }
 .home .innerWrapper .icons .icon:not(:first-child) {
   margin-left: 32px;
+  margin-right: 32px;
 }
 @media all and (min-width: 1440px) {
   .home .innerWrapper .icons {

@@ -79,6 +79,7 @@ export const Home: FC<IHome> = () => {
           {["twitter", "linktree"].map((icon) => (
             <SocialIcon key={icon} icon={icon} className={style.icon} />
           ))}
+
           <MetaMaskButton
             connectH={connectH}
             connectC={connectC}
