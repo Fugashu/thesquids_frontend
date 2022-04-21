@@ -33,7 +33,7 @@ export async function getConnectedSigner() {
 
 export async function connectWallet() {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  await CojodiNetworkSwitcher.switchToChain(chainRpcData.rinkeby);
+  await CojodiNetworkSwitcher.switchToChain(chainRpcData.eth_mainnet);
   await provider.send("eth_requestAccounts", []);
   signer = provider.getSigner();
 }
