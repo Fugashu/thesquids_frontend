@@ -2,20 +2,17 @@ import keccak256 from "keccak256";
 import { MerkleTree } from "merkletreejs";
 import { ethers } from "ethers";
 import axios from "axios";
-import {
-  mintingContractAbiRinkeby,
-  mintingContractAddressRinkeby,
-} from "../ContractConfig";
+import { mintingContractAbi, mintingContractAddress } from "../ContractConfig";
 import {
   createContractObject,
   getConnectedSigner,
   getConnectedSignerAddress,
-} from "./MetamaskWallet";
+} from "../MetamaskConnection/MetamaskWallet";
 
 export var mintingContract: ethers.Contract;
 export var numSquidsMinted: number;
 
-const apiUrl = "http://127.0.0.1:8000/wl";
+const apiUrl = "https://minting.dns.army/squids/api/whitelist";
 
 export async function updateSupply() {
   try {
@@ -33,8 +30,8 @@ async function createMintingContract() {
   if (mintingContract === undefined) {
     try {
       mintingContract = await createContractObject(
-        mintingContractAddressRinkeby,
-        mintingContractAbiRinkeby,
+        mintingContractAddress,
+        mintingContractAbi,
         await getConnectedSigner()
       );
     } catch (error) {

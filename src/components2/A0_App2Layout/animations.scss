@@ -1,0 +1,47 @@
+.cloudLeft {
+  animation-duration: 80s;
+  animation-name: leftToRight;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.cloudRight {
+  animation-duration: 80s;
+  animation-name: rightToLeft;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes leftToRight {
+  0% {
+    left: 0;
+    transform: translateX(0%);
+  }
+  50% {
+    left: 100%;
+    transform: translateX(-100%);
+
+  }
+  100% {
+    left: 0;
+    transform: translateX(0%);
+
+  }
+}
+
+@keyframes rightToLeft {
+  0% {
+    right: 0;
+    transform: translateX(0%);
+  }
+  50% {
+    right: 100%;
+    transform: translateX(100%);
+
+  }
+  100% {
+    right: 0;
+    transform: translateX(0%);
+
+  }
+}

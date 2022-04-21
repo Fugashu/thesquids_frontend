@@ -1,4 +1,4 @@
-export const mintingContractAbiRinkeby = [
+export const mintingContractAbi = [
   {
     inputs: [
       { internalType: "address", name: "dev1_", type: "address" },
@@ -346,5 +346,5 @@ export const mintingContractAbiRinkeby = [
     type: "function",
   },
 ];
-export const mintingContractAddressRinkeby =
-  "0x1fed6C2f27Da508997Ef454F33Af0015bd7d22e0";
+export const mintingContractAddress =
+  "0x1b7398C07E368DD604a8fA0Ca867fDCDC890834e";
