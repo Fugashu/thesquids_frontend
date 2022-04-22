@@ -347,4 +347,4 @@ export const mintingContractAbi = [
   },
 ];
 export const mintingContractAddress =
-  "0x1b7398C07E368DD604a8fA0Ca867fDCDC890834e";
+  "0x1fed6C2f27Da508997Ef454F33Af0015bd7d22e0";

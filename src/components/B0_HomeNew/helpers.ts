@@ -1,4 +1,4 @@
-export const dateStart = new Date(2022, 4, 24, 6, 0, 0); // дата начала
+export const dateStart = new Date(2022, 4, 24, 12, 0, 0); // дата начала
 
 export const convertToTwoDigit = (num: number): string =>
   num > 9 ? String(num) : `0${num}`;

@@ -84,7 +84,7 @@ export async function mint(amount: number) {
 
   console.log("WL Sale Status: " + isWhitelistSale);
   if (!isWhitelistSale) {
-    alert("The whitelist sale is currently not active.");
+    alert("Minting is currently not active.");
     return;
   }
 
