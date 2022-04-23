@@ -25,13 +25,7 @@ import { mint, updateSupply } from "../cojodi/Minting/Minting";
 import { MetaMaskButton } from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
 const texts = [
-  ["Whitelist Sale Start: ", "6:00pm CET on 23.04.2022"],
-  ["Whitelist Sale End: ", "6:00am CET on 24.04.2022"],
-  ["Waitlist Sale Start: ", "6:00am CET on 24.04.2022"],
-  ["Waitlist Sale End: ", "12:00pm CET on 24.04.2022"],
-  ["Mint Price: ", "0.1 Eth"],
-  ["Max Mint Quantity: ", "1 per wallet"],
-];
+''];
 
 export const HomeNew = () => {
   const max = 1;
@@ -41,8 +35,8 @@ export const HomeNew = () => {
   const [timeIsOver, setTimeIsOver] = useState(false);
   const [time, setTime] = useState(0);
   const [start, setStart] = useState(false);
-  const [amountMintedText, setAmountMintedText] = useState("????/2000 Minted");
-
+  const [amountMintedText, setAmountMintedText] = useState("2000/2000 Minted");
+/*
   async function updateSupplyText() {
     let minted = await updateSupply();
     if (minted === -1) {
@@ -59,7 +53,7 @@ export const HomeNew = () => {
 
     return () => clearInterval(interval);
   }, []);
-
+*/
   useEffect(() => {
     const time = new Date(dateStart.getTime() - new Date().getTime()).getTime();
     if (time > 0 && !timeIsOver) {
@@ -88,7 +82,7 @@ export const HomeNew = () => {
     <section className={style.homeNew}>
       <div className={style.innerWrapper}>
         <div className={style.leftBlock}>
-          <h1 className={style.title}>THE SQUIDS Minting</h1>
+          <h1 className={style.title}>THE SQUIDS Minting: SOLD OUT!</h1>
           <div className={style.texts}>
             {texts.map((text, index) => (
               <p key={index} className={style.text}>
@@ -97,14 +91,6 @@ export const HomeNew = () => {
               </p>
             ))}
           </div>
-
-          <div className={style.timerBlock}>
-            <span>{convertToTwoDigit(getHours(time))}</span>
-            <span>:</span>
-            <span>{convertToTwoDigit(getMins(time))}</span>
-          </div>
-
-          <p className={style.until}>Until minting closes</p>
 
           <div className={style.icons}>
             <MetaMaskButton
@@ -157,15 +143,7 @@ export const HomeNew = () => {
               <img src={total} alt="" className={style.arrow} />
             </div>
 
-            <ButtonLink
-              imgDefault={mintNowDefault}
-              imgHover={mintNowHover}
-              imgClick={mintNowClick}
-              className={style.mintNow}
-              onClick={() => {
-                mint(count);
-              }}
-            />
+
           </div>
         </div>
       </div>
