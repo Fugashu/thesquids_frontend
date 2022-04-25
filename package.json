@@ -37,6 +37,8 @@
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "4.0.3",
     "react-use-hotjar": "^1.2.1",
+    "socket.io": "^4.5.0",
+    "socket.io-client": "^4.5.0",
     "stream-chat": "^6.4.0",
     "stream-chat-react": "^8.0.0",
     "swiper": "6.8.4",

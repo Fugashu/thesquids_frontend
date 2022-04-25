@@ -9,6 +9,8 @@ import { chatItems, leaderboardCards, playPageTabs } from "./constants";
 import { useFormik } from "formik";
 import buttonBack from "../../assets/png/buttons/numberButton.png";
 import { RecordView } from "../../components/Tournaments/TournamentsNew";
+import ChatRoom from "../../components/cojodi/Chat/ChatRoom";
+import useChat from "../../components/cojodi/Chat/useChat";
 
 interface IValues {
   message: string;
@@ -29,6 +31,19 @@ export const PlayPage = () => {
     initialValues,
     onSubmit,
   });
+
+  const  roomId  = 1; // Gets roomId from URL
+  const { messages, sendMessage } = useChat(roomId); // Creates a websocket and manages messaging
+  const [newMessage, setNewMessage] = React.useState(""); // Message to be sent
+
+  const handleNewMessageChange = (event:any) => {
+    setNewMessage(event.target.value);
+  };
+
+  const handleSendMessage = () => {
+    sendMessage(newMessage);
+    setNewMessage("");
+  };
 
   return (
     <div className={style.playPage}>
@@ -107,17 +122,18 @@ export const PlayPage = () => {
                   ))}
                 </div>
 
-                <form className={style.form} onSubmit={formik.handleSubmit}>
+                <form className={style.form} >
                   <div className={style.back}>{svgIcons.chatForm}</div>
                   <div className={style.chatFormContent}>
                     <input
                       type="text"
                       placeholder="Write message"
-                      {...formik.getFieldProps("message")}
+                      onChange={handleNewMessageChange}
                     />
-                    <button type="submit">
+                    <button onClick={handleSendMessage}>
                       <img src={buttonBack} alt="" />
                       {svgIcons.send}
+
                     </button>
                   </div>
                 </form>

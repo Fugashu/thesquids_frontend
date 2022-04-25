@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 // @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -14,6 +14,8 @@ import { ErrorPage } from "../../components2/B4_ErrorPage/ErrorPage";
 import { PlayPage } from "../../components2/B5_PlayPage/PlayPage";
 import { TournamentPage } from "../../components2/B6_TournamentPage/TournamentPage";
 import { StakingPage } from "../../components2/B7_StakingPage/StakingPage";
+import Home from "../cojodi/Chat/Home";
+import ChatRoom from "../cojodi/Chat/ChatRoom";
 
 export const AppContainer = () => {
   AOS.init();
@@ -35,5 +37,6 @@ export const AppContainer = () => {
         </Routes>
       </HashRouter>
     </Provider>
+
   );
 };
