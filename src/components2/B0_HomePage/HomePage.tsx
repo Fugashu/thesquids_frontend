@@ -48,6 +48,12 @@ export const HomePage = () => {
       icon: testRecordingImg,
       onClick: () => {},
     },
+    {
+      label: "Bridge",
+      to: "/app2/bridge",
+      icon: lootBoxImg,
+      onClick: () => {},
+    },
   ];
 
   return (

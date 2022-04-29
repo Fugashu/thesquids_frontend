@@ -16,8 +16,6 @@ import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
 import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 import { useNavigate } from "react-router-dom";
 import { isUnlocked } from "../cojodi/MetamaskConnection/MetamaskWallet";
-let warningAlreadyDisplayed = false;
-
 interface IHome {
   onClickHandler: () => void;
 }
@@ -26,25 +24,15 @@ export const Home: FC<IHome> = () => {
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const navigateToTournament = useCallback(
-    () => navigate("/home2", { replace: true }),
+    () => navigate("/app2", { replace: true }),
     [navigate]
   );
-
-  // eslint-disable-next-line
   async function tryNavigateToTournament() {
     if (!(await isUnlocked())) {
       alert("Connect your wallet to continue");
       return;
     }
-
-    if (warningAlreadyDisplayed) {
-      navigateToTournament();
-      return;
-    }
-    warningAlreadyDisplayed = true;
-    alert(
-      "CAUTION: THE NEXT TIME YOU CLICK ON ENTER YOU WILL BE WITHIN THE TOURNAMENT"
-    );
+    navigateToTournament();
   }
   return (
     <section
@@ -72,7 +60,7 @@ export const Home: FC<IHome> = () => {
           imgHover={enterH}
           imgClick={enterC}
           className={style.enterButton}
-          onClick={() => navigate("/app2")}
+          onClick={tryNavigateToTournament}
         />
 
         <div className={style.icons}>

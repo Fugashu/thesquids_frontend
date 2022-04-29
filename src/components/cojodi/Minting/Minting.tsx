@@ -5,8 +5,8 @@ import axios from "axios";
 import { mintingContractAbi, mintingContractAddress } from "../ContractConfig";
 import {
   createContractObject,
-  getConnectedSigner,
   getConnectedSignerAddress,
+  signer,
 } from "../MetamaskConnection/MetamaskWallet";
 
 export var mintingContract: ethers.Contract;
@@ -26,13 +26,13 @@ export async function updateSupply() {
   }
 }
 
-async function createMintingContract() {
+export async function createMintingContract() {
   if (mintingContract === undefined) {
     try {
       mintingContract = await createContractObject(
         mintingContractAddress,
         mintingContractAbi,
-        await getConnectedSigner()
+        signer
       );
     } catch (error) {
       console.log("Error while creating mint contract" + error);
@@ -47,7 +47,7 @@ export async function makeMinterProof(whitelistAddresses: any) {
   return merkleTree.getHexProof(keccak256(await getConnectedSignerAddress()));
 }
 
-export default async function fetchAPI(apiString: string) {
+async function fetchAPI(apiString: string) {
   console.log("Fetching " + apiString);
   await axios
     .get(apiString)

@@ -1,23 +1,31 @@
 import { ContractInterface, ethers, Signer } from "ethers";
 import { CojodiNetworkSwitcher } from "../BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../BackendCalls/chainRpcData";
+import {
+  mintingContractAbi,
+  mintingContractAddress,
+  mumbaiNFTContractAbi,
+  mumbaiNFTContractAddress,
+  mumbaiTokenContractAbi,
+  mumbaiTokenContractAddress,
+  mumbaiTournamentContractAbi,
+  mumbaiTournamentContractAddress,
+} from "../ContractConfig";
 
-let signer: ethers.Signer;
-
+export var signer: ethers.Signer;
+export var mumbaiNFTContract: ethers.Contract;
+export var mumbaiTournamentContract: ethers.Contract;
+export var mumbaiTokenContract: ethers.Contract;
+export var mintingContract: ethers.Contract;
+let provider: ethers.providers.Web3Provider;
 export async function isUnlocked() {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-  let unlocked;
-
   try {
-    const accounts = await provider.listAccounts();
-
-    unlocked = accounts.length > 0;
+    await getConnectedSignerAddress();
   } catch (e) {
-    unlocked = false;
+    return false;
   }
 
-  return unlocked;
+  return true;
 }
 
 export async function getConnectedSignerAddress() {
@@ -25,23 +33,56 @@ export async function getConnectedSignerAddress() {
   console.log("Signer public address:" + connectedAddress);
   return connectedAddress;
 }
-export async function getConnectedSigner() {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  signer = provider.getSigner();
-  return signer;
-}
+window.onload = async function () {
+  await connectWallet();
+};
 
 export async function connectWallet() {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  await CojodiNetworkSwitcher.switchToChain(chainRpcData.eth_mainnet);
+  provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   await provider.send("eth_requestAccounts", []);
+  provider.on("network", (newNetwork, oldNetwork) => {
+    // When a Provider makes its initial connection, it emits a "network"
+    // event with a null oldNetwork along with the newNetwork. So, if the
+    // oldNetwork exists, it represents a changing network
+    if (oldNetwork) {
+      console.log("reloading");
+      window.location.reload();
+    }
+  });
   signer = provider.getSigner();
+
+  mintingContract = await createContractObject(
+    mintingContractAddress,
+    mintingContractAbi,
+    signer
+  );
+
+  mumbaiNFTContract = await createContractObject(
+    mumbaiNFTContractAddress,
+    mumbaiNFTContractAbi,
+    signer
+  );
+
+  mumbaiTournamentContract = await createContractObject(
+    mumbaiTournamentContractAddress,
+    mumbaiTournamentContractAbi,
+    signer
+  );
+
+  mumbaiTokenContract = await createContractObject(
+    mumbaiTokenContractAddress,
+    mumbaiTokenContractAbi,
+    signer
+  );
 }
 
 export async function pretendDisconnectWalletByReloading() {
   window.location.reload();
 }
 
+export async function getCurrentChainId() {
+  return await provider.getNetwork();
+}
 export async function createContractObject(
   contractAddress: string,
   contractAbi: ContractInterface,

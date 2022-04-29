@@ -11,21 +11,15 @@ import plusClick from "../../assets/svg/buttons/plus-c.svg";
 
 import total from "../../assets/png/home-total.png";
 
-import mintNowDefault from "../../assets/svg/buttons/mint-now-d.svg";
-import mintNowHover from "../../assets/svg/buttons/mint-now-h.svg";
-import mintNowClick from "../../assets/svg/buttons/mint-now-c.svg";
-
 import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
 import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
 import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 
-import { convertToTwoDigit, dateStart, getHours, getMins } from "./helpers";
+import { dateStart } from "./helpers";
 import { ButtonLink } from "../common/ButtonLink/ButtomLink";
-import { mint, updateSupply } from "../cojodi/Minting/Minting";
 import { MetaMaskButton } from "../cojodi/MetamaskConnection/connectToMetamaskButton";
 
-const texts = [
-''];
+const texts = [""];
 
 export const HomeNew = () => {
   const max = 1;
@@ -36,7 +30,7 @@ export const HomeNew = () => {
   const [time, setTime] = useState(0);
   const [start, setStart] = useState(false);
   const [amountMintedText, setAmountMintedText] = useState("2000/2000 Minted");
-/*
+  /*
   async function updateSupplyText() {
     let minted = await updateSupply();
     if (minted === -1) {
@@ -142,8 +136,6 @@ export const HomeNew = () => {
               </div>
               <img src={total} alt="" className={style.arrow} />
             </div>
-
-
           </div>
         </div>
       </div>

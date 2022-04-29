@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import style from "./HeaderButtons.module.scss";
 import clsx from "clsx";
 import { useAppDispatch } from "../../../store/hooks";
@@ -12,6 +12,7 @@ import {
 import src0 from "../../../assets/png/header2/btn0.png";
 import src1 from "../../../assets/png/header2/btn1.png";
 import src2 from "../../../assets/png/buttons/metamaskBtnIdle.png";
+import { getConnectedSignerAddress } from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
 
 interface IHeaderButtons {
   className?: string;
@@ -19,7 +20,7 @@ interface IHeaderButtons {
 
 export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const dispatch = useAppDispatch();
-
+  const [connectedWalletAddress, setConnectedWalletAddress] = useState("");
   const buttons = [
     {
       src: src0,
@@ -45,7 +46,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     },
     {
       src: src2,
-      text: "0xD31...9c2b",
+      text: connectedWalletAddress,
       label: "Gundy",
       onClick: () => {
         dispatch(setBurgerOpen(false));

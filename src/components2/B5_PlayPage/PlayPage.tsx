@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from "react";
 import style from "./PlayPage.module.scss";
 import { svgIcons } from "../../assets/svg/svgIcons";
@@ -5,7 +6,7 @@ import btn from "../../assets/png/buttons/play/button.png";
 import { useState } from "react";
 import clsx from "clsx";
 import numberButton from "../../assets/png/buttons/numberButton.png";
-import { chatItems, leaderboardCards, playPageTabs } from "./constants";
+import { chatItemsDefault, leaderboardCards, playPageTabs } from "./constants";
 import { useFormik } from "formik";
 import buttonBack from "../../assets/png/buttons/numberButton.png";
 import { RecordView } from "../../components/Tournaments/TournamentsNew";
@@ -18,7 +19,6 @@ interface IValues {
 
 export const PlayPage = () => {
   const [currentTab, setCurrentTab] = useState(0);
-
   const initialValues: IValues = {
     message: "",
   };
@@ -32,19 +32,24 @@ export const PlayPage = () => {
     onSubmit,
   });
 
-  const  roomId  = 1; // Gets roomId from URL
+  const roomId = 1; // Gets roomId from URL
   const { messages, sendMessage } = useChat(roomId); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = React.useState(""); // Message to be sent
 
-  const handleNewMessageChange = (event:any) => {
+  const handleNewMessageChange = (event: any) => {
+    setInputTextValue(event.target.value);
     setNewMessage(event.target.value);
   };
 
   const handleSendMessage = () => {
+    setInputTextValue("");
     sendMessage(newMessage);
     setNewMessage("");
   };
 
+  const [inputTextValue, setInputTextValue] = useState("");
+
+  // @ts-ignore
   return (
     <div className={style.playPage}>
       <div className={style.inner}>
@@ -113,19 +118,20 @@ export const PlayPage = () => {
             {currentTab === 1 && (
               <>
                 <div className={style.chat}>
-                  {chatItems.map(({ nickname, message }, index) => (
-                    <div key={index} className={style.chatItem}>
+                  {messages.map((message, i) => (
+                    <div key={i} className={style.chatItem}>
                       <div className={style.back}>{svgIcons.chatItemBack}</div>
-                      <p className={style.nickname}>{nickname}</p>
-                      <p className={style.message}>{message}</p>
+                      <p className={style.nickname}>{message["senderId"]}</p>
+                      <p className={style.message}>{message["body"]}</p>
                     </div>
                   ))}
                 </div>
 
-                <form className={style.form} >
+                <div className={style.form}>
                   <div className={style.back}>{svgIcons.chatForm}</div>
                   <div className={style.chatFormContent}>
                     <input
+                      value={inputTextValue}
                       type="text"
                       placeholder="Write message"
                       onChange={handleNewMessageChange}
@@ -133,10 +139,9 @@ export const PlayPage = () => {
                     <button onClick={handleSendMessage}>
                       <img src={buttonBack} alt="" />
                       {svgIcons.send}
-
                     </button>
                   </div>
-                </form>
+                </div>
 
                 <div className={style.chatBlur} />
               </>
