@@ -9,6 +9,7 @@ import trophyImg from "../../assets/png/newiconstheo/trophy 1.png";
 import lootBoxImg from "../../assets/png/newiconstheo/loot box 1.png";
 import whitelistMarketplaceImg from "../../assets/png/newiconstheo/whitelist marketplace 1.png";
 import testRecordingImg from "../../assets/png/newiconstheo/test recording 1.png";
+import BackendCallsInterface from "../../components/cojodi/BackendCalls/BackendCallsInterface";
 
 export interface IHomeCard {
   label: string;
@@ -61,6 +62,7 @@ export const HomePage = () => {
       <div className={style.inner}>
         <h1>First Tournament starting in:</h1>
         <p className={style.timer}>3D:24H:24M</p>
+        <BackendCallsInterface />
 
         <div className={style.links}>
           {links.map((link, index) => (

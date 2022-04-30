@@ -7,7 +7,6 @@ import {
   mumbaiTokenContract,
   mumbaiTournamentContract,
 } from "../MetamaskConnection/MetamaskWallet";
-import { mintingContract } from "../Minting/Minting";
 import { mumbaiTournamentContractAddress } from "../ContractConfig";
 declare var window: any;
 var signer: ethers.Signer;
@@ -24,7 +23,9 @@ const BackendCallsInterface = () => {
   const register = async () => {
     await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
 
-    try {
+    await mumbaiTokenContract.approve(mumbaiTournamentContractAddress, 2);
+
+    /*try {
       let tx = await mumbaiTokenContract.approve(
         mumbaiTournamentContractAddress,
         2
@@ -41,7 +42,7 @@ const BackendCallsInterface = () => {
     } catch (e) {
       console.log(`Error while registering for tournament: ${e}`);
       alert("Error: Registration failed.");
-    }
+    }*/
   };
 
   const buyDNA = async () => {

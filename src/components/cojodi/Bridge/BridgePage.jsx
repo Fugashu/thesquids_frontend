@@ -118,7 +118,6 @@ export const BridgePage = () => {
           >
             <p style={{ color: "red" }}>Switch To Polygon</p>
           </button>
-          <BackendCallsInterface />
         </div>
         <div className={style.cards}>
           {ownedNFTs.map((nft) => (
