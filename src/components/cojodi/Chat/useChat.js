@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 const nick = "User";
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
-const SOCKET_SERVER_URL =
-  "https://9897-2003-d5-6f2c-2300-b1e6-2c54-2e0-8422.eu.ngrok.io";
+const SOCKET_SERVER_URL = "https://minting.dns.army/squids/chat";
 
 const useChat = (roomId) => {
   const [messages, setMessages] = useState([]); // Sent and received messages
@@ -13,10 +12,12 @@ const useChat = (roomId) => {
     // Creates a WebSocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
+      rejectUnauthorized: false,
     });
 
     // Listens for incoming messages
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+      console.log("message received");
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,

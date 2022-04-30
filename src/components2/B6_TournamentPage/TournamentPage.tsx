@@ -11,7 +11,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import gamepadImg from "../../assets/png/newiconstheo/Game 1.png";
-import lootBoxImg from "../../assets/png/newiconstheo/loot box 1.png";
+import stakeImg from "../../assets/png/newiconstheo/staking 1.png";
+import bridgeImg from "../../assets/png/newiconstheo/bridge 1.png";
 import voteImg from "../../assets/png/newiconstheo/Vote 1.png";
 
 export const TournamentPage = () => {
@@ -37,9 +38,15 @@ export const TournamentPage = () => {
     },
     {
       title: "",
-      icon: lootBoxImg,
-      buttonLabel: "STAKE YOUR NFT",
+      icon: stakeImg,
+      buttonLabel: "STAKE",
       onClick: () => navigate("/app2/stacking"),
+    },
+    {
+      title: "",
+      icon: bridgeImg,
+      buttonLabel: "BRIDGE",
+      onClick: () => navigate("/app2/bridge"),
     },
     {
       title: "Start in 3H:24M:24S",
