@@ -1,26 +1,11 @@
 import * as React from "react";
-import { useMoralisWeb3Api } from "react-moralis";
-import { useMoralis } from "react-moralis";
+
 import style from "./StakingPage.module.scss";
 import { svgIcons } from "../../assets/svg/svgIcons";
-import nftGif from "../../assets/gif/stacking.gif";
 
 import btn from "../../assets/png/buttons/staking page button/desktop.png";
 
-import slide0 from "../../assets/gif/ryu.gif";
-import slide1 from "../../assets/gif/sherif.gif";
-import slide2 from "../../assets/gif/megaman.gif";
-import slide3 from "../../assets/gif/geisha.gif";
-import slide4 from "../../assets/gif/female astraunaut.gif";
-import slide5 from "../../assets/gif/demon.gif";
-import slide6 from "../../assets/gif/tracksuit.gif";
-import slide7 from "../../assets/gif/seach.gif";
-import slide8 from "../../assets/gif/sorcerer.gif";
 import { useEffect, useState } from "react";
-import {
-  createMintingContract,
-  mintingContract,
-} from "../../components/cojodi/Minting/Minting";
 import {
   connectWallet,
   getConnectedSignerAddress,
@@ -30,7 +15,10 @@ import {
 import axios from "axios";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
-import { mumbaiTournamentContractAddress } from "../../components/cojodi/ContractConfig";
+import {
+  maxSupply,
+  mumbaiTournamentContractAddress,
+} from "../../components/cojodi/ContractConfig";
 
 export const StakingPage = () => {
   const [stakedCount, setStakedCount] = useState(0);
@@ -38,7 +26,7 @@ export const StakingPage = () => {
 
   useEffect(async () => {
     await connectWallet();
-    fetchNFTs();
+    await fetchNFTs();
   }, []);
 
   async function setApprovalForAll() {
@@ -94,7 +82,7 @@ export const StakingPage = () => {
       stakedTokenIds.push(parseInt(element._hex))
     );
     //todo 1 to 2000
-    for (let i = 18; i < 38; ++i) {
+    for (let i = 1; i < maxSupply; ++i) {
       let ownerAddr = await mumbaiNFTContract.ownerOf(i);
       console.log(i);
       if (ownerAddr === signerAddr || stakedTokenIds.includes(i)) {

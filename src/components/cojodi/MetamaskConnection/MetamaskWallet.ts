@@ -1,9 +1,11 @@
 import { ContractInterface, ethers, Signer } from "ethers";
-import { CojodiNetworkSwitcher } from "../BackendCalls/CojodiNetworkSwitcher";
-import chainRpcData from "../BackendCalls/chainRpcData";
 import {
+  goerliBridgeContractAbi,
+  goerliBridgeContractAddress,
   mintingContractAbi,
   mintingContractAddress,
+  mumbaiBridgeContractAbi,
+  mumbaiBridgeContractAddress,
   mumbaiNFTContractAbi,
   mumbaiNFTContractAddress,
   mumbaiTokenContractAbi,
@@ -17,6 +19,8 @@ export var mumbaiNFTContract: ethers.Contract;
 export var mumbaiTournamentContract: ethers.Contract;
 export var mumbaiTokenContract: ethers.Contract;
 export var mintingContract: ethers.Contract;
+export var goerliBridgeContract: ethers.Contract;
+export var mumbaiBridgeContract: ethers.Contract;
 let provider: ethers.providers.Web3Provider;
 export async function isUnlocked() {
   try {
@@ -74,6 +78,18 @@ export async function connectWallet() {
     mumbaiTokenContractAbi,
     signer
   );
+
+  goerliBridgeContract = await createContractObject(
+    goerliBridgeContractAddress,
+    goerliBridgeContractAbi,
+    signer
+  );
+
+  mumbaiBridgeContract = await createContractObject(
+    mumbaiBridgeContractAddress,
+    mumbaiBridgeContractAbi,
+    signer
+  );
 }
 
 export async function pretendDisconnectWalletByReloading() {
@@ -81,7 +97,7 @@ export async function pretendDisconnectWalletByReloading() {
 }
 
 export async function getCurrentChainId() {
-  return await provider.getNetwork();
+  return provider.getNetwork();
 }
 export async function createContractObject(
   contractAddress: string,
@@ -94,4 +110,20 @@ export async function createContractObject(
   console.log("Signer Address:" + (await getConnectedSignerAddress()));
 
   return new ethers.Contract(contractAddress, contractAbi, connectedSigner);
+}
+
+export async function setApprovalForAll(
+  rootContract: ethers.Contract,
+  targetContractAddress: string
+) {
+  let isAlreadyApproved = await rootContract.isApprovedForAll(
+    await getConnectedSignerAddress(),
+    targetContractAddress
+  );
+
+  if (isAlreadyApproved) {
+    return;
+  }
+  let tx = await rootContract.setApprovalForAll(targetContractAddress, true);
+  await tx.wait();
 }

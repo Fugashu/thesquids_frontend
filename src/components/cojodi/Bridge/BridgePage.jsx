@@ -1,24 +1,27 @@
 import * as React from "react";
-
 import style from "./Bridge.module.scss";
 import { svgIcons } from "../../../assets/svg/svgIcons";
-
 import btn from "../../../assets/png/buttons/staking page button/desktop.png";
-
 import { useEffect, useState } from "react";
-
+import axios from "axios";
+import { CojodiNetworkSwitcher } from "../BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../BackendCalls/chainRpcData";
+import {
+  goerliBridgeContractAddress,
+  maxSupply,
+  mumbaiBridgeContractAddress,
+} from "../ContractConfig";
 import {
   connectWallet,
   getConnectedSignerAddress,
   getCurrentChainId,
+  setApprovalForAll,
   mumbaiNFTContract,
-  mumbaiTournamentContract,
   mintingContract,
+  goerliBridgeContract,
+  mumbaiBridgeContract,
 } from "../MetamaskConnection/MetamaskWallet";
-import axios from "axios";
-import { CojodiNetworkSwitcher } from "../BackendCalls/CojodiNetworkSwitcher";
-import chainRpcData from "../BackendCalls/chainRpcData";
-import { mumbaiTournamentContractAddress } from "../ContractConfig";
+import BackendCallsInterface from "../BackendCalls/BackendCallsInterface";
 
 export const BridgePage = () => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);
@@ -28,99 +31,45 @@ export const BridgePage = () => {
     await fetchNFTs();
   }, []);
 
-  async function setApprovalForAll() {
-    let isAlreadyApproved = await mumbaiNFTContract.isApprovedForAll(
-      await getConnectedSignerAddress(),
-      mumbaiTournamentContractAddress
-    );
-
-    if (isAlreadyApproved) {
-      return;
-    }
-    let tx = await mumbaiNFTContract.setApprovalForAll(
-      mumbaiTournamentContractAddress,
-      true
-    );
-
-    await tx.wait();
-  }
   async function deposit(id) {
     //todo deposit
-    console.log(`trying to stake token with id:${id}`);
-    await setApprovalForAll();
-    let tx = await mumbaiTournamentContract.stake([id]);
+    console.log(`trying to deposit token with id:${id}`);
+    await setApprovalForAll(mintingContract, goerliBridgeContractAddress);
+    let tx = await goerliBridgeContract.deposit([id]);
     await tx.wait();
     await fetchNFTs();
   }
 
   async function withdraw(id) {
     //todo withdraw
-    console.log(`trying to unstake token with id:${id}`);
-    await setApprovalForAll();
-    let tx = await mumbaiTournamentContract.unstake([id]);
+    console.log(`trying to withdraw token with id:${id}`);
+    await setApprovalForAll(mumbaiNFTContract, mumbaiBridgeContractAddress);
+    let tx = await mumbaiBridgeContract.withdraw([id]);
     await tx.wait();
     await fetchNFTs();
   }
 
-  async function fetchETHNfts() {
-    let signerAddr = await getConnectedSignerAddress();
-    console.log("connected signer " + signerAddr);
-
-    //todo 1 to 2000
-    for (let i = 1; i <= 20; ++i) {
-      let ownerAddr = await mintingContract.ownerOf(i);
-      console.log(i);
-      if (ownerAddr === signerAddr) {
-        console.log("owner of " + i);
-        let imageSrc = "undefined";
-        imageSrc = await mintingContract.tokenURI(i);
-        console.log(imageSrc);
-
-        try {
-          imageSrc = imageSrc.split("ipfs://");
-          imageSrc = "https://infura-ipfs.io/ipfs/" + imageSrc[1];
-          console.log(imageSrc);
-
-          imageSrc = await axios.get(imageSrc).then((response) => {
-            let imgLink = response.data.image;
-            imgLink = imgLink.split("ipfs://");
-            imgLink = "https://infura-ipfs.io/ipfs/" + imgLink[1];
-            console.log(imgLink);
-            return imgLink;
-          });
-        } catch (e) {
-          console.log("Error while fetching token URI");
-        }
-
-        const nft = {
-          id: i,
-          image: imageSrc,
-          chain: "eth",
-        };
-        setOwnedNFTs((old) => [...old, nft]);
-      }
-    }
-  }
-
   async function fetchNFTs() {
     setOwnedNFTs([]);
+    let currentChainId = (await getCurrentChainId()).chainId;
+    let signerAddr = await getConnectedSignerAddress();
+    let rootContract = mumbaiNFTContract;
+    let chainString = "matic";
+
     //we are in eth
-    if ((await getCurrentChainId()).chainId === 4) {
-      await fetchETHNfts();
-      return;
+    if (currentChainId === 1 || currentChainId === 4) {
+      console.log("we are in eth");
+      rootContract = mintingContract;
+      chainString = "eth";
     }
 
-    let signerAddr = await getConnectedSignerAddress();
-    console.log("connected signer " + signerAddr);
-
     //todo 1 to 2000
-    for (let i = 1; i <= 20; ++i) {
-      let ownerAddr = await mumbaiNFTContract.ownerOf(i);
+    for (let i = 1; i <= maxSupply; ++i) {
+      let ownerAddr = await rootContract.ownerOf(i);
       console.log(i);
       if (ownerAddr === signerAddr) {
         console.log("owner of " + i);
-        let imageSrc = "undefined";
-        imageSrc = await mumbaiNFTContract.tokenURI(i);
+        let imageSrc = await rootContract.tokenURI(i);
 
         try {
           imageSrc = imageSrc.split("ipfs://");
@@ -141,7 +90,7 @@ export const BridgePage = () => {
         const nft = {
           id: i,
           image: imageSrc,
-          chain: "poly",
+          chain: chainString,
         };
         setOwnedNFTs((old) => [...old, nft]);
       }
@@ -169,6 +118,7 @@ export const BridgePage = () => {
           >
             <p style={{ color: "red" }}>Switch To Polygon</p>
           </button>
+          <BackendCallsInterface />
         </div>
         <div className={style.cards}>
           {ownedNFTs.map((nft) => (
