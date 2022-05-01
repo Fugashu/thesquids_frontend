@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import style from "./HeaderButtons.module.scss";
 import clsx from "clsx";
 import { useAppDispatch } from "../../../store/hooks";
@@ -20,7 +20,9 @@ interface IHeaderButtons {
 
 export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const dispatch = useAppDispatch();
-  const [connectedWalletAddress, setConnectedWalletAddress] = useState("");
+
+  const [walletAddr, setWalletAddr] = useState("0x...");
+
   const buttons = [
     {
       src: src0,
@@ -46,8 +48,8 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     },
     {
       src: src2,
-      text: connectedWalletAddress,
-      label: "Gundy",
+      text: walletAddr,
+      label: "Nickname",
       onClick: () => {
         dispatch(setBurgerOpen(false));
       },

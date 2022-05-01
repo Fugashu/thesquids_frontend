@@ -3,8 +3,12 @@ import axios from "axios";
 import * as React from "react";
 import BackendCallsInterface from "../cojodi/BackendCalls/BackendCallsInterface";
 import { getConnectedSignerAddress } from "../cojodi/MetamaskConnection/MetamaskWallet";
-import style from "../../components2/B5_PlayPage/PlayPage.module.scss";
-import btn from "../../assets/png/buttons/play/button.png";
+import style from "./PlayPage.module.scss";
+import playHover from "../../assets/png/buttons/play page - play/play_hover.png";
+import playDefault from "../../assets/png/buttons/play page - play/play_default.png";
+import playClicked from "../../assets/png/buttons/play page - play/play_clicked.png";
+
+import { ButtonCustom } from "../../components2/common/ButtonCustom/ButtonCustom";
 
 export const RecordView = () => {
   let score: any;
@@ -94,10 +98,21 @@ export const RecordView = () => {
   };
   return (
     <div>
-      <button className={style.playBtn} onClick={startRecording}>
-        <img src={btn} alt="" />
-        <p>play</p>
-      </button>
+      <ButtonCustom
+        className={style.playBtn}
+        onClick={startRecording}
+        widthMobile={861}
+        heightMobile={75}
+        widthDesktop={861}
+        heightDesktop={75}
+        imgMobileDefault={playDefault}
+        imgMobileClick={playClicked}
+        imgDesktopDefault={playDefault}
+        imgDesktopHover={playHover}
+        imgDesktopClick={playClicked}
+      >
+        <p></p>
+      </ButtonCustom>
     </div>
   );
 };

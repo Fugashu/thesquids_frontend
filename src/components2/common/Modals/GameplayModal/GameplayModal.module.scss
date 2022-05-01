@@ -19,11 +19,19 @@
       padding: 32px 0 0;
     }
 
-    .back {
+    .backModal {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
+      width: 320px;
+      height: 617px;
+
+      @include desktop() {
+        width: 820px;
+        height: 788px;
+      }
     }
 
     .closeButton {
@@ -58,12 +66,17 @@
     }
 
     .field {
+      display: block;
       position: relative;
       z-index: 2;
       margin-top: 24px;
+      width: 288px;
+      height: 297px;
 
       @include desktop() {
         margin-top: 32px;
+        width: 756px;
+        height: 525px;
       }
     }
 
@@ -79,15 +92,35 @@
         margin-top: 32px;
         flex-direction: row;
       }
-    }
 
-    button:last-child {
-      margin-top: 12px;
-
-      @include desktop() {
-        margin-top: 0;
-        margin-left: 40px;
+      .legitBtn, .cheatingBtn {
+        p {
+          @include PressStart();
+          font-size: 20px;
+          line-height: 160%;
+          align-items: center;
+          letter-spacing: -0.02em;
+          text-transform: uppercase;
+        }
       }
+
+      .legitBtn p {
+        color: #548C24;
+      }
+
+      .cheatingBtn {
+        margin-top: 12px;
+
+        @include desktop() {
+          margin-top: 0;
+          margin-left: 40px;
+        }
+
+        p {
+          color: #9A1C1C;
+        }
+      }
+
     }
 
   }

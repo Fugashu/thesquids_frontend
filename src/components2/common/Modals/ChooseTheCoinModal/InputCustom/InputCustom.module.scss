@@ -1,0 +1,88 @@
+@import "../../../../../assets/scss/app.scss";
+
+.inputCustom {
+  position: relative;
+  width: 288px;
+  height: 100px;
+
+  @include desktop() {
+    width: 560px;
+    height: 139px;
+  }
+
+  .back {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 288px;
+    height: 100px;
+
+    @include desktop() {
+      width: 560px;
+      height: 139px;
+    }
+  }
+
+  .inputContent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+
+    @include desktop() {
+      padding-left: 40px;
+    }
+
+    .input {
+      position: relative;
+      z-index: 10;
+      background: none;
+      border: none;
+      outline: none;
+      @include PressStart();
+      font-size: 14px;
+      line-height: 145%;
+      text-transform: uppercase;
+      color: #1C162B;
+      width: calc(100% - 64px);
+      //min-width: 0;
+
+      @include desktop() {
+        font-size: 18px;
+        line-height: 160%;
+        width: calc(100% - 80px);
+      }
+    }
+
+    .placeholder {
+      position: absolute;
+      z-index: 5;
+      left: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      @include PressStart();
+      font-size: 14px;
+      line-height: 145%;
+      text-transform: uppercase;
+      color: #1C162B;
+      transition: 0.3s;
+
+      @include desktop() {
+        left: 40px;
+        font-size: 18px;
+        line-height: 160%;
+      }
+
+      &_top {
+        transform: translateY(-170%);
+        color: rgba(28, 22, 43, 0.5);
+      }
+    }
+
+  }
+}

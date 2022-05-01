@@ -1,0 +1,181 @@
+@import "../../../../assets/scss/app.scss";
+
+.openBoxModal {
+  @include modal();
+
+  .content {
+    position: relative;
+    width: 320px;
+    height: 540px;
+    box-sizing: border-box;
+
+    @include desktop() {
+      width: 506px;
+      height: 715px;
+    }
+
+    .back {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 320px;
+      height: 540px;
+
+      @include desktop() {
+        width: 506px;
+        height: 715px;
+      }
+    }
+
+    .closeButton {
+      position: absolute;
+      z-index: 3;
+      top: 16px;
+      right: 16px;
+
+      @include desktop() {
+        top: 34px;
+        right: 35px;
+      }
+    }
+
+    .cardContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding: 24px 16px 0;
+
+      @include desktop() {
+        padding: 34px 35px 0;
+      }
+
+
+      .title {
+        @include modalTitle();
+      }
+
+      .icon {
+        display: block;
+        margin-top: 32px;
+        width: 120px;
+        height: 120px;
+
+        @include desktop() {
+          width: 178px;
+          height: 178px;
+        }
+      }
+
+      .infoBox {
+        align-self: stretch;
+        margin-top: 16px;
+
+        @include desktop() {
+          margin-top: 32px;
+        }
+
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          &:not(:first-child) {
+            margin-top: 16px;
+          }
+
+          &_total {
+            margin-top: 37px!important;
+
+            @include desktop() {
+              margin-top: 53px!important;
+            }
+          }
+
+          p {
+            white-space: nowrap;
+          }
+
+          p:nth-child(1) {
+            @include PressStart();
+            font-size: 14px;
+            line-height: 150%;
+            letter-spacing: -0.02em;
+            color: #000000;
+
+            @include desktop() {
+              font-size: 14px;
+            }
+          }
+
+          p:nth-child(2) {
+            @include PressStart();
+            font-size: 17px;
+            line-height: 150%;
+            text-transform: uppercase;
+            color: #130B25;
+
+            @include desktop() {
+              font-size: 24px;
+            }
+          }
+
+          .buttonBlock {
+            display: flex;
+            align-items: center;
+
+            button {
+              @include button();
+
+              img {
+                display: block;
+                width: 32px;
+                height: 32px;
+
+                @include desktop() {
+                  width: 40px;
+                  height: 40px;
+                }
+              }
+
+            }
+
+            .count {
+              @include PressStart();
+              font-size: 17px;
+              line-height: 135%;
+              color: #000000;
+              margin: 0 20px;
+
+              @include desktop() {
+                font-size: 18px;
+                margin: 0 32px;
+              }
+            }
+
+          }
+
+        }
+
+      }
+
+      .purchaseBtn {
+        margin-top: 24px;
+
+        @include desktop() {
+          margin-top: 32px;
+        }
+
+        p {
+          @include buttonText();
+        }
+      }
+
+    }
+
+
+  }
+}

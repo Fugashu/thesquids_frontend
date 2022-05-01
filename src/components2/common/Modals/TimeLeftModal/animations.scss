@@ -1,0 +1,23 @@
+.runner {
+  animation-duration: 60s;
+  animation-name: anim;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes anim {
+  0% {
+    width: 100%;
+    background-color: #53A600;
+  }
+  75% {
+    width: 25%;
+    background-color: #C81B1B;
+  }
+  100% {
+    width: 0%;
+    background-color: #C81B1B;
+  }
+
+}
+

@@ -5,7 +5,7 @@ import {useAppDispatch} from "../../../../store/hooks";
 import {setLeaderboardModal, setModal, setStakingNftErrorModal} from "../../../../store/appSlice";
 import {useOutsideClick} from "../../../../hooks/useOutsideClick";
 import {CloseButton} from "../CloseButton/CloseButton";
-import {svgIcons} from "../../../../assets/svg/svgIcons";
+import modal from "../../../../assets/png/modal/error.png";
 
 export const StakingNftErrorModal = () => {
     const ref = useRef<HTMLDivElement>(null);
@@ -24,9 +24,7 @@ export const StakingNftErrorModal = () => {
             <div className={style.content} ref={ref}>
                 <CloseButton onClick={onClose} className={style.closeButton}/>
 
-                <div className={style.back}>
-                    {svgIcons.stakingNftErrorModal}
-                </div>
+                <img className={style.back} src={modal} alt=""/>
 
                 <p className={style.title}>Error</p>
                 <p className={style.description}>You need to stake 1 or more NFT to enter</p>

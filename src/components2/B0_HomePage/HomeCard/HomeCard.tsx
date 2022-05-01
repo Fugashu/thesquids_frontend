@@ -1,35 +1,44 @@
-import { IHomeCard } from "../HomePage";
-import { FC, useState } from "react";
+import {IHomeCard} from "../HomePage";
+import {FC, useState} from "react";
 import style from "./HomeCard.module.scss";
-import { HashLink } from "react-router-hash-link";
+import {HashLink} from "react-router-hash-link";
 import * as React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { svgIcons } from "../../../assets/svg/svgIcons";
+import backMobile from "../../../assets/png/cards/home page/mobile.png";
+import backDesktopDefault from "../../../assets/png/cards/home page/desktopDefault.png";
+import backDesktopHover from "../../../assets/png/cards/home page/desktopHover.png";
 
-export const HomeCard: FC<IHomeCard> = ({ label, to, icon, onClick }) => {
-  const [hover, setHover] = useState(false);
+export const HomeCard: FC<IHomeCard> = ({label, to, icon, onClick}) => {
+    const [hover, setHover] = useState(false);
 
-  const matchDesktop = useMediaQuery("(min-width:1440px)");
+    const matchDesktop = useMediaQuery('(min-width:1440px)');
 
-  return (
-    <HashLink
-      to={to}
-      className={style.homeCard}
-      onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <div className={style.back}>
-        {!matchDesktop
-          ? svgIcons.homeCardMobile
-          : hover
-          ? svgIcons.homeCardDesktopHover
-          : svgIcons.homeCardDesktopDefault}
-      </div>
-      <div className={style.icon}>
-        <img src={icon} />
-      </div>
-      <p className={style.label}>{label}</p>
-    </HashLink>
-  );
-};
+    return (
+        <HashLink to={to}
+                  className={style.homeCard}
+                  onClick={onClick}
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+        >
+            <div className={style.back}>
+                <img src={
+                    !matchDesktop
+                    ? backMobile
+                    : hover
+                        ? backDesktopHover
+                        : backDesktopDefault
+                }
+                     alt=""
+                     className={style.back}
+                />
+            </div>
+
+            {/*<div className={style.icon}>{icon}</div>*/}
+
+            <img className={style.icon} src={icon} alt=""/>
+
+
+            <p className={style.label}>{label}</p>
+        </HashLink>
+    )
+}

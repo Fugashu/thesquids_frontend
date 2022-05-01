@@ -6,10 +6,13 @@
   position: relative;
 
   .back {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
+    width: 288px;
+    height: 436px;
   }
 
   .content {
@@ -27,12 +30,10 @@
     }
 
     .icon {
+      display: block;
       margin-top: 24px;
-
-    img{
-      width: 207px;
-      height: 195px;
-    }
+      width: 160px;
+      height: 102px;
     }
 
     .gameName {
@@ -47,22 +48,8 @@
 
     .voteButton {
       margin-top: 24px;
-      @include button();
-      position: relative;
-
-      img {
-        position: relative;
-        z-index: 1;
-        width: 240px;
-        height: 40px;
-      }
 
       p {
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         @include buttonTextSmall();
       }
     }

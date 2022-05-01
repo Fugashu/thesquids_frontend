@@ -246,12 +246,12 @@ export const svgIcons = {
       <rect x="10" width="20" height="5" fill="#2A2437" />
       <rect x="5" y="10" width="30" height="20" fill="#2A2437" />
       <rect x="10" y="5" width="20" height="30" fill="#2A2437" />
-      <g clip-path="url(#clip0_1799_16640)">
+      <g clipPath="url(#clip0_1799_16640)">
         <g filter="url(#filter0_i_1799_16640)">
           <path
             d="M25.6569 12.3431L14.3431 23.6568M25.6569 23.6568L14.3431 12.3431"
             stroke="#E7B223"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </g>
       </g>
@@ -272,9 +272,9 @@ export const svgIcons = {
           width="12.728"
           height="12.728"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -1243,9 +1243,9 @@ export const svgIcons = {
           width="15"
           height="17.3203"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -5305,9 +5305,9 @@ export const svgIcons = {
           width="143"
           height="128"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -11695,7 +11695,7 @@ export const svgIcons = {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1975_10775)">
+      <g clipPath="url(#clip0_1975_10775)">
         <path
           d="M168.788 92.3079H162.996V98.0779H168.788V92.3079Z"
           fill="#815400"
@@ -14338,23 +14338,23 @@ export const svgIcons = {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1929_15011)">
+      <g clipPath="url(#clip0_1929_15011)">
         <g filter="url(#filter0_i_1929_15011)">
           <path
             d="M17.0247 9.98958H5.44792"
             stroke="#715021"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
         <g filter="url(#filter1_i_1929_15011)">
           <path
             d="M17.0254 9.98971L2.81744 16.8306L5.44854 9.98971L2.81744 3.14887L17.0254 9.98971Z"
             stroke="#715021"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
       </g>
@@ -14366,9 +14366,9 @@ export const svgIcons = {
           width="13.5762"
           height="2"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -14400,9 +14400,9 @@ export const svgIcons = {
           width="16.208"
           height="15.6816"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -16765,7 +16765,7 @@ export const svgIcons = {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2092_22744)">
+      <g clipPath="url(#clip0_2092_22744)">
         <path d="M170 22H160V32H170V22Z" fill="#4A3351" />
         <path d="M180 22H170V32H180V22Z" fill="#4A3351" />
         <path d="M190 22H180V32H190V22Z" fill="#4A3351" />
@@ -16883,7 +16883,7 @@ export const svgIcons = {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2092_22333)">
+      <g clipPath="url(#clip0_2092_22333)">
         <path d="M159 22H169V32H159V22Z" fill="#4A3351" />
         <path d="M149 22H159V32H149V22Z" fill="#4A3351" />
         <path d="M139 22H149V32H139V22Z" fill="#4A3351" />
@@ -17006,7 +17006,7 @@ export const svgIcons = {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_2092_22607)">
+      <g clipPath="url(#clip0_2092_22607)">
         <path d="M76 50H86V60H76V50Z" fill="#4A3351" />
         <path d="M106 60H116V70H106V60Z" fill="#4A3351" />
         <path d="M96 60H106V70H96V60Z" fill="#4A3351" />
@@ -17216,6 +17216,3088 @@ export const svgIcons = {
         transform="rotate(-180 838 30)"
         fill="#2A1428"
       />
+    </svg>
+  ),
+  // OPEN BOX MODAL
+  openBoxModalBackMobile: (
+    <svg
+      width="320"
+      height="540"
+      viewBox="0 0 320 540"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" width="300" height="10" fill="#C69000" />
+      <rect y="10" width="10" height="500" fill="#C69000" />
+      <rect x="310" y="10" width="10" height="500" fill="#C69000" />
+      <rect x="10" y="10" width="300" height="520" fill="#E7B223" />
+      <rect
+        x="10"
+        y="520"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 520)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 310 520)"
+        fill="#3F2500"
+      />
+      <rect
+        x="20"
+        y="530"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 530)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 300 530)"
+        fill="#3F2500"
+      />
+      <rect x="20" y="530" width="280" height="10" fill="#3F2500" />
+      <rect
+        x="15"
+        y="355"
+        width="5"
+        height="5"
+        transform="rotate(-180 15 355)"
+        fill="#C69000"
+      />
+      <rect
+        x="15"
+        y="365"
+        width="5"
+        height="5"
+        transform="rotate(-180 15 365)"
+        fill="#C69000"
+      />
+      <rect
+        x="20"
+        y="360"
+        width="5"
+        height="5"
+        transform="rotate(-180 20 360)"
+        fill="#C69000"
+      />
+      <rect
+        x="310"
+        y="355"
+        width="5"
+        height="5"
+        transform="rotate(-180 310 355)"
+        fill="#C69000"
+      />
+      <rect
+        x="310"
+        y="365"
+        width="5"
+        height="5"
+        transform="rotate(-180 310 365)"
+        fill="#C69000"
+      />
+      <rect
+        x="305"
+        y="360"
+        width="5"
+        height="5"
+        transform="rotate(-180 305 360)"
+        fill="#C69000"
+      />
+      <rect
+        x="300"
+        y="360"
+        width="280"
+        height="5"
+        transform="rotate(-180 300 360)"
+        fill="#C69000"
+      />
+    </svg>
+  ),
+  openBoxModalBackDesktop: (
+    <svg
+      width="506"
+      height="715"
+      viewBox="0 0 506 715"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="12" y="12" width="482" height="691" fill="#E7B223" />
+      <rect
+        width="12"
+        height="667"
+        transform="matrix(-1 0 0 1 506 24)"
+        fill="#C69000"
+      />
+      <rect x="24" width="458" height="12" fill="#C69000" />
+      <rect y="24" width="12" height="667" fill="#C69000" />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 494 691)"
+        fill="#3F2500"
+      />
+      <rect x="24" y="703" width="458" height="12" fill="#3F2500" />
+      <rect
+        x="12"
+        y="691"
+        width="12"
+        height="12"
+        transform="rotate(-180 12 691)"
+        fill="#3F2500"
+      />
+      <rect
+        x="24"
+        y="703"
+        width="12"
+        height="12"
+        transform="rotate(-180 24 703)"
+        fill="#3F2500"
+      />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 482 703)"
+        fill="#3F2500"
+      />
+      <rect
+        x="17"
+        y="494"
+        width="5"
+        height="5"
+        transform="rotate(-180 17 494)"
+        fill="#C69000"
+      />
+      <rect
+        x="17"
+        y="504"
+        width="5"
+        height="5"
+        transform="rotate(-180 17 504)"
+        fill="#C69000"
+      />
+      <rect
+        x="22"
+        y="499"
+        width="5"
+        height="5"
+        transform="rotate(-180 22 499)"
+        fill="#C69000"
+      />
+      <rect
+        x="494"
+        y="494"
+        width="5"
+        height="5"
+        transform="rotate(-180 494 494)"
+        fill="#C69000"
+      />
+      <rect
+        x="494"
+        y="504"
+        width="5"
+        height="5"
+        transform="rotate(-180 494 504)"
+        fill="#C69000"
+      />
+      <rect
+        x="489"
+        y="499"
+        width="5"
+        height="5"
+        transform="rotate(-180 489 499)"
+        fill="#C69000"
+      />
+      <rect
+        x="484"
+        y="499"
+        width="462"
+        height="5"
+        transform="rotate(-180 484 499)"
+        fill="#C69000"
+      />
+    </svg>
+  ),
+  buttonPlus: (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" width="20" height="5" fill="#2A2437" />
+      <rect x="5" y="10" width="30" height="20" fill="#2A2437" />
+      <rect x="10" y="5" width="20" height="30" fill="#2A2437" />
+      <g filter="url(#filter0_i_1941_11870)">
+        <path d="M20 10V26M28 18L12 18" stroke="#E7B223" strokeWidth="2" />
+      </g>
+      <rect x="30" y="30" width="5" height="5" fill="#161121" />
+      <rect x="30" y="5" width="5" height="5" fill="#2A2437" />
+      <rect x="5" y="30" width="5" height="5" fill="#161121" />
+      <rect x="5" y="5" width="5" height="5" fill="#2A2437" />
+      <rect x="10" y="35" width="20" height="5" fill="#161121" />
+      <rect x="35" y="10" width="5" height="20" fill="#2A2437" />
+      <rect x="35" y="25" width="5" height="5" fill="#161121" />
+      <rect y="10" width="5" height="20" fill="#2A2437" />
+      <rect y="25" width="5" height="5" fill="#161121" />
+      <defs>
+        <filter
+          id="filter0_i_1941_11870"
+          x="12"
+          y="10"
+          width="16"
+          height="16"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="1" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.137255 0 0 0 0 0.0784314 0 0 0 0 0 0 0 0 1 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="shape"
+            result="effect1_innerShadow_1941_11870"
+          />
+        </filter>
+      </defs>
+    </svg>
+  ),
+  buttonMinus: (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" width="20" height="5" fill="#2A2437" />
+      <rect x="5" y="10" width="30" height="20" fill="#2A2437" />
+      <rect x="10" y="5" width="20" height="30" fill="#2A2437" />
+      <g filter="url(#filter0_i_1941_11854)">
+        <path d="M28 18L12 18" stroke="#E7B223" strokeWidth="2" />
+      </g>
+      <rect x="30" y="30" width="5" height="5" fill="#161121" />
+      <rect x="30" y="5" width="5" height="5" fill="#2A2437" />
+      <rect x="5" y="30" width="5" height="5" fill="#161121" />
+      <rect x="5" y="5" width="5" height="5" fill="#2A2437" />
+      <rect x="10" y="35" width="20" height="5" fill="#161121" />
+      <rect x="35" y="10" width="5" height="20" fill="#2A2437" />
+      <rect x="35" y="25" width="5" height="5" fill="#161121" />
+      <rect y="10" width="5" height="20" fill="#2A2437" />
+      <rect y="25" width="5" height="5" fill="#161121" />
+      <defs>
+        <filter
+          id="filter0_i_1941_11854"
+          x="12"
+          y="17"
+          width="16"
+          height="2"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="1" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.137255 0 0 0 0 0.0784314 0 0 0 0 0 0 0 0 1 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="shape"
+            result="effect1_innerShadow_1941_11854"
+          />
+        </filter>
+      </defs>
+    </svg>
+  ),
+  // TEST RECORDING MODAL
+  testRecordingModalBack: (
+    <svg
+      width="506"
+      height="461"
+      viewBox="0 0 506 461"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="12" y="12" width="482" height="437" fill="#E7B223" />
+      <rect
+        width="12"
+        height="409"
+        transform="matrix(-1 0 0 1 506 28)"
+        fill="#C69000"
+      />
+      <rect x="20" width="466" height="12" fill="#C69000" />
+      <rect y="28" width="12" height="409" fill="#C69000" />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 494 437)"
+        fill="#3F2500"
+      />
+      <rect x="20" y="449" width="462" height="12" fill="#3F2500" />
+      <rect
+        x="12"
+        y="437"
+        width="12"
+        height="12"
+        transform="rotate(-180 12 437)"
+        fill="#3F2500"
+      />
+      <rect
+        x="24"
+        y="449"
+        width="12"
+        height="12"
+        transform="rotate(-180 24 449)"
+        fill="#3F2500"
+      />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 482 449)"
+        fill="#3F2500"
+      />
+    </svg>
+  ),
+  working: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M22 11.0799V11.9999C21.9988 14.1563 21.3005 16.2545 20.0093 17.9817C18.7182 19.7088 16.9033 20.9723 14.8354 21.5838C12.7674 22.1952 10.5573 22.1218 8.53447 21.3744C6.51168 20.6271 4.78465 19.246 3.61096 17.4369C2.43727 15.6279 1.87979 13.4879 2.02168 11.3362C2.16356 9.18443 2.99721 7.13619 4.39828 5.49694C5.79935 3.85768 7.69279 2.71525 9.79619 2.24001C11.8996 1.76477 14.1003 1.9822 16.07 2.85986"
+        stroke="#548C24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M22 4L12 14.01L9 11.01"
+        stroke="#548C24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  notWorking: (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        stroke="#9A1C1C"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15 9L9 15"
+        stroke="#9A1C1C"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 9L15 15"
+        stroke="#9A1C1C"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
+  // TIME LEFT MODAL
+  timeLeftModalBack: (
+    <svg
+      width="819"
+      height="527"
+      viewBox="0 0 819 527"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="12" y="10" width="795" height="505" fill="#E7B223" />
+      <rect x="21" width="775" height="10" fill="#C69000" />
+      <rect y="27" width="12" height="464" fill="#C69000" />
+      <rect
+        width="12"
+        height="464"
+        transform="matrix(-1 0 0 1 819 27)"
+        fill="#C69000"
+      />
+      <rect x="24" y="515" width="771" height="12" fill="#3F2500" />
+      <rect
+        x="12"
+        y="503"
+        width="12"
+        height="12"
+        transform="rotate(-180 12 503)"
+        fill="#3F2500"
+      />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 807 503)"
+        fill="#3F2500"
+      />
+      <rect
+        x="24"
+        y="515"
+        width="12"
+        height="12"
+        transform="rotate(-180 24 515)"
+        fill="#3F2500"
+      />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 795 515)"
+        fill="#3F2500"
+      />
+    </svg>
+  ),
+  heartIcon: (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="3.38477"
+        y="0.916992"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="5.07812"
+        y="0.916992"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="6.76953"
+        y="0.916992"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="13.5391"
+        y="0.916992"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="15.2305"
+        y="0.916992"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="16.9219"
+        y="0.916992"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="1.69141"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="3.38477"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="5.07812"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="6.76953"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="8.46094"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="11.8457"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="13.5391"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="15.2305"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="16.9219"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="18.6152"
+        y="2.59766"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect y="4.27734" width="1.69231" height="1.68056" fill="#472F00" />
+      <rect
+        x="1.69141"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="3.38477"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="5.07812"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#FFFFFB"
+      />
+      <rect
+        x="6.76953"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="8.46094"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="10.1543"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="11.8457"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="13.5391"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="15.2305"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="16.9219"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="18.6152"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="20.3086"
+        y="4.27734"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect y="5.95898" width="1.69231" height="1.68056" fill="#472F00" />
+      <rect
+        x="1.69141"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="3.38477"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#FEFFF6"
+      />
+      <rect
+        x="5.07812"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="6.76953"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#F5AA1A"
+      />
+      <rect
+        x="8.46094"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="10.1543"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="11.8457"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="13.5391"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="15.2305"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="16.9219"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="18.6152"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="20.3086"
+        y="5.95898"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect y="7.63867" width="1.69231" height="1.68056" fill="#472F00" />
+      <rect
+        x="1.69141"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="3.38477"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="5.07812"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="6.76953"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="8.46094"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="10.1543"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="11.8457"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="13.5391"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="15.2305"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="16.9219"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="18.6152"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="20.3086"
+        y="7.63867"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="1.69141"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="3.38477"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="5.07812"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="6.76953"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="8.46094"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="10.1543"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="11.8457"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="13.5391"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="15.2305"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="16.9219"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="18.6152"
+        y="9.32031"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="1.69141"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="3.38477"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="5.07812"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="6.76953"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="8.46094"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="10.1543"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#CA8C15"
+      />
+      <rect
+        x="11.8457"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="13.5391"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="15.2305"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="16.9219"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="18.6152"
+        y="11"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="3.38477"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="5.07812"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="6.76953"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="8.46094"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="10.1543"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="11.8457"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="13.5391"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="15.2305"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="16.9219"
+        y="12.6816"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="5.07812"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="6.76953"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="8.46094"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="10.1543"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#815400"
+      />
+      <rect
+        x="11.8457"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="13.5391"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="15.2305"
+        y="14.3613"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="6.76953"
+        y="16.042"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="8.46094"
+        y="16.042"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="10.1543"
+        y="16.042"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="11.8457"
+        y="16.042"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="13.5391"
+        y="16.042"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="8.46094"
+        y="17.7227"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="10.1543"
+        y="17.7227"
+        width="1.69231"
+        height="1.68056"
+        fill="#6D4800"
+      />
+      <rect
+        x="11.8457"
+        y="17.7227"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+      <rect
+        x="10.1543"
+        y="19.4023"
+        width="1.69231"
+        height="1.68056"
+        fill="#472F00"
+      />
+    </svg>
+  ),
+  marketplaceCardMobile: (
+    <svg
+      width="288"
+      height="494"
+      viewBox="0 0 288 494"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        width="268"
+        height="10"
+        transform="matrix(1 0 0 -1 10 30)"
+        fill="#2A1428"
+      />
+      <rect
+        width="248"
+        height="10"
+        transform="matrix(1 0 0 -1 20 20)"
+        fill="#2A1428"
+      />
+      <rect
+        width="228"
+        height="10"
+        transform="matrix(1 0 0 -1 30 10)"
+        fill="#2A1428"
+      />
+      <rect y="30" width="288" height="424" fill="#2A1428" />
+      <rect x="60" y="454" width="168" height="10" fill="#180B12" />
+      <rect x="10" y="454" width="50" height="20" fill="#2A1428" />
+      <rect x="30" y="474" width="20" height="10" fill="#2A1428" />
+      <rect
+        width="50"
+        height="20"
+        transform="matrix(-1 0 0 1 278 454)"
+        fill="#2A1428"
+      />
+      <rect
+        width="20"
+        height="10"
+        transform="matrix(-1 0 0 1 258 474)"
+        fill="#2A1428"
+      />
+      <rect x="30" y="484" width="20" height="10" fill="#180B12" />
+      <rect
+        width="20"
+        height="10"
+        transform="matrix(-1 0 0 1 258 484)"
+        fill="#180B12"
+      />
+      <rect
+        x="20"
+        y="474"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 474)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 268 474)"
+        fill="#180B12"
+      />
+      <rect
+        x="60"
+        y="484"
+        width="10"
+        height="10"
+        transform="rotate(-180 60 484)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 228 484)"
+        fill="#180B12"
+      />
+      <rect
+        x="30"
+        y="484"
+        width="10"
+        height="10"
+        transform="rotate(-180 30 484)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 258 484)"
+        fill="#180B12"
+      />
+      <rect
+        x="10"
+        y="464"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 464)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 278 464)"
+        fill="#180B12"
+      />
+      <rect x="30" y="322" width="228" height="10" fill="#180B12" />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 258 322)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 278 302)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 268 312)"
+        fill="#180B12"
+      />
+      <rect
+        x="10"
+        y="302"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 302)"
+        fill="#180B12"
+      />
+      <rect
+        x="30"
+        y="322"
+        width="10"
+        height="10"
+        transform="rotate(-180 30 322)"
+        fill="#180B12"
+      />
+      <rect
+        x="20"
+        y="312"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 312)"
+        fill="#180B12"
+      />
+    </svg>
+  ),
+  marketplaceCardDesktop: (
+    <svg
+      width="360"
+      height="615"
+      viewBox="0 0 360 615"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        width="59"
+        height="20"
+        transform="matrix(-1 0 0 1 350 575)"
+        fill="#2A1428"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 340 595)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 350 585)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 330 605)"
+        fill="#180B12"
+      />
+      <rect x="30" y="595" width="29" height="10" fill="#2A1428" />
+      <rect
+        width="29"
+        height="10"
+        transform="matrix(-1 0 0 1 330 595)"
+        fill="#2A1428"
+      />
+      <rect x="10" y="575" width="59" height="20" fill="#2A1428" />
+      <rect x="30" y="605" width="32" height="10" fill="#180B12" />
+      <rect
+        width="32"
+        height="10"
+        transform="matrix(-1 0 0 1 330 605)"
+        fill="#180B12"
+      />
+      <rect x="69" y="575" width="222" height="10" fill="#180B12" />
+      <rect
+        x="20"
+        y="595"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 595)"
+        fill="#180B12"
+      />
+      <rect
+        x="30"
+        y="605"
+        width="10"
+        height="10"
+        transform="rotate(-180 30 605)"
+        fill="#180B12"
+      />
+      <rect
+        x="69"
+        y="605"
+        width="10"
+        height="10"
+        transform="rotate(-180 69 605)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 291 605)"
+        fill="#180B12"
+      />
+      <rect
+        x="10"
+        y="585"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 585)"
+        fill="#180B12"
+      />
+      <rect y="30" width="360" height="545" fill="#2A1428" />
+      <rect
+        width="300"
+        height="10"
+        transform="matrix(1 0 0 -1 30 10)"
+        fill="#2A1428"
+      />
+      <rect
+        width="320"
+        height="10"
+        transform="matrix(1 0 0 -1 20 20)"
+        fill="#2A1428"
+      />
+      <rect
+        width="340"
+        height="10"
+        transform="matrix(1 0 0 -1 10 30)"
+        fill="#2A1428"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 330 416)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 350 396)"
+        fill="#180B12"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 340 406)"
+        fill="#180B12"
+      />
+      <rect
+        x="10"
+        y="396"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 396)"
+        fill="#180B12"
+      />
+      <rect
+        x="30"
+        y="416"
+        width="10"
+        height="10"
+        transform="rotate(-180 30 416)"
+        fill="#180B12"
+      />
+      <rect
+        x="20"
+        y="406"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 406)"
+        fill="#180B12"
+      />
+      <rect x="30" y="416" width="300" height="10" fill="#180B12" />
+    </svg>
+  ),
+  // TOURNAMENTS MODAL
+  tournamentsModalBack: (
+    <svg
+      width="819"
+      height="368"
+      viewBox="0 0 819 368"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="12" y="10" width="795" height="346" fill="#E7B223" />
+      <rect x="21" width="775" height="10" fill="#C69000" />
+      <rect y="27" width="12" height="314" fill="#C69000" />
+      <rect
+        width="12"
+        height="314"
+        transform="matrix(-1 0 0 1 819 27)"
+        fill="#C69000"
+      />
+      <rect x="23" y="356" width="772" height="12" fill="#3F2500" />
+      <rect
+        x="12"
+        y="344"
+        width="12"
+        height="12"
+        transform="rotate(-180 12 344)"
+        fill="#3F2500"
+      />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 807 344)"
+        fill="#3F2500"
+      />
+      <rect
+        x="24"
+        y="356"
+        width="12"
+        height="12"
+        transform="rotate(-180 24 356)"
+        fill="#3F2500"
+      />
+      <rect
+        width="12"
+        height="12"
+        transform="matrix(1 0 0 -1 795 356)"
+        fill="#3F2500"
+      />
+    </svg>
+  ),
+  // CHOOSE THE COIN
+  chooseThrCoinCardMobile: (
+    <svg
+      width="288"
+      height="162"
+      viewBox="0 0 288 162"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        width="288"
+        height="102"
+        transform="matrix(1 0 0 -1 0 132)"
+        fill="#9D7200"
+      />
+      <rect
+        width="228"
+        height="10"
+        transform="matrix(1 0 0 -1 30 10)"
+        fill="#9D7200"
+      />
+      <rect
+        width="248"
+        height="10"
+        transform="matrix(1 0 0 -1 20 20)"
+        fill="#9D7200"
+      />
+      <rect
+        width="268"
+        height="10"
+        transform="matrix(1 0 0 -1 10 30)"
+        fill="#9D7200"
+      />
+      <rect x="30" y="152" width="228" height="10" fill="#3F2500" />
+      <rect x="20" y="132" width="248" height="20" fill="#9D7200" />
+      <rect
+        x="20"
+        y="142"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 142)"
+        fill="#3F2500"
+      />
+      <rect
+        x="30"
+        y="152"
+        width="10"
+        height="10"
+        transform="rotate(-180 30 152)"
+        fill="#3F2500"
+      />
+      <rect
+        x="10"
+        y="132"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 132)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 268 142)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 258 152)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 278 132)"
+        fill="#3F2500"
+      />
+    </svg>
+  ),
+  chooseThrCoinCardDesktop: (
+    <svg
+      width="260"
+      height="212"
+      viewBox="0 0 260 212"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        width="260"
+        height="152"
+        transform="matrix(1 0 0 -1 0 182)"
+        fill="#9D7200"
+      />
+      <rect
+        width="200"
+        height="10"
+        transform="matrix(1 0 0 -1 30 10)"
+        fill="#9D7200"
+      />
+      <rect
+        width="220"
+        height="10"
+        transform="matrix(1 0 0 -1 20 20)"
+        fill="#9D7200"
+      />
+      <rect
+        width="240"
+        height="10"
+        transform="matrix(1 0 0 -1 10 30)"
+        fill="#9D7200"
+      />
+      <rect x="30" y="202" width="200" height="10" fill="#3F2500" />
+      <rect x="20" y="182" width="220" height="20" fill="#9D7200" />
+      <rect
+        x="20"
+        y="192"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 192)"
+        fill="#3F2500"
+      />
+      <rect
+        x="30"
+        y="202"
+        width="10"
+        height="10"
+        transform="rotate(-180 30 202)"
+        fill="#3F2500"
+      />
+      <rect
+        x="10"
+        y="182"
+        width="10"
+        height="10"
+        transform="rotate(-180 10 182)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 240 192)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 230 202)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 250 182)"
+        fill="#3F2500"
+      />
+    </svg>
+  ),
+  compass: (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="7.66675" width="0.166665" height="10.6666" fill="#000002" />
+      <rect
+        x="7.33301"
+        y="0.33374"
+        width="0.33333"
+        height="0.499995"
+        fill="#000002"
+      />
+      <rect
+        x="6.99951"
+        y="0.83374"
+        width="0.33333"
+        height="0.833324"
+        fill="#000002"
+      />
+      <rect
+        x="6.33301"
+        y="2"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="5.99951"
+        y="2.66626"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="5.66675"
+        y="3.3335"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect x="5.33301" y="4" width="0.33333" height="0.33333" fill="#000002" />
+      <rect
+        x="4.99951"
+        y="4.3335"
+        width="0.33333"
+        height="0.833324"
+        fill="#000002"
+      />
+      <rect
+        x="4.66675"
+        y="5.16626"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.33301"
+        y="5.5"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="3.99951"
+        y="6.16626"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="3.66675"
+        y="6.5"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="3.66675"
+        y="8.16626"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="3.99951"
+        y="8.49976"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="3.83325"
+        y="8.99976"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="3.83325"
+        y="9.3335"
+        width="0.33333"
+        height="0.666659"
+        fill="#727272"
+      />
+      <rect
+        x="4.16675"
+        y="9.66626"
+        width="0.33333"
+        height="0.666659"
+        fill="#727272"
+      />
+      <rect
+        x="4.49951"
+        y="9.99976"
+        width="0.33333"
+        height="0.666659"
+        fill="#727272"
+      />
+      <rect
+        x="4.83301"
+        y="10.3335"
+        width="0.666659"
+        height="0.666659"
+        fill="#727272"
+      />
+      <rect
+        x="5.16675"
+        y="10.6663"
+        width="0.999989"
+        height="1.16665"
+        fill="#727272"
+      />
+      <rect
+        x="5.49951"
+        y="10.9998"
+        width="0.999989"
+        height="1.16665"
+        fill="#727272"
+      />
+      <rect
+        x="5.83301"
+        y="11.3335"
+        width="0.999989"
+        height="1.49998"
+        fill="#727272"
+      />
+      <rect
+        x="6.16675"
+        y="11.6663"
+        width="0.999989"
+        height="1.49998"
+        fill="#727272"
+      />
+      <rect
+        x="6.49951"
+        y="11.9998"
+        width="0.999989"
+        height="1.83331"
+        fill="#727272"
+      />
+      <rect
+        x="6.83301"
+        y="12.3335"
+        width="0.999989"
+        height="0.833324"
+        fill="#727272"
+      />
+      <rect
+        x="6.83301"
+        y="13.3335"
+        width="0.666659"
+        height="0.833324"
+        fill="#727272"
+      />
+      <rect
+        x="7.16675"
+        y="13.9998"
+        width="0.666659"
+        height="0.999989"
+        fill="#727272"
+      />
+      <rect
+        x="7.49951"
+        y="14.9998"
+        width="0.666659"
+        height="0.666659"
+        fill="#727272"
+      />
+      <rect
+        x="8.16675"
+        y="11.9998"
+        width="0.33333"
+        height="2.99997"
+        fill="#525252"
+      />
+      <rect
+        x="8.49951"
+        y="11.6663"
+        width="0.33333"
+        height="2.49997"
+        fill="#525252"
+      />
+      <rect
+        x="8.83301"
+        y="11.3335"
+        width="0.33333"
+        height="2.49997"
+        fill="#525252"
+      />
+      <rect
+        x="9.16675"
+        y="10.9998"
+        width="0.33333"
+        height="2.16664"
+        fill="#525252"
+      />
+      <rect
+        x="9.49951"
+        y="10.6663"
+        width="0.33333"
+        height="2.16664"
+        fill="#525252"
+      />
+      <rect
+        x="9.83301"
+        y="10.6663"
+        width="0.33333"
+        height="1.49998"
+        fill="#525252"
+      />
+      <rect
+        x="10.1667"
+        y="10.3335"
+        width="0.33333"
+        height="1.49998"
+        fill="#525252"
+      />
+      <rect
+        x="10.4995"
+        y="10.3335"
+        width="0.33333"
+        height="0.666659"
+        fill="#525252"
+      />
+      <rect
+        x="10.833"
+        y="9.99976"
+        width="0.33333"
+        height="0.666659"
+        fill="#525252"
+      />
+      <rect
+        x="11.1667"
+        y="9.66626"
+        width="0.33333"
+        height="0.666659"
+        fill="#525252"
+      />
+      <rect
+        x="11.4995"
+        y="9.3335"
+        width="0.33333"
+        height="0.666659"
+        fill="#525252"
+      />
+      <rect
+        x="7.83301"
+        y="13.1663"
+        width="0.33333"
+        height="0.833324"
+        fill="#525252"
+      />
+      <rect
+        x="3.49951"
+        y="9.3335"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="3.83325"
+        y="9.99976"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.16675"
+        y="10.3335"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.49951"
+        y="10.6663"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.83301"
+        y="10.9998"
+        width="0.33333"
+        height="0.833324"
+        fill="#000002"
+      />
+      <rect
+        x="5.49951"
+        y="12.1663"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="6.16675"
+        y="13.1663"
+        width="0.33333"
+        height="0.666659"
+        fill="#000002"
+      />
+      <rect
+        x="5.16675"
+        y="11.8335"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="5.83301"
+        y="12.8335"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.49951"
+        y="13.8335"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.83301"
+        y="14.1663"
+        width="0.33333"
+        height="0.833324"
+        fill="#000002"
+      />
+      <rect
+        x="4.16675"
+        y="9.3335"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.49951"
+        y="9.66626"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.83301"
+        y="9.99976"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="5.49951"
+        y="10.3335"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.16675"
+        y="10.6663"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.49951"
+        y="10.9998"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.83301"
+        y="11.3335"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="7.16675"
+        y="11.6663"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="7.49951"
+        y="11.9998"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.33301"
+        y="8.8335"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.99951"
+        y="9.16626"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="5.33301"
+        y="9.49976"
+        width="1.16665"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.49951"
+        y="9.8335"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="7.16675"
+        y="10.1663"
+        width="0.499995"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="3.33325"
+        y="7.16626"
+        width="0.33333"
+        height="0.999989"
+        fill="#000002"
+      />
+      <rect
+        x="3.33325"
+        y="7.66626"
+        width="0.833324"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.16675"
+        y="7.3335"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="4.83301"
+        y="7"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="5.49951"
+        y="6.66626"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.16675"
+        y="6.3335"
+        width="0.666659"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.83301"
+        y="6"
+        width="0.833324"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.66675"
+        y="1.66626"
+        width="0.33333"
+        height="0.33333"
+        fill="#000002"
+      />
+      <rect
+        x="6.83325"
+        y="6.3335"
+        width="0.833324"
+        height="3.49996"
+        fill="#525252"
+      />
+      <rect
+        x="6.16675"
+        y="6.66626"
+        width="0.666659"
+        height="2.8333"
+        fill="#525252"
+      />
+      <rect
+        x="6.49976"
+        y="6.66626"
+        width="0.33333"
+        height="3.16663"
+        fill="#525252"
+      />
+      <rect
+        x="5.49976"
+        y="7"
+        width="0.666659"
+        height="2.49997"
+        fill="#525252"
+      />
+      <rect
+        x="4.83325"
+        y="7.3335"
+        width="0.666659"
+        height="1.49998"
+        fill="#525252"
+      />
+      <rect
+        x="4.99976"
+        y="7.3335"
+        width="0.499995"
+        height="1.83331"
+        fill="#525252"
+      />
+      <rect
+        x="5.33325"
+        y="7.3335"
+        width="0.166665"
+        height="2.16664"
+        fill="#525252"
+      />
+      <rect
+        x="4.16699"
+        y="7.66626"
+        width="0.666659"
+        height="0.833324"
+        fill="#525252"
+      />
+      <rect
+        x="4.33325"
+        y="7.66626"
+        width="0.499995"
+        height="1.16665"
+        fill="#525252"
+      />
+      <rect
+        x="3.66699"
+        y="7.99976"
+        width="0.499995"
+        height="0.166665"
+        fill="#525252"
+      />
+      <rect
+        x="3.99976"
+        y="7.99976"
+        width="0.166665"
+        height="0.499995"
+        fill="#525252"
+      />
+      <rect
+        x="7.16675"
+        y="6.3335"
+        width="0.499995"
+        height="3.83329"
+        fill="#525252"
+      />
+      <rect
+        x="7.33325"
+        y="0.83374"
+        width="0.33333"
+        height="5.16661"
+        fill="#727272"
+      />
+      <rect
+        x="6.99976"
+        y="1.66626"
+        width="0.33333"
+        height="4.33329"
+        fill="#727272"
+      />
+      <rect x="6.66675" y="2" width="0.33333" height="3.99996" fill="#727272" />
+      <rect
+        x="6.66675"
+        y="2"
+        width="0.166665"
+        height="4.33329"
+        fill="#727272"
+      />
+      <rect
+        x="6.33325"
+        y="2.66626"
+        width="0.33333"
+        height="3.66663"
+        fill="#727272"
+      />
+      <rect
+        x="5.99976"
+        y="3.3335"
+        width="0.33333"
+        height="2.99997"
+        fill="#727272"
+      />
+      <rect
+        x="5.99976"
+        y="3.3335"
+        width="0.166665"
+        height="3.3333"
+        fill="#727272"
+      />
+      <rect x="5.66675" y="4" width="0.33333" height="2.66664" fill="#727272" />
+      <rect
+        x="5.33325"
+        y="4.3335"
+        width="0.33333"
+        height="2.33331"
+        fill="#727272"
+      />
+      <rect
+        x="5.33325"
+        y="4.3335"
+        width="0.166665"
+        height="2.66664"
+        fill="#727272"
+      />
+      <rect
+        x="4.99976"
+        y="5.16626"
+        width="0.33333"
+        height="1.83331"
+        fill="#727272"
+      />
+      <rect
+        x="4.66699"
+        y="5.5"
+        width="0.33333"
+        height="1.49998"
+        fill="#727272"
+      />
+      <rect
+        x="4.66699"
+        y="5.5"
+        width="0.166665"
+        height="1.83331"
+        fill="#727272"
+      />
+      <rect
+        x="4.33325"
+        y="6.16626"
+        width="0.33333"
+        height="1.16665"
+        fill="#727272"
+      />
+      <rect
+        x="3.99976"
+        y="6.5"
+        width="0.33333"
+        height="0.833324"
+        fill="#727272"
+      />
+      <rect
+        x="3.66699"
+        y="7.16626"
+        width="0.499995"
+        height="0.499995"
+        fill="#727272"
+      />
+      <rect
+        width="0.166665"
+        height="10.6666"
+        transform="matrix(-1 0 0 1 7.99976 0)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.499995"
+        transform="matrix(-1 0 0 1 8.33325 0.33374)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 8.66699 0.83374)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 9.33325 2)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 9.66699 2.66626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 9.99976 3.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.3333 4)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 10.667 4.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.9998 5.16626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 11.3333 5.5)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.667 6.16626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 11.9998 6.5)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.9998 8.16626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.667 8.49976)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.8333 8.99976)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 12.167 9.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.8333 9.99976)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.4998 10.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.167 10.6663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 10.8333 10.9998)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 10.167 12.1663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 9.49976 13.1663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.4998 11.8335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 9.83325 12.8335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 9.16699 13.8335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 8.83325 14.1663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 8.49976 14.9998)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.666659"
+        transform="matrix(-1 0 0 1 7.49976 14.9998)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.16699 15.6663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.4998 9.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.167 9.66626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.8333 9.99976)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.167 10.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 9.49976 10.6663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 9.16699 10.9998)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.83325 11.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.49976 11.6663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.16699 11.9998)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 8.16699 12.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 7.83325 13.1663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.999989"
+        transform="matrix(-1 0 0 1 8.16699 13.9998)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.3333 8.8335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.667 9.16626)"
+        fill="#000002"
+      />
+      <rect
+        width="1.16665"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.3333 9.49976)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 9.16699 9.8335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.499995"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.49976 10.1663)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.999989"
+        transform="matrix(-1 0 0 1 12.3333 7.16626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.833324"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 12.3333 7.66626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 11.4998 7.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.8333 7)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 10.167 6.66626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.666659"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 9.49976 6.3335)"
+        fill="#000002"
+      />
+      <rect
+        width="0.833324"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.83325 6)"
+        fill="#000002"
+      />
+      <rect
+        width="0.33333"
+        height="0.33333"
+        transform="matrix(-1 0 0 1 8.99976 1.66626)"
+        fill="#000002"
+      />
+      <rect
+        width="0.833324"
+        height="3.49996"
+        transform="matrix(-1 0 0 1 8.83325 6.3335)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.666659"
+        height="2.8333"
+        transform="matrix(-1 0 0 1 9.49976 6.66626)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.33333"
+        height="3.16663"
+        transform="matrix(-1 0 0 1 9.16699 6.66626)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.666659"
+        height="2.49997"
+        transform="matrix(-1 0 0 1 10.167 7)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.666659"
+        height="1.49998"
+        transform="matrix(-1 0 0 1 10.8333 7.3335)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.499995"
+        height="1.83331"
+        transform="matrix(-1 0 0 1 10.667 7.3335)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.166665"
+        height="2.16664"
+        transform="matrix(-1 0 0 1 10.3333 7.3335)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.666659"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 11.4998 7.66626)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.499995"
+        height="1.16665"
+        transform="matrix(-1 0 0 1 11.3333 7.66626)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.499995"
+        height="0.166665"
+        transform="matrix(-1 0 0 1 11.9998 7.99976)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.166665"
+        height="0.499995"
+        transform="matrix(-1 0 0 1 11.667 7.99976)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.499995"
+        height="3.83329"
+        transform="matrix(-1 0 0 1 8.49976 6.3335)"
+        fill="#5F5F5F"
+      />
+      <rect
+        width="0.33333"
+        height="5.16661"
+        transform="matrix(-1 0 0 1 8.33325 0.83374)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="4.33329"
+        transform="matrix(-1 0 0 1 8.66699 1.66626)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="3.99996"
+        transform="matrix(-1 0 0 1 8.99976 2)"
+        fill="#525252"
+      />
+      <rect
+        width="0.166665"
+        height="4.33329"
+        transform="matrix(-1 0 0 1 8.99976 2)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="3.66663"
+        transform="matrix(-1 0 0 1 9.33325 2.66626)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="2.99997"
+        transform="matrix(-1 0 0 1 9.66699 3.3335)"
+        fill="#525252"
+      />
+      <rect
+        width="0.166665"
+        height="3.3333"
+        transform="matrix(-1 0 0 1 9.66699 3.3335)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="2.66664"
+        transform="matrix(-1 0 0 1 9.99976 4)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="2.33331"
+        transform="matrix(-1 0 0 1 10.3333 4.3335)"
+        fill="#525252"
+      />
+      <rect
+        width="0.166665"
+        height="2.66664"
+        transform="matrix(-1 0 0 1 10.3333 4.3335)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="1.83331"
+        transform="matrix(-1 0 0 1 10.667 5.16626)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="1.49998"
+        transform="matrix(-1 0 0 1 10.9998 5.5)"
+        fill="#525252"
+      />
+      <rect
+        width="0.166665"
+        height="1.83331"
+        transform="matrix(-1 0 0 1 10.9998 5.5)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="1.16665"
+        transform="matrix(-1 0 0 1 11.3333 6.16626)"
+        fill="#525252"
+      />
+      <rect
+        width="0.33333"
+        height="0.833324"
+        transform="matrix(-1 0 0 1 11.667 6.5)"
+        fill="#525252"
+      />
+      <rect
+        width="0.499995"
+        height="0.499995"
+        transform="matrix(-1 0 0 1 11.9998 7.16626)"
+        fill="#525252"
+      />
+    </svg>
+  ),
+  inputMobile: (
+    <svg
+      width="288"
+      height="100"
+      viewBox="0 0 288 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" y="10" width="268" height="80" fill="#9D7200" />
+      <rect
+        width="10"
+        height="60"
+        transform="matrix(-1 0 0 1 288 20)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="60"
+        transform="matrix(-1 0 0 1 10 20)"
+        fill="#3F2500"
+      />
+      <rect x="20" y="90" width="248" height="10" fill="#3F2500" />
+      <rect
+        x="20"
+        y="90"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 90)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 268 90)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(-1 0 0 1 278 10)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(-1 0 0 1 20 10)"
+        fill="#3F2500"
+      />
+      <rect
+        width="248"
+        height="10"
+        transform="matrix(-1 0 0 1 268 0)"
+        fill="#3F2500"
+      />
+    </svg>
+  ),
+  inputDesktopDefault: (
+    <svg
+      width="560"
+      height="139"
+      viewBox="0 0 560 139"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" y="10" width="540" height="119" fill="#9D7200" />
+      <rect y="20" width="10" height="99" fill="#3F2500" />
+      <rect
+        width="10"
+        height="99"
+        transform="matrix(-1 0 0 1 560 20)"
+        fill="#3F2500"
+      />
+      <rect x="20" width="520" height="10" fill="#3F2500" />
+      <rect
+        x="20"
+        y="20"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 20)"
+        fill="#3F2500"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 540 20)"
+        fill="#3F2500"
+      />
+      <rect
+        x="20"
+        y="129"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 129)"
+        fill="#3F2500"
+      />
+      <rect
+        x="550"
+        y="129"
+        width="10"
+        height="10"
+        transform="rotate(-180 550 129)"
+        fill="#3F2500"
+      />
+      <rect x="20" y="129" width="520" height="10" fill="#3F2500" />
+    </svg>
+  ),
+  inputDesktopHover: (
+    <svg
+      width="560"
+      height="139"
+      viewBox="0 0 560 139"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" y="10" width="540" height="119" fill="#CF9700" />
+      <rect y="20" width="10" height="99" fill="#5B3600" />
+      <rect
+        width="10"
+        height="99"
+        transform="matrix(-1 0 0 1 560 20)"
+        fill="#5B3600"
+      />
+      <rect x="20" width="520" height="10" fill="#5B3600" />
+      <rect
+        x="20"
+        y="20"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 20)"
+        fill="#5B3600"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 540 20)"
+        fill="#5B3600"
+      />
+      <rect
+        x="20"
+        y="129"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 129)"
+        fill="#5B3600"
+      />
+      <rect
+        x="550"
+        y="129"
+        width="10"
+        height="10"
+        transform="rotate(-180 550 129)"
+        fill="#5B3600"
+      />
+      <rect x="20" y="129" width="520" height="10" fill="#5B3600" />
+    </svg>
+  ),
+  inputDesktopFocus: (
+    <svg
+      width="560"
+      height="139"
+      viewBox="0 0 560 139"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="10" y="10" width="540" height="119" fill="#F4BF30" />
+      <rect y="20" width="10" height="99" fill="#DCA81C" />
+      <rect
+        width="10"
+        height="99"
+        transform="matrix(-1 0 0 1 560 20)"
+        fill="#DCA81C"
+      />
+      <rect x="20" width="520" height="10" fill="#DCA81C" />
+      <rect
+        x="20"
+        y="20"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 20)"
+        fill="#DCA81C"
+      />
+      <rect
+        width="10"
+        height="10"
+        transform="matrix(1 0 0 -1 540 20)"
+        fill="#DCA81C"
+      />
+      <rect
+        x="20"
+        y="129"
+        width="10"
+        height="10"
+        transform="rotate(-180 20 129)"
+        fill="#DCA81C"
+      />
+      <rect
+        x="550"
+        y="129"
+        width="10"
+        height="10"
+        transform="rotate(-180 550 129)"
+        fill="#DCA81C"
+      />
+      <rect x="20" y="129" width="520" height="10" fill="#DCA81C" />
     </svg>
   ),
 };

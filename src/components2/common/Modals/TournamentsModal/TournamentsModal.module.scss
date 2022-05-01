@@ -1,0 +1,88 @@
+@import "../../../../assets/scss/app.scss";
+
+.tournamentsModal {
+  @include modal();
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 819px;
+    height: 368px;
+    box-sizing: border-box;
+    padding: 32px 32px 0;
+
+    .back {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 819px;
+      height: 368px;
+    }
+
+    .title {
+      position: relative;
+      z-index: 2;
+      @include modalTitle();
+    }
+
+    .description {
+      position: relative;
+      z-index: 2;
+      margin-top: 32px;
+      @include PressStart();
+      font-size: 20px;
+      line-height: 180%;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #000000;
+    }
+
+    .buttons {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 40px;
+
+      .btnYes, .btnNo {
+        p {
+              @include PressStart();
+              font-size: 20px;
+              line-height: 160%;
+              letter-spacing: -0.02em;
+              text-transform: uppercase;
+        }
+      }
+
+      .btnYes p {
+        color: #548C24;
+      }
+
+      .btnNo p {
+        color: #9A1C1C;
+      }
+    }
+
+    .votes {
+      align-self: stretch;
+      position: relative;
+      z-index: 2;
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 40px;
+
+      p {
+        text-align: center;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 150%;
+        color: #000000;
+      }
+    }
+
+  }
+}

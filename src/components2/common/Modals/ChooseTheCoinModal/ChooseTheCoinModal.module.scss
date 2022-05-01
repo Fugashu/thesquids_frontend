@@ -8,19 +8,55 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 320px;
-    height: 934px;
 
-    @include desktop() {
-      width: 640px;
-      height: 734px;
+    &_lives {
+      width: 320px;
+      height: 934px;
+
+      @include desktop() {
+        width: 640px;
+        height: 734px;
+      }
     }
 
-    .back {
+    &_dna {
+      width: 320px;
+      height: 467px;
+
+      @include desktop() {
+        width: 640px;
+        height: 599px;
+      }
+    }
+
+    .backDna {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
+      width: 320px;
+      height: 467px;
+
+      @include desktop() {
+        width: 640px;
+        height: 599px;
+      }
+    }
+
+    .backLives {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 320px;
+      height: 934px;
+
+      @include desktop() {
+        width: 640px;
+        height: 734px;
+      }
     }
 
     .closeButton {
@@ -73,7 +109,199 @@
       }
     }
 
+    .dnaContent {
+      position: relative;
+      z-index: 2;
+      margin-top: 24px;
 
+      @include desktop() {
+        margin-top: 32px;
+      }
+
+      .totalBlock {
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > p {
+          @include PressStart();
+          font-size: 14px;
+          line-height: 145%;
+          text-transform: uppercase;
+          color: #1C162B;
+        }
+
+        & > div {
+          display: flex;
+          align-items: center;
+
+          & > p {
+            @include PressStart();
+            font-size: 32px;
+            line-height: 135%;
+            color: #1C162B;
+
+            @include desktop() {
+              font-size: 32px;
+            }
+          }
+
+          & > img {
+            width: 32px;
+            height: 32px;
+
+            @include desktop() {
+              width: 40px;
+              height: 40px;
+            }
+
+          }
+        }
+
+      }
+
+      .buyBtn {
+        margin-top: 24px;
+
+        p {
+          @include PressStart();
+          font-size: 12.8px;
+          line-height: 160%;
+          letter-spacing: -0.02em;
+          color: #715021;
+
+          @include desktop() {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    .livesContent {
+      position: relative;
+      margin-top: 30px;
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      grid-row-gap: 24px;
+
+      @include desktop() {
+        margin-top: 28px;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 40px;
+      }
+
+      .heartIcon {
+        display: block;
+        position: absolute;
+        z-index: 5;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 64px;
+        height: 64px;
+      }
+
+      .card {
+        position: relative;
+        width: 288px;
+        height: 162px;
+
+        @include desktop() {
+          width: 260px;
+          height: 212px;
+        }
+
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .cardContent {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .cardTitle {
+            margin-top: 15px;
+            @include PressStart();
+            font-size: 24px;
+            line-height: 150%;
+            text-align: center;
+            text-transform: uppercase;
+            color: #000;
+
+            @include desktop() {
+              margin-top: 30px;
+            }
+
+
+          }
+
+          .compassBlock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+
+            @include desktop() {
+              margin-top: 4px;
+            }
+
+            p {
+              @include PressStart();
+              font-size: 10px;
+              line-height: 135%;
+              text-align: center;
+              letter-spacing: -0.04em;
+              color: #000;
+            }
+
+            svg {
+              width: 16px;
+              height: 16px;
+              margin-left: 4px;
+            }
+
+          }
+
+          .buyBtn {
+            @include button();
+            position: relative;
+            margin-top: 15px;
+
+            @include desktop() {
+              margin-top: 32px;
+            }
+
+            .buyBtnBack {
+              position: relative;
+              z-index: 1;
+              display: block;
+              width: 233px;
+              height: 40px;
+            }
+
+            p {
+              @include absoluteCenter();
+              z-index: 2;
+              @include buttonTextSmall();
+              white-space: nowrap;
+            }
+
+          }
+
+
+        }
+
+
+      }
+    }
 
   }
 }

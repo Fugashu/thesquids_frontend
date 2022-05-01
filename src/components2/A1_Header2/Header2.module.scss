@@ -86,10 +86,16 @@
       }
 
       .burgerButton {
+        @include button();
         @include onlyMobile() {
           position: relative;
           z-index: 110;
-          @include button();
+        }
+
+        img {
+          display: block;
+          width: 40px;
+          height: 40px;
         }
       }
 

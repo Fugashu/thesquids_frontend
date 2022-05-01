@@ -1,0 +1,150 @@
+@import "../../../../assets/scss/app.scss";
+
+.timeLeftModal {
+  @include modal();
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 819px;
+    height: 527px;
+    box-sizing: border-box;
+    padding: 32px 32px 0;
+
+    .back {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 819px;
+      height: 527px;
+    }
+
+    .cardContent {
+      position: relative;
+      z-index: 2;
+
+      .title {
+        @include PressStart();
+        font-size: 28px;
+        line-height: 160%;
+        letter-spacing: -0.03em;
+        color: #130B25;
+        text-align: center;
+      }
+
+      .timer {
+        margin-top: 32px;
+        @include PressStart();
+        font-size: 20px;
+        line-height: 180%;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #000000;
+      }
+
+      .timeLine {
+        margin-top: 16px;
+        //width: 756px;
+        height: 32px;
+        box-sizing: border-box;
+        background: #C69000;
+        border: 5px solid #3F2500;
+        position: relative;
+
+        .runner {
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          width: 756px;
+          height: 32px;
+          box-sizing: border-box;
+          border: 5px solid #3F2500;
+          background: #C81B1B;
+          transition: 0.3s;
+        }
+      }
+
+      .end {
+        margin-top: 32px;
+        @include PressStart();
+        font-size: 20px;
+        line-height: 180%;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #000000;
+      }
+
+      .would {
+        margin-top: 24px;
+        @include PressStart();
+        font-size: 20px;
+        line-height: 180%;
+        letter-spacing: -0.02em;
+        color: #000000;
+        text-align: center;
+      }
+
+      .again {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span:first-child {
+          width: 22px;
+          height: 22px;
+
+          svg {
+            width: 22px;
+            height: 22px;
+          }
+        }
+
+        img {
+          display: block;
+          width: 22px;
+          height: 22px;
+        }
+
+        span:last-child {
+          margin-left: 8px;
+          @include PressStart();
+          font-size: 20px;
+          line-height: 180%;
+          letter-spacing: -0.02em;
+          color: #000000;
+        }
+      }
+
+      .buttons {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 40px;
+
+        .btnYes, .btnNo {
+          p {
+            @include PressStart();
+            font-size: 20px;
+            line-height: 160%;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+          }
+        }
+
+        .btnYes p {
+          color: #548C24;
+        }
+
+        .btnNo p {
+          color: #9A1C1C;
+        }
+
+      }
+
+    }
+  }
+}

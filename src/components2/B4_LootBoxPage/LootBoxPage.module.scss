@@ -1,0 +1,191 @@
+@import "../../assets/scss/app.scss";
+
+.lootBoxPage {
+  height: 100%;
+
+  @include desktop() {
+    min-height: 829px;
+    height: 100vh;
+  }
+
+  .inner {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 104px 16px 181px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include desktop() {
+      padding: 164px 0;
+      width: 1160px;
+      margin: 0 auto;
+    }
+
+    .title {
+      @include h2();
+    }
+
+    .card {
+      position: relative;
+      margin-top: 56px;
+
+      @include desktop() {
+        margin-top: 64px;
+      }
+
+      .back {
+        display: block;
+        position: relative;
+        z-index: 1;
+        width: 288px;
+        height: 517px;
+
+        @include desktop() {
+          width: 848px;
+          height: 375px;
+        }
+      }
+
+      .content {
+        @include absoluteLayer();
+        z-index: 2;
+        padding: 32px 24px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include desktop() {
+          padding: 0 62px;
+          flex-direction: row;
+        }
+
+        .icon {
+          display: block;
+          width: 120px;
+          height: 120px;
+
+          @include desktop() {
+            width: 300px;
+            height: 300px;
+          }
+        }
+
+        .infoBlock {
+          margin-top: 16px;
+
+          @include desktop() {
+            margin-top: 0;
+            margin-left: 64px;
+          }
+
+
+          .qualityBox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            @include desktop() {
+              justify-content: normal;
+            }
+
+            p:nth-child(1) {
+              @include PressStart();
+              font-size: 14px;
+              line-height: 135%;
+            }
+
+            p:nth-child(2) {
+              @include PressStart();
+              font-size: 17px;
+              line-height: 150%;
+              color: #E7B223;
+
+              @include desktop() {
+                font-size: 24px;
+                margin-left: 24px;
+              }
+            }
+
+
+          }
+
+          .contain {
+            margin-top: 24px;
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 135%;
+
+            @include desktop() {
+              margin-top: 32px;
+              line-height: 135%;
+            }
+          }
+
+          .items {
+            margin-top: 16px;
+
+            @include desktop() {
+              margin-top: 24px;
+            }
+
+            .item {
+              display: flex;
+
+              &:not(:first-child) {
+                margin-top: 12px;
+              }
+
+              img {
+                display: block;
+                width: 16px;
+                height: 16px;
+
+                @include desktop() {
+                  width: 24px;
+                  height: 24px;
+                }
+              }
+
+              p {
+                margin-left: 4px;
+                @include PressStart();
+                font-size: 14px;
+                line-height: 140%;
+                color: #F6B841;
+
+                @include desktop() {
+                  margin-left: 12px;
+                  font-size: 17px;
+                }
+              }
+
+            }
+
+          }
+
+          .openBtn {
+            margin-top: 32px;
+
+            p {
+              @include PressStart();
+              font-size: 20px;
+              line-height: 160%;
+              letter-spacing: -0.02em;
+              text-transform: uppercase;
+              color: #715021;
+            }
+          }
+
+        }
+
+      }
+
+
+    }
+
+
+  }
+}

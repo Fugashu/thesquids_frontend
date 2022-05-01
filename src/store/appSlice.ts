@@ -6,6 +6,7 @@ export interface ILootBox {
   price: number;
   quality: number;
   contain: { icon: string; name: string; percent: number }[];
+  quantity: number;
 }
 
 export enum HomeModalEnum {
@@ -23,7 +24,11 @@ const initialState = {
   nickname: "",
   gameplayModal: false,
   stakingNftErrorModal: false,
+  openBoxModal: false,
   voteModal: false,
+  testRecordingModal: false,
+  timeLeftModal: false,
+  tournamentsModal: false,
   lootBox: null as null | ILootBox,
 };
 
@@ -66,6 +71,18 @@ export const appSlice = createSlice({
     setLootBox: (state, action: PayloadAction<ILootBox>) => {
       state.lootBox = action.payload;
     },
+    setOpenBoxModal: (state, action: PayloadAction<boolean>) => {
+      state.openBoxModal = action.payload;
+    },
+    setTestRecordingModal: (state, action: PayloadAction<boolean>) => {
+      state.testRecordingModal = action.payload;
+    },
+    setTimeLeftModal: (state, action: PayloadAction<boolean>) => {
+      state.timeLeftModal = action.payload;
+    },
+    setTournamentsModal: (state, action: PayloadAction<boolean>) => {
+      state.tournamentsModal = action.payload;
+    },
   },
 });
 
@@ -81,6 +98,10 @@ export const {
   setStakingNftErrorModal,
   setVoteModal,
   setLootBox,
+  setOpenBoxModal,
+  setTestRecordingModal,
+  setTimeLeftModal,
+  setTournamentsModal,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -100,5 +121,12 @@ export const selectStakingNftErrorModal = (state: RootState) =>
   state.app.stakingNftErrorModal;
 export const selectVoteModal = (state: RootState) => state.app.voteModal;
 export const selectLootBox = (state: RootState) => state.app.lootBox;
+export const selectOpenBoxModal = (state: RootState) => state.app.openBoxModal;
+export const selectTestRecordingModal = (state: RootState) =>
+  state.app.testRecordingModal;
+export const selectTimeLeftModal = (state: RootState) =>
+  state.app.timeLeftModal;
+export const selectTournamentsModal = (state: RootState) =>
+  state.app.tournamentsModal;
 
 export const appReducer = appSlice.reducer;

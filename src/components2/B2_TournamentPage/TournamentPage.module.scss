@@ -1,0 +1,96 @@
+@import "../../assets/scss/app.scss";
+
+.tournamentPage {
+  height: 100%;
+
+  @include desktop() {
+    min-height: 848px;
+    height: 100vh;
+  }
+
+  .inner {
+    box-sizing: border-box;
+    padding: 280px 0 0;
+    width: 773px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .card {
+      position: relative;
+      width: 360px;
+      height: 404px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 32px;
+      box-sizing: border-box;
+
+      &:nth-child(1) .icon {
+        width: 311px;
+        height: 315px;
+      }
+
+      &:nth-child(2) .icon {
+        width: 218px;
+        height: 217px;
+      }
+
+      &:nth-child(3) .icon {
+        width: 249px;
+        height: 257px;
+      }
+
+      .title {
+        position: absolute;
+        left: 50%;
+        top: -24px;
+        transform: translate(-50%, -100%);
+        @include PressStart();
+        font-size: 24px;
+        line-height: 150%;
+        color: #F6B841;
+        text-align: center;
+      }
+
+      .back {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 360px;
+        height: 404px;
+      }
+
+      .icon {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 130px;
+        transform: translate(-50%, -50%);
+
+        z-index: 2;
+
+
+      }
+
+      .cardBtn {
+        z-index: 3;
+        position: absolute;
+        bottom: 73px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        p {
+          @include PressStart();
+          font-size: 20px;
+          line-height: 160%;
+          letter-spacing: -0.02em;
+          color: #715021;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

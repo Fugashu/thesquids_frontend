@@ -25,10 +25,18 @@
   }
 
   .back {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
+    width: 288px;
+    height: 385px;
+
+    @include desktop() {
+      width: 360px;
+      height: 473px;
+    }
   }
 
   .content {

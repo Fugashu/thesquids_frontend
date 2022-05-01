@@ -1,10 +1,15 @@
 import {FC, useState} from "react";
 import style from "./TopButton.module.scss";
-import {svgIcons} from "../../../../../assets/svg/svgIcons";
 import {HomeModalEnum} from "../../../../../store/appSlice";
 import iconDna from "../../../../../assets/png/choose the coin/dna_icon.png";
-import iconLives from "../../../../../assets/png/choose the coin/dna_icon.png";
+import iconLives from "../../../../../assets/png/choose the coin/heart_icon.png";
 import clsx from "clsx";
+
+import mobileDefault from "../../../../../assets/png/buttons/choose the coins/top button/mobileDefault.png";
+import mobileChecked from "../../../../../assets/png/buttons/choose the coins/top button/mobileChecked.png";
+import desktopDefault from "../../../../../assets/png/buttons/choose the coins/top button/desktopDefault.png";
+import desktopHover from "../../../../../assets/png/buttons/choose the coins/top button/desktopHover.png";
+import desktopChecked from "../../../../../assets/png/buttons/choose the coins/top button/desktopChecked.png";
 
 interface ITopButton {
     onClick: () => void
@@ -25,25 +30,27 @@ export const TopButton: FC<ITopButton> = ({
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
         >
-            <div className={style.backMobile}>
-                {
-                    checked
-                        ? svgIcons.topButtonMobileClick
-                            : hover
-                                ? svgIcons.topButtonMobileDefault
-                                : svgIcons.topButtonMobileDefault
-                }
-            </div>
+            <img className={style.backMobile}
+                 src={
+                     checked
+                         ? mobileChecked
+                         : hover
+                         ? mobileDefault
+                         : mobileDefault
+                 }
+                 alt=""
+            />
 
-            <div className={style.backDesktop}>
-                {
-                    checked
-                        ? svgIcons.topButtonDesktopClick
-                        : hover
-                        ? svgIcons.topButtonDesktopHover
-                        : svgIcons.topButtonDesktopDefault
-                }
-            </div>
+            <img className={style.backDesktop}
+                 src={
+                     checked
+                         ? desktopChecked
+                         : hover
+                         ? desktopHover
+                         : desktopDefault
+                 }
+                 alt=""
+            />
 
             <div className={style.content}>
                 <img src={type === HomeModalEnum.dna ? iconDna : iconLives}

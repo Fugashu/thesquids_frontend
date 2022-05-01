@@ -1,18 +1,27 @@
 import * as React from "react";
 import style from "./TournamentsPage.module.scss";
-import btnMobile from "../../assets/png/buttons/leaderboard/mobile.png";
-import btnDesktop from "../../assets/png/buttons/leaderboard/desktop.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CardItem } from "./CardItem/CardItem";
-import enterBtnMobile from "../../assets/png/buttons/tournaments card enter/mobile.png";
-import enterBtnDesktop from "../../assets/png/buttons/tournaments card enter/desktop.png";
-import { svgIcons } from "../../assets/svg/svgIcons";
 import { useAppDispatch } from "../../store/hooks";
 import { setLeaderboardModal, setModal } from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
 import { desktopBreakPoint } from "../../constants";
+import sandTimerIcon from "../../assets/png/icons/sandTimer.png";
+import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
 
-import hourglassImg from "../../assets/png/newiconstheo/hourglass 1.png";
+// leaderboard
+import imgMobileDefault from "../../assets/png/buttons/tournaments page - leaderboard/lb_default.png";
+import imgMobileClick from "../../assets/png/buttons/tournaments page - leaderboard/lb_clicked.png";
+import imgDesktopDefault from "../../assets/png/buttons/tournaments page - leaderboard/lb_default.png";
+import imgDesktopHover from "../../assets/png/buttons/tournaments page - leaderboard/lb_hover.png";
+import imgDesktopClick from "../../assets/png/buttons/tournaments page - leaderboard/lb_clicked.png";
+
+// enter
+import mobileDefault from "../../assets/png/buttons/tournaments page - enter/enter_default.png";
+import mobileClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
+import desktopDefault from "../../assets/png/buttons/tournaments page - enter/enter_default.png";
+import desktopHover from "../../assets/png/buttons/tournaments page - enter/enter_hover.png";
+import desktopClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
 
 export const TournamentsPage = () => {
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
@@ -30,6 +39,17 @@ export const TournamentsPage = () => {
         matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
       },
     },
+    // {
+    //     title: "Tournament 2",
+    //     items: [
+    //         {title: "Enter price", value: "3 $DNA "},
+    //         {title: "Price pool", value: "10 $DNA "},
+    //         {title: "Participant", value: "5/500"},
+    //     ],
+    //     onClick: () => {
+    //         matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error")
+    //     }
+    // },
   ];
 
   const dispatch = useAppDispatch();
@@ -43,10 +63,22 @@ export const TournamentsPage = () => {
       <div className={style.inner}>
         <div className={style.titleBlock}>
           <h2 className={style.title}>Tournaments</h2>
-          <button className={style.btn} onClick={onLeaderboard}>
-            <img src={matchDesktop ? btnDesktop : btnMobile} alt="" />
-            <span>Leaderboard</span>
-          </button>
+
+          <ButtonCustom
+            className={style.leaderboardBtn}
+            onClick={onLeaderboard}
+            widthMobile={287}
+            heightMobile={75}
+            widthDesktop={360}
+            heightDesktop={75}
+            imgMobileDefault={imgMobileDefault}
+            imgMobileClick={imgMobileClick}
+            imgDesktopDefault={imgDesktopDefault}
+            imgDesktopHover={imgDesktopHover}
+            imgDesktopClick={imgDesktopClick}
+          >
+            <p></p>
+          </ButtonCustom>
         </div>
 
         <div className={style.cards}>
@@ -62,13 +94,22 @@ export const TournamentsPage = () => {
                     </div>
                   ))}
                 </div>
-                <button className={style.enterBtn} onClick={card.onClick}>
-                  <img
-                    src={matchDesktop ? enterBtnDesktop : enterBtnMobile}
-                    alt=""
-                  />
-                  <span>enter</span>
-                </button>
+
+                <ButtonCustom
+                  className={style.enterBtn}
+                  onClick={card.onClick}
+                  widthMobile={240}
+                  heightMobile={40}
+                  widthDesktop={294}
+                  heightDesktop={40}
+                  imgMobileDefault={mobileDefault}
+                  imgMobileClick={mobileClick}
+                  imgDesktopDefault={desktopDefault}
+                  imgDesktopHover={desktopHover}
+                  imgDesktopClick={desktopClick}
+                >
+                  <p></p>
+                </ButtonCustom>
               </>
             </CardItem>
           ))}
@@ -76,15 +117,14 @@ export const TournamentsPage = () => {
             <>
               <p className={style.title}>Tournament 2</p>
               <p className={style.soon}>soon</p>
-              <img style={{ width: 332, height: 265 }} src={hourglassImg} />
+              <img className={style.sandTimer} src={sandTimerIcon} alt="" />
             </>
           </CardItem>
-
           <CardItem>
             <>
               <p className={style.title}>Tournament 3</p>
               <p className={style.soon}>soon</p>
-              <img style={{ width: 332, height: 265 }} src={hourglassImg} />
+              <img className={style.sandTimer} src={sandTimerIcon} alt="" />
             </>
           </CardItem>
         </div>

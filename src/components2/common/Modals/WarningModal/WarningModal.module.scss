@@ -20,10 +20,19 @@
     }
 
     .back {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
+      width: 320px;
+      height: 474px;
+
+      @include desktop() {
+        width: 500px;
+        height: 472px;
+      }
+
     }
 
     .closeButton {
@@ -67,6 +76,12 @@
           width: 43px;
           height: 43px;
 
+          img {
+            display: block;
+            width: 43px;
+            height: 43px;
+          }
+
           span {
             position: absolute;
             top: 50%;
@@ -92,37 +107,12 @@
 
     .acceptButton {
       margin-top: 24px;
-      position: relative;
-      z-index: 2;
-      @include button();
-      @include center();
-      width: 289px;
-      height: 75px;
 
       @include desktop() {
         margin-top: 28px;
-        width: 426px;
-        height: 75px;
-      }
-
-      img {
-        position: absolute;
-        z-index: 1;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 289px;
-        height: 75px;
-
-        @include desktop() {
-          width: 426px;
-          height: 75px;
-        }
       }
 
       p {
-        position: relative;
-        z-index: 2;
         @include buttonText();
       }
 

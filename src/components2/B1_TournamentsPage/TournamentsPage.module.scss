@@ -3,8 +3,6 @@
 .tournamentsPage {
   height: 100%;
 
-
-
   @include desktop() {
     min-height: 940px;
     height: 100vh;
@@ -35,34 +33,14 @@
         @include h2();
       }
 
-      .btn {
-        @include button();
-        position: relative;
+      .leaderboardBtn {
         margin-top: 24px;
 
         @include desktop() {
           margin-top: 0;
         }
 
-        img {
-          display: block;
-          position: relative;
-          z-index: 1;
-          width: 287px;
-          height: 75px;
-
-          @include desktop() {
-            width: 360px;
-            height: 75px;
-          }
-        }
-
-        span {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 2;
+        p {
           @include buttonText();
         }
       }
@@ -137,36 +115,15 @@
       }
 
       .enterBtn {
-        position: relative;
-        @include button();
         margin-top: 23px;
 
         @include desktop() {
           margin-top: 32px;
         }
 
-        img {
-          display: block;
-          position: relative;
-          z-index: 1;
-          width: 240px;
-          height: 40px;
-
-          @include desktop() {
-            width: 294px;
-            height: 40px;
-          }
-        }
-
-        span {
+        p {
           @include buttonTextSmall();
-          position: absolute;
-          z-index: 2;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
         }
-
       }
 
       .soon {
@@ -183,31 +140,20 @@
         }
       }
 
-
       .sandTimer {
-        margin-top: 44px;
-        width: 332px;
-        height: 265px;
-
+        display: block;
+        margin-top: 24px;
+        width: 249px;
+        height: 199px;
         @include desktop() {
-          margin-top: 57px;
-          width: 164px;
-          height: 222px;
+          width: 332px;
+          height: 265px;
         }
 
-        svg {
-          width: 140px;
-          height: 190px;
-
-          @include desktop() {
-            width: 164px;
-            height: 222px;
-          }
-        }
       }
+
 
     }
 
   }
-
 }

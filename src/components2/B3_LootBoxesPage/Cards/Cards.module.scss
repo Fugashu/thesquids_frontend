@@ -1,0 +1,157 @@
+@import "../../../assets/scss/app.scss";
+
+.cards {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include desktop() {
+    margin-top: 64px;
+    flex-direction: row;
+  }
+
+  .card {
+    position: relative;
+    width: 288px;
+    height: 442px;
+    box-sizing: border-box;
+    padding: 32px 25px 0;
+
+    &:not(:first-child) {
+      margin-top: 24px;
+      padding: 24px 20px 0;
+
+      @include desktop() {
+        margin-top: 0;
+        margin-left: 40px;
+      }
+    }
+
+    @include desktop() {
+      width: 260px;
+      height: 479px;
+    }
+
+    .back {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 288px;
+      height: 442px;
+
+      @include desktop() {
+        width: 260px;
+        height: 479px;
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+
+      .icon {
+        display: block;
+        align-self: center;
+        width: 120px;
+        height: 120px;
+
+        @include desktop() {
+          width: 142px;
+          height: 140px;
+        }
+      }
+
+      .title {
+        margin-top: 16px;
+        @include PressStart();
+        font-size: 17px;
+        line-height: 160%;
+        text-align: center;
+      }
+
+      .priceBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 16px;
+
+        @include desktop() {
+          margin-top: 20px;
+        }
+
+        p:first-child {
+          @include PressStart();
+          font-size: 14px;
+          line-height: 135%;
+        }
+
+        p:last-child {
+          @include PressStart();
+          font-size: 17px;
+          line-height: 150%;
+          text-transform: uppercase;
+          color: #E7B223;
+        }
+      }
+
+      .purchaseBtn {
+        margin-top: 12px;
+
+        @include desktop() {
+          margin-top: 16px;
+        }
+
+        p {
+          @include buttonTextSmall();
+        }
+
+      }
+
+      .contain {
+        margin-top: 24px;
+        @include PressStart();
+        font-size: 14px;
+        line-height: 135%;
+        text-align: left;
+
+        @include desktop() {
+          margin-top: 32px;
+        }
+      }
+
+      .items {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 8px 16px;
+
+        .item {
+          display: flex;
+          align-items: center;
+
+          img {
+            display: block;
+            width: 24px;
+            height: 24px;
+          }
+
+          p {
+            margin-left: 10px;
+            font-size: 16px;
+            line-height: 150%;
+          }
+        }
+
+
+      }
+
+    }
+  }
+
+}

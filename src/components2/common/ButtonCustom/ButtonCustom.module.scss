@@ -1,0 +1,47 @@
+@import "../../../assets/scss/app.scss";
+
+.buttonCustom {
+  @include button();
+  @include center();
+  position: relative;
+
+  .imgMobile, .imgDesktop {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .childrenWrapper {
+    @include center();
+    position: relative;
+    z-index: 2;
+
+    &_click {
+      transform: translateY(2px);
+    }
+  }
+
+  .imgMobile {
+    @include onlyMobile() {
+      opacity: 0;
+    }
+
+    &_show {
+      opacity: 1;
+    }
+  }
+
+  .imgDesktop {
+    @include onlyDesktop() {
+      opacity: 0;
+    }
+
+    &_show {
+      opacity: 1;
+    }
+  }
+
+}

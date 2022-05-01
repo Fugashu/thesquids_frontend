@@ -1,0 +1,98 @@
+@import "../../../../../assets/scss/app.scss";
+
+.cardLives {
+  cursor: pointer;
+  position: relative;
+  width: 288px;
+  height: 162px;
+
+  @include desktop() {
+    width: 260px;
+    height: 212px;
+  }
+
+  .back {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 288px;
+    height: 162px;
+
+    @include desktop() {
+      width: 260px;
+      height: 212px;
+    }
+  }
+
+  .cardContent {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cardTitle {
+      margin-top: 15px;
+      @include PressStart();
+      font-size: 24px;
+      line-height: 150%;
+      text-align: center;
+      text-transform: uppercase;
+      color: #000;
+
+      @include desktop() {
+        margin-top: 30px;
+      }
+
+
+    }
+
+    .compassBlock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5px;
+
+      @include desktop() {
+        margin-top: 4px;
+      }
+
+      p {
+        @include PressStart();
+        font-size: 10px;
+        line-height: 135%;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #000;
+      }
+
+      img {
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin-left: 4px;
+      }
+
+    }
+
+    .buyBtn {
+      margin-top: 15px;
+
+      @include desktop() {
+        margin-top: 32px;
+      }
+
+      p {
+        @include buttonTextSmall();
+        white-space: nowrap;
+      }
+
+    }
+
+
+  }
+
+
+}

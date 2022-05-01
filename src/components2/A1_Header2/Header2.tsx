@@ -4,12 +4,12 @@ import logo from "../../assets/png/header2/logo.png";
 import clsx from "clsx";
 import {Link} from "react-router-dom";
 import {links} from "./constants";
-import {SvgIcon} from "../../components/common/SvgIcon/SvgIcon";
-import {svgIcons} from "../../assets/svg/svgIcons";
 import {HeaderButtons} from "../common/HeaderButtons/HeaderButtons";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {selectBurgerOpen, selectModal, setBurgerOpen, setModal, setTournamentsWarningModal} from "../../store/appSlice";
 
+import burgerIcon from "../../assets/png/icons/burger.png";
+import closeBurgerIcon from "../../assets/png/icons/closeBurger.png";
 
 export interface IHeader2 {
     // dir: number
@@ -79,9 +79,7 @@ export const Header2: FC<IHeader2> = ({
                     <button className={style.burgerButton}
                             onClick={onBurgerClick}
                     >
-                        <SvgIcon icon={
-                            burgerOpen ? svgIcons.close : svgIcons.burger
-                        }/>
+                        <img src={burgerOpen ? closeBurgerIcon : burgerIcon} alt=""/>
                     </button>
                 </div>
             </div>
