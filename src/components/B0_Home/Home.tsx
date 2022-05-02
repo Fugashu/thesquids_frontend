@@ -15,7 +15,12 @@ import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
 import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
 import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
 import { useNavigate } from "react-router-dom";
-import { isUnlocked } from "../cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  isUnlocked,
+  signer,
+} from "../cojodi/MetamaskConnection/MetamaskWallet";
+import { setWalletAddress } from "../../store/appSlice";
+import { useAppDispatch } from "../../store/hooks";
 interface IHome {
   onClickHandler: () => void;
 }
@@ -32,6 +37,7 @@ export const Home: FC<IHome> = () => {
       alert("Connect your wallet to continue");
       return;
     }
+
     navigateToTournament();
   }
   return (

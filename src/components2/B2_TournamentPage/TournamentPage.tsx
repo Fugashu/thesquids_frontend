@@ -5,6 +5,7 @@ import {
   setModal,
   setStakingNftErrorModal,
   setTournamentsModal,
+  setTournamentsWarningModal,
   setVoteModal,
 } from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +41,8 @@ export const TournamentPage = () => {
           dispatch(setModal(true));
           dispatch(setStakingNftErrorModal(true));
         } else {
-          navigate("/app2/play");
+          dispatch(setTournamentsWarningModal(true));
+          dispatch(setModal(true));
         }
       },
       imgDefault: imgDefaultPlay,

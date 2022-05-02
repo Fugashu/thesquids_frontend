@@ -1,18 +1,25 @@
 import React, { FC, useEffect, useState } from "react";
 import style from "./HeaderButtons.module.scss";
 import clsx from "clsx";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import {
   HomeModalEnum,
+  selectNickname,
   setBurgerOpen,
   setHomeModalType,
   setModal,
   setShowChooseTheCoinModal,
+  setWalletAddress,
+  walletAddress,
 } from "../../../store/appSlice";
 import src0 from "../../../assets/png/header2/btn0.png";
 import src1 from "../../../assets/png/header2/btn1.png";
 import src2 from "../../../assets/png/buttons/metamaskBtnIdle.png";
-import { getConnectedSignerAddress } from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  connectWallet,
+  signer,
+} from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import { store } from "../../../store/store";
 
 interface IHeaderButtons {
   className?: string;
@@ -20,8 +27,15 @@ interface IHeaderButtons {
 
 export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const dispatch = useAppDispatch();
+  const walletAddr = useAppSelector(walletAddress);
 
-  const [walletAddr, setWalletAddr] = useState("0x...");
+  // @ts-ignore
+  useEffect(async () => {
+    try {
+      await connectWallet();
+      await dispatch(setWalletAddress(await signer.getAddress()));
+    } catch (error) {}
+  }, [walletAddr]);
 
   const buttons = [
     {
@@ -48,7 +62,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     },
     {
       src: src2,
-      text: walletAddr,
+      text: walletAddr.slice(2, 5) + "..." + walletAddr.slice(-3),
       label: "Nickname",
       onClick: () => {
         dispatch(setBurgerOpen(false));

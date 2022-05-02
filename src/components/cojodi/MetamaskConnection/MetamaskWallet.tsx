@@ -22,6 +22,7 @@ export var mintingContract: ethers.Contract;
 export var goerliBridgeContract: ethers.Contract;
 export var mumbaiBridgeContract: ethers.Contract;
 let provider: ethers.providers.Web3Provider;
+
 export async function isUnlocked() {
   try {
     await getConnectedSignerAddress();
@@ -31,7 +32,6 @@ export async function isUnlocked() {
 
   return true;
 }
-
 export async function getConnectedSignerAddress() {
   let connectedAddress = await signer.getAddress();
   console.log("Signer public address:" + connectedAddress);

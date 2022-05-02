@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
+import { ethers } from "ethers";
 
 export interface ILootBox {
+  image: string;
   label: string;
   price: number;
   quality: number;
@@ -30,6 +32,7 @@ const initialState = {
   timeLeftModal: false,
   tournamentsModal: false,
   lootBox: null as null | ILootBox,
+  walletAddress: "...",
 };
 
 type InitialStateType = typeof initialState;
@@ -83,6 +86,10 @@ export const appSlice = createSlice({
     setTournamentsModal: (state, action: PayloadAction<boolean>) => {
       state.tournamentsModal = action.payload;
     },
+
+    setWalletAddress: (state, action: PayloadAction<string>) => {
+      state.walletAddress = action.payload;
+    },
   },
 });
 
@@ -102,6 +109,8 @@ export const {
   setTestRecordingModal,
   setTimeLeftModal,
   setTournamentsModal,
+
+  setWalletAddress,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -129,4 +138,5 @@ export const selectTimeLeftModal = (state: RootState) =>
 export const selectTournamentsModal = (state: RootState) =>
   state.app.tournamentsModal;
 
+export const walletAddress = (state: RootState) => state.app.walletAddress;
 export const appReducer = appSlice.reducer;

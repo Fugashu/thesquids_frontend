@@ -32,12 +32,9 @@ export const HomePage = () => {
   const links = [
     {
       label: "Tournaments",
-      to: "/app2",
+      to: "/app2/tournaments",
       icon: cardIcon0,
-      onClick: () => {
-        dispatch(setTournamentsWarningModal(true));
-        dispatch(setModal(true));
-      },
+      onClick: () => {},
     },
     {
       label: "Loot Boxes",
@@ -45,12 +42,12 @@ export const HomePage = () => {
       icon: cardIcon1,
       onClick: () => {},
     },
-    {
+    /*{
       label: "Whitelist Marketplace",
       to: "/app2/marketplace",
       icon: cardIcon2,
       onClick: () => {},
-    },
+    },*/
     {
       label: "Setup",
       to: "/app2/setup",

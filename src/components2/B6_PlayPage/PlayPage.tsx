@@ -2,7 +2,6 @@
 import * as React from "react";
 import style from "./PlayPage.module.scss";
 import { svgIcons } from "../../assets/svg/svgIcons";
-import btn from "../../assets/png/buttons/play/button.png";
 import { useState } from "react";
 import clsx from "clsx";
 import numberButton from "../../assets/png/buttons/numberButton.png";
