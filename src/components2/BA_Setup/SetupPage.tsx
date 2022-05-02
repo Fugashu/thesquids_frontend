@@ -14,6 +14,9 @@ import bridgeIcon from "../../assets/png/icons/setup_page/bridge 1.png";
 import stakeIcon from "../../assets/png/icons/setup_page/staking 1.png";
 import tosIcon from "../../assets/png/icons/setup_page/tos.png";
 import testRecordingIcon from "../../assets/png/icons/setup_page/test recording 1.png";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { desktopBreakPoint } from "../../constants";
+import { useNavigate } from "react-router-dom";
 export interface IHomeCard {
   label: string;
   to: string;
@@ -23,6 +26,8 @@ export interface IHomeCard {
 
 export const SetupPage = () => {
   const dispatch = useAppDispatch();
+  const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
+  const navigate = useNavigate();
 
   const links = [
     {
@@ -43,17 +48,18 @@ export const SetupPage = () => {
       icon: tosIcon,
       onClick: () => {
         //todo tos modal
-        dispatch(setTestRecordingModal(true));
-        dispatch(setModal(true));
+        // dispatch(setTestRecordingModal(true));
+        // dispatch(setModal(true));
       },
     },
     {
       label: "Test Recording",
-      to: "/app2/setup",
+      to: matchDesktop ? "/app2/setup" : "/app2/error",
       icon: testRecordingIcon,
       onClick: () => {
-        dispatch(setTestRecordingModal(true));
-        dispatch(setModal(true));
+        matchDesktop
+          ? dispatch(setTestRecordingModal(true))
+          : dispatch(setModal(true));
       },
     },
     /*    {

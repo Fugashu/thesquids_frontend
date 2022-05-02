@@ -8,7 +8,6 @@ import { setLootBox, setModal, setOpenBoxModal } from "../../../store/appSlice";
 
 import cardMobile from "../../../assets/png/cards/loot boxes page/card/mobile.png";
 import cardDesktop from "../../../assets/png/cards/loot boxes page/card/desktop.png";
-import cardIcon from "../../../assets/png/icons/loot boxes page card icon.png";
 import { ButtonCustom } from "../../common/ButtonCustom/ButtonCustom";
 
 import imgMobileDefault from "../../../assets/png/buttons/loot boxes page/purchase/mobileDefault.png";

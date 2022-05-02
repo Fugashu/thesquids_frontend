@@ -39,7 +39,7 @@ export const LootBoxPage = () => {
 
                 <div className={style.infoBlock}>
                   <div className={style.qualityBox}>
-                    <p>Quality left</p>
+                    <p>Quantity left</p>
                     <p>{lootBox.quality}</p>
                   </div>
 
