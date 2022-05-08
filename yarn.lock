@@ -6008,6 +6008,11 @@
   dependencies:
     "path-type" "^4.0.0"
 
+"discord-oauth2@^2.10.0":
+  "integrity" "sha512-AV+pjKURHyGTCLCUO1vep83/M8zzlAaTkpjAB6bisBCjsyiQzJGihKR4dlM88UeAaJbyqDxnHIsHafePIO2ssg=="
+  "resolved" "https://registry.npmjs.org/discord-oauth2/-/discord-oauth2-2.10.0.tgz"
+  "version" "2.10.0"
+
 "dns-equal@^1.0.0":
   "integrity" "sha1-s55/HabrCnW6nBcySzR1PEfgZU0="
   "resolved" "https://registry.npmjs.org/dns-equal/-/dns-equal-1.0.0.tgz"

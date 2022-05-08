@@ -1,5 +1,6 @@
-import React, { FC, useCallback, useState } from "react";
+import React, {FC, useCallback, useEffect, useState} from "react";
 import style from "./home.module.scss";
+import DiscordOauth2 from "discord-oauth2";
 // import background from "../../assets/gif/home-back.gif";
 import { SocialIcon } from "../common/SocialIcon/SocialIcon";
 import enterD from "../../assets/png/buttons/button main.png";
@@ -14,18 +15,110 @@ import { MetaMaskButton } from "../cojodi/MetamaskConnection/connectToMetamaskBu
 import connectD from "../../assets/png/buttons/metamaskBtnIdle.png";
 import connectH from "../../assets/png/buttons/metamaskBtnHover.png";
 import connectC from "../../assets/png/buttons/metamaskBtnIPressed.png";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {
   isUnlocked,
   signer,
 } from "../cojodi/MetamaskConnection/MetamaskWallet";
 import { setWalletAddress } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
+import {stringify} from "querystring";
+import axios from "axios";
 interface IHome {
   onClickHandler: () => void;
 }
 
+
 export const Home: FC<IHome> = () => {
+  const [accessToken, setAccessToken] = useState('');
+  const [discordUserName, setDiscordUsername] = useState('');
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const cd = queryParams.get('code');
+
+
+  // @ts-ignore
+  useEffect(async ()=>cb(cd))
+
+
+
+async function cb(code:string) {
+    try{
+     const oauth = new DiscordOauth2();
+  await oauth.tokenRequest({
+    clientId: "970248803808587797",
+    clientSecret: "-3SU_sNnbtvMOgWnhSPcJxRV3QOa0JnZ",
+    code: code,
+    scope: "identify",
+    grantType: "authorization_code",
+    redirectUri: "http://localhost",
+  }).then((value) => {
+    console.log(value);
+    setAccessToken(value.access_token);
+    try{
+      oauth.getUser(value.access_token).then((user) => {
+        console.log(user);
+        setDiscordUsername(user.username);
+      })
+    }catch (e){
+      console.log('couldnt get user')
+    }
+
+  })}
+    catch (e){
+      console.log('Error while fetching Discord Token')
+    }
+
+
+
+
+
+
+
+
+}
+  async function disc (){
+    //https://discord.com/oauth2/authorize?response_type=code&client_id=157730590492196864
+    let response_type='code';
+    let client_id='970248803808587797'
+     let   scope= 'identify guilds connections';
+    let redirect = 'https://discord.com/api/oauth2/authorize?' +'response_type='+response_type+ '&client_id=' + client_id + '&scope=' + scope;
+    window.location.href = redirect;
+
+
+
+
+    {/*    const { data } = await axios.post(
+        "https://discord.com/api/oauth2/authorize",
+        stringify({
+          client_id: '970248803808587797',
+          client_secret: '-3SU_sNnbtvMOgWnhSPcJxRV3QOa0JnZ',
+          grant_type: "authorization_code",
+          code: 'code',
+          redirect_uri: 'http://localhost/callback',
+        }),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+    );
+
+const oauth = new DiscordOauth2();
+
+    oauth.tokenRequest({
+      clientId: "970248803808587797",
+      clientSecret: "-3SU_sNnbtvMOgWnhSPcJxRV3QOa0JnZ",
+
+      code: "query code",
+      scope: "identify guilds",
+      grantType: "authorization_code",
+
+      redirectUri: "http://localhost/callback",
+    }).then(console.log) */}
+  }
+
+
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const navigateToTournament = useCallback(
@@ -46,6 +139,9 @@ export const Home: FC<IHome> = () => {
       // style={{backgroundImage: `url(${background})`}}
     >
       <div className={style.innerWrapper}>
+        <h1>{accessToken}</h1>
+        <h1>{discordUserName}</h1>
+
         <GlitchText
           duration={3000}
           color1="rgba(30, 171, 245, 1)"
@@ -67,6 +163,13 @@ export const Home: FC<IHome> = () => {
           imgClick={enterC}
           className={style.enterButton}
           onClick={tryNavigateToTournament}
+        />
+        <ButtonLink
+            imgDefault={enterD}
+            imgHover={enterH}
+            imgClick={enterC}
+            className={style.enterButton}
+            onClick={disc}
         />
 
         <div className={style.icons}>
