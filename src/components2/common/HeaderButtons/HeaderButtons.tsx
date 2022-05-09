@@ -4,10 +4,14 @@ import clsx from "clsx";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import {
   discordUserName,
+  dnaBalance,
   HomeModalEnum,
+  lifeBalance,
   selectNickname,
   setBurgerOpen,
+  setDNABalance,
   setHomeModalType,
+  setLifeBalance,
   setModal,
   setShowChooseTheCoinModal,
   setWalletAddress,
@@ -18,9 +22,14 @@ import src1 from "../../../assets/png/header2/btn1.png";
 import src2 from "../../../assets/png/buttons/metamaskBtnIdle.png";
 import {
   connectWallet,
+  mumbaiTokenContract,
   signer,
 } from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { store } from "../../../store/store";
+import axios from "axios";
+import { backendEndpoint } from "../../../constants";
+import { CojodiNetworkSwitcher } from "../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../../../components/cojodi/BackendCalls/chainRpcData";
 
 interface IHeaderButtons {
   className?: string;
@@ -30,19 +39,32 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const dispatch = useAppDispatch();
   const walletAddr = useAppSelector(walletAddress);
   const nickName = useAppSelector(discordUserName);
+  const dnaBal = useAppSelector(dnaBalance);
+  const lifeBal = useAppSelector(lifeBalance);
+
   // @ts-ignore
   useEffect(async () => {
     try {
       await connectWallet();
       await dispatch(setWalletAddress(await signer.getAddress()));
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+      let dnaBalanceOfUser = await mumbaiTokenContract.balanceOf(
+        await signer.getAddress()
+      );
+      let dnaString = dnaBalanceOfUser.toString();
+      dispatch(setDNABalance(dnaString));
+      await axios
+        .get(backendEndpoint + `/user/${await signer.getAddress()}`)
+        .then(function (res) {
+          dispatch(setLifeBalance(res.data.lives));
+        });
     } catch (error) {}
   }, [walletAddr]);
 
   const buttons = [
     {
       src: src0,
-      //todo DIMI balance
-      text: "Balance:3",
+      text: `Balance:${lifeBal}`,
       label: "Buy more",
       onClick: () => {
         dispatch(setModal(true));
@@ -53,8 +75,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     },
     {
       src: src1,
-      //todo DIMI balance
-      text: "Balance:3",
+      text: `Balance:${dnaBal ? dnaBal : null}`,
       label: "Buy more",
       onClick: () => {
         dispatch(setModal(true));

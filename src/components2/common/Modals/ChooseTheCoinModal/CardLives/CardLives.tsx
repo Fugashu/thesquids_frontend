@@ -7,6 +7,8 @@ import { ICardLives } from "../ChooseTheCoinModal";
 import btnMobile from "../../../../../assets/png/buttons/choose the coins/buyNowMobile.png";
 import btnDesktop from "../../../../../assets/png/buttons/choose the coins/buyNowDesktop.png";
 import compass from "../../../../../assets/png/icons/compass.png";
+import dnaicon from "../../../../../assets/png/choose the coin/dna_icon.png";
+
 import cardMobile from "../../../../../assets/png/cards/choose the coins modal card/mobile.png";
 import cardDesktopDefault from "../../../../../assets/png/cards/choose the coins modal card/desktopDefault.png";
 import cardDesktopHover from "../../../../../assets/png/cards/choose the coins modal card/desktopHover.png";
@@ -59,8 +61,8 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
         <p className={style.cardTitle}>{`${lives} lives`}</p>
 
         <div className={style.compassBlock}>
-          <p>{value}</p>
-          <img src={compass} alt="" />
+          <p>{lives * value}</p>
+          <img src={dnaicon} alt="" />
         </div>
 
         <ButtonCustom

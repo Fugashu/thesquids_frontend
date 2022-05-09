@@ -36,6 +36,8 @@ const initialState = {
   discordUserName: "",
   gameplayUrl: "",
   dnaBuyAmount: "",
+  dnaBalance: "",
+  lifeBalance: "",
 };
 
 type InitialStateType = typeof initialState;
@@ -103,6 +105,12 @@ export const appSlice = createSlice({
     setDnaBuyAmount: (state, action: PayloadAction<string>) => {
       state.dnaBuyAmount = action.payload;
     },
+    setDNABalance: (state, action: PayloadAction<string>) => {
+      state.dnaBalance = action.payload;
+    },
+    setLifeBalance: (state, action: PayloadAction<string>) => {
+      state.lifeBalance = action.payload;
+    },
   },
 });
 
@@ -127,6 +135,8 @@ export const {
   setDiscordUsername,
   setGameplayUrl,
   setDnaBuyAmount,
+  setDNABalance,
+  setLifeBalance,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -158,5 +168,7 @@ export const walletAddress = (state: RootState) => state.app.walletAddress;
 export const discordUserName = (state: RootState) => state.app.discordUserName;
 export const gameplayUrl = (state: RootState) => state.app.gameplayUrl;
 export const dnaBuyAmount = (state: RootState) => state.app.dnaBuyAmount;
+export const dnaBalance = (state: RootState) => state.app.dnaBalance;
+export const lifeBalance = (state: RootState) => state.app.lifeBalance;
 
 export const appReducer = appSlice.reducer;

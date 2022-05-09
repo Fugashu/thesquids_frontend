@@ -1,6 +1,6 @@
 import * as React from "react";
 import style from "./ChooseTheCoinModal.module.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useOutsideClick } from "../../../../hooks/useOutsideClick";
 import {
   dnaBuyAmount,
@@ -33,6 +33,14 @@ import imgMobileClick from "../../../../assets/png/buttons/choose the coins - dn
 import imgDesktopDefault from "../../../../assets/png/buttons/choose the coins - dna - buy/desktopDefault.png";
 import imgDesktopHover from "../../../../assets/png/buttons/choose the coins - dna - buy/desktopHover.png";
 import imgDesktopClick from "../../../../assets/png/buttons/choose the coins - dna - buy/desktopClick.png";
+import {
+  connectWallet,
+  mumbaiTokenContract,
+  mumbaiTournamentContract,
+} from "../../../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import { CojodiNetworkSwitcher } from "../../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../../../../components/cojodi/BackendCalls/chainRpcData";
+import { ethers } from "ethers";
 
 export interface ICardLives {
   lives: number;
@@ -40,10 +48,10 @@ export interface ICardLives {
 }
 
 const cards: ICardLives[] = [
-  { lives: 5, value: 0.11 },
-  { lives: 10, value: 0.22 },
-  { lives: 20, value: 0.33 },
-  { lives: 50, value: 0.44 },
+  { lives: 5, value: -1 },
+  { lives: 10, value: -1 },
+  { lives: 20, value: -1 },
+  { lives: 50, value: -1 },
 ];
 
 export const ChooseTheCoinModal = () => {
@@ -63,10 +71,24 @@ export const ChooseTheCoinModal = () => {
 
   const homeModalType = useAppSelector(selectHomeModalType);
   const dnaAmount = useAppSelector(dnaBuyAmount);
-  const dnaPrice = 5;
+  const [priceOfOneToken, setPriceOfOneToken] = useState(0);
+  const [lifePrice, setLifePrice] = useState(0);
+  // @ts-ignore
+  useEffect(async () => {
+    await connectWallet();
+    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+    setLifePrice(await mumbaiTournamentContract.lifeFee());
+    let gweiPrice = await mumbaiTokenContract.price();
+    gweiPrice = gweiPrice.toString();
+    gweiPrice = ethers.utils.formatEther(gweiPrice);
+    console.log(gweiPrice);
+    setPriceOfOneToken(gweiPrice);
+  }, [dnaAmount]);
+
   const buyDNA = async () => {
     //TODO DIMI BUY DNA
-    console.log(dnaAmount);
+    console.log("user wants to buy dna for ");
+    console.log(parseInt(dnaAmount) * priceOfOneToken);
   };
 
   return (
@@ -119,7 +141,11 @@ export const ChooseTheCoinModal = () => {
             <div className={style.totalBlock}>
               <p>total</p>
               <div>
-                <p>{dnaAmount ? parseInt(dnaAmount) * dnaPrice : ""}</p>
+                <p>
+                  {dnaAmount
+                    ? (parseInt(dnaAmount) * priceOfOneToken).toFixed(5)
+                    : ""}
+                </p>
                 <img src={compass} alt="" />
               </div>
             </div>
@@ -149,7 +175,7 @@ export const ChooseTheCoinModal = () => {
             )}
 
             {cards.map((card, index) => (
-              <CardLives key={index} {...card} />
+              <CardLives key={index} lives={card.lives} value={lifePrice} />
             ))}
           </div>
         )}

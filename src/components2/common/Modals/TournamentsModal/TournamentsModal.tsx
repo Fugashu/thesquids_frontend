@@ -43,7 +43,7 @@ export const TournamentsModal = () => {
       <div className={style.content} ref={ref}>
         <img className={style.back} src={modalBack} alt="" />
         <p className={style.title}>Tournaments</p>
-        {/*todo split the prize money between xxx*/}
+        {/*todo DIMI split the prize money between xxx*/}
         <p className={style.description}>
           Do you want to end the game and split the prize pool between {""}
           players?
@@ -82,7 +82,7 @@ export const TournamentsModal = () => {
           </ButtonCustom>
         </div>
         <div className={style.votes}>
-          {/*todo how many people voted for*/}
+          {/*todo DIMI how many people voted for*/}
           <p>152 votes</p>
           <p>152 votes</p>
         </div>
