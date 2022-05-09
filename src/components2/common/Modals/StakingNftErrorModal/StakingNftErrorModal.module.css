@@ -33,8 +33,7 @@
   top: 30px;
   right: 16px;
 }
-@media all and (min-width: 1440px) {
-  .stakingNftErrorModal .content .closeButton {
+@media all and (min-width: 1224px) {  .stakingNftErrorModal .content .closeButton {
     top: 34px;
     right: 35px;
   }
@@ -51,8 +50,7 @@
   letter-spacing: -0.03em;
   color: #130B25;
 }
-@media all and (min-width: 1440px) {
-  .stakingNftErrorModal .content .title {
+@media all and (min-width: 1224px) {  .stakingNftErrorModal .content .title {
     font-size: 28px;
   }
 }

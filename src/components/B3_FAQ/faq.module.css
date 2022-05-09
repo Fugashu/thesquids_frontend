@@ -4,16 +4,14 @@
   position: relative;
   z-index: 2;
 }
-@media all and (min-width: 1440px) {
-  .faq {
+@media all and (min-width: 1224px) {  .faq {
     padding: 180px 0;
   }
 }
 .faq .inner {
   position: relative;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner {
+@media all and (min-width: 1224px) {  .faq .inner {
     width: 1160px;
     margin: 0 auto;
   }
@@ -21,8 +19,7 @@
 .faq .inner .barrels {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .barrels {
+@media all and (min-width: 1224px) {  .faq .inner .barrels {
     display: block;
     position: absolute;
     z-index: 1;
@@ -35,8 +32,7 @@
 .faq .inner .clouds {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .clouds {
+@media all and (min-width: 1224px) {  .faq .inner .clouds {
     display: block;
     position: absolute;
     z-index: 1;
@@ -55,14 +51,12 @@
   z-index: 2;
   text-align: center;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .title {
+@media all and (min-width: 1224px) {  .faq .inner .title {
     font-size: 42px;
     line-height: 150%;
   }
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .title {
+@media all and (min-width: 1224px) {  .faq .inner .title {
     text-align: left;
   }
 }
@@ -74,8 +68,7 @@
   align-items: center;
   margin-top: 40px;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items {
+@media all and (min-width: 1224px) {  .faq .inner .items {
     align-items: flex-start;
     margin-top: 80px;
   }
@@ -90,8 +83,7 @@
   flex-direction: column;
   align-items: center;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card {
+@media all and (min-width: 1224px) {  .faq .inner .items .card {
     width: 586px;
     height: 94px;
     background-image: url(../../assets/png/faq-card-desktop-close.png);
@@ -103,8 +95,7 @@
   height: 306px;
   background-image: url(../../assets/png/faq-card-mobile-open.png);
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card_open {
+@media all and (min-width: 1224px) {  .faq .inner .items .card_open {
     width: 586px;
     height: 239px;
     background-image: url(../../assets/png/faq-card-desktop-open.png);
@@ -113,8 +104,7 @@
 .faq .inner .items .card:not(:first-child) {
   margin-top: 24px;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card:not(:first-child) {
+@media all and (min-width: 1224px) {  .faq .inner .items .card:not(:first-child) {
     margin-top: 20px;
   }
 }
@@ -127,8 +117,7 @@
   width: 32px;
   height: 32px;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card .btn {
+@media all and (min-width: 1224px) {  .faq .inner .items .card .btn {
     top: 22px;
     left: auto;
     right: 22px;
@@ -144,8 +133,7 @@
   width: 32px;
   height: 32px;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card .btn img {
+@media all and (min-width: 1224px) {  .faq .inner .items .card .btn img {
     width: 40px;
     height: 40px;
   }
@@ -161,8 +149,7 @@
   color: #130B25;
   width: 220px;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card .title {
+@media all and (min-width: 1224px) {  .faq .inner .items .card .title {
     margin-top: 31px;
     margin-left: 42px;
     width: auto;
@@ -178,8 +165,7 @@
   color: #130B25;
   margin-top: 12px;
 }
-@media all and (min-width: 1440px) {
-  .faq .inner .items .card .text {
+@media all and (min-width: 1224px) {  .faq .inner .items .card .text {
     font-size: 14px;
     margin-top: 30px;
     margin-left: 42px;

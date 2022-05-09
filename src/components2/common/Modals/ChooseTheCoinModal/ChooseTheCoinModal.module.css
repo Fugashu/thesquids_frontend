@@ -19,8 +19,7 @@
   width: 320px;
   height: 934px;
 }
-@media all and (min-width: 1440px) {
-  .chooseTheCoinModal .content {
+@media all and (min-width: 1224px) {  .chooseTheCoinModal .content {
     width: 640px;
     height: 734px;
   }
@@ -37,8 +36,7 @@
   top: 30px;
   right: 16px;
 }
-@media all and (min-width: 1440px) {
-  .chooseTheCoinModal .content .closeButton {
+@media all and (min-width: 1224px) {  .chooseTheCoinModal .content .closeButton {
     top: 40px;
     right: 40px;
   }
@@ -57,8 +55,7 @@
   letter-spacing: -0.03em;
   color: #130B25;
 }
-@media all and (min-width: 1440px) {
-  .chooseTheCoinModal .content .title {
+@media all and (min-width: 1224px) {  .chooseTheCoinModal .content .title {
     width: auto;
     margin-top: 38px;
     font-size: 28px;
@@ -72,16 +69,14 @@
   z-index: 2;
   margin-top: 24px;
 }
-@media all and (min-width: 1440px) {
-  .chooseTheCoinModal .content .topButtons {
+@media all and (min-width: 1224px) {  .chooseTheCoinModal .content .topButtons {
     margin-top: 28px;
   }
 }
 .chooseTheCoinModal .content .topButtons button:last-child {
   margin-left: 16px;
 }
-@media all and (min-width: 1440px) {
-  .chooseTheCoinModal .content .topButtons button:last-child {
+@media all and (min-width: 1224px) {  .chooseTheCoinModal .content .topButtons button:last-child {
     margin-left: 40px;
   }
 }

@@ -7,8 +7,7 @@
   overflow: hidden;
   z-index: 90;
 }
-@media all and (min-width: 1440px) {
-  .header2 {
+@media all and (min-width: 1224px) {  .header2 {
     height: 100px;
   }
 }
@@ -28,8 +27,7 @@
 .header2 .inner_transparent {
   background: rgba(41, 32, 58, 0);
 }
-@media all and (min-width: 1440px) {
-  .header2 .inner {
+@media all and (min-width: 1224px) {  .header2 .inner {
     padding-left: 54px;
     padding-right: 54px;
   }
@@ -48,8 +46,7 @@
   width: 103px;
   height: 48px;
 }
-@media all and (min-width: 1440px) {
-  .header2 .inner .left .logo img {
+@media all and (min-width: 1224px) {  .header2 .inner .left .logo img {
     width: 168px;
     height: 76.95px;
   }
@@ -57,8 +54,7 @@
 .header2 .inner .left .links {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .header2 .inner .left .links {
+@media all and (min-width: 1224px) {  .header2 .inner .left .links {
     display: block;
     margin-left: 64px;
     display: flex;
@@ -79,8 +75,7 @@
 .header2 .inner .right .buttons {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .header2 .inner .right .buttons {
+@media all and (min-width: 1224px) {  .header2 .inner .right .buttons {
     display: flex;
   }
 }
@@ -93,8 +88,7 @@
   background: none;
   cursor: pointer;
 }
-@media all and (min-width: 1440px) {
-  .header2 .inner .right .burgerButton {
+@media all and (min-width: 1224px) {  .header2 .inner .right .burgerButton {
     display: none;
   }
 }

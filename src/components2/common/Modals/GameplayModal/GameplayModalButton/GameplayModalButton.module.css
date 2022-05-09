@@ -7,8 +7,7 @@
   width: 283px;
   height: 75px;
 }
-@media all and (min-width: 1440px) {
-  .gameplayModalButton {
+@media all and (min-width: 1224px) {  .gameplayModalButton {
     width: 358px;
     height: 75px;
   }
@@ -20,8 +19,7 @@
   width: 283px;
   height: 75px;
 }
-@media all and (min-width: 1440px) {
-  .gameplayModalButton .back {
+@media all and (min-width: 1224px) {  .gameplayModalButton .back {
     width: 358px;
     height: 75px;
   }

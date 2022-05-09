@@ -21,7 +21,7 @@
   box-sizing: border-box;
   padding: 24px 0 0;
 }
-@media all and (min-width: 1440px) {
+@media all and (min-width: 1224px) {
   .leaderboardModal .content {
     width: 693px;
     height: 696px;
@@ -40,8 +40,7 @@
   top: 30px;
   right: 16px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .closeButton {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .closeButton {
     top: 32px;
     right: 32px;
   }
@@ -58,16 +57,14 @@
   letter-spacing: -0.03em;
   color: #130B25;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .title {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .title {
     font-size: 28px;
   }
 }
 .leaderboardModal .content .cardsHeader {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cardsHeader {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cardsHeader {
     display: flex;
     align-self: stretch;
     position: relative;
@@ -105,8 +102,7 @@
   height: 426px;
   overflow-y: auto;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards {
     margin-left: 32px;
     margin-right: 32px;
     margin-top: 20px;
@@ -128,8 +124,7 @@
   width: 258px;
   height: 201px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card {
     width: 576px;
     height: 139px;
   }
@@ -153,8 +148,7 @@
   display: flex;
   flex-direction: column;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent {
     padding: 24px 32px 0;
     flex-direction: row;
   }
@@ -167,8 +161,7 @@
   height: 60px;
   border-radius: 4px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .firstBlock .nft {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .firstBlock .nft {
     width: 80px;
     height: 80px;
   }
@@ -179,8 +172,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .firstBlock .info {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .firstBlock .info {
     display: none;
   }
 }
@@ -199,8 +191,7 @@
   align-items: center;
   margin-top: 16px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock {
     align-items: normal;
     margin-top: 0;
     margin-left: 16px;
@@ -210,8 +201,7 @@
 .leaderboardModal .content .cards .card .cardContent .secondBlock .info {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .info {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .info {
     display: flex;
     justify-content: space-between;
   }
@@ -230,8 +220,7 @@
   flex-direction: column;
   align-items: center;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock {
     margin-top: 21px;
     flex-direction: row;
   }
@@ -248,8 +237,7 @@
   width: 210px;
   height: 40px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn {
     width: 311px;
   }
 }
@@ -259,8 +247,7 @@
   width: 210px;
   height: 40px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .back {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .back {
     width: 311px;
   }
 }
@@ -280,16 +267,14 @@
   text-transform: uppercase;
   color: #715021;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent p {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent p {
     font-size: 17px;
   }
 }
 .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent span {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent span {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .replayBtn .replayBtnContent span {
     display: block;
     margin-left: 4px;
     width: 20px;
@@ -304,8 +289,7 @@
   display: flex;
   margin-top: 8px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo {
     flex-direction: column;
     margin-top: 0;
     margin-left: 16px;
@@ -324,8 +308,7 @@
   color: rgba(0, 0, 0, 0.71);
   margin-left: 8px;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo p:nth-child(2) {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .cards .card .cardContent .secondBlock .buttonBlock .buttonBlockInfo p:nth-child(2) {
     margin-left: 0;
     margin-top: 2px;
   }
@@ -333,8 +316,7 @@
 .leaderboardModal .content .blur {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .leaderboardModal .content .blur {
+@media all and (min-width: 1224px) {  .leaderboardModal .content .blur {
     display: block;
     position: absolute;
     z-index: 10;

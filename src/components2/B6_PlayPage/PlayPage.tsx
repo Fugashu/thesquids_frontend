@@ -2,14 +2,14 @@
 import * as React from "react";
 import style from "./PlayPage.module.scss";
 import { svgIcons } from "../../assets/svg/svgIcons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import numberButton from "../../assets/png/buttons/numberButton.png";
 import { chatItemsDefault, leaderboardCards, playPageTabs } from "./constants";
-import { useFormik } from "formik";
 import buttonBack from "../../assets/png/buttons/numberButton.png";
-import { RecordView } from "../../components/Tournaments/TournamentsNew";
+import RecordView from "../../components/Tournaments/RecordView";
 import useChat from "../../components/cojodi/Chat/useChat";
+import axios from "axios";
 
 interface IValues {
   message: string;
@@ -17,22 +17,19 @@ interface IValues {
 
 export const PlayPage = () => {
   const [currentTab, setCurrentTab] = useState(0);
-  const initialValues: IValues = {
-    message: "",
-  };
-
-  const onSubmit = (values: IValues) => {
-    console.log(values.message);
-  };
-
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-  });
-
   const roomId = 1; // Gets roomId from URL
   const { messages, sendMessage } = useChat(roomId); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = React.useState(""); // Message to be sent
+  const [gameUrl, setGameUrl] = useState("");
+  const [inputTextValue, setInputTextValue] = useState("");
+  const [leaderboardCardsArray, setLeaderboardCardsArray] = useState([]);
+
+  const fetchLeaderboardCards = async () => {
+    //todo fetch leaderboard from dimi
+  };
+
+  // @ts-ignore
+  useEffect(async () => fetchLeaderboardCards(), [leaderboardCards]);
 
   const handleNewMessageChange = (event: any) => {
     setInputTextValue(event.target.value);
@@ -53,9 +50,10 @@ export const PlayPage = () => {
     }
   };
 
-  const [inputTextValue, setInputTextValue] = useState("");
+  const GameLink = () => {
+    setGameUrl("https://catsandghostsgamesquids.on.drv.tw/roads_video/");
+  };
 
-  // @ts-ignore
   return (
     <div className={style.playPage}>
       <div className={style.inner}>
@@ -63,19 +61,19 @@ export const PlayPage = () => {
           <div className={style.field}>
             <div className={style.back}>{svgIcons.playPageField}</div>
             <iframe
-              frameBorder={0}
               style={{
+                border: 0,
                 width: "100%",
                 height: "100%",
                 maxHeight: "100%",
                 overflow: "hidden",
               }}
-              src={"https://catsandghostsgamesquids.on.drv.tw/roads_video/"}
+              src={gameUrl}
               className={style.frame}
             />
           </div>
           <br />
-          <RecordView />
+          <RecordView handleClick={GameLink} />
         </div>
 
         <aside className={style.aside}>
@@ -128,7 +126,7 @@ export const PlayPage = () => {
                   {messages.map((message, i) => (
                     <div key={i} className={style.chatItem}>
                       <div className={style.back}>{svgIcons.chatItemBack}</div>
-                      <p className={style.nickname}>{message["senderId"]}</p>
+                      <p className={style.nickname}>{message["nickname"]}</p>
                       <p className={style.message}>{message["body"]}</p>
                     </div>
                   ))}

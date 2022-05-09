@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
-const nick = "User";
+import { discordUserName, walletAddress } from "../../../store/appSlice";
+import { useAppSelector } from "../../../store/hooks";
+
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
 const SOCKET_SERVER_URL = "https://minting.dns.army/squids/chat";
 
 const useChat = (roomId) => {
+  const nick = useAppSelector(discordUserName);
+
   const [messages, setMessages] = useState([]); // Sent and received messages
   const socketRef = useRef();
 

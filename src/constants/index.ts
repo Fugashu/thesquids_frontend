@@ -1,1 +1,1 @@
-export const desktopBreakPoint = 1440;
+export const desktopBreakPoint = 1224;

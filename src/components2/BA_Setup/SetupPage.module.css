@@ -1,8 +1,7 @@
 .homePage {
   height: 100%;
 }
-@media all and (min-width: 1440px) {
-  .homePage {
+@media all and (min-width: 1224px) {  .homePage {
     min-height: 800px;
     height: 100vh;
   }
@@ -12,8 +11,7 @@
   box-sizing: border-box;
   padding: 120px 16px 173px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner {
+@media all and (min-width: 1224px) {  .homePage .inner {
     padding: 164px 0 0;
     width: 1160px;
     margin: 0 auto;
@@ -27,8 +25,7 @@
   line-height: 150%;
   text-align: center;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner h1 {
+@media all and (min-width: 1224px) {  .homePage .inner h1 {
     font-size: 24px;
   }
 }
@@ -42,8 +39,7 @@
   text-align: center;
   color: #E7B223;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .timer {
+@media all and (min-width: 1224px) {  .homePage .inner .timer {
     margin-top: 24px;
     font-size: 42px;
   }
@@ -54,8 +50,7 @@
   flex-direction: column;
   align-items: center;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links {
+@media all and (min-width: 1224px) {  .homePage .inner .links {
     margin-top: 64px;
     flex-direction: row;
     justify-content: space-between;
@@ -70,8 +65,7 @@
   width: 288px;
   height: 235px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link {
     width: 260px;
     height: 285px;
   }
@@ -79,8 +73,7 @@
 .homePage .inner .links .link:not(:first-child) {
   margin-top: 24px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link:not(:first-child) {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link:not(:first-child) {
     margin-top: 0;
   }
 }
@@ -95,16 +88,14 @@
 .homePage .inner .links .link .imgMobile {
   display: block;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link .imgMobile {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link .imgMobile {
     display: none;
   }
 }
 .homePage .inner .links .link .imgD, .homePage .inner .links .link .imgH {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link .imgD, .homePage .inner .links .link .imgH {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link .imgD, .homePage .inner .links .link .imgH {
     display: block;
   }
 }
@@ -122,8 +113,7 @@
   align-items: center;
   justify-content: center;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link .icon {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link .icon {
     margin-top: 42px;
     width: 135px;
     height: 135px;
@@ -133,8 +123,7 @@
   width: 100px;
   height: 120px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link:nth-child(1) .icon svg {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link:nth-child(1) .icon svg {
     width: 110.83px;
     height: 133px;
   }
@@ -147,8 +136,7 @@
   width: 120px;
   height: 106px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link:nth-child(3) .icon svg {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link:nth-child(3) .icon svg {
     width: 135px;
     height: 120px;
   }
@@ -157,8 +145,7 @@
   width: 160px;
   height: 120px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link:nth-child(4) .icon svg {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link:nth-child(4) .icon svg {
     width: 149.33px;
     height: 112px;
   }
@@ -176,8 +163,7 @@
   margin-top: 24px;
   max-width: 200px;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link .label {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link .label {
     font-size: 14px;
     margin-top: 38px;
   }
@@ -185,8 +171,7 @@
 .homePage .inner .links .link:hover .imgD {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .homePage .inner .links .link:hover .imgH {
+@media all and (min-width: 1224px) {  .homePage .inner .links .link:hover .imgH {
     display: block;
   }
 }

@@ -7,8 +7,7 @@
   width: 32px;
   height: 32px;
 }
-@media all and (min-width: 1440px) {
-  .btn {
+@media all and (min-width: 1224px) {  .btn {
     top: 22px;
     left: auto;
     right: 22px;
@@ -24,8 +23,7 @@
   width: 32px;
   height: 32px;
 }
-@media all and (min-width: 1440px) {
-  .btn img {
+@media all and (min-width: 1224px) {  .btn img {
     width: 40px;
     height: 40px;
   }

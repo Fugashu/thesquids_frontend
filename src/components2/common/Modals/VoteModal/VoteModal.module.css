@@ -45,8 +45,7 @@
   letter-spacing: -0.03em;
   color: #130B25;
 }
-@media all and (min-width: 1440px) {
-  .voteModal .content .title {
+@media all and (min-width: 1224px) {  .voteModal .content .title {
     font-size: 28px;
   }
 }

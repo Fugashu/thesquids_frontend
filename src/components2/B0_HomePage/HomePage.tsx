@@ -1,11 +1,14 @@
 import * as React from "react";
 import style from "./HomePage.module.scss";
 import {
+  dnaBuyAmount,
+  setDiscordUsername,
   setModal,
   setTestRecordingModal,
   setTournamentsWarningModal,
+  walletAddress,
 } from "../../store/appSlice";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { svgIcons } from "../../assets/svg/svgIcons";
 import { HomeCard } from "./HomeCard/HomeCard";
 import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
@@ -18,6 +21,13 @@ import cardIcon1 from "../../assets/png/icons/home page/card icon 1.png";
 import cardIcon2 from "../../assets/png/icons/home page/card icon 2.png";
 import cardIcon3 from "../../assets/png/icons/home page/card icon 3.png";
 import setupIcon from "../../assets/png/icons/home page/setup.png";
+import { useEffect } from "react";
+import DiscordOauth2 from "discord-oauth2";
+import {
+  connectWallet,
+  getConnectedSignerAddress,
+  signMessage,
+} from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 
 export interface IHomeCard {
   label: string;
@@ -28,6 +38,65 @@ export interface IHomeCard {
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const queryCode = queryParams.get("code");
+
+  // @ts-ignore
+  useEffect(async () => {
+    await connectWallet();
+    // @ts-ignore
+    await discordCallback(queryCode);
+  }, []);
+
+  async function discordCallback(code: string) {
+    if (code === null) {
+      let username = window.localStorage.getItem("discordUserName");
+      if (username !== null) {
+        dispatch(setDiscordUsername(username));
+      }
+      return;
+    }
+
+    try {
+      const oauth = new DiscordOauth2();
+      await oauth
+        .tokenRequest({
+          clientId: process.env.REACT_APP_CLIENT_ID,
+          clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+          code: code,
+          scope: "identify",
+          grantType: "authorization_code",
+          redirectUri: "http://localhost/app2",
+        })
+        .then((value) => {
+          console.log(value);
+          window.localStorage.setItem("discordAccessToken", value.access_token);
+          try {
+            oauth.getUser(value.access_token).then(async (user) => {
+              console.log(user);
+              window.localStorage.setItem("discordUserName", user.username);
+              window.localStorage.setItem("discordUserId", user.id);
+              if (typeof user.avatar === "string") {
+                window.localStorage.setItem("discordUserAvatar", user.avatar);
+              }
+              dispatch(setDiscordUsername(user.username));
+
+              let signedMessage = await signMessage({
+                addr: await getConnectedSignerAddress(),
+                id: user.id,
+                username: user.username,
+                avatar_hash: window.localStorage.getItem("discordUserAvatar"),
+              });
+            });
+          } catch (e) {
+            console.log("Could not get the user");
+          }
+        });
+    } catch (e) {
+      console.log("Error while fetching Discord Token");
+    }
+  }
 
   const links = [
     {

@@ -3,6 +3,7 @@ import style from "./GameplayModal.module.scss";
 import { useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import {
+  gameplayUrl,
   selectNickname,
   setGameplayModal,
   setModal,
@@ -35,7 +36,7 @@ import desktopClick from "../../../../assets/png/buttons/gameplay modal/cheating
 export const GameplayModal = () => {
   const ref = useRef<HTMLDivElement>(null);
   const nickname = useAppSelector(selectNickname);
-
+  const videoUrl = useAppSelector(gameplayUrl);
   const dispatch = useAppDispatch();
 
   const onClose = () => {
@@ -63,11 +64,18 @@ export const GameplayModal = () => {
           <span> Gameplay</span>
         </p>
 
-        <img
-          className={style.field}
-          src={matchDesktop ? fieldDesktop : fieldMobile}
-          alt=""
-        />
+        <div className={style.field}>
+          <iframe
+            style={{
+              border: 0,
+              width: "100%",
+              height: "100%",
+              maxHeight: "100%",
+              overflow: "hidden",
+            }}
+            src={"https://catsandghostsgamesquids.on.drv.tw/roads_video/"}
+          />
+        </div>
 
         <div className={style.buttons}>
           <ButtonCustom

@@ -12,8 +12,7 @@
     background-image: url(../../assets/gif/home-back.gif);
   }
 }
-@media all and (min-width: 1440px) {
-  .home {
+@media all and (min-width: 1224px) {  .home {
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -47,8 +46,7 @@
   text-align: center;
   width: 288px;
 }
-@media all and (min-width: 1440px) {
-  .home .innerWrapper .title {
+@media all and (min-width: 1224px) {  .home .innerWrapper .title {
     font-size: 38px;
     line-height: 150%;
     width: 700px;
@@ -59,8 +57,7 @@
   height: 48px;
   margin-top: 72px;
 }
-@media all and (min-width: 1440px) {
-  .home .innerWrapper .enterButton {
+@media all and (min-width: 1224px) {  .home .innerWrapper .enterButton {
     width: 192px;
     height: 80px;
     margin-top: 82px;
@@ -75,8 +72,7 @@
   margin-left: 32px;
   margin-right: 32px;
 }
-@media all and (min-width: 1440px) {
-  .home .innerWrapper .icons {
+@media all and (min-width: 1224px) {  .home .innerWrapper .icons {
     display: none;
   }
 }

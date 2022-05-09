@@ -21,7 +21,7 @@ export const GameplayModalButton: FC<IGameplayModalButton> = ({
   first = true,
   className,
 }) => {
-  const matchDesktop = useMediaQuery("(min-width:1440px)");
+  const matchDesktop = useMediaQuery("(min-width:1224px)");
   const src = first
     ? matchDesktop
       ? legitDesktop

@@ -21,8 +21,7 @@
   box-sizing: border-box;
   padding: 24px 16px 0;
 }
-@media all and (min-width: 1440px) {
-  .warningModal .content {
+@media all and (min-width: 1224px) {  .warningModal .content {
     width: 500px;
     height: 472px;
     padding: 38px 38px 0;
@@ -40,8 +39,7 @@
   top: 16px;
   right: 16px;
 }
-@media all and (min-width: 1440px) {
-  .warningModal .content .closeButton {
+@media all and (min-width: 1224px) {  .warningModal .content .closeButton {
     top: 38px;
     right: 38px;
   }
@@ -58,8 +56,7 @@
   letter-spacing: -0.03em;
   color: #130B25;
 }
-@media all and (min-width: 1440px) {
-  .warningModal .content .title {
+@media all and (min-width: 1224px) {  .warningModal .content .title {
     font-size: 28px;
   }
 }
@@ -67,8 +64,7 @@
   position: relative;
   margin-top: 24px;
 }
-@media all and (min-width: 1440px) {
-  .warningModal .content .items {
+@media all and (min-width: 1224px) {  .warningModal .content .items {
     margin-top: 29px;
   }
 }
@@ -119,8 +115,7 @@
   width: 289px;
   height: 75px;
 }
-@media all and (min-width: 1440px) {
-  .warningModal .content .acceptButton {
+@media all and (min-width: 1224px) {  .warningModal .content .acceptButton {
     margin-top: 28px;
     width: 426px;
     height: 75px;
@@ -135,8 +130,7 @@
   width: 289px;
   height: 75px;
 }
-@media all and (min-width: 1440px) {
-  .warningModal .content .acceptButton img {
+@media all and (min-width: 1224px) {  .warningModal .content .acceptButton img {
     width: 426px;
     height: 75px;
   }

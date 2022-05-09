@@ -7,8 +7,7 @@
   width: 288px;
   height: 235px;
 }
-@media all and (min-width: 1440px) {
-  .homeCard {
+@media all and (min-width: 1224px) {  .homeCard {
     width: 260px;
     height: 285px;
   }
@@ -16,8 +15,7 @@
 .homeCard:not(:first-child) {
   margin-top: 24px;
 }
-@media all and (min-width: 1440px) {
-  .homeCard:not(:first-child) {
+@media all and (min-width: 1224px) {  .homeCard:not(:first-child) {
     margin-top: 0;
   }
 }
@@ -38,8 +36,7 @@
   align-items: center;
   justify-content: center;
 }
-@media all and (min-width: 1440px) {
-  .homeCard .icon {
+@media all and (min-width: 1224px) {  .homeCard .icon {
     margin-top: 42px;
     width: 135px;
     height: 135px;
@@ -53,8 +50,7 @@
   width: 100px;
   height: 120px;
 }
-@media all and (min-width: 1440px) {
-  .homeCard:nth-child(1) .icon svg {
+@media all and (min-width: 1224px) {  .homeCard:nth-child(1) .icon svg {
     width: 110.83px;
     height: 133px;
   }
@@ -67,8 +63,7 @@
   width: 120px;
   height: 106px;
 }
-@media all and (min-width: 1440px) {
-  .homeCard:nth-child(3) .icon svg {
+@media all and (min-width: 1224px) {  .homeCard:nth-child(3) .icon svg {
     width: 135px;
     height: 120px;
   }
@@ -77,8 +72,7 @@
   width: 160px;
   height: 120px;
 }
-@media all and (min-width: 1440px) {
-  .homeCard:nth-child(4) .icon svg {
+@media all and (min-width: 1224px) {  .homeCard:nth-child(4) .icon svg {
     width: 149.33px;
     height: 112px;
   }
@@ -97,8 +91,7 @@
   margin-top: 24px;
   max-width: 200px;
 }
-@media all and (min-width: 1440px) {
-  .homeCard .label {
+@media all and (min-width: 1224px) {  .homeCard .label {
     font-size: 14px;
     margin-top: 38px;
   }

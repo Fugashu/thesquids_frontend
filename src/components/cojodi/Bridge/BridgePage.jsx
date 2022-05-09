@@ -106,7 +106,7 @@ export const BridgePage = () => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
             onClick={() =>
-              CojodiNetworkSwitcher.switchToChain(chainRpcData.rinkeby)
+              CojodiNetworkSwitcher.switchToChain(chainRpcData.eth_mainnet)
             }
           >
             <p style={{ color: "red" }}>Switch To Ethereum</p>

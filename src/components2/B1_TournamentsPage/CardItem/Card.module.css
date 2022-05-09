@@ -8,8 +8,7 @@
   box-sizing: border-box;
   padding-top: 32px;
 }
-@media all and (min-width: 1440px) {
-  .card {
+@media all and (min-width: 1224px) {  .card {
     width: 360px;
     height: 473px;
   }
@@ -17,8 +16,7 @@
 .card:not(:first-child) {
   margin-top: 24px;
 }
-@media all and (min-width: 1440px) {
-  .card:not(:first-child) {
+@media all and (min-width: 1224px) {  .card:not(:first-child) {
     margin-top: 0;
     margin-left: 40px;
   }

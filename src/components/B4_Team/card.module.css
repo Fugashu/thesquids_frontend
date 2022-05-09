@@ -10,8 +10,7 @@
   background-size: cover;
   background-image: url(../../assets/svg/team-card-default-mobile.svg);
 }
-@media all and (min-width: 1440px) {
-  .card {
+@media all and (min-width: 1224px) {  .card {
     width: 360px;
     height: 490px;
     background-image: url(../../assets/svg/team-card-default.svg);
@@ -20,8 +19,7 @@
 .card:hover {
   background-image: url(../../assets/svg/team-card-hover-mobile.svg);
 }
-@media all and (min-width: 1440px) {
-  .card:hover {
+@media all and (min-width: 1224px) {  .card:hover {
     background-image: url(../../assets/svg/team-card-hover.svg);
   }
 }
@@ -31,8 +29,7 @@
   height: 230px;
   background-size: cover;
 }
-@media all and (min-width: 1440px) {
-  .card .person {
+@media all and (min-width: 1224px) {  .card .person {
     margin-top: 11px;
     width: 220px;
     height: 220px;
@@ -67,8 +64,7 @@
   margin-top: 5px;
   width: 234px;
 }
-@media all and (min-width: 1440px) {
-  .card .text {
+@media all and (min-width: 1224px) {  .card .text {
     width: 244px;
   }
 }

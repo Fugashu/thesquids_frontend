@@ -2,8 +2,7 @@
   padding: 56px 0 550px;
   position: relative;
 }
-@media all and (min-width: 1440px) {
-  .team {
+@media all and (min-width: 1224px) {  .team {
     padding: 120px 0 636px;
   }
 }
@@ -18,8 +17,7 @@
   position: relative;
   z-index: 2;
 }
-@media all and (min-width: 1440px) {
-  .team .title {
+@media all and (min-width: 1224px) {  .team .title {
     font-size: 42px;
     line-height: 150%;
   }
@@ -30,8 +28,7 @@
   position: relative;
   z-index: 2;
 }
-@media all and (min-width: 1440px) {
-  .team .slider {
+@media all and (min-width: 1224px) {  .team .slider {
     display: none;
   }
 }
@@ -43,8 +40,7 @@
 .team .cards {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .team .cards {
+@media all and (min-width: 1224px) {  .team .cards {
     display: block;
     position: relative;
     z-index: 2;

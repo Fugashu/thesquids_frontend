@@ -10,7 +10,11 @@ import playClicked from "../../assets/png/buttons/play page - play/play_clicked.
 
 import { ButtonCustom } from "../../components2/common/ButtonCustom/ButtonCustom";
 
-export const RecordView = () => {
+interface Game {
+  handleClick: any;
+}
+
+const RecordView = (props: Game) => {
   let score: any;
   const {
     //status,
@@ -96,11 +100,16 @@ export const RecordView = () => {
       alert("You scored " + score + " points.");
     }
   };
+
+  const startRecordingAndRetrieveGameUrl = () => {
+    startRecording();
+    props.handleClick();
+  };
   return (
     <div>
       <ButtonCustom
         className={style.playBtn}
-        onClick={startRecording}
+        onClick={startRecordingAndRetrieveGameUrl}
         widthMobile={861}
         heightMobile={75}
         widthDesktop={861}
@@ -117,30 +126,4 @@ export const RecordView = () => {
   );
 };
 
-export default function TournamentsNew() {
-  return (
-    <main style={{ color: "black" }}>
-      <h2 style={{ color: "black" }}>The Squids</h2>
-      <RecordView />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <iframe
-          title={"Game"}
-          style={{
-            width: "80%",
-            height: "300px",
-            maxHeight: "80%",
-            overflow: "hidden",
-          }}
-          src={""}
-        />
-      </div>
-      <BackendCallsInterface />
-    </main>
-  );
-}
+export default RecordView;

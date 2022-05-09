@@ -60,8 +60,7 @@
   display: flex;
   margin-top: 40px;
 }
-@media all and (min-width: 1440px) {
-  .burgerMenu2 .headerButtons {
+@media all and (min-width: 1224px) {  .burgerMenu2 .headerButtons {
     display: none;
   }
 }

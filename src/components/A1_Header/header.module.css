@@ -23,8 +23,7 @@
 .header .inner_transparent {
   background: rgba(41, 32, 58, 0);
 }
-@media all and (min-width: 1440px) {
-  .header .inner {
+@media all and (min-width: 1224px) {  .header .inner {
     padding-right: 67px;
     padding-left: 48px;
   }
@@ -39,8 +38,7 @@
   height: 56px;
   margin-left: -7px;
 }
-@media all and (min-width: 1440px) {
-  .header .inner .logo img {
+@media all and (min-width: 1224px) {  .header .inner .logo img {
     width: 223px;
     height: 77px;
   }
@@ -48,8 +46,7 @@
 .header .inner .links {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .header .inner .links {
+@media all and (min-width: 1224px) {  .header .inner .links {
     display: block;
     position: absolute;
     top: 50%;
@@ -72,8 +69,7 @@
 .header .inner .iconButtons {
   display: none;
 }
-@media all and (min-width: 1440px) {
-  .header .inner .iconButtons {
+@media all and (min-width: 1224px) {  .header .inner .iconButtons {
     display: flex;
     align-items: center;
   }
@@ -97,8 +93,7 @@
   background: none;
   cursor: pointer;
 }
-@media all and (min-width: 1440px) {
-  .header .inner .burgerButton {
+@media all and (min-width: 1224px) {  .header .inner .burgerButton {
     display: none;
   }
 }

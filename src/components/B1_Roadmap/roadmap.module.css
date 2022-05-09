@@ -4,8 +4,7 @@
   align-items: center;
   padding: 40px 0;
 }
-@media all and (min-width: 1440px) {
-  .roadmap {
+@media all and (min-width: 1224px) {  .roadmap {
     padding: 0;
     min-height: 100vh;
     justify-content: center;
@@ -20,14 +19,12 @@
   text-align: center;
   text-align: center;
 }
-@media all and (min-width: 1440px) {
-  .roadmap .title {
+@media all and (min-width: 1224px) {  .roadmap .title {
     font-size: 42px;
     line-height: 150%;
   }
 }
-@media all and (min-width: 1440px) {
-  .roadmap .title {
+@media all and (min-width: 1224px) {  .roadmap .title {
     text-align: left;
   }
 }
@@ -37,8 +34,7 @@
   align-items: center;
   margin-top: 40px;
 }
-@media all and (min-width: 1440px) {
-  .roadmap .cards {
+@media all and (min-width: 1224px) {  .roadmap .cards {
     margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -63,8 +59,7 @@
 .roadmap .cards .card:not(:first-child) {
   margin-top: 25px;
 }
-@media all and (min-width: 1440px) {
-  .roadmap .cards .card:not(:first-child) {
+@media all and (min-width: 1224px) {  .roadmap .cards .card:not(:first-child) {
     margin-top: 0;
   }
 }

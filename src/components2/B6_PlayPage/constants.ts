@@ -1,7 +1,7 @@
 export const playPageTabs = ["Leaderboard", "chat"];
 
 export const leaderboardCards = [
-  { address: "0xD31...9c2b", score: 12345 },
+  { nickName: "0xD31...9c2b", score: 12345 },
   { address: "0xD31...9c2b", score: 12345 },
   { address: "0xD31...9c2b", score: 12345 },
   { address: "0xD31...9c2b", score: 12345 },

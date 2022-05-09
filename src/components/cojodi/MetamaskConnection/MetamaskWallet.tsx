@@ -13,6 +13,8 @@ import {
   mumbaiTournamentContractAbi,
   mumbaiTournamentContractAddress,
 } from "../ContractConfig";
+import { useAppSelector } from "../../../store/hooks";
+import { walletAddress } from "../../../store/appSlice";
 
 export var signer: ethers.Signer;
 export var mumbaiNFTContract: ethers.Contract;
@@ -34,7 +36,7 @@ export async function isUnlocked() {
 }
 export async function getConnectedSignerAddress() {
   let connectedAddress = await signer.getAddress();
-  console.log("Signer public address:" + connectedAddress);
+  //console.log("Signer public address:" + connectedAddress);
   return connectedAddress;
 }
 window.onload = async function () {
@@ -105,9 +107,9 @@ export async function createContractObject(
   connectedSigner: Signer
 ) {
   console.log("Creating contract...");
-  console.log("Contract ABI:" + JSON.stringify(contractAbi));
+  // console.log("Contract ABI:" + JSON.stringify(contractAbi));
   console.log("Contract Address:" + contractAddress);
-  console.log("Signer Address:" + (await getConnectedSignerAddress()));
+  // console.log("Signer Address:" + (await getConnectedSignerAddress()));
 
   return new ethers.Contract(contractAddress, contractAbi, connectedSigner);
 }
@@ -126,4 +128,19 @@ export async function setApprovalForAll(
   }
   let tx = await rootContract.setApprovalForAll(targetContractAddress, true);
   await tx.wait();
+}
+
+export async function signMessage(incomingMessage: Object) {
+  // @ts-ignore
+  incomingMessage["timestamp"] = 0;
+  let signpayload = JSON.stringify(
+    incomingMessage,
+    Object.keys(incomingMessage).sort()
+  );
+
+  let sig = await signer.signMessage(signpayload);
+  // @ts-ignore
+  incomingMessage["signature"] = sig;
+
+  return incomingMessage;
 }

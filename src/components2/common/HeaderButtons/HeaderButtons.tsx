@@ -3,6 +3,7 @@ import style from "./HeaderButtons.module.scss";
 import clsx from "clsx";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import {
+  discordUserName,
   HomeModalEnum,
   selectNickname,
   setBurgerOpen,
@@ -28,7 +29,7 @@ interface IHeaderButtons {
 export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const dispatch = useAppDispatch();
   const walletAddr = useAppSelector(walletAddress);
-
+  const nickName = useAppSelector(discordUserName);
   // @ts-ignore
   useEffect(async () => {
     try {
@@ -40,17 +41,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const buttons = [
     {
       src: src0,
-      text: "Balance:3",
-      label: "Buy more",
-      onClick: () => {
-        dispatch(setModal(true));
-        dispatch(setHomeModalType(HomeModalEnum.dna));
-        dispatch(setShowChooseTheCoinModal(true));
-        dispatch(setBurgerOpen(false));
-      },
-    },
-    {
-      src: src1,
+      //todo DIMI balance
       text: "Balance:3",
       label: "Buy more",
       onClick: () => {
@@ -61,9 +52,21 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       },
     },
     {
+      src: src1,
+      //todo DIMI balance
+      text: "Balance:3",
+      label: "Buy more",
+      onClick: () => {
+        dispatch(setModal(true));
+        dispatch(setHomeModalType(HomeModalEnum.dna));
+        dispatch(setShowChooseTheCoinModal(true));
+        dispatch(setBurgerOpen(false));
+      },
+    },
+    {
       src: src2,
       text: walletAddr.slice(2, 5) + "..." + walletAddr.slice(-3),
-      label: "Nickname",
+      label: nickName,
       onClick: () => {
         dispatch(setBurgerOpen(false));
       },

@@ -1674,4 +1674,4 @@ export const goerliBridgeContractAbi = [
 export const goerliBridgeContractAddress =
   "0x54049060Cf7586453B45Cc25b990D60648CBED80";
 
-export const maxSupply = 60;
+export const maxSupply = 2000;

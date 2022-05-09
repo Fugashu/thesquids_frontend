@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 // @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -24,7 +24,7 @@ export const AppContainer = () => {
 
   return (
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/app2" element={<App2Layout />}>
@@ -41,7 +41,7 @@ export const AppContainer = () => {
             <Route path="setup" element={<SetupPage />} />
           </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   );
 };

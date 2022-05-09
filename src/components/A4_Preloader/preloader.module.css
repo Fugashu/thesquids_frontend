@@ -24,8 +24,7 @@
   height: 270px;
   position: relative;
 }
-@media all and (min-width: 1440px) {
-  .preloader .inner .tubeWrapper {
+@media all and (min-width: 1224px) {  .preloader .inner .tubeWrapper {
     width: 149px;
     height: 360px;
   }
@@ -40,8 +39,7 @@
   border-radius: 0 0 16px 16px;
   overflow: hidden;
 }
-@media all and (min-width: 1440px) {
-  .preloader .inner .tubeWrapper .inner {
+@media all and (min-width: 1224px) {  .preloader .inner .tubeWrapper .inner {
     bottom: 37px;
     left: 46px;
     width: 51px;
@@ -72,8 +70,7 @@
   letter-spacing: -0.2em;
   margin-top: 29px;
 }
-@media all and (min-width: 1440px) {
-  .preloader .inner .text {
+@media all and (min-width: 1224px) {  .preloader .inner .text {
     font-size: 48px;
     margin-top: 34px;
   }

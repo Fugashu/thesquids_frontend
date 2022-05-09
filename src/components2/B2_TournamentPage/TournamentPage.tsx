@@ -54,6 +54,7 @@ export const TournamentPage = () => {
       icon: cardIcon2,
       buttonLabel: "VOTE",
       onClick: () => {
+        //TODO DIMI is user staking nft?
         if (!userIsStakingNft) {
           dispatch(setModal(true));
           dispatch(setStakingNftErrorModal(true));

@@ -33,6 +33,9 @@ const initialState = {
   tournamentsModal: false,
   lootBox: null as null | ILootBox,
   walletAddress: "...",
+  discordUserName: "",
+  gameplayUrl: "",
+  dnaBuyAmount: "",
 };
 
 type InitialStateType = typeof initialState;
@@ -90,6 +93,16 @@ export const appSlice = createSlice({
     setWalletAddress: (state, action: PayloadAction<string>) => {
       state.walletAddress = action.payload;
     },
+    setDiscordUsername: (state, action: PayloadAction<string>) => {
+      state.discordUserName = action.payload;
+    },
+
+    setGameplayUrl: (state, action: PayloadAction<string>) => {
+      state.gameplayUrl = action.payload;
+    },
+    setDnaBuyAmount: (state, action: PayloadAction<string>) => {
+      state.dnaBuyAmount = action.payload;
+    },
   },
 });
 
@@ -111,6 +124,9 @@ export const {
   setTournamentsModal,
 
   setWalletAddress,
+  setDiscordUsername,
+  setGameplayUrl,
+  setDnaBuyAmount,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -139,4 +155,8 @@ export const selectTournamentsModal = (state: RootState) =>
   state.app.tournamentsModal;
 
 export const walletAddress = (state: RootState) => state.app.walletAddress;
+export const discordUserName = (state: RootState) => state.app.discordUserName;
+export const gameplayUrl = (state: RootState) => state.app.gameplayUrl;
+export const dnaBuyAmount = (state: RootState) => state.app.dnaBuyAmount;
+
 export const appReducer = appSlice.reducer;
