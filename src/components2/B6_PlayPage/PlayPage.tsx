@@ -10,6 +10,7 @@ import buttonBack from "../../assets/png/buttons/numberButton.png";
 import RecordView from "../../components/Tournaments/RecordView";
 import useChat from "../../components/cojodi/Chat/useChat";
 import axios from "axios";
+import { backendEndpoint } from "../../constants";
 
 interface IValues {
   message: string;
@@ -24,12 +25,15 @@ export const PlayPage = () => {
   const [inputTextValue, setInputTextValue] = useState("");
   const [leaderboardCardsArray, setLeaderboardCardsArray] = useState([]);
 
-  const fetchLeaderboardCards = async () => {
-    //todo fetch leaderboard from dimi
-  };
-
   // @ts-ignore
-  useEffect(async () => fetchLeaderboardCards(), [leaderboardCards]);
+  useEffect(async () => {
+    //todo DIMI fetch leaderboard cards array
+    await axios
+      .get(backendEndpoint + "/tournament/game/vote")
+      .then((result) => {
+        setLeaderboardCardsArray(result.data);
+      });
+  }, [leaderboardCards]);
 
   const handleNewMessageChange = (event: any) => {
     setInputTextValue(event.target.value);

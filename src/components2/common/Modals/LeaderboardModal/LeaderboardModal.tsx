@@ -14,8 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { CloseButton } from "../CloseButton/CloseButton";
 import replayBtnMobile from "../../../../assets/png/buttons/watch replay/mobile.png";
 import replayBtnDesktop from "../../../../assets/png/buttons/watch replay/desktop.png";
-import { cards } from "./constants";
-import { desktopBreakPoint } from "../../../../constants";
+import { backendEndpoint, desktopBreakPoint } from "../../../../constants";
 
 import modalMobile from "../../../../assets/png/modal/leaderboard/mobile.png";
 import modalDesktop from "../../../../assets/png/modal/leaderboard/desktop.png";
@@ -32,19 +31,19 @@ import imgDesktopClick from "../../../../assets/png/buttons/leaderboard modal - 
 import axios from "axios";
 
 export const LeaderboardModal = () => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const [leaderboardCards, setLeaderboardCards] = useState([]);
+  const [cards, setCards] = useState([]);
   // @ts-ignore
   useEffect(async () => {
-    const result = await axios(
-      //todo
-      // nickname, userId, avatarId, walletAddress, score, gameLink
-      "https://hn.algolia.com/api/v1/search?query=redux"
-    );
+    await axios
+      .get(backendEndpoint + "/tournament/highscore")
+      .then((result) => {
+        console.log(result.data);
+        setCards(result.data);
+      });
+  }, []);
 
-    setLeaderboardCards(result.data);
-  });
+  const ref = useRef<HTMLDivElement>(null);
+
   const dispatch = useAppDispatch();
 
   const onClose = () => {
@@ -76,8 +75,8 @@ export const LeaderboardModal = () => {
         </div>
 
         <div className={style.cards}>
-          {cards.map(({ nft, nickname, address, score, replays }, index) => (
-            <div className={style.card} key={index}>
+          {cards.map((card) => (
+            <div className={style.card} key={1}>
               <img
                 className={style.cardBack}
                 src={matchDesktop ? cardDesktop : cardMobile}
@@ -94,31 +93,45 @@ export const LeaderboardModal = () => {
                     className={style.nft}
                   />
                   <div className={style.info}>
-                    <p>{nickname}</p>
-                    <p>{address}</p>
-                    <p>{`SCORE ${score}`}</p>
+                    <p>{card["user"]["username"]}</p>
+
+                    <p>
+                      {
+                        // @ts-ignore
+                        card["user"]["addr"].slice(2, 5) +
+                          "..." +
+                          // @ts-ignore
+                          card["user"]["addr"].slice(-3)
+                      }
+                    </p>
+                    <p>{`SCORE ${card["score"]}`}</p>
                   </div>
                 </div>
 
                 <div className={style.secondBlock}>
                   <div className={style.info}>
-                    <p>{nickname}</p>
-                    <p>{address}</p>
-                    <p>{score}</p>
+                    <p>{card["user"]["username"]}</p>
+                    <p>
+                      {
+                        // @ts-ignore
+                        card["user"]["addr"].slice(2, 5) +
+                          "..." +
+                          // @ts-ignore
+                          card["user"]["addr"].slice(-3)
+                      }
+                    </p>
+                    <p>{card["score"]}</p>
                   </div>
 
                   <div className={style.buttonBlock}>
                     <ButtonCustom
                       className={style.watchReplayBtn}
                       onClick={() => {
+                        console.log(card["link"]);
                         dispatch(setLeaderboardModal(false));
                         dispatch(setGameplayModal(true));
-                        dispatch(setNickname(nickname));
-                        dispatch(
-                          setGameplayUrl(
-                            "https://catsandghostsgamesquids.on.drv.tw/roads_video/"
-                          )
-                        );
+                        dispatch(setNickname(card["user"]["username"]));
+                        dispatch(setGameplayUrl(card["link"]));
                       }}
                       widthMobile={210}
                       heightMobile={40}
@@ -152,7 +165,7 @@ export const LeaderboardModal = () => {
                     {/*</button>*/}
 
                     <div className={style.buttonBlockInfo}>
-                      <p>{`${replays} Replays left`}</p>
+                      <p>{`${card["user"]["votes_left"]} Replays left`}</p>
                       <p>Earn $1 DNA</p>
                     </div>
                   </div>

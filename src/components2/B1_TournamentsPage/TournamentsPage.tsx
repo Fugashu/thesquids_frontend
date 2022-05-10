@@ -22,18 +22,53 @@ import mobileClick from "../../assets/png/buttons/tournaments page - enter/enter
 import desktopDefault from "../../assets/png/buttons/tournaments page - enter/enter_default.png";
 import desktopHover from "../../assets/png/buttons/tournaments page - enter/enter_hover.png";
 import desktopClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
+import { useEffect, useState } from "react";
+import {
+  connectWallet,
+  mumbaiTournamentContract,
+} from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
+import { ethers } from "ethers";
 
 export const TournamentsPage = () => {
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
   const navigate = useNavigate();
+  const [enterPrice, setEnterPrice] = useState("");
+  const [pricePool, setPricePool] = useState("");
+  const [participants, setParticipants] = useState("");
+  const [maxParticipants, setMaxParticipants] = useState("");
+  // @ts-ignore
+  useEffect(async () => {
+    await connectWallet();
+    //todo check wheter chain is already polygon
+    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+    let enterPrice = ethers.utils.formatEther(
+      await mumbaiTournamentContract.registrationFee()
+    );
+    //todo fetch price pool and participants
+    let pricePool = ethers.utils.formatEther(
+      await mumbaiTournamentContract.registrationFee()
+    );
+    let participants = ethers.utils.formatEther(
+      await mumbaiTournamentContract.registrationFee()
+    );
+    let maxParticipants = ethers.utils.formatEther(
+      await mumbaiTournamentContract.registrationFee()
+    );
+    setEnterPrice(enterPrice);
+    setPricePool(pricePool);
+    setParticipants(participants);
+    setMaxParticipants(maxParticipants);
+  }, []);
 
   const cards = [
     {
       title: "Tournament 1",
       items: [
-        { title: "Enter price", value: "3 $DNA " },
-        { title: "Price pool", value: "10 $DNA " },
-        { title: "Participant", value: "5/500" },
+        { title: "Enter price", value: enterPrice },
+        { title: "Price pool", value: pricePool },
+        { title: "Participants", value: `${participants}/${maxParticipants}` },
       ],
       onClick: () => {
         matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");

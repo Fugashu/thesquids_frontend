@@ -73,7 +73,7 @@ export const GameplayModal = () => {
               maxHeight: "100%",
               overflow: "hidden",
             }}
-            src={"https://catsandghostsgamesquids.on.drv.tw/roads_video/"}
+            src={videoUrl + "&background=true"}
           />
         </div>
 

@@ -60,8 +60,8 @@ export const TournamentPage = () => {
           dispatch(setStakingNftErrorModal(true));
         } else {
           dispatch(setModal(true));
-          //dispatch(setVoteModal(true));
-          dispatch(setTournamentsModal(true));
+          dispatch(setVoteModal(true));
+          dispatch(setTournamentsModal(false));
         }
       },
       imgDefault: imgDefaultVote,
