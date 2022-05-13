@@ -54,7 +54,7 @@ export const VoteModal = () => {
 
         <img className={style.back} src={modal} alt="" />
 
-        <p className={style.title}>Stage 1</p>
+        <p className={style.title}>Vote now:</p>
 
         <div className={style.cards}>
           {cards.map((card, index) => (

@@ -15,6 +15,7 @@ import {
 } from "../ContractConfig";
 import { BigNumber, ethers } from "ethers";
 
+//todo return, wenn error und nicht weiter machen
 const post = async (endpoint: string, message: any) => {
   return await axios
     .post(backendEndpoint + endpoint, message)
@@ -66,12 +67,45 @@ export const voteHighscore = async (message: any) => {
   await post("/tournament/highscore/vote", message);
 };
 
+//done
 export const createHighscore = async (message: any) => {
-  await post("/tournament/highscore", message);
+  try {
+    let res = await post("/tournament/highscore", message);
+    // @ts-ignore
+    return res["data"]["id"];
+  } catch (e) {
+    return "";
+  }
 };
 
-export const patchHighscore = async (highscoreId: string, message: any) => {
-  await post("/tournament/highscore/" + highscoreId, message);
+export const patchHighscore = async (highscoreId: string, formData: any) => {
+  await axios({
+    method: "patch",
+    url: backendEndpoint + "/tournament/highscore/" + highscoreId,
+    data: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  })
+    .catch(function (error) {
+      if (error.response) {
+        // Request made and server responded
+        alert(error.response.data.detail);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
+  // await post("/tournament/highscore/" + highscoreId, file);
 };
 
 //done

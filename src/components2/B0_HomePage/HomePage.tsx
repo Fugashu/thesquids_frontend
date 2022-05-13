@@ -3,9 +3,12 @@ import style from "./HomePage.module.scss";
 import {
   dnaBuyAmount,
   setDiscordUsername,
+  setDNABalance,
+  setLifeBalance,
   setModal,
   setTestRecordingModal,
   setTournamentsWarningModal,
+  setWalletAddress,
   walletAddress,
 } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
@@ -26,12 +29,19 @@ import DiscordOauth2 from "discord-oauth2";
 import {
   connectWallet,
   getConnectedSignerAddress,
+  mumbaiTokenContract,
+  signer,
   signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import {
   createUser,
   voteHighscore,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
+import { ethers } from "ethers";
+import axios from "axios";
+import { backendEndpoint } from "../../constants";
+import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
 
 export interface IHomeCard {
   label: string;
@@ -41,6 +51,13 @@ export interface IHomeCard {
 }
 
 export const HomePage = () => {
+  // @ts-ignore
+  useEffect(async () => {
+    try {
+      await connectWallet();
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+    } catch (error) {}
+  }, []);
   const dispatch = useAppDispatch();
 
   const queryParams = new URLSearchParams(window.location.search);

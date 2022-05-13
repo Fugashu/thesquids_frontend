@@ -16,7 +16,7 @@ import { CloseButton } from "../CloseButton/CloseButton";
 import replayBtnMobile from "../../../../assets/png/buttons/watch replay/mobile.png";
 import replayBtnDesktop from "../../../../assets/png/buttons/watch replay/desktop.png";
 import { backendEndpoint, desktopBreakPoint } from "../../../../constants";
-
+import avatarIcon from "../../../../assets/gif/ryu.gif";
 import modalMobile from "../../../../assets/png/modal/leaderboard/mobile.png";
 import modalDesktop from "../../../../assets/png/modal/leaderboard/desktop.png";
 import cardMobile from "../../../../assets/png/cards/leaderboard modal/mobile.png";
@@ -82,9 +82,10 @@ export const LeaderboardModal = () => {
               <div className={style.cardContent}>
                 <div className={style.firstBlock}>
                   <img
-                    src={`https://cdn.discordapp.com/avatars/${window.localStorage.getItem(
+                    /*src={`https://cdn.discordapp.com/avatars/${window.localStorage.getItem(
                       "discordUserId"
-                    )}/${window.localStorage.getItem("discordUserAvatar")}.png`}
+                    )}/${window.localStorage.getItem("discordUserAvatar")}.png`}*/
+                    src={avatarIcon}
                     alt=""
                     className={style.nft}
                   />

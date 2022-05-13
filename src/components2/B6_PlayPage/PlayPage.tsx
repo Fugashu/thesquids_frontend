@@ -69,6 +69,10 @@ export const PlayPage = () => {
     setGameUrl(backendEndpoint + "/tournament/game/" + session_id);
   };
 
+  const destroyGame = async () => {
+    setGameUrl("");
+  };
+
   return (
     <div className={style.playPage}>
       <div className={style.inner}>
@@ -89,7 +93,7 @@ export const PlayPage = () => {
             />
           </div>
           <br />
-          <RecordView handleClick={clickPlay} />
+          <RecordView handleClick={clickPlay} destroyGame={destroyGame} />
         </div>
 
         <aside className={style.aside}>
