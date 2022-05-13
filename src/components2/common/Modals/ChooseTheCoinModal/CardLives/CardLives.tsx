@@ -20,15 +20,16 @@ import mobileClick from "../../../../../assets/png/buttons/choose the coin - liv
 import desktopDefault from "../../../../../assets/png/buttons/choose the coin - lives - buy now/desktopDefault.png";
 import desktopHover from "../../../../../assets/png/buttons/choose the coin - lives - buy now/desktopHover.png";
 import desktopClick from "../../../../../assets/png/buttons/choose the coin - lives - buy now/desktopClick.png";
+import { buyLives } from "../../../../../components/cojodi/BackendCalls/BackendCalls";
 
 export const CardLives: FC<ICardLives> = ({ lives, value }) => {
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
   const [hover, setHover] = useState(false);
   const [click, setClick] = useState(false);
 
-  const buyLives = async () => {
-    //TODO DIMI BUY LIVES
-    console.log(value);
+  const triggerBuyLives = async () => {
+    console.log(`User wants to purchase ${lives} lives`);
+    await buyLives(lives);
   };
 
   return (
@@ -66,7 +67,7 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
         </div>
 
         <ButtonCustom
-          onClick={buyLives}
+          onClick={triggerBuyLives}
           className={style.buyBtn}
           widthMobile={233}
           heightMobile={40}

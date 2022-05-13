@@ -12,6 +12,7 @@ import {
   selectTestRecordingModal,
   selectTimeLeftModal,
   selectTournamentsModal,
+  selectTournamentsTOSModal,
   selectTournamentsWarningModal,
   selectVoteModal,
 } from "../../store/appSlice";
@@ -31,6 +32,7 @@ import { OpenBoxModal } from "../common/Modals/OpenBoxModal/OpenBoxModal";
 import { TestRecordingModal } from "../common/Modals/TestRecordingModal/TestRecordingModal";
 import { TimeLeftModal } from "../common/Modals/TimeLeftModal/TimeLeftModal";
 import { TournamentsModal } from "../common/Modals/TournamentsModal/TournamentsModal";
+import { TournamentsTOSModal } from "../common/Modals/TournamentsTOSModal/TournamentsTosModal";
 
 export const App2Layout = () => {
   const showChooseTheCoinModal = useAppSelector(selectShowChooseTheCoinModal);
@@ -44,6 +46,7 @@ export const App2Layout = () => {
   const testRecordingModal = useAppSelector(selectTestRecordingModal);
   const timeLeftModal = useAppSelector(selectTimeLeftModal);
   const tournamentsModal = useAppSelector(selectTournamentsModal);
+  const tosModal = useAppSelector(selectTournamentsTOSModal);
 
   return (
     <div
@@ -66,6 +69,7 @@ export const App2Layout = () => {
       {testRecordingModal && <TestRecordingModal />}
       {timeLeftModal && <TimeLeftModal />}
       {tournamentsModal && <TournamentsModal />}
+      {tosModal && <TournamentsTOSModal />}
 
       <div className={style.gradient} />
 

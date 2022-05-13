@@ -28,6 +28,10 @@ import {
   getConnectedSignerAddress,
   signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  createUser,
+  voteHighscore,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
 
 export interface IHomeCard {
   label: string;
@@ -82,12 +86,15 @@ export const HomePage = () => {
               }
               dispatch(setDiscordUsername(user.username));
 
-              let signedMessage = await signMessage({
-                addr: await getConnectedSignerAddress(),
-                id: user.id,
+              let ob = {
+                id: parseInt(user.id),
                 username: user.username,
-                avatar_hash: window.localStorage.getItem("discordUserAvatar"),
-              });
+                //avatar_hash: window.localStorage.getItem("discordUserAvatar"),
+              };
+
+              let signedMessage = await signMessage(ob);
+              console.log(signedMessage);
+              await createUser(signedMessage);
             });
           } catch (e) {
             console.log("Could not get the user");
@@ -107,10 +114,16 @@ export const HomePage = () => {
     },
     {
       label: "Loot Boxes",
-      to: "/app2/loot",
+      to: "/app2",
       icon: cardIcon1,
       onClick: () => {},
     },
+    /*{
+      label: "Loot Boxes",
+      to: "/app2/loot",
+      icon: cardIcon1,
+      onClick: () => {},
+    },*/
     /*{
       label: "Whitelist Marketplace",
       to: "/app2/marketplace",

@@ -11,6 +11,7 @@ import RecordView from "../../components/Tournaments/RecordView";
 import useChat from "../../components/cojodi/Chat/useChat";
 import axios from "axios";
 import { backendEndpoint } from "../../constants";
+import { fetchLeaderboard } from "../../components/cojodi/BackendCalls/BackendCalls";
 
 interface IValues {
   message: string;
@@ -27,13 +28,12 @@ export const PlayPage = () => {
 
   // @ts-ignore
   useEffect(async () => {
-    //todo DIMI fetch leaderboard cards array
-    await axios
-      .get(backendEndpoint + "/tournament/game/vote")
-      .then((result) => {
-        setLeaderboardCardsArray(result.data);
-      });
-  }, [leaderboardCards]);
+    let data = await fetchLeaderboard();
+    for (let i = 0; i < data.length; i++) {
+      data[i]["index"] = i;
+    }
+    setLeaderboardCardsArray(data);
+  }, []);
 
   const handleNewMessageChange = (event: any) => {
     setInputTextValue(event.target.value);
@@ -101,20 +101,23 @@ export const PlayPage = () => {
             {currentTab === 0 && (
               <>
                 <div className={style.leaderboard}>
-                  {leaderboardCards.map(({ address, score }, index) => (
-                    <div className={style.leaderboardCard} key={index}>
+                  {leaderboardCardsArray.map((card) => (
+                    <div
+                      className={style.leaderboardCard}
+                      key={card["user"]["addr"]}
+                    >
                       <div className={style.back}>
                         {svgIcons.leaderboardCard}
                       </div>
                       <div className={style.leaderboardCardContent}>
                         <button>
                           <img src={numberButton} alt="" />
-                          <p>{index + 1}</p>
+                          <p>{card["index"] + 1}</p>
                         </button>
 
                         <div className={style.info}>
-                          <p>address</p>
-                          <p>{`score: ${score}`}</p>
+                          <p>{card["user"]["username"]}</p>
+                          <p>{`score: ${card["score"]}`}</p>
                         </div>
                       </div>
                     </div>

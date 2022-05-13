@@ -102,6 +102,8 @@ const RecordView = (props: Game) => {
   };
 
   const startRecordingAndRetrieveGameUrl = () => {
+    //todo start game and retirev urlf rom session id
+
     startRecording();
     props.handleClick();
   };

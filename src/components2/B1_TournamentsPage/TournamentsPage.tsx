@@ -25,11 +25,21 @@ import desktopClick from "../../assets/png/buttons/tournaments page - enter/ente
 import { useEffect, useState } from "react";
 import {
   connectWallet,
+  getConnectedSignerAddress,
+  mumbaiTokenContract,
   mumbaiTournamentContract,
+  signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
 import { ethers } from "ethers";
+import {
+  authorizeWithDiscord,
+  createUser,
+  fetchRemainingParticipants,
+  fetchUser,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
+import { mumbaiTournamentContractAddress } from "../../components/cojodi/ContractConfig";
 
 export const TournamentsPage = () => {
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
@@ -41,38 +51,102 @@ export const TournamentsPage = () => {
   // @ts-ignore
   useEffect(async () => {
     await connectWallet();
-    //todo check wheter chain is already polygon
-    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+
     let enterPrice = ethers.utils.formatEther(
       await mumbaiTournamentContract.registrationFee()
     );
-    //todo fetch price pool and participants
     let pricePool = ethers.utils.formatEther(
-      await mumbaiTournamentContract.registrationFee()
+      await mumbaiTournamentContract.pricePool()
     );
-    let participants = ethers.utils.formatEther(
-      await mumbaiTournamentContract.registrationFee()
-    );
-    let maxParticipants = ethers.utils.formatEther(
-      await mumbaiTournamentContract.registrationFee()
-    );
+    let maxParticipants = await mumbaiTournamentContract.maxUsers();
+    console.log(await fetchRemainingParticipants());
+    let participants = await fetchRemainingParticipants();
+
+    setParticipants(participants);
+
+    console.log(await mumbaiTournamentContract.maxUsers());
     setEnterPrice(enterPrice);
     setPricePool(pricePool);
-    setParticipants(participants);
     setMaxParticipants(maxParticipants);
   }, []);
+
+  const registerForTournament = async () => {
+    let priceToPay = await mumbaiTournamentContract.userBasedRegistrationFee(
+      await getConnectedSignerAddress()
+    );
+    console.log(priceToPay);
+    try {
+      let tx = await mumbaiTokenContract.approve(
+        mumbaiTournamentContractAddress,
+        priceToPay
+      );
+      await tx.wait();
+    } catch (e) {
+      console.log(`Error while approving DNA: ${e}`);
+      alert("Error: DNA approval failed.");
+    }
+
+    try {
+      let tx = await mumbaiTournamentContract.register();
+      await tx.wait();
+    } catch (e) {
+      console.log(`Error while registering for tournament: ${e}`);
+      alert("Error: Registration failed.");
+    }
+  };
+
+  const onClickTournamentOne = async () => {
+    //Check if discord auth token exists in db and create if not
+    if (
+      window.localStorage.getItem("discordAccessToken") === null ||
+      window.localStorage.getItem("discordUserName") === null
+    ) {
+      authorizeWithDiscord();
+      return;
+    }
+
+    //Check if user exists in db and create if not
+    let result = await fetchUser(await getConnectedSignerAddress());
+    console.log(result);
+    if (result === null) {
+      let idString = window.localStorage.getItem("discordUserId");
+      if (idString === null) {
+        return;
+      }
+      let ob = {
+        id: parseInt(idString),
+        username: window.localStorage.getItem("discordUserName"),
+        //avatar_hash: window.localStorage.getItem("discordUserAvatar"),
+      };
+
+      let signedMessage = await signMessage(ob);
+      console.log(signedMessage);
+      await createUser(signedMessage);
+      return;
+    }
+
+    //Check if user is registered for the tournament and register if not
+    let isUserRegisteredForTournament =
+      await mumbaiTournamentContract.registeredUsers(
+        await getConnectedSignerAddress()
+      );
+    if (!isUserRegisteredForTournament) {
+      await registerForTournament();
+      return;
+    }
+
+    matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
+  };
 
   const cards = [
     {
       title: "Tournament 1",
       items: [
-        { title: "Enter price", value: enterPrice },
-        { title: "Price pool", value: pricePool },
+        { title: "Enter price (DNA)", value: enterPrice },
+        { title: "Price pool (DNA)", value: pricePool },
         { title: "Participants", value: `${participants}/${maxParticipants}` },
       ],
-      onClick: () => {
-        matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
-      },
+      onClick: onClickTournamentOne,
     },
     // {
     //     title: "Tournament 2",

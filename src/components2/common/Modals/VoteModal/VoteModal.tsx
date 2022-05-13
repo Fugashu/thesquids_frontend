@@ -20,9 +20,9 @@ import { backendEndpoint } from "../../../../constants";
 
 export interface IVoteModalCard {
   id: number;
-  votesCount: number;
+  n_votes: number;
   rating: number;
-  imageUrl: string;
+  link: string;
 }
 
 export const VoteModal = () => {
@@ -35,17 +35,7 @@ export const VoteModal = () => {
       });
   }, []);
 
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      rating: 3,
-      votesCount: 348,
-      imageUrl: "",
-    },
-    { id: 2, rating: 2, votesCount: 349, imageUrl: "" },
-    { id: 3, rating: 1, votesCount: 350, imageUrl: "" },
-    { id: 4, rating: 1, votesCount: 350, imageUrl: "" },
-  ]);
+  const [cards, setCards] = useState([]);
   const ref = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();

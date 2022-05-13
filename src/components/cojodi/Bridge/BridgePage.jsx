@@ -21,7 +21,6 @@ import {
   goerliBridgeContract,
   mumbaiBridgeContract,
 } from "../MetamaskConnection/MetamaskWallet";
-import BackendCallsInterface from "../BackendCalls/BackendCallsInterface";
 
 export const BridgePage = () => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);

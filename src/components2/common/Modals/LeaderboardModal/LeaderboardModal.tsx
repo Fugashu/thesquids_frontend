@@ -8,6 +8,7 @@ import {
   setLeaderboardModal,
   setModal,
   setNickname,
+  setHighscoreId,
 } from "../../../../store/appSlice";
 import { useOutsideClick } from "../../../../hooks/useOutsideClick";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -28,18 +29,13 @@ import imgMobileClick from "../../../../assets/png/buttons/leaderboard modal - w
 import imgDesktopDefault from "../../../../assets/png/buttons/leaderboard modal - watch replay/desktopDefault.png";
 import imgDesktopHover from "../../../../assets/png/buttons/leaderboard modal - watch replay/desktopHover.png";
 import imgDesktopClick from "../../../../assets/png/buttons/leaderboard modal - watch replay/desktopClick.png";
-import axios from "axios";
+import { fetchLeaderboard } from "../../../../components/cojodi/BackendCalls/BackendCalls";
 
 export const LeaderboardModal = () => {
   const [cards, setCards] = useState([]);
   // @ts-ignore
   useEffect(async () => {
-    await axios
-      .get(backendEndpoint + "/tournament/highscore")
-      .then((result) => {
-        console.log(result.data);
-        setCards(result.data);
-      });
+    setCards(await fetchLeaderboard());
   }, []);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -76,7 +72,7 @@ export const LeaderboardModal = () => {
 
         <div className={style.cards}>
           {cards.map((card) => (
-            <div className={style.card} key={1}>
+            <div className={style.card} key={card["user"]["addr"]}>
               <img
                 className={style.cardBack}
                 src={matchDesktop ? cardDesktop : cardMobile}
@@ -131,6 +127,7 @@ export const LeaderboardModal = () => {
                         dispatch(setLeaderboardModal(false));
                         dispatch(setGameplayModal(true));
                         dispatch(setNickname(card["user"]["username"]));
+                        dispatch(setHighscoreId(card["id"]));
                         dispatch(setGameplayUrl(card["link"]));
                       }}
                       widthMobile={210}
@@ -165,7 +162,9 @@ export const LeaderboardModal = () => {
                     {/*</button>*/}
 
                     <div className={style.buttonBlockInfo}>
-                      <p>{`${card["user"]["votes_left"]} Replays left`}</p>
+                      {card["user"]["votes_left"] ? (
+                        <p>{`${card["user"]["votes_left"]} Replays left`}</p>
+                      ) : null}
                       <p>Earn $1 DNA</p>
                     </div>
                   </div>

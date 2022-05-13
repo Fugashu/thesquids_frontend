@@ -24,26 +24,12 @@ import { setWalletAddress } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { stringify } from "querystring";
 import axios from "axios";
+import { authorizeWithDiscord } from "../cojodi/BackendCalls/BackendCalls";
 interface IHome {
   onClickHandler: () => void;
 }
 
 export const Home: FC<IHome> = () => {
-  async function authorizeWithDiscord() {
-    let response_type = "code";
-    let client_id = process.env.REACT_APP_CLIENT_ID;
-    let scope = "identify";
-    let redirect =
-      "https://discord.com/api/oauth2/authorize?" +
-      "response_type=" +
-      response_type +
-      "&client_id=" +
-      client_id +
-      "&scope=" +
-      scope;
-    window.location.href = redirect;
-  }
-
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const navigateToTournament = useCallback(
@@ -60,10 +46,9 @@ export const Home: FC<IHome> = () => {
       window.localStorage.getItem("discordAccessToken") === null ||
       window.localStorage.getItem("discordUserName") === null
     ) {
-      await authorizeWithDiscord();
+      authorizeWithDiscord();
       return;
     }
-    //todo wallet und discord successfully linked -> save wallet id and discord username to dimi?
     navigateToTournament();
   }
   return (

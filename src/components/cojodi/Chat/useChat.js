@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
-import { discordUserName, walletAddress } from "../../../store/appSlice";
+import { discordUserName } from "../../../store/appSlice";
 import { useAppSelector } from "../../../store/hooks";
 
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event

@@ -352,8 +352,7 @@ export const mintingContractAddress =
 export const mumbaiNFTContractAbi = [
   {
     inputs: [
-      { internalType: "address", name: "dev1_", type: "address" },
-      { internalType: "address", name: "projectOwner_", type: "address" },
+      { internalType: "address", name: "childTunnel_", type: "address" },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -462,6 +461,23 @@ export const mumbaiNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [
+      { internalType: "address", name: "user_", type: "address" },
+      { internalType: "uint256[]", name: "tokenIds_", type: "uint256[]" },
+    ],
+    name: "burn",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "childTunnel",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "getApproved",
     outputs: [{ internalType: "address", name: "", type: "address" }],
@@ -480,20 +496,6 @@ export const mumbaiNFTContractAbi = [
   },
   {
     inputs: [],
-    name: "isPublicSale",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "isWhitelistSale",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "maxSupply",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
@@ -501,28 +503,22 @@ export const mumbaiNFTContractAbi = [
   },
   {
     inputs: [
-      { internalType: "address", name: "receiver_", type: "address" },
-      { internalType: "uint256", name: "amount_", type: "uint256" },
+      { internalType: "address", name: "user_", type: "address" },
+      { internalType: "uint256[]", name: "tokenIds_", type: "uint256[]" },
     ],
-    name: "mintOwner",
+    name: "mint",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [],
-    name: "mintPublic",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
     inputs: [
-      { internalType: "bytes32[]", name: "merkleProof_", type: "bytes32[]" },
+      { internalType: "address", name: "to_", type: "address" },
+      { internalType: "uint256", name: "amount_", type: "uint256" },
     ],
-    name: "mintWhitelist",
+    name: "mintOwner",
     outputs: [],
-    stateMutability: "payable",
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -540,16 +536,9 @@ export const mumbaiNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+    inputs: [{ internalType: "uint256", name: "tokenId_", type: "uint256" }],
     name: "ownerOf",
     outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "price",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
@@ -601,15 +590,10 @@ export const mumbaiNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "price_", type: "uint256" }],
-    name: "setPrice",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "bytes32", name: "merkleRoot_", type: "bytes32" }],
-    name: "setWhitelistMerkleRoot",
+    inputs: [
+      { internalType: "address", name: "childTunnel_", type: "address" },
+    ],
+    name: "setChildTunnel",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -629,17 +613,20 @@ export const mumbaiNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "togglePublicSale",
-    outputs: [],
-    stateMutability: "nonpayable",
+    inputs: [{ internalType: "uint256", name: "index", type: "uint256" }],
+    name: "tokenByIndex",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [],
-    name: "toggleWhitelistSale",
-    outputs: [],
-    stateMutability: "nonpayable",
+    inputs: [
+      { internalType: "address", name: "owner", type: "address" },
+      { internalType: "uint256", name: "index", type: "uint256" },
+    ],
+    name: "tokenOfOwnerByIndex",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -674,30 +661,9 @@ export const mumbaiNFTContractAbi = [
     stateMutability: "nonpayable",
     type: "function",
   },
-  {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "whitelistClaimed",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "whitelistMerkleRoot",
-    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "withdraw",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
 ];
 export const mumbaiNFTContractAddress =
-  "0x5207724299497588b62042626D18eb010A8BbB88";
+  "0xfd5fA903Da9102C8c8e44a678dC6Bcba8F5F3088";
 
 export const mumbaiTournamentContractAbi = [
   {
@@ -838,6 +804,13 @@ export const mumbaiTournamentContractAbi = [
   },
   {
     inputs: [],
+    name: "maintenanceRatio",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "maxUsers",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
@@ -854,6 +827,13 @@ export const mumbaiTournamentContractAbi = [
     inputs: [],
     name: "owner",
     outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "pricePool",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
@@ -894,7 +874,7 @@ export const mumbaiTournamentContractAbi = [
   },
   {
     inputs: [],
-    name: "resetNumRegisteredUsers",
+    name: "resetOwner",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -916,6 +896,15 @@ export const mumbaiTournamentContractAbi = [
   {
     inputs: [{ internalType: "uint256", name: "amount_", type: "uint256" }],
     name: "setLifeFee",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "maintenanceRatio_", type: "uint256" },
+    ],
+    name: "setMaintenanceRatio",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -1022,7 +1011,7 @@ export const mumbaiTournamentContractAbi = [
   },
 ];
 export const mumbaiTournamentContractAddress =
-  "0x0B3bdC3B683D1E4D68bF0f98578B6468B545cEff";
+  "0xd14Bc99B8750EF53fb06700942FbD0FA17e65e70";
 
 export const mumbaiTokenContractAbi = [
   {
@@ -1134,10 +1123,10 @@ export const mumbaiTokenContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [{ internalType: "uint256", name: "wethAmount_", type: "uint256" }],
     name: "buy",
     outputs: [],
-    stateMutability: "payable",
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -1217,6 +1206,13 @@ export const mumbaiTokenContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "address", name: "weth_", type: "address" }],
+    name: "setWETH",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "symbol",
     outputs: [{ internalType: "string", name: "", type: "string" }],
@@ -1266,6 +1262,13 @@ export const mumbaiTokenContractAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "weth",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       { internalType: "address", name: "to_", type: "address" },
       { internalType: "uint256", name: "amount_", type: "uint256" },
@@ -1287,7 +1290,214 @@ export const mumbaiTokenContractAbi = [
   },
 ];
 export const mumbaiTokenContractAddress =
-  "0x2F0BeBad8df529280baC3885b4E8dbfB58D1655E";
+  "0x47D4aD526F08B2d7E77344A66C0f8D28dd2f00bB";
+
+//todo abi weth aus dna contract ziehen
+export const mumbaiWethContractAbi = [
+  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "Approval",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "from", type: "address" },
+      { indexed: true, internalType: "address", name: "to", type: "address" },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "Transfer",
+    type: "event",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "owner", type: "address" },
+      { internalType: "address", name: "spender", type: "address" },
+    ],
+    name: "allowance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "spender", type: "address" },
+      { internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "approve",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "account", type: "address" }],
+    name: "balanceOf",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
+    name: "burn",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "account", type: "address" },
+      { internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "burnFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "spender", type: "address" },
+      { internalType: "uint256", name: "subtractedValue", type: "uint256" },
+    ],
+    name: "decreaseAllowance",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "ethers_", type: "uint256" }],
+    name: "get",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "spender", type: "address" },
+      { internalType: "uint256", name: "addedValue", type: "uint256" },
+    ],
+    name: "increaseAllowance",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "symbol",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "to", type: "address" },
+      { internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "transfer",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "from", type: "address" },
+      { internalType: "address", name: "to", type: "address" },
+      { internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "transferFrom",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
+export const mumbaiWethContractAddress =
+  "0xA51fed174208E5fF68B9C82164B450Df322190CF";
 
 export const mumbaiBridgeContractAbi = [
   {
@@ -1674,4 +1884,4 @@ export const goerliBridgeContractAbi = [
 export const goerliBridgeContractAddress =
   "0x54049060Cf7586453B45Cc25b990D60648CBED80";
 
-export const maxSupply = 2000;
+export const maxSupply = 20;

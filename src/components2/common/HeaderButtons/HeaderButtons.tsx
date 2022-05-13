@@ -9,6 +9,7 @@ import {
   lifeBalance,
   selectNickname,
   setBurgerOpen,
+  setDiscordUsername,
   setDNABalance,
   setHomeModalType,
   setLifeBalance,
@@ -22,6 +23,7 @@ import src1 from "../../../assets/png/header2/btn1.png";
 import src2 from "../../../assets/png/buttons/metamaskBtnIdle.png";
 import {
   connectWallet,
+  getConnectedSignerAddress,
   mumbaiTokenContract,
   signer,
 } from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
@@ -30,6 +32,7 @@ import axios from "axios";
 import { backendEndpoint } from "../../../constants";
 import { CojodiNetworkSwitcher } from "../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../../components/cojodi/BackendCalls/chainRpcData";
+import { ethers } from "ethers";
 
 interface IHeaderButtons {
   className?: string;
@@ -47,12 +50,16 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     try {
       await connectWallet();
       await dispatch(setWalletAddress(await signer.getAddress()));
-      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
-      let dnaBalanceOfUser = await mumbaiTokenContract.balanceOf(
-        await signer.getAddress()
+      let userId = localStorage.getItem("discordUserName");
+      if (userId !== null) {
+        dispatch(setDiscordUsername(userId));
+      }
+      let dnaBalanceOfUser = ethers.utils.formatEther(
+        await mumbaiTokenContract.balanceOf(await getConnectedSignerAddress())
       );
       let dnaString = dnaBalanceOfUser.toString();
       dispatch(setDNABalance(dnaString));
+
       await axios
         .get(backendEndpoint + `/user/${await signer.getAddress()}`)
         .then(function (res) {

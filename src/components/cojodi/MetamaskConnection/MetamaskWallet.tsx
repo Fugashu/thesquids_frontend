@@ -12,9 +12,9 @@ import {
   mumbaiTokenContractAddress,
   mumbaiTournamentContractAbi,
   mumbaiTournamentContractAddress,
+  mumbaiWethContractAbi,
+  mumbaiWethContractAddress,
 } from "../ContractConfig";
-import { useAppSelector } from "../../../store/hooks";
-import { walletAddress } from "../../../store/appSlice";
 
 export var signer: ethers.Signer;
 export var mumbaiNFTContract: ethers.Contract;
@@ -23,6 +23,7 @@ export var mumbaiTokenContract: ethers.Contract;
 export var mintingContract: ethers.Contract;
 export var goerliBridgeContract: ethers.Contract;
 export var mumbaiBridgeContract: ethers.Contract;
+export var mumbaiWethContract: ethers.Contract;
 let provider: ethers.providers.Web3Provider;
 
 export async function isUnlocked() {
@@ -92,6 +93,12 @@ export async function connectWallet() {
     mumbaiBridgeContractAbi,
     signer
   );
+
+  mumbaiWethContract = await createContractObject(
+    mumbaiWethContractAddress,
+    mumbaiWethContractAbi,
+    signer
+  );
 }
 
 export async function pretendDisconnectWalletByReloading() {
@@ -133,6 +140,8 @@ export async function setApprovalForAll(
 export async function signMessage(incomingMessage: Object) {
   // @ts-ignore
   incomingMessage["timestamp"] = 0;
+  // @ts-ignore
+  incomingMessage["addr"] = await getConnectedSignerAddress();
   let signpayload = JSON.stringify(
     incomingMessage,
     Object.keys(incomingMessage).sort()

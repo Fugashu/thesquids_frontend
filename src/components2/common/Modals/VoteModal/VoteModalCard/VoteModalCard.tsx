@@ -14,12 +14,17 @@ import cardHover from "../../../../../assets/png/cards/vote modal/hover.png";
 import cardClick from "../../../../../assets/png/cards/vote modal/click.png";
 import voteModalCardIcon from "../../../../../assets/png/icons/vote modal card icon.png";
 import { ButtonCustom } from "../../../ButtonCustom/ButtonCustom";
+import {
+  voteGame,
+  voteHighscore,
+} from "../../../../../components/cojodi/BackendCalls/BackendCalls";
+import { signMessage } from "../../../../../components/cojodi/MetamaskConnection/MetamaskWallet";
 
 export const VoteModalCard: FC<IVoteModalCard> = ({
   id,
-  votesCount,
+  n_votes,
   rating,
-  imageUrl,
+  link,
 }) => {
   const [value, setValue] = useState<number | null>(rating);
 
@@ -33,8 +38,14 @@ export const VoteModalCard: FC<IVoteModalCard> = ({
   };
 
   async function voteForGame(id: number) {
-    console.log(`trying to vote for game ${id}`);
+    let ob = {
+      voteable_game_id: id,
+    };
+    let signedMsg = await signMessage(ob);
+    console.log(signedMsg);
+    await voteGame(signedMsg);
   }
+
   return (
     <div
       className={style.voteModalCard}
@@ -59,7 +70,7 @@ export const VoteModalCard: FC<IVoteModalCard> = ({
           className={style.rating}
         />
 
-        <img className={style.icon} src={voteModalCardIcon} alt="" />
+        <img className={style.icon} src={link} alt="" />
         <p className={style.gameName}>{""}</p>
 
         <ButtonCustom
@@ -78,7 +89,7 @@ export const VoteModalCard: FC<IVoteModalCard> = ({
           <p>vote</p>
         </ButtonCustom>
 
-        <p className={style.votesCount}>{`${votesCount} votes`}</p>
+        <p className={style.votesCount}>{`${n_votes} votes`}</p>
       </div>
     </div>
   );

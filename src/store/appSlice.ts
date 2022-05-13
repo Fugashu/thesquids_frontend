@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { ethers } from "ethers";
 
 export interface ILootBox {
   image: string;
@@ -22,6 +21,7 @@ const initialState = {
   homeModalType: HomeModalEnum.dna as HomeModalEnum,
   showChooseTheCoinModal: false,
   tournamentsWarningModal: false,
+  tournamentsTOSModal: false,
   leaderboardModal: false,
   nickname: "",
   gameplayModal: false,
@@ -38,6 +38,7 @@ const initialState = {
   dnaBuyAmount: "",
   dnaBalance: "",
   lifeBalance: "",
+  highScoreId: "",
 };
 
 type InitialStateType = typeof initialState;
@@ -60,6 +61,9 @@ export const appSlice = createSlice({
     },
     setTournamentsWarningModal: (state, action: PayloadAction<boolean>) => {
       state.tournamentsWarningModal = action.payload;
+    },
+    setTOSModal: (state, action: PayloadAction<boolean>) => {
+      state.tournamentsTOSModal = action.payload;
     },
     setLeaderboardModal: (state, action: PayloadAction<boolean>) => {
       state.leaderboardModal = action.payload;
@@ -111,6 +115,9 @@ export const appSlice = createSlice({
     setLifeBalance: (state, action: PayloadAction<string>) => {
       state.lifeBalance = action.payload;
     },
+    setHighscoreId: (state, action: PayloadAction<string>) => {
+      state.highScoreId = action.payload;
+    },
   },
 });
 
@@ -120,6 +127,7 @@ export const {
   setHomeModalType,
   setShowChooseTheCoinModal,
   setTournamentsWarningModal,
+  setTOSModal,
   setLeaderboardModal,
   setNickname,
   setGameplayModal,
@@ -137,6 +145,7 @@ export const {
   setDnaBuyAmount,
   setDNABalance,
   setLifeBalance,
+  setHighscoreId,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -147,6 +156,8 @@ export const selectShowChooseTheCoinModal = (state: RootState) =>
   state.app.showChooseTheCoinModal;
 export const selectTournamentsWarningModal = (state: RootState) =>
   state.app.tournamentsWarningModal;
+export const selectTournamentsTOSModal = (state: RootState) =>
+  state.app.tournamentsTOSModal;
 export const selectLeaderboardModal = (state: RootState) =>
   state.app.leaderboardModal;
 export const selectNickname = (state: RootState) => state.app.nickname;
@@ -170,5 +181,5 @@ export const gameplayUrl = (state: RootState) => state.app.gameplayUrl;
 export const dnaBuyAmount = (state: RootState) => state.app.dnaBuyAmount;
 export const dnaBalance = (state: RootState) => state.app.dnaBalance;
 export const lifeBalance = (state: RootState) => state.app.lifeBalance;
-
+export const highScoreId = (state: RootState) => state.app.highScoreId;
 export const appReducer = appSlice.reducer;

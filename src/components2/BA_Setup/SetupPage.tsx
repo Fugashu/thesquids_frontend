@@ -3,6 +3,7 @@ import style from "./SetupPage.module.scss";
 import {
   setModal,
   setTestRecordingModal,
+  setTOSModal,
   setTournamentsWarningModal,
 } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
@@ -48,8 +49,8 @@ export const SetupPage = () => {
       icon: tosIcon,
       onClick: () => {
         //todo tos modal
-        // dispatch(setTestRecordingModal(true));
-        // dispatch(setModal(true));
+        dispatch(setTOSModal(true));
+        dispatch(setModal(true));
       },
     },
     {

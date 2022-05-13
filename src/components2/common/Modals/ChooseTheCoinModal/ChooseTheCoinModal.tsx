@@ -41,6 +41,7 @@ import {
 import { CojodiNetworkSwitcher } from "../../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../../../components/cojodi/BackendCalls/chainRpcData";
 import { ethers } from "ethers";
+import { buyDNA } from "../../../../components/cojodi/BackendCalls/BackendCalls";
 
 export interface ICardLives {
   lives: number;
@@ -72,23 +73,27 @@ export const ChooseTheCoinModal = () => {
   const homeModalType = useAppSelector(selectHomeModalType);
   const dnaAmount = useAppSelector(dnaBuyAmount);
   const [priceOfOneToken, setPriceOfOneToken] = useState(0);
-  const [lifePrice, setLifePrice] = useState(0);
+  const [lifePrice, setLifePrice] = useState("");
   // @ts-ignore
   useEffect(async () => {
     await connectWallet();
     await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
-    setLifePrice(await mumbaiTournamentContract.lifeFee());
-    let gweiPrice = await mumbaiTokenContract.price();
-    gweiPrice = gweiPrice.toString();
-    gweiPrice = ethers.utils.formatEther(gweiPrice);
+    setLifePrice(
+      ethers.utils.formatEther(await mumbaiTournamentContract.lifeFee())
+    );
+    let gweiPrice = ethers.utils.formatEther(await mumbaiTokenContract.price());
     console.log(gweiPrice);
-    setPriceOfOneToken(gweiPrice);
+
+    // @ts-ignore
+    setPriceOfOneToken(gweiPrice.toString());
   }, [dnaAmount]);
 
-  const buyDNA = async () => {
+  const requestBuyDNA = async () => {
     //TODO DIMI BUY DNA
     console.log("user wants to buy dna for ");
-    console.log(parseInt(dnaAmount) * priceOfOneToken);
+    console.log(parseInt(dnaAmount));
+
+    await buyDNA(parseInt(dnaAmount));
   };
 
   return (
@@ -161,7 +166,7 @@ export const ChooseTheCoinModal = () => {
               imgDesktopDefault={imgDesktopDefault}
               imgDesktopHover={imgDesktopHover}
               imgDesktopClick={imgDesktopClick}
-              onClick={buyDNA}
+              onClick={requestBuyDNA}
             >
               <p>BUY</p>
             </ButtonCustom>
@@ -175,7 +180,11 @@ export const ChooseTheCoinModal = () => {
             )}
 
             {cards.map((card, index) => (
-              <CardLives key={index} lives={card.lives} value={lifePrice} />
+              <CardLives
+                key={index}
+                lives={card.lives}
+                value={parseInt(lifePrice)}
+              />
             ))}
           </div>
         )}

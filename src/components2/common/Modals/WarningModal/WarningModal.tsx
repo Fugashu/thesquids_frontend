@@ -19,19 +19,17 @@ import backMobile from "../../../../assets/png/modal/warning modal/mobile.png";
 import backDesktop from "../../../../assets/png/modal/warning modal/desktop.png";
 import { ButtonCustom } from "../../ButtonCustom/ButtonCustom";
 
-const items = [
-  "Make sure to read our TOS and policy before entering the tournaments",
-  "You will not be able to purchase lives during the tournament, only before entering",
-  "Test your recording, any entries without a gameplay recording will be voided",
-  "You will need to Stake your Squids in order to enter and pay the $DNA fee to participate",
-];
-
 interface IWarningModal {
   onClose: () => void;
   onAccept: () => void;
+  items: string[];
 }
 
-export const WarningModal: FC<IWarningModal> = ({ onClose, onAccept }) => {
+export const WarningModal: FC<IWarningModal> = ({
+  onClose,
+  onAccept,
+  items,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useOutsideClick(ref, onClose);
@@ -49,20 +47,21 @@ export const WarningModal: FC<IWarningModal> = ({ onClose, onAccept }) => {
           alt=""
         />
 
-        <p className={style.title}>Warning!</p>
+        <p className={style.title}>Attention!</p>
+        {items ? (
+          <div className={style.items}>
+            {items.map((item, index) => (
+              <div className={style.itemBlock} key={index}>
+                <div className={style.numberWrapper}>
+                  <img src={numberCard} alt="" />
+                  <span>{index + 1}</span>
+                </div>
 
-        <div className={style.items}>
-          {items.map((item, index) => (
-            <div className={style.itemBlock} key={index}>
-              <div className={style.numberWrapper}>
-                <img src={numberCard} alt="" />
-                <span>{index + 1}</span>
+                <p>{item}</p>
               </div>
-
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : null}
 
         <ButtonCustom
           className={style.acceptButton}

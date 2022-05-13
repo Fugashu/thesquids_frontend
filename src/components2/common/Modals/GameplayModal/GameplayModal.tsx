@@ -4,8 +4,10 @@ import { useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import {
   gameplayUrl,
+  highScoreId,
   selectNickname,
   setGameplayModal,
+  setHighscoreId,
   setModal,
 } from "../../../../store/appSlice";
 import { useOutsideClick } from "../../../../hooks/useOutsideClick";
@@ -32,9 +34,12 @@ import mobileClick from "../../../../assets/png/buttons/gameplay modal/cheating/
 import desktopDefault from "../../../../assets/png/buttons/gameplay modal/cheating/desktopDefault.png";
 import desktopHover from "../../../../assets/png/buttons/gameplay modal/cheating/desktopHover.png";
 import desktopClick from "../../../../assets/png/buttons/gameplay modal/cheating/desktopClick.png";
+import { signMessage } from "../../../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import { voteHighscore } from "../../../../components/cojodi/BackendCalls/BackendCalls";
 
 export const GameplayModal = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const scoreId = useAppSelector(highScoreId);
   const nickname = useAppSelector(selectNickname);
   const videoUrl = useAppSelector(gameplayUrl);
   const dispatch = useAppDispatch();
@@ -48,6 +53,16 @@ export const GameplayModal = () => {
 
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
 
+  async function vote(voteBool: boolean) {
+    let ob = {
+      up: voteBool,
+      down: !voteBool,
+      highscore_id: 1, //fixme must be scoreId
+    };
+    let signedMsg = await signMessage(ob);
+    console.log(signedMsg);
+    await voteHighscore(signedMsg);
+  }
   return (
     <div className={style.gameplayModal}>
       <div className={style.content} ref={ref}>
@@ -89,6 +104,7 @@ export const GameplayModal = () => {
             imgDesktopDefault={imgDesktopDefault}
             imgDesktopHover={imgDesktopHover}
             imgDesktopClick={imgDesktopClick}
+            onClick={() => vote(true)}
           >
             <p>Verified</p>
           </ButtonCustom>
@@ -104,6 +120,7 @@ export const GameplayModal = () => {
             imgDesktopDefault={desktopDefault}
             imgDesktopHover={desktopHover}
             imgDesktopClick={desktopClick}
+            onClick={() => vote(false)}
           >
             <p>Suspect</p>
           </ButtonCustom>
