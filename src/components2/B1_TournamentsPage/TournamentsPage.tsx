@@ -91,7 +91,9 @@ export const TournamentsPage = () => {
       await tx.wait();
     } catch (e) {
       console.log(`Error while registering for tournament: ${e}`);
-      alert("Error: Registration failed.");
+      alert(
+        "Error: Registration failed. You need to stake one or more NFTs first."
+      );
     }
   };
 

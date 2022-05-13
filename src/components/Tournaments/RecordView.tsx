@@ -2,13 +2,20 @@ import { useReactMediaRecorder } from "react-media-recorder";
 import axios from "axios";
 import * as React from "react";
 import BackendCallsInterface from "../cojodi/BackendCalls/BackendCallsInterface";
-import { getConnectedSignerAddress } from "../cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  getConnectedSignerAddress,
+  signMessage,
+} from "../cojodi/MetamaskConnection/MetamaskWallet";
 import style from "./PlayPage.module.scss";
 import playHover from "../../assets/png/buttons/play page - play/play_hover.png";
 import playDefault from "../../assets/png/buttons/play page - play/play_default.png";
 import playClicked from "../../assets/png/buttons/play page - play/play_clicked.png";
 
 import { ButtonCustom } from "../../components2/common/ButtonCustom/ButtonCustom";
+import {
+  createHighscore,
+  createUser,
+} from "../cojodi/BackendCalls/BackendCalls";
 
 interface Game {
   handleClick: any;
@@ -97,15 +104,21 @@ const RecordView = (props: Game) => {
       console.log(event.data.data);
       score = await event.data.data.v1;
       stopRecording();
-      alert("You scored " + score + " points.");
+      console.log("You scored " + score + " points.");
+      let ob = {
+        score: score,
+      };
+
+      let signedMessage = await signMessage(ob);
+      console.log(signedMessage);
+
+      await createHighscore(signedMessage);
     }
   };
 
-  const startRecordingAndRetrieveGameUrl = () => {
-    //todo start game and retirev urlf rom session id
-
+  const startRecordingAndRetrieveGameUrl = async () => {
+    await props.handleClick();
     startRecording();
-    props.handleClick();
   };
   return (
     <div>

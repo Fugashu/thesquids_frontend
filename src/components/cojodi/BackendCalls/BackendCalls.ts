@@ -16,12 +16,12 @@ import {
 import { BigNumber, ethers } from "ethers";
 
 const post = async (endpoint: string, message: any) => {
-  axios
+  return await axios
     .post(backendEndpoint + endpoint, message)
     .catch(function (error) {
       if (error.response) {
         // Request made and server responded
-        console.log(error.response.data);
+        alert(error.response.data.detail);
         console.log(error.response.status);
         console.log(error.response.headers);
       } else if (error.request) {
@@ -32,7 +32,10 @@ const post = async (endpoint: string, message: any) => {
         console.log("Error", error.message);
       }
     })
-    .then((response) => console.log(response));
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
 };
 
 const get = async (endpoint: string) => {
@@ -80,10 +83,30 @@ export const createUser = async (message: any) => {
   await post("/user", message);
 };
 
-export const startGame = async (message: any) => {
-  await post("/tournament/game", message);
-};
+//done
+export const requestSessionId = async (message: any) => {
+  try {
+    let res = await post("/tournament/game", message);
 
+    // @ts-ignore
+    return res["data"]["session_id"];
+  } catch (e) {
+    return "";
+  }
+};
+//done
+export const requestGameUrl = async (sessionId: number) => {
+  try {
+    let res = await get("/tournament/game/" + sessionId);
+    // @ts-ignore
+    console.log(res["data"]);
+    // @ts-ignore
+    return res["data"];
+  } catch (e) {
+    return "";
+  }
+};
+//done
 export const fetchRemainingParticipants = async () => {
   try {
     let res = await get("/tournament/stats");
@@ -93,7 +116,7 @@ export const fetchRemainingParticipants = async () => {
     return "";
   }
 };
-
+//done
 export const fetchLeaderboard = async () => {
   try {
     let res = await get("/tournament/highscore");
@@ -104,7 +127,7 @@ export const fetchLeaderboard = async () => {
     return [];
   }
 };
-
+//done
 export const fetchUser = async (userWalletAddr: string) => {
   try {
     let res = await get("/user/" + userWalletAddr);

@@ -11,7 +11,13 @@ import RecordView from "../../components/Tournaments/RecordView";
 import useChat from "../../components/cojodi/Chat/useChat";
 import axios from "axios";
 import { backendEndpoint } from "../../constants";
-import { fetchLeaderboard } from "../../components/cojodi/BackendCalls/BackendCalls";
+import {
+  fetchLeaderboard,
+  requestGameUrl,
+  requestSessionId,
+  voteHighscore,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
+import { signMessage } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 
 interface IValues {
   message: string;
@@ -54,8 +60,13 @@ export const PlayPage = () => {
     }
   };
 
-  const GameLink = () => {
-    setGameUrl("https://catsandghostsgamesquids.on.drv.tw/roads_video/");
+  const clickPlay = async () => {
+    let signedMsg = await signMessage({});
+    console.log(signedMsg);
+    let session_id = await requestSessionId(signedMsg);
+    console.log(session_id);
+
+    setGameUrl(backendEndpoint + "/tournament/game/" + session_id);
   };
 
   return (
@@ -65,8 +76,9 @@ export const PlayPage = () => {
           <div className={style.field}>
             <div className={style.back}>{svgIcons.playPageField}</div>
             <iframe
+              frameBorder={0}
+              scrolling={"no"}
               style={{
-                border: 0,
                 width: "100%",
                 height: "100%",
                 maxHeight: "100%",
@@ -77,7 +89,7 @@ export const PlayPage = () => {
             />
           </div>
           <br />
-          <RecordView handleClick={GameLink} />
+          <RecordView handleClick={clickPlay} />
         </div>
 
         <aside className={style.aside}>
