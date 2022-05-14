@@ -13,12 +13,21 @@
     display: flex;
     align-items: center;
 
+    &:nth-child(1) {
+      margin-top: 24px;
+
+      @include desktop() {
+        margin-top: 0;
+        margin-left: 64px;
+      }
+
+    }
     &:nth-child(2) {
       margin-top: 24px;
 
       @include desktop() {
         margin-top: 0;
-        margin-left: 24px;
+        margin-left: 64px;
       }
 
     }
@@ -31,6 +40,15 @@
         margin-left: 64px;
       }
     }
+    &:nth-child(4) {
+      margin-top: 24px;
+
+      @include desktop() {
+        margin-top: 0;
+        margin-left: 64px;
+      }
+    }
+
 
     img {
       display: block;

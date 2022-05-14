@@ -3,7 +3,16 @@ import style from "./TournamentsPage.module.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CardItem } from "./CardItem/CardItem";
 import { useAppDispatch } from "../../store/hooks";
-import { setLeaderboardModal, setModal } from "../../store/appSlice";
+import {
+  HomeModalEnum,
+  setBurgerOpen,
+  setErrorModalText,
+  setHomeModalType,
+  setLeaderboardModal,
+  setModal,
+  setOnErrorModal,
+  setShowChooseTheCoinModal,
+} from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
 import { desktopBreakPoint } from "../../constants";
 import sandTimerIcon from "../../assets/png/icons/sandTimer.png";
@@ -111,21 +120,25 @@ export const TournamentsPage = () => {
     let result = await fetchUser(await getConnectedSignerAddress());
     console.log(result);
     if (result === null) {
-      let idString = window.localStorage.getItem("discordUserId");
-      if (idString === null) {
-        return;
-      }
-      let ob = {
-        id: parseInt(idString),
-        username: window.localStorage.getItem("discordUserName"),
-        //avatar_hash: window.localStorage.getItem("discordUserAvatar"),
-      };
-
-      let signedMessage = await signMessage(ob);
-      console.log(signedMessage);
-      await createUser(signedMessage);
+      dispatch(setErrorModalText("User doesn't exist."));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
       return;
     }
+
+    let idString = window.localStorage.getItem("discordUserId");
+    if (idString === null) {
+      return;
+    }
+    let ob = {
+      id: parseInt(idString),
+      username: window.localStorage.getItem("discordUserName"),
+      //avatar_hash: window.localStorage.getItem("discordUserAvatar"),
+    };
+
+    let signedMessage = await signMessage(ob);
+    console.log(signedMessage);
+    await createUser(signedMessage);
 
     //Check if user is registered for the tournament and register if not
     let isUserRegisteredForTournament =

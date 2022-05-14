@@ -23,6 +23,7 @@ const initialState = {
   tournamentsWarningModal: false,
   tournamentsTOSModal: false,
   leaderboardModal: false,
+  onErrorModal: false,
   nickname: "",
   gameplayModal: false,
   stakingNftErrorModal: false,
@@ -39,6 +40,8 @@ const initialState = {
   dnaBalance: "",
   lifeBalance: "",
   highScoreId: "",
+  claimablePrizeAmount: "",
+  errorModalText: "",
 };
 
 type InitialStateType = typeof initialState;
@@ -95,6 +98,9 @@ export const appSlice = createSlice({
     setTournamentsModal: (state, action: PayloadAction<boolean>) => {
       state.tournamentsModal = action.payload;
     },
+    setOnErrorModal: (state, action: PayloadAction<boolean>) => {
+      state.onErrorModal = action.payload;
+    },
 
     setWalletAddress: (state, action: PayloadAction<string>) => {
       state.walletAddress = action.payload;
@@ -118,6 +124,12 @@ export const appSlice = createSlice({
     setHighscoreId: (state, action: PayloadAction<string>) => {
       state.highScoreId = action.payload;
     },
+    setClaimablePrizeAmount: (state, action: PayloadAction<string>) => {
+      state.claimablePrizeAmount = action.payload;
+    },
+    setErrorModalText: (state, action: PayloadAction<string>) => {
+      state.errorModalText = action.payload;
+    },
   },
 });
 
@@ -127,6 +139,7 @@ export const {
   setHomeModalType,
   setShowChooseTheCoinModal,
   setTournamentsWarningModal,
+  setOnErrorModal,
   setTOSModal,
   setLeaderboardModal,
   setNickname,
@@ -138,6 +151,7 @@ export const {
   setTestRecordingModal,
   setTimeLeftModal,
   setTournamentsModal,
+  setErrorModalText,
 
   setWalletAddress,
   setDiscordUsername,
@@ -146,6 +160,7 @@ export const {
   setDNABalance,
   setLifeBalance,
   setHighscoreId,
+  setClaimablePrizeAmount,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -174,6 +189,9 @@ export const selectTimeLeftModal = (state: RootState) =>
   state.app.timeLeftModal;
 export const selectTournamentsModal = (state: RootState) =>
   state.app.tournamentsModal;
+export const selectOnErrorModal = (state: RootState) => state.app.onErrorModal;
+export const selectErrorModalText = (state: RootState) =>
+  state.app.errorModalText;
 
 export const walletAddress = (state: RootState) => state.app.walletAddress;
 export const discordUserName = (state: RootState) => state.app.discordUserName;
@@ -181,5 +199,7 @@ export const gameplayUrl = (state: RootState) => state.app.gameplayUrl;
 export const dnaBuyAmount = (state: RootState) => state.app.dnaBuyAmount;
 export const dnaBalance = (state: RootState) => state.app.dnaBalance;
 export const lifeBalance = (state: RootState) => state.app.lifeBalance;
+export const claimPrizeAmount = (state: RootState) =>
+  state.app.claimablePrizeAmount;
 export const highScoreId = (state: RootState) => state.app.highScoreId;
 export const appReducer = appSlice.reducer;

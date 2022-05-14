@@ -3,12 +3,14 @@ import style from "./HeaderButtons.module.scss";
 import clsx from "clsx";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import {
+  claimPrizeAmount,
   discordUserName,
   dnaBalance,
   HomeModalEnum,
   lifeBalance,
   selectNickname,
   setBurgerOpen,
+  setClaimablePrizeAmount,
   setDiscordUsername,
   setDNABalance,
   setHomeModalType,
@@ -20,6 +22,8 @@ import {
 } from "../../../store/appSlice";
 import src0 from "../../../assets/png/header2/btn0.png";
 import src1 from "../../../assets/png/header2/btn1.png";
+import claimImg from "../../../assets/png/header2/btn2.png";
+
 import src2 from "../../../assets/png/buttons/metamaskBtnIdle.png";
 import {
   connectWallet,
@@ -44,6 +48,8 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const nickName = useAppSelector(discordUserName);
   const dnaBal = useAppSelector(dnaBalance);
   const lifeBal = useAppSelector(lifeBalance);
+  const claimableBalance = useAppSelector(claimPrizeAmount);
+  dispatch(setClaimablePrizeAmount("0"));
 
   // @ts-ignore
   useEffect(async () => {
@@ -59,7 +65,6 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       );
       let dnaString = dnaBalanceOfUser.toString();
       dispatch(setDNABalance(dnaString));
-
       await axios
         .get(backendEndpoint + `/user/${await signer.getAddress()}`)
         .then(function (res) {
@@ -69,6 +74,15 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   }, [walletAddr]);
 
   const buttons = [
+    {
+      src: claimImg,
+      text: `Prize:${claimableBalance}`,
+      label: "Claim",
+      onClick: () => {
+        //TODO Claim balance
+      },
+    },
+
     {
       src: src0,
       text: `Balance:${lifeBal}`,

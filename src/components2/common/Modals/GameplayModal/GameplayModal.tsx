@@ -57,7 +57,7 @@ export const GameplayModal = () => {
     let ob = {
       up: voteBool,
       down: !voteBool,
-      highscore_id: 1, //fixme must be scoreId
+      highscore_id: scoreId,
     };
     let signedMsg = await signMessage(ob);
     console.log(signedMsg);

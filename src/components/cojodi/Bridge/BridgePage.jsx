@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CojodiNetworkSwitcher } from "../BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../BackendCalls/chainRpcData";
+import imgSwitchEth from "../../../assets/png/buttons/staking page button/switchToEthereum.png";
+import imgSwitchPoly from "../../../assets/png/buttons/staking page button/switchToPolygon.png";
+
 import {
   goerliBridgeContractAddress,
   maxSupply,
@@ -21,6 +24,10 @@ import {
   goerliBridgeContract,
   mumbaiBridgeContract,
 } from "../MetamaskConnection/MetamaskWallet";
+import imgDefault from "../../../assets/png/buttons/staking page button/default.png";
+import imgClick from "../../../assets/png/buttons/staking page button/click.png";
+import imgHover from "../../../assets/png/buttons/staking page button/click.png";
+import { ButtonCustom } from "../../../components2/common/ButtonCustom/ButtonCustom";
 
 export const BridgePage = () => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);
@@ -102,21 +109,36 @@ export const BridgePage = () => {
         <div className={style.titleBlock}>
           <h2 className={style.title}>Bridge:</h2>
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button
+        <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
+          <ButtonCustom
             onClick={() =>
               CojodiNetworkSwitcher.switchToChain(chainRpcData.eth_mainnet)
             }
-          >
-            <p style={{ color: "red" }}>Switch To Ethereum</p>
-          </button>
-          <button
+            widthMobile={136}
+            heightMobile={50}
+            widthDesktop={136}
+            heightDesktop={50}
+            imgMobileDefault={imgSwitchEth}
+            imgMobileClick={imgSwitchEth}
+            imgDesktopDefault={imgSwitchEth}
+            imgDesktopHover={imgSwitchEth}
+            imgDesktopClick={imgSwitchEth}
+          />
+
+          <ButtonCustom
             onClick={() =>
               CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai)
             }
-          >
-            <p style={{ color: "red" }}>Switch To Polygon</p>
-          </button>
+            widthMobile={136}
+            heightMobile={50}
+            widthDesktop={136}
+            heightDesktop={50}
+            imgMobileDefault={imgSwitchPoly}
+            imgMobileClick={imgSwitchPoly}
+            imgDesktopDefault={imgSwitchPoly}
+            imgDesktopHover={imgSwitchPoly}
+            imgDesktopClick={imgSwitchPoly}
+          />
         </div>
         <div className={style.cards}>
           {ownedNFTs.map((nft) => (

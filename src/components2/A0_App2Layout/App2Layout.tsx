@@ -6,6 +6,7 @@ import {
   selectGameplayModal,
   selectLeaderboardModal,
   selectModal,
+  selectOnErrorModal,
   selectOpenBoxModal,
   selectShowChooseTheCoinModal,
   selectStakingNftErrorModal,
@@ -33,6 +34,7 @@ import { TestRecordingModal } from "../common/Modals/TestRecordingModal/TestReco
 import { TimeLeftModal } from "../common/Modals/TimeLeftModal/TimeLeftModal";
 import { TournamentsModal } from "../common/Modals/TournamentsModal/TournamentsModal";
 import { TournamentsTOSModal } from "../common/Modals/TournamentsTOSModal/TournamentsTosModal";
+import { OnErrorModal } from "../common/Modals/OnErrorModal/OnErrorModal";
 
 export const App2Layout = () => {
   const showChooseTheCoinModal = useAppSelector(selectShowChooseTheCoinModal);
@@ -47,7 +49,7 @@ export const App2Layout = () => {
   const timeLeftModal = useAppSelector(selectTimeLeftModal);
   const tournamentsModal = useAppSelector(selectTournamentsModal);
   const tosModal = useAppSelector(selectTournamentsTOSModal);
-
+  const onErrorModal = useAppSelector(selectOnErrorModal);
   return (
     <div
       className={clsx({
@@ -70,6 +72,7 @@ export const App2Layout = () => {
       {timeLeftModal && <TimeLeftModal />}
       {tournamentsModal && <TournamentsModal />}
       {tosModal && <TournamentsTOSModal />}
+      {onErrorModal && <OnErrorModal />}
 
       <div className={style.gradient} />
 
