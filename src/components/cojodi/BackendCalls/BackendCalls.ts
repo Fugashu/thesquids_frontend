@@ -71,7 +71,7 @@ const get = async (endpoint: string) => {
 
 //done
 export const voteHighscore = async (message: any) => {
-  await post("/tournament/highscore/vote", message);
+  await post("/tournament/highscore_vote", message);
 };
 
 //done

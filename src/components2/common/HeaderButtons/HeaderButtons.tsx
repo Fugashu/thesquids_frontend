@@ -97,7 +97,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
 
     {
       src: src0,
-      text: `Balance:${lifeBal}`,
+      text: `Lives:${lifeBal}`,
       label: "Buy more",
       onClick: () => {
         dispatch(setModal(true));
