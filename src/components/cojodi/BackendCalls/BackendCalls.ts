@@ -14,8 +14,12 @@ import {
   mumbaiTournamentContractAddress,
 } from "../ContractConfig";
 import { BigNumber, ethers } from "ethers";
+import {
+  setErrorModalText,
+  setModal,
+  setOnErrorModal,
+} from "../../../store/appSlice";
 
-//todo return, wenn error und nicht weiter machen
 const post = async (endpoint: string, message: any) => {
   return await axios
     .post(backendEndpoint + endpoint, message)
@@ -32,6 +36,7 @@ const post = async (endpoint: string, message: any) => {
         // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
+      return;
     })
     .then((response) => {
       console.log(response);
@@ -245,5 +250,30 @@ export function authorizeWithDiscord() {
     client_id +
     "&scope=" +
     scope;
+
   window.location.href = redirect;
+}
+
+export async function getImageUrlForTokenId(tokenId: number) {
+  {
+    /*  let imageSrc = "undefined";
+  imageSrc = await mumbaiNFTContract.tokenURI(tokenId);
+   try {
+    console.log("test" + imageSrc);
+    imageSrc = imageSrc.split("ipfs://");
+    imageSrc = "https://infura-ipfs.io/ipfs/" + imageSrc[1];
+    console.log(imageSrc);
+
+    imageSrc = await axios.get(imageSrc).then((response) => {
+      let imgLink = response.data.image;
+      imgLink = imgLink.split("ipfs://");
+      imgLink = "https://infura-ipfs.io/ipfs/" + imgLink[1];
+      console.log(imgLink);
+      return imgLink;
+    });
+  } catch (e) {
+    console.log("Error while fetching token URI");
+  }*/
+  }
+  return "";
 }

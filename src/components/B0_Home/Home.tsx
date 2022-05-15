@@ -20,16 +20,27 @@ import {
   isUnlocked,
   signer,
 } from "../cojodi/MetamaskConnection/MetamaskWallet";
-import { setWalletAddress } from "../../store/appSlice";
-import { useAppDispatch } from "../../store/hooks";
+import {
+  selectOnErrorModal,
+  setErrorModalText,
+  setModal,
+  setOnErrorModal,
+  setWalletAddress,
+} from "../../store/appSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { stringify } from "querystring";
 import axios from "axios";
 import { authorizeWithDiscord } from "../cojodi/BackendCalls/BackendCalls";
+import { OnErrorModal } from "../../components2/common/Modals/OnErrorModal/OnErrorModal";
 interface IHome {
   onClickHandler: () => void;
 }
 
 export const Home: FC<IHome> = () => {
+  const onErrorModal = useAppSelector(selectOnErrorModal);
+
+  const dispatch = useAppDispatch();
+
   const [isDisabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const navigateToTournament = useCallback(
@@ -38,7 +49,9 @@ export const Home: FC<IHome> = () => {
   );
   async function tryNavigateToTournament() {
     if (!(await isUnlocked())) {
-      alert("Connect your wallet to continue");
+      dispatch(setErrorModalText("Connect your Metamask wallet."));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
       return;
     }
 
@@ -57,6 +70,7 @@ export const Home: FC<IHome> = () => {
       // style={{backgroundImage: `url(${background})`}}
     >
       <div className={style.innerWrapper}>
+        {onErrorModal && <OnErrorModal />}
         <GlitchText
           duration={3000}
           color1="rgba(30, 171, 245, 1)"

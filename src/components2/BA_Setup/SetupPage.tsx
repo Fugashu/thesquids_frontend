@@ -48,7 +48,6 @@ export const SetupPage = () => {
       to: "/app2/setup",
       icon: tosIcon,
       onClick: () => {
-        //todo tos modal
         dispatch(setTOSModal(true));
         dispatch(setModal(true));
       },

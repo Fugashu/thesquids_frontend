@@ -89,9 +89,7 @@ export const ChooseTheCoinModal = () => {
   }, [dnaAmount]);
 
   const requestBuyDNA = async () => {
-    //TODO DIMI BUY DNA
-    console.log("user wants to buy dna for ");
-    console.log(parseInt(dnaAmount));
+    console.log(`user wants to buy dna for ${parseInt(dnaAmount)}`);
 
     await buyDNA(parseInt(dnaAmount));
   };

@@ -92,7 +92,9 @@ export const TournamentsPage = () => {
       await tx.wait();
     } catch (e) {
       console.log(`Error while approving DNA: ${e}`);
-      alert("Error: DNA approval failed.");
+      dispatch(setErrorModalText("DNA approval failed"));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
     }
 
     try {
@@ -100,9 +102,13 @@ export const TournamentsPage = () => {
       await tx.wait();
     } catch (e) {
       console.log(`Error while registering for tournament: ${e}`);
-      alert(
-        "Error: Registration failed. You need to stake one or more NFTs first."
+      dispatch(
+        setErrorModalText(
+          "Registration failed. You need to stake at least 1 NFT."
+        )
       );
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
     }
   };
 
@@ -128,6 +134,9 @@ export const TournamentsPage = () => {
 
     let idString = window.localStorage.getItem("discordUserId");
     if (idString === null) {
+      dispatch(setErrorModalText("Discord authorization failed."));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
       return;
     }
     let ob = {

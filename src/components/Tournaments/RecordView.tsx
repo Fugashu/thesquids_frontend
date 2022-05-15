@@ -1,7 +1,6 @@
 import { useReactMediaRecorder } from "react-media-recorder";
 import axios from "axios";
 import * as React from "react";
-import BackendCallsInterface from "../cojodi/BackendCalls/BackendCallsInterface";
 import {
   getConnectedSignerAddress,
   signMessage,

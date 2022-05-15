@@ -29,6 +29,7 @@ import {
   connectWallet,
   getConnectedSignerAddress,
   mumbaiTokenContract,
+  mumbaiTournamentContract,
   signer,
 } from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { store } from "../../../store/store";
@@ -49,7 +50,6 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const dnaBal = useAppSelector(dnaBalance);
   const lifeBal = useAppSelector(lifeBalance);
   const claimableBalance = useAppSelector(claimPrizeAmount);
-  dispatch(setClaimablePrizeAmount("0"));
 
   // @ts-ignore
   useEffect(async () => {
@@ -60,6 +60,13 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       if (userId !== null) {
         dispatch(setDiscordUsername(userId));
       }
+
+      let userBalance = ethers.utils.formatEther(
+        await mumbaiTournamentContract.userBalances(
+          await getConnectedSignerAddress()
+        )
+      );
+      dispatch(setClaimablePrizeAmount(userBalance));
       let dnaBalanceOfUser = ethers.utils.formatEther(
         await mumbaiTokenContract.balanceOf(await getConnectedSignerAddress())
       );
@@ -76,10 +83,11 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   const buttons = [
     {
       src: claimImg,
-      text: `Prize:${claimableBalance}`,
+      text: `Prize:${claimableBalance ? claimableBalance : null}`,
       label: "Claim",
-      onClick: () => {
-        //TODO Claim balance
+      onClick: async () => {
+        let tx = await mumbaiTournamentContract.claim();
+        await tx.wait();
       },
     },
 

@@ -712,20 +712,6 @@ export const mumbaiTournamentContractAbi = [
     anonymous: false,
     inputs: [
       { indexed: true, internalType: "address", name: "user", type: "address" },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "UserClaimed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "user", type: "address" },
       { indexed: false, internalType: "uint256", name: "fee", type: "uint256" },
       {
         indexed: false,
@@ -738,13 +724,6 @@ export const mumbaiTournamentContractAbi = [
     type: "event",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "amountClaimed",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [{ internalType: "uint256", name: "amount_", type: "uint256" }],
     name: "buyLives",
     outputs: [],
@@ -752,20 +731,10 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "bytes32[]", name: "merkleProof_", type: "bytes32[]" },
-      { internalType: "uint256", name: "amount_", type: "uint256" },
-    ],
+    inputs: [],
     name: "claim",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "claimMerkleRoot",
-    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -880,13 +849,6 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "bytes32", name: "merkleRoot_", type: "bytes32" }],
-    name: "setClaimMerkleRoot",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [{ internalType: "address", name: "dna_", type: "address" }],
     name: "setDNA",
     outputs: [],
@@ -939,6 +901,16 @@ export const mumbaiTournamentContractAbi = [
   {
     inputs: [{ internalType: "address", name: "theSquids_", type: "address" }],
     name: "setTheSquids",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address[]", name: "users_", type: "address[]" },
+      { internalType: "uint256[]", name: "amounts_", type: "uint256[]" },
+    ],
+    name: "setUserBalances",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -1003,15 +975,32 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "userBalances",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "address", name: "user_", type: "address" }],
     name: "userBasedRegistrationFee",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [
+      { internalType: "address", name: "to_", type: "address" },
+      { internalType: "uint256", name: "amount_", type: "uint256" },
+    ],
+    name: "withdrawDNA",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
 ];
 export const mumbaiTournamentContractAddress =
-  "0xd14Bc99B8750EF53fb06700942FbD0FA17e65e70";
+  "0xEA05a7f8fff6C60FF775FE86F1e19B123DAfCc3D";
 
 export const mumbaiTokenContractAbi = [
   {

@@ -28,17 +28,17 @@ import imgDefault from "../../../assets/png/buttons/staking page button/default.
 import imgClick from "../../../assets/png/buttons/staking page button/click.png";
 import imgHover from "../../../assets/png/buttons/staking page button/click.png";
 import { ButtonCustom } from "../../../components2/common/ButtonCustom/ButtonCustom";
+import { getImageUrlForTokenId } from "../BackendCalls/BackendCalls";
 
 export const BridgePage = () => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);
-
+  const [isConnectedToEth, setIsConnectedToEth] = useState(false);
   useEffect(async () => {
     await connectWallet();
     await fetchNFTs();
   }, []);
 
   async function deposit(id) {
-    //todo deposit
     console.log(`trying to deposit token with id:${id}`);
     await setApprovalForAll(mintingContract, goerliBridgeContractAddress);
     let tx = await goerliBridgeContract.deposit([id]);
@@ -47,7 +47,6 @@ export const BridgePage = () => {
   }
 
   async function withdraw(id) {
-    //todo withdraw
     console.log(`trying to withdraw token with id:${id}`);
     await setApprovalForAll(mumbaiNFTContract, mumbaiBridgeContractAddress);
     let tx = await mumbaiBridgeContract.withdraw([id]);
@@ -67,6 +66,7 @@ export const BridgePage = () => {
       console.log("we are in eth");
       rootContract = mintingContract;
       chainString = "eth";
+      setIsConnectedToEth(true);
     }
 
     //todo 1 to 2000
@@ -74,28 +74,9 @@ export const BridgePage = () => {
       let ownerAddr = await rootContract.ownerOf(i);
       console.log(i);
       if (ownerAddr === signerAddr) {
-        console.log("owner of " + i);
-        let imageSrc = await rootContract.tokenURI(i);
-
-        try {
-          imageSrc = imageSrc.split("ipfs://");
-          imageSrc = "https://infura-ipfs.io/ipfs/" + imageSrc[1];
-          console.log(imageSrc);
-
-          imageSrc = await axios.get(imageSrc).then((response) => {
-            let imgLink = response.data.image;
-            imgLink = imgLink.split("ipfs://");
-            imgLink = "https://infura-ipfs.io/ipfs/" + imgLink[1];
-            console.log(imgLink);
-            return imgLink;
-          });
-        } catch (e) {
-          console.log("Error while fetching token URI");
-        }
-
         const nft = {
           id: i,
-          image: imageSrc,
+          image: getImageUrlForTokenId(i),
           chain: chainString,
         };
         setOwnedNFTs((old) => [...old, nft]);
@@ -111,6 +92,7 @@ export const BridgePage = () => {
         </div>
         <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
           <ButtonCustom
+            className={isConnectedToEth ? null : style.trans}
             onClick={() =>
               CojodiNetworkSwitcher.switchToChain(chainRpcData.eth_mainnet)
             }
@@ -126,6 +108,7 @@ export const BridgePage = () => {
           />
 
           <ButtonCustom
+            className={isConnectedToEth ? style.trans : null}
             onClick={() =>
               CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai)
             }

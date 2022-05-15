@@ -27,7 +27,7 @@ export const TestRecordingModal = () => {
   } = useReactMediaRecorder({
     screen: true,
     video: true,
-    //TODO wieder rein onStop: (blobUrl, blob) => saveFile(blobUrl, blob),
+    //onStop: (blobUrl, blob) => saveFile(blobUrl, blob),
   });
   const ref = useRef<HTMLDivElement>(null);
 

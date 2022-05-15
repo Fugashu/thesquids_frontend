@@ -12,22 +12,25 @@ import {
   mumbaiNFTContract,
   mumbaiTournamentContract,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
-import axios from "axios";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
-import {
-  maxSupply,
-  mumbaiTournamentContractAddress,
-} from "../../components/cojodi/ContractConfig";
+import { mumbaiTournamentContractAddress } from "../../components/cojodi/ContractConfig";
 import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
 import imgDefault from "../../assets/png/buttons/staking page button/default.png";
 import imgClick from "../../assets/png/buttons/staking page button/click.png";
 import imgHover from "../../assets/png/buttons/staking page button/click.png";
+import {
+  setErrorModalText,
+  setModal,
+  setOnErrorModal,
+} from "../../store/appSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { getImageUrlForTokenId } from "../../components/cojodi/BackendCalls/BackendCalls";
 
 export const StakingPage = () => {
   const [stakedCount, setStakedCount] = useState(0);
   const [ownedNFTs, setOwnedNFTs] = useState([]);
-
+  const dispatch = useAppDispatch();
   useEffect(async () => {
     await connectWallet();
     await fetchNFTs();
@@ -50,7 +53,6 @@ export const StakingPage = () => {
     await tx.wait();
   }
   async function stake(id) {
-    //todo stake
     console.log(`trying to stake token with id:${id}`);
     await setApprovalForAll();
     try {
@@ -58,12 +60,13 @@ export const StakingPage = () => {
       await tx.wait();
       await fetchNFTs();
     } catch (e) {
-      alert("Error while trying to stake.");
+      dispatch(setErrorModalText(`Error while trying to stake token ${id}`));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
     }
   }
 
   async function unstake(id) {
-    //todo unstake
     console.log(`trying to unstake token with id:${id}`);
     await setApprovalForAll();
     try {
@@ -71,16 +74,19 @@ export const StakingPage = () => {
       await tx.wait();
       await fetchNFTs();
     } catch (e) {
-      alert("Error while trying to unstake. Wrong tournament phase.");
+      dispatch(
+        setErrorModalText(
+          `Error while trying to unstake token ${id}. Wrong tournament phase.`
+        )
+      );
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
     }
   }
 
   async function fetchNFTs() {
-    setOwnedNFTs([]);
-    setStakedCount(0);
     await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
-    let signerAddr = await getConnectedSignerAddress();
-    console.log("connected signer " + signerAddr);
+    setOwnedNFTs([]);
     setStakedCount(
       await mumbaiTournamentContract.stakedBalance(
         await getConnectedSignerAddress()
@@ -93,49 +99,36 @@ export const StakingPage = () => {
     stakedTokens.forEach((element) =>
       stakedTokenIds.push(parseInt(element._hex))
     );
-    //todo 1 to 2000
-    for (let i = 1; i < maxSupply; ++i) {
-      let ownerAddr = await mumbaiNFTContract.ownerOf(i);
-      console.log(i);
-      if (ownerAddr === signerAddr || stakedTokenIds.includes(i)) {
-        console.log("owner of " + i);
-        let imageSrc = "undefined";
-        let stakeStatus;
-        imageSrc = await mumbaiNFTContract.tokenURI(i);
-        stakeStatus = await mumbaiTournamentContract.stakeIndexOf(
-          await getConnectedSignerAddress(),
-          i
-        );
+    console.log(stakedTokenIds);
 
-        stakeStatus = stakeStatus.toString();
-        console.log("Stake status" + stakeStatus);
-        try {
-          console.log("test" + imageSrc);
-          imageSrc = imageSrc.split("ipfs://");
-          imageSrc = "https://infura-ipfs.io/ipfs/" + imageSrc[1];
-          console.log(imageSrc);
+    stakedTokenIds.forEach((element) => {
+      const nft = {
+        id: element,
+        image: getImageUrlForTokenId(element),
+        isStaked: true,
+      };
+      setOwnedNFTs((old) => [...old, nft]);
+    });
 
-          imageSrc = await axios.get(imageSrc).then((response) => {
-            let imgLink = response.data.image;
-            imgLink = imgLink.split("ipfs://");
-            imgLink = "https://infura-ipfs.io/ipfs/" + imgLink[1];
-            console.log(imgLink);
-            return imgLink;
-          });
-        } catch (e) {
-          console.log("Error while fetching token URI");
-        }
+    let endOfLoop = await mumbaiNFTContract.balanceOf(
+      await getConnectedSignerAddress()
+    );
 
-        const nft = {
-          id: i,
-          image: imageSrc,
-          isStaked: stakeStatus,
-        };
-        setOwnedNFTs((old) => [...old, nft]);
-      }
+    for (let i = 0; i < endOfLoop; ++i) {
+      let tokenId = await mumbaiNFTContract.tokenOfOwnerByIndex(
+        await getConnectedSignerAddress(),
+        i
+      );
+      console.log("owner of " + tokenId);
+
+      const nft = {
+        id: tokenId,
+        image: getImageUrlForTokenId(tokenId),
+        isStaked: false,
+      };
+      setOwnedNFTs((old) => [...old, nft]);
     }
   }
-
   return (
     <div className={style.stakingPage}>
       <div className={style.inner}>
@@ -151,23 +144,7 @@ export const StakingPage = () => {
                 <img src={nft["image"]} alt="" className={style.nftGif} />
 
                 <div className={style.buttons}>
-                  {nft.isStaked == "-1" ? (
-                    <ButtonCustom
-                      className={style.btnStaking}
-                      onClick={() => stake(nft["id"])}
-                      widthMobile={139}
-                      heightMobile={40}
-                      widthDesktop={139}
-                      heightDesktop={40}
-                      imgMobileDefault={imgDefault}
-                      imgMobileClick={imgClick}
-                      imgDesktopDefault={imgDefault}
-                      imgDesktopHover={imgHover}
-                      imgDesktopClick={imgClick}
-                    >
-                      <p>Stake</p>
-                    </ButtonCustom>
-                  ) : (
+                  {nft.isStaked ? (
                     <ButtonCustom
                       className={style.btnStaking}
                       onClick={() => unstake(nft["id"])}
@@ -182,6 +159,22 @@ export const StakingPage = () => {
                       imgDesktopClick={imgClick}
                     >
                       <p>Unstake</p>
+                    </ButtonCustom>
+                  ) : (
+                    <ButtonCustom
+                      className={style.btnStaking}
+                      onClick={() => stake(nft["id"])}
+                      widthMobile={139}
+                      heightMobile={40}
+                      widthDesktop={139}
+                      heightDesktop={40}
+                      imgMobileDefault={imgDefault}
+                      imgMobileClick={imgClick}
+                      imgDesktopDefault={imgDefault}
+                      imgDesktopHover={imgHover}
+                      imgDesktopClick={imgClick}
+                    >
+                      <p>Stake</p>
                     </ButtonCustom>
                   )}
                 </div>

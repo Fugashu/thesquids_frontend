@@ -25,10 +25,6 @@ import imgHoverVote from "../../assets/png/buttons/tournament page card/vote_hov
 import imgClickVote from "../../assets/png/buttons/tournament page card/vote_clicked.png";
 
 export const TournamentPage = () => {
-  const userIsStakingNft = true;
-
-  const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
 
   const cards = [
@@ -37,13 +33,8 @@ export const TournamentPage = () => {
       icon: cardIcon0,
       buttonLabel: "PLAY",
       onClick: () => {
-        if (!userIsStakingNft) {
-          dispatch(setModal(true));
-          dispatch(setStakingNftErrorModal(true));
-        } else {
-          dispatch(setTournamentsWarningModal(true));
-          dispatch(setModal(true));
-        }
+        dispatch(setTournamentsWarningModal(true));
+        dispatch(setModal(true));
       },
       imgDefault: imgDefaultPlay,
       imgHover: imgHoverPlay,
@@ -54,15 +45,9 @@ export const TournamentPage = () => {
       icon: cardIcon2,
       buttonLabel: "VOTE",
       onClick: () => {
-        //TODO DIMI is user staking nft?
-        if (!userIsStakingNft) {
-          dispatch(setModal(true));
-          dispatch(setStakingNftErrorModal(true));
-        } else {
-          dispatch(setModal(true));
-          dispatch(setVoteModal(true));
-          dispatch(setTournamentsModal(false));
-        }
+        dispatch(setModal(true));
+        dispatch(setVoteModal(true));
+        dispatch(setTournamentsModal(false));
       },
       imgDefault: imgDefaultVote,
       imgHover: imgHoverVote,

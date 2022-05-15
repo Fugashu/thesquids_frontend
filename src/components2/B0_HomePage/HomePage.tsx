@@ -4,8 +4,10 @@ import {
   dnaBuyAmount,
   setDiscordUsername,
   setDNABalance,
+  setErrorModalText,
   setLifeBalance,
   setModal,
+  setOnErrorModal,
   setTestRecordingModal,
   setTournamentsWarningModal,
   setWalletAddress,
@@ -28,18 +30,11 @@ import { useEffect } from "react";
 import DiscordOauth2 from "discord-oauth2";
 import {
   connectWallet,
-  getConnectedSignerAddress,
-  mumbaiTokenContract,
-  signer,
   signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
-import {
-  createUser,
-  voteHighscore,
-} from "../../components/cojodi/BackendCalls/BackendCalls";
-import { ethers } from "ethers";
-import axios from "axios";
-import { backendEndpoint } from "../../constants";
+import { createUser } from "../../components/cojodi/BackendCalls/BackendCalls";
+
+import { clientId, clientSecret, redirectUrl } from "../../constants";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
 
@@ -83,12 +78,12 @@ export const HomePage = () => {
       const oauth = new DiscordOauth2();
       await oauth
         .tokenRequest({
-          clientId: process.env.REACT_APP_CLIENT_ID,
-          clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+          clientId: clientId,
+          clientSecret: clientSecret,
           code: code,
           scope: "identify",
           grantType: "authorization_code",
-          redirectUri: "http://localhost/app2",
+          redirectUri: redirectUrl,
         })
         .then((value) => {
           console.log(value);
@@ -133,7 +128,11 @@ export const HomePage = () => {
       label: "Loot Boxes",
       to: "/app2",
       icon: cardIcon1,
-      onClick: () => {},
+      onClick: () => {
+        dispatch(setErrorModalText("Loot Boxes coming soon!"));
+        dispatch(setModal(true));
+        dispatch(setOnErrorModal(true));
+      },
     },
     /*{
       label: "Loot Boxes",
