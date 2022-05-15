@@ -3,6 +3,7 @@ import axios from "axios";
 import * as React from "react";
 import {
   getConnectedSignerAddress,
+  mumbaiTournamentContract,
   signMessage,
 } from "../cojodi/MetamaskConnection/MetamaskWallet";
 import style from "./PlayPage.module.scss";
@@ -14,9 +15,17 @@ import { ButtonCustom } from "../../components2/common/ButtonCustom/ButtonCustom
 import {
   createHighscore,
   createUser,
+  fetchTournamentStats,
   patchHighscore,
 } from "../cojodi/BackendCalls/BackendCalls";
 import { useState } from "react";
+import {
+  lifeBalance,
+  setErrorModalText,
+  setModal,
+  setOnErrorModal,
+} from "../../store/appSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 interface Game {
   handleClick: any;
@@ -26,6 +35,8 @@ interface Game {
 var score: any;
 const RecordView = (props: Game) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const lives = useAppSelector(lifeBalance);
+  const dispatch = useAppDispatch();
   const {
     //status,
     startRecording,
@@ -73,6 +84,25 @@ const RecordView = (props: Game) => {
   };
 
   const startRecordingAndRetrieveGameUrl = async () => {
+    let result = await fetchTournamentStats();
+    console.log(result);
+    if (
+      result["phase"] !== "IN_PLAY" ||
+      (await mumbaiTournamentContract.currentPhase()) !== 2
+    ) {
+      dispatch(setErrorModalText("Currently there are no games."));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
+      return;
+    }
+
+    if (parseInt(lives) <= 0) {
+      dispatch(setErrorModalText("You have no lives left."));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
+      return;
+    }
+
     setIsPlaying(true);
     await props.handleClick();
     startRecording();

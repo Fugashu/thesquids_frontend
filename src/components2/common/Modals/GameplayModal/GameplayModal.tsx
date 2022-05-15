@@ -81,6 +81,8 @@ export const GameplayModal = () => {
 
         <div className={style.field}>
           <iframe
+            allowFullScreen={true}
+            allow="autoplay; fullscreen; picture-in-picture"
             style={{
               border: 0,
               width: "100%",
@@ -88,7 +90,7 @@ export const GameplayModal = () => {
               maxHeight: "100%",
               overflow: "hidden",
             }}
-            src={videoUrl + "&background=true"}
+            src={videoUrl + "?title=0&byline=0&portrait=0"}
           />
         </div>
 

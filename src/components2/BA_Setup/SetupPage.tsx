@@ -1,7 +1,9 @@
 import * as React from "react";
 import style from "./SetupPage.module.scss";
 import {
+  setErrorModalText,
   setModal,
+  setOnErrorModal,
   setTestRecordingModal,
   setTOSModal,
   setTournamentsWarningModal,
@@ -39,9 +41,13 @@ export const SetupPage = () => {
     },
     {
       label: "Bridge",
-      to: "/app2/bridge",
+      to: "/app2/setup",
       icon: bridgeIcon,
-      onClick: () => {},
+      onClick: () => {
+        dispatch(setErrorModalText("The bridge is coming soon."));
+        dispatch(setModal(true));
+        dispatch(setOnErrorModal(true));
+      },
     },
     {
       label: "Terms of Service",

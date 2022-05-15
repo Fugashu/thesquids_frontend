@@ -1,9 +1,10 @@
 import axios from "axios";
-import { backendEndpoint } from "../../../constants";
+import { backendEndpoint, clientId } from "../../../constants";
 import { CojodiNetworkSwitcher } from "./CojodiNetworkSwitcher";
 import rpcData from "./chainRpcData";
 import {
   getConnectedSignerAddress,
+  mumbaiNFTContract,
   mumbaiTokenContract,
   mumbaiTournamentContract,
   mumbaiWethContract,
@@ -26,7 +27,7 @@ const post = async (endpoint: string, message: any) => {
     .catch(function (error) {
       if (error.response) {
         // Request made and server responded
-        alert(error.response.data.detail);
+        console.log(error.response.data.detail);
         console.log(error.response.status);
         console.log(error.response.headers);
       } else if (error.request) {
@@ -48,6 +49,7 @@ const get = async (endpoint: string) => {
   return await axios
     .get(backendEndpoint + endpoint)
     .catch(function (error) {
+      console.log(error);
       if (error.response) {
         // Request made and server responded
         console.log(error.response.data);
@@ -85,7 +87,7 @@ export const createHighscore = async (message: any) => {
 
 export const patchHighscore = async (highscoreId: string, formData: any) => {
   await axios({
-    method: "patch",
+    method: "post",
     url: backendEndpoint + "/tournament/highscore/" + highscoreId,
     data: formData,
     headers: {
@@ -146,15 +148,16 @@ export const requestGameUrl = async (sessionId: number) => {
   }
 };
 //done
-export const fetchRemainingParticipants = async () => {
+export const fetchTournamentStats = async () => {
   try {
     let res = await get("/tournament/stats");
     // @ts-ignore
-    return res["data"]["n_participants"];
+    return res["data"];
   } catch (e) {
     return "";
   }
 };
+
 //done
 export const fetchLeaderboard = async () => {
   try {
@@ -240,7 +243,7 @@ export const buyLives = async (numberOfLives: number) => {
 
 export function authorizeWithDiscord() {
   let response_type = "code";
-  let client_id = process.env.REACT_APP_CLIENT_ID;
+  let client_id = clientId;
   let scope = "identify";
   let redirect =
     "https://discord.com/api/oauth2/authorize?" +
@@ -255,25 +258,12 @@ export function authorizeWithDiscord() {
 }
 
 export async function getImageUrlForTokenId(tokenId: number) {
-  {
-    /*  let imageSrc = "undefined";
-  imageSrc = await mumbaiNFTContract.tokenURI(tokenId);
-   try {
-    console.log("test" + imageSrc);
-    imageSrc = imageSrc.split("ipfs://");
-    imageSrc = "https://infura-ipfs.io/ipfs/" + imageSrc[1];
-    console.log(imageSrc);
-
-    imageSrc = await axios.get(imageSrc).then((response) => {
-      let imgLink = response.data.image;
-      imgLink = imgLink.split("ipfs://");
-      imgLink = "https://infura-ipfs.io/ipfs/" + imgLink[1];
-      console.log(imgLink);
-      return imgLink;
-    });
+  try {
+    let res = await get("/nft/" + tokenId);
+    console.log(res);
+    // @ts-ignore
+    return res["data"];
   } catch (e) {
-    console.log("Error while fetching token URI");
-  }*/
+    return null;
   }
-  return "";
 }

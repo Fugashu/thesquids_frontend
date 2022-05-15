@@ -13,11 +13,18 @@ import axios from "axios";
 import { backendEndpoint } from "../../constants";
 import {
   fetchLeaderboard,
+  fetchTournamentStats,
   requestGameUrl,
   requestSessionId,
   voteHighscore,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
 import { signMessage } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  setErrorModalText,
+  setModal,
+  setOnErrorModal,
+} from "../../store/appSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 interface IValues {
   message: string;

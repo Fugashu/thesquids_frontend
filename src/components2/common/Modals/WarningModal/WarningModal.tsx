@@ -47,7 +47,7 @@ export const WarningModal: FC<IWarningModal> = ({
           alt=""
         />
 
-        <p className={style.title}>Attention!</p>
+        <p className={style.title}>Terms of Service</p>
         {items ? (
           <div className={style.items}>
             {items.map((item, index) => (

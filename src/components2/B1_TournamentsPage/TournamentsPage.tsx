@@ -45,12 +45,13 @@ import { ethers } from "ethers";
 import {
   authorizeWithDiscord,
   createUser,
-  fetchRemainingParticipants,
+  fetchTournamentStats,
   fetchUser,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
 import { mumbaiTournamentContractAddress } from "../../components/cojodi/ContractConfig";
 
 export const TournamentsPage = () => {
+  const [blockEnter, setBlockEnter] = useState(false);
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
   const navigate = useNavigate();
   const [enterPrice, setEnterPrice] = useState("");
@@ -68,10 +69,10 @@ export const TournamentsPage = () => {
       await mumbaiTournamentContract.pricePool()
     );
     let maxParticipants = await mumbaiTournamentContract.maxUsers();
-    console.log(await fetchRemainingParticipants());
-    let participants = await fetchRemainingParticipants();
+    console.log(await fetchTournamentStats());
+    let result = await fetchTournamentStats();
 
-    setParticipants(participants);
+    setParticipants(result["n_participants"]);
 
     console.log(await mumbaiTournamentContract.maxUsers());
     setEnterPrice(enterPrice);
@@ -80,6 +81,8 @@ export const TournamentsPage = () => {
   }, []);
 
   const registerForTournament = async () => {
+    setBlockEnter(true);
+
     let priceToPay = await mumbaiTournamentContract.userBasedRegistrationFee(
       await getConnectedSignerAddress()
     );
@@ -102,6 +105,64 @@ export const TournamentsPage = () => {
       await tx.wait();
     } catch (e) {
       console.log(`Error while registering for tournament: ${e}`);
+    }
+    setBlockEnter(false);
+  };
+
+  const onClickTournamentOne = async () => {
+    let currentTournamentPhase = await mumbaiTournamentContract.currentPhase();
+    console.log(currentTournamentPhase);
+
+    //Check if user is registered for the tournament and register if not
+    let isUserRegisteredForTournament =
+      await mumbaiTournamentContract.registeredUsers(
+        await getConnectedSignerAddress()
+      );
+
+    if (!isUserRegisteredForTournament && currentTournamentPhase === 1) {
+      //Check if discord auth token exists in db and create if not
+      if (
+        window.localStorage.getItem("discordAccessToken") === null ||
+        window.localStorage.getItem("discordUserName") === null
+      ) {
+        authorizeWithDiscord();
+        return;
+      }
+
+      //Check if user exists in db and create if not
+      let result = await fetchUser(await getConnectedSignerAddress());
+      console.log(result);
+      if (result === null) {
+        dispatch(setErrorModalText("User doesn't exist."));
+        dispatch(setModal(true));
+        dispatch(setOnErrorModal(true));
+
+        let idString = window.localStorage.getItem("discordUserId");
+        if (idString === null) {
+          dispatch(setErrorModalText("Discord authorization failed."));
+          dispatch(setModal(true));
+          dispatch(setOnErrorModal(true));
+          return;
+        }
+        let ob = {
+          id: parseInt(idString),
+          username: window.localStorage.getItem("discordUserName"),
+        };
+
+        let signedMessage = await signMessage(ob);
+        console.log(signedMessage);
+        await createUser(signedMessage);
+        return;
+      }
+
+      let numNFTsStaked = await mumbaiTournamentContract.stakedBalance(
+        await getConnectedSignerAddress()
+      );
+      console.log(numNFTsStaked);
+      if (numNFTsStaked > 0) {
+        await registerForTournament();
+        return;
+      }
       dispatch(
         setErrorModalText(
           "Registration failed. You need to stake at least 1 NFT."
@@ -109,56 +170,15 @@ export const TournamentsPage = () => {
       );
       dispatch(setModal(true));
       dispatch(setOnErrorModal(true));
-    }
-  };
-
-  const onClickTournamentOne = async () => {
-    //Check if discord auth token exists in db and create if not
-    if (
-      window.localStorage.getItem("discordAccessToken") === null ||
-      window.localStorage.getItem("discordUserName") === null
-    ) {
-      authorizeWithDiscord();
       return;
     }
 
-    //Check if user exists in db and create if not
-    let result = await fetchUser(await getConnectedSignerAddress());
-    console.log(result);
-    if (result === null) {
-      dispatch(setErrorModalText("User doesn't exist."));
-      dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
-      return;
-    }
-
-    let idString = window.localStorage.getItem("discordUserId");
-    if (idString === null) {
-      dispatch(setErrorModalText("Discord authorization failed."));
-      dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
-      return;
-    }
-    let ob = {
-      id: parseInt(idString),
-      username: window.localStorage.getItem("discordUserName"),
-      //avatar_hash: window.localStorage.getItem("discordUserAvatar"),
-    };
-
-    let signedMessage = await signMessage(ob);
-    console.log(signedMessage);
-    await createUser(signedMessage);
-
-    //Check if user is registered for the tournament and register if not
-    let isUserRegisteredForTournament =
-      await mumbaiTournamentContract.registeredUsers(
-        await getConnectedSignerAddress()
-      );
     if (!isUserRegisteredForTournament) {
-      await registerForTournament();
+      dispatch(setErrorModalText("Registration phase is not open."));
+      dispatch(setModal(true));
+      dispatch(setOnErrorModal(true));
       return;
     }
-
     matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
   };
 
@@ -228,21 +248,23 @@ export const TournamentsPage = () => {
                   ))}
                 </div>
 
-                <ButtonCustom
-                  className={style.enterBtn}
-                  onClick={card.onClick}
-                  widthMobile={240}
-                  heightMobile={40}
-                  widthDesktop={294}
-                  heightDesktop={40}
-                  imgMobileDefault={mobileDefault}
-                  imgMobileClick={mobileClick}
-                  imgDesktopDefault={desktopDefault}
-                  imgDesktopHover={desktopHover}
-                  imgDesktopClick={desktopClick}
-                >
-                  <p></p>
-                </ButtonCustom>
+                {blockEnter ? null : (
+                  <ButtonCustom
+                    className={style.enterBtn}
+                    onClick={card.onClick}
+                    widthMobile={240}
+                    heightMobile={40}
+                    widthDesktop={294}
+                    heightDesktop={40}
+                    imgMobileDefault={mobileDefault}
+                    imgMobileClick={mobileClick}
+                    imgDesktopDefault={desktopDefault}
+                    imgDesktopHover={desktopHover}
+                    imgDesktopClick={desktopClick}
+                  >
+                    <p></p>
+                  </ButtonCustom>
+                )}
               </>
             </CardItem>
           ))}

@@ -101,14 +101,14 @@ export const StakingPage = () => {
     );
     console.log(stakedTokenIds);
 
-    stakedTokenIds.forEach((element) => {
+    for (const element of stakedTokenIds) {
       const nft = {
         id: element,
-        image: getImageUrlForTokenId(element),
+        image: await getImageUrlForTokenId(element),
         isStaked: true,
       };
       setOwnedNFTs((old) => [...old, nft]);
-    });
+    }
 
     let endOfLoop = await mumbaiNFTContract.balanceOf(
       await getConnectedSignerAddress()
@@ -123,7 +123,7 @@ export const StakingPage = () => {
 
       const nft = {
         id: tokenId,
-        image: getImageUrlForTokenId(tokenId),
+        image: await getImageUrlForTokenId(tokenId),
         isStaked: false,
       };
       setOwnedNFTs((old) => [...old, nft]);
@@ -142,7 +142,6 @@ export const StakingPage = () => {
               <div className={style.back}>{svgIcons.stackingPageCardBack}</div>
               <div className={style.content}>
                 <img src={nft["image"]} alt="" className={style.nftGif} />
-
                 <div className={style.buttons}>
                   {nft.isStaked ? (
                     <ButtonCustom

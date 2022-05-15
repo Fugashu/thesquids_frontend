@@ -140,7 +140,7 @@ export async function setApprovalForAll(
 export async function signMessage(incomingMessage: Object) {
   console.log(Math.floor(Date.now() / 1000));
   // @ts-ignore
-  incomingMessage["timestamp"] = Math.floor(Date.now() / 1000);
+  incomingMessage["timestamp"] = Math.floor(new Date().getTime() / 1000);
   // @ts-ignore
   incomingMessage["addr"] = await getConnectedSignerAddress();
   let signpayload = JSON.stringify(

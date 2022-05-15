@@ -26,6 +26,8 @@ export interface IVoteModalCard {
 }
 
 export const VoteModal = () => {
+  const [cards, setCards] = useState([]);
+
   // @ts-ignore
   useEffect(async () => {
     await axios
@@ -33,9 +35,8 @@ export const VoteModal = () => {
       .then((result) => {
         setCards(result.data);
       });
-  }, []);
+  }, [cards]);
 
-  const [cards, setCards] = useState([]);
   const ref = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();

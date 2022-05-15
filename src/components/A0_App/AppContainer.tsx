@@ -24,7 +24,7 @@ export const AppContainer = () => {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/app2" element={<App2Layout />}>
@@ -41,7 +41,7 @@ export const AppContainer = () => {
             <Route path="setup" element={<SetupPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 };

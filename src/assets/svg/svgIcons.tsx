@@ -14089,7 +14089,7 @@ export const svgIcons = {
       height="720"
       viewBox="0 0 862 720"
       fill="none"
-      fill-opacity="0"
+      fillOpacity="0"
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect
@@ -14097,7 +14097,7 @@ export const svgIcons = {
         height="645"
         transform="matrix(1 0 0 -1 0 690)"
         fill="#9D7200"
-        fill-opacity="0"
+        fillOpacity="0"
       />
       <rect
         x="15"
@@ -14106,7 +14106,7 @@ export const svgIcons = {
         height="645"
         transform="rotate(-180 15 690)"
         fill="#3F2500"
-        fill-opacity="0"
+        fillOpacity="0"
       />
       <rect
         x="862"
@@ -14115,7 +14115,7 @@ export const svgIcons = {
         height="645"
         transform="rotate(-180 862 690)"
         fill="#3F2500"
-        fill-opacity="0"
+        fillOpacity="0"
       />
       <rect x="30" y="685" width="802" height="20" fill="#9D7200" />
       <rect x="45" y="705" width="772" height="15" fill="#3F2500" />

@@ -66,12 +66,16 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
           await getConnectedSignerAddress()
         )
       );
-      dispatch(setClaimablePrizeAmount(userBalance));
+      let userBalanceSrting = userBalance.toString();
+      let num = Number(userBalanceSrting);
+      dispatch(setClaimablePrizeAmount(num.toFixed(2)));
       let dnaBalanceOfUser = ethers.utils.formatEther(
         await mumbaiTokenContract.balanceOf(await getConnectedSignerAddress())
       );
       let dnaString = dnaBalanceOfUser.toString();
-      dispatch(setDNABalance(dnaString));
+      num = Number(dnaString);
+
+      dispatch(setDNABalance(num.toFixed(2)));
       await axios
         .get(backendEndpoint + `/user/${await signer.getAddress()}`)
         .then(function (res) {
