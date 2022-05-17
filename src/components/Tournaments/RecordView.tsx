@@ -18,8 +18,9 @@ import {
   fetchTournamentStats,
   patchHighscore,
 } from "../cojodi/BackendCalls/BackendCalls";
-import { lifeBalance } from "../../store/appSlice";
+import { lifeBalance, setModal, setOnPopUpModal } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { store } from "../../store/store";
 
 interface Game {
   handleClick: any;
@@ -49,6 +50,8 @@ const RecordView = (props: Game) => {
         "Your replay is being uploaded. Sign the message and WAIT!"
       );
       await upload(blobUrl, blob);
+      store.dispatch(setModal(false));
+      store.dispatch(setOnPopUpModal(false));
     },
   });
 

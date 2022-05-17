@@ -100,9 +100,9 @@ export const patchHighscore = async (highscoreId: string, formData: any) => {
     method: "post",
     url: backendEndpoint + "/tournament/highscore/" + highscoreId,
     data: formData,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    // },
   })
     .catch(function (error) {
       if (error.response) {
