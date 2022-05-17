@@ -23,16 +23,25 @@ import {
   mintingContract,
   goerliBridgeContract,
   mumbaiBridgeContract,
+  waitForTransactionWithModal,
 } from "../MetamaskConnection/MetamaskWallet";
 import imgDefault from "../../../assets/png/buttons/staking page button/default.png";
 import imgClick from "../../../assets/png/buttons/staking page button/click.png";
 import imgHover from "../../../assets/png/buttons/staking page button/click.png";
 import { ButtonCustom } from "../../../components2/common/ButtonCustom/ButtonCustom";
 import { getImageUrlForTokenId } from "../BackendCalls/BackendCalls";
+import {
+  setModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
+} from "../../../store/appSlice";
+import { useAppDispatch } from "../../../store/hooks";
 
 export const BridgePage = () => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);
   const [isConnectedToEth, setIsConnectedToEth] = useState(false);
+  const dispatch = useAppDispatch();
   useEffect(async () => {
     await connectWallet();
     await fetchNFTs();
@@ -42,7 +51,7 @@ export const BridgePage = () => {
     console.log(`trying to deposit token with id:${id}`);
     await setApprovalForAll(mintingContract, goerliBridgeContractAddress);
     let tx = await goerliBridgeContract.deposit([id]);
-    await tx.wait();
+    await waitForTransactionWithModal(tx);
     await fetchNFTs();
   }
 
@@ -50,7 +59,7 @@ export const BridgePage = () => {
     console.log(`trying to withdraw token with id:${id}`);
     await setApprovalForAll(mumbaiNFTContract, mumbaiBridgeContractAddress);
     let tx = await mumbaiBridgeContract.withdraw([id]);
-    await tx.wait();
+    await waitForTransactionWithModal(tx);
     await fetchNFTs();
   }
 

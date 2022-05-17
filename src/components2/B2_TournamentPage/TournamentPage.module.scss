@@ -11,7 +11,7 @@
   .inner {
     box-sizing: border-box;
     padding: 280px 0 0;
-    width: 773px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -28,17 +28,17 @@
 
       &:nth-child(1) .icon {
         width: 311px;
-        height: 315px;
+        height: 311px;
       }
 
       &:nth-child(2) .icon {
-        width: 218px;
-        height: 217px;
+        width: 311px;
+        height: 311px;
       }
 
       &:nth-child(3) .icon {
-        width: 249px;
-        height: 257px;
+        width: 311px;
+        height: 311px;
       }
 
       .title {

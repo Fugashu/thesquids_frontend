@@ -21,23 +21,24 @@ import {
   signer,
 } from "../cojodi/MetamaskConnection/MetamaskWallet";
 import {
-  selectOnErrorModal,
-  setErrorModalText,
+  selectPopUpModal,
   setModal,
-  setOnErrorModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
   setWalletAddress,
 } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { stringify } from "querystring";
 import axios from "axios";
 import { authorizeWithDiscord } from "../cojodi/BackendCalls/BackendCalls";
-import { OnErrorModal } from "../../components2/common/Modals/OnErrorModal/OnErrorModal";
+import { PopUpModal } from "../../components2/common/Modals/PopUpModal/PopUpModal";
 interface IHome {
   onClickHandler: () => void;
 }
 
 export const Home: FC<IHome> = () => {
-  const onErrorModal = useAppSelector(selectOnErrorModal);
+  const onErrorModal = useAppSelector(selectPopUpModal);
 
   const dispatch = useAppDispatch();
 
@@ -49,9 +50,10 @@ export const Home: FC<IHome> = () => {
   );
   async function tryNavigateToTournament() {
     if (!(await isUnlocked())) {
-      dispatch(setErrorModalText("Connect your Metamask wallet."));
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText("Connect your Metamask wallet"));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
       return;
     }
 
@@ -70,7 +72,7 @@ export const Home: FC<IHome> = () => {
       // style={{backgroundImage: `url(${background})`}}
     >
       <div className={style.innerWrapper}>
-        {onErrorModal && <OnErrorModal />}
+        {onErrorModal && <PopUpModal />}
         <GlitchText
           duration={3000}
           color1="rgba(30, 171, 245, 1)"

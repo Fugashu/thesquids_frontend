@@ -15,6 +15,15 @@ import {
   mumbaiWethContractAbi,
   mumbaiWethContractAddress,
 } from "../ContractConfig";
+import { useAppDispatch } from "../../../store/hooks";
+import {
+  setModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
+  setShowChooseTheCoinModal,
+} from "../../../store/appSlice";
+import { store } from "../../../store/store";
 
 export var signer: ethers.Signer;
 export var mumbaiNFTContract: ethers.Contract;
@@ -134,6 +143,7 @@ export async function setApprovalForAll(
     return;
   }
   let tx = await rootContract.setApprovalForAll(targetContractAddress, true);
+
   await tx.wait();
 }
 
@@ -153,4 +163,18 @@ export async function signMessage(incomingMessage: Object) {
   incomingMessage["signature"] = sig;
 
   return incomingMessage;
+}
+
+export async function waitForTransactionWithModal(transaction: {
+  wait: () => any;
+}) {
+  store.dispatch(setModal(false));
+  store.dispatch(setShowChooseTheCoinModal(false));
+  store.dispatch(setPopUpModalTitle("Waiting..."));
+  store.dispatch(setPopUpModalText(`Waiting for transaction to confirm.`));
+  store.dispatch(setModal(true));
+  store.dispatch(setOnPopUpModal(true));
+  await transaction.wait();
+  store.dispatch(setModal(false));
+  store.dispatch(setOnPopUpModal(false));
 }

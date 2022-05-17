@@ -39,7 +39,7 @@ export const WarningModal: FC<IWarningModal> = ({
   return (
     <div className={style.warningModal}>
       <div className={style.content} ref={ref}>
-        <CloseButton onClick={onClose} className={style.closeButton} />
+        {/* <CloseButton onClick={onClose} className={style.closeButton} />*/}
 
         <img
           className={style.back}
@@ -47,7 +47,7 @@ export const WarningModal: FC<IWarningModal> = ({
           alt=""
         />
 
-        <p className={style.title}>Terms of Service</p>
+        <p className={style.title}>TOS</p>
         {items ? (
           <div className={style.items}>
             {items.map((item, index) => (

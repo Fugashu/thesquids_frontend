@@ -14,12 +14,15 @@ import {
   mumbaiTokenContractAddress,
   mumbaiTournamentContractAddress,
 } from "../ContractConfig";
-import { BigNumber, ethers } from "ethers";
+import { BigNumber } from "ethers";
 import {
-  setErrorModalText,
   setModal,
-  setOnErrorModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
 } from "../../../store/appSlice";
+import { useAppDispatch } from "../../../store/hooks";
+import { store } from "../../../store/store";
 
 const post = async (endpoint: string, message: any) => {
   return await axios
@@ -27,6 +30,10 @@ const post = async (endpoint: string, message: any) => {
     .catch(function (error) {
       if (error.response) {
         // Request made and server responded
+        store.dispatch(setPopUpModalTitle("Error"));
+        store.dispatch(setPopUpModalText(error.response.data.detail));
+        store.dispatch(setModal(true));
+        store.dispatch(setOnPopUpModal(true));
         console.log(error.response.data.detail);
         console.log(error.response.status);
         console.log(error.response.headers);
@@ -50,7 +57,12 @@ const get = async (endpoint: string) => {
     .get(backendEndpoint + endpoint)
     .catch(function (error) {
       console.log(error);
+
       if (error.response) {
+        store.dispatch(setPopUpModalTitle("Error"));
+        store.dispatch(setPopUpModalText(error.response.data.detail));
+        store.dispatch(setModal(true));
+        store.dispatch(setOnPopUpModal(true));
         // Request made and server responded
         console.log(error.response.data);
         console.log(error.response.status);
@@ -96,8 +108,12 @@ export const patchHighscore = async (highscoreId: string, formData: any) => {
   })
     .catch(function (error) {
       if (error.response) {
+        store.dispatch(setPopUpModalTitle("Error"));
+        store.dispatch(setPopUpModalText(error.response.data.detail));
+        store.dispatch(setModal(true));
+        store.dispatch(setOnPopUpModal(true));
         // Request made and server responded
-        alert(error.response.data.detail);
+        console.log(error.response.data.detail);
         console.log(error.response.status);
         console.log(error.response.headers);
       } else if (error.request) {
@@ -179,66 +195,6 @@ export const fetchUser = async (userWalletAddr: string) => {
   } catch (e) {
     return null;
   }
-};
-
-export const buyDNA = async (tokenAmount: number) => {
-  let balance: BigNumber = await mumbaiWethContract.balanceOf(
-    await getConnectedSignerAddress()
-  );
-
-  let price: BigNumber = await mumbaiTokenContract.price();
-  let ethAmount = price.mul(tokenAmount);
-
-  if (balance.lt(ethAmount)) {
-    alert("You do not have enough WETH for this transaction.");
-    return;
-  }
-  let allowanceValue = await mumbaiWethContract.allowance(
-    await getConnectedSignerAddress(),
-    mumbaiTokenContractAddress
-  );
-
-  if (allowanceValue.lt(ethAmount)) {
-    console.log(`setting allowance for ${ethAmount}`);
-    let tx = await mumbaiWethContract.approve(
-      mumbaiTokenContractAddress,
-      ethAmount
-    );
-    await tx.wait();
-  }
-
-  await mumbaiTokenContract.buy(ethAmount);
-};
-
-export const buyLives = async (numberOfLives: number) => {
-  let balance: BigNumber = await mumbaiTokenContract.balanceOf(
-    await getConnectedSignerAddress()
-  );
-  let lifePrice: BigNumber = await mumbaiTournamentContract.lifeFee();
-
-  console.log(lifePrice);
-
-  let dnaAmount = lifePrice.mul(numberOfLives);
-
-  if (balance.lt(dnaAmount)) {
-    alert("You do not have enough WETH for this transaction.");
-    return;
-  }
-  let allowanceValue = await mumbaiTokenContract.allowance(
-    await getConnectedSignerAddress(),
-    mumbaiTournamentContractAddress
-  );
-
-  if (allowanceValue.lt(dnaAmount)) {
-    console.log(`setting allowance for dnaAmount: ${dnaAmount}`);
-    let tx = await mumbaiTokenContract.approve(
-      mumbaiTournamentContractAddress,
-      dnaAmount
-    );
-    await tx.wait();
-  }
-
-  await mumbaiTournamentContract.buyLives(numberOfLives);
 };
 
 export function authorizeWithDiscord() {

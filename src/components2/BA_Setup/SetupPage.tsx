@@ -1,9 +1,10 @@
 import * as React from "react";
 import style from "./SetupPage.module.scss";
 import {
-  setErrorModalText,
   setModal,
-  setOnErrorModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
   setTestRecordingModal,
   setTOSModal,
   setTournamentsWarningModal,
@@ -44,9 +45,10 @@ export const SetupPage = () => {
       to: "/app2/setup",
       icon: bridgeIcon,
       onClick: () => {
-        dispatch(setErrorModalText("The bridge is coming soon."));
+        dispatch(setPopUpModalTitle("Error"));
+        dispatch(setPopUpModalText("Bridge coming soon"));
         dispatch(setModal(true));
-        dispatch(setOnErrorModal(true));
+        dispatch(setOnPopUpModal(true));
       },
     },
     {

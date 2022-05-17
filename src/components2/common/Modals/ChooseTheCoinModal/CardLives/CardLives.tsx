@@ -20,18 +20,61 @@ import mobileClick from "../../../../../assets/png/buttons/choose the coin - liv
 import desktopDefault from "../../../../../assets/png/buttons/choose the coin - lives - buy now/desktopDefault.png";
 import desktopHover from "../../../../../assets/png/buttons/choose the coin - lives - buy now/desktopHover.png";
 import desktopClick from "../../../../../assets/png/buttons/choose the coin - lives - buy now/desktopClick.png";
-import { buyLives } from "../../../../../components/cojodi/BackendCalls/BackendCalls";
+import { BigNumber } from "ethers";
+import {
+  getConnectedSignerAddress,
+  mumbaiTokenContract,
+  mumbaiTournamentContract,
+  waitForTransactionWithModal,
+} from "../../../../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import { mumbaiTournamentContractAddress } from "../../../../../components/cojodi/ContractConfig";
+import {
+  selectShowChooseTheCoinModal,
+  setModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
+  setShowChooseTheCoinModal,
+} from "../../../../../store/appSlice";
+import { useAppDispatch } from "../../../../../store/hooks";
 
 export const CardLives: FC<ICardLives> = ({ lives, value }) => {
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
   const [hover, setHover] = useState(false);
   const [click, setClick] = useState(false);
+  const dispatch = useAppDispatch();
+  const buyLives = async (numberOfLives: number) => {
+    let balance: BigNumber = await mumbaiTokenContract.balanceOf(
+      await getConnectedSignerAddress()
+    );
+    let lifePrice: BigNumber = await mumbaiTournamentContract.lifeFee();
 
-  const triggerBuyLives = async () => {
-    console.log(`User wants to purchase ${lives} lives`);
-    await buyLives(lives);
+    console.log(lifePrice);
+
+    let dnaAmount = lifePrice.mul(numberOfLives);
+
+    if (balance.lt(dnaAmount)) {
+      alert("You do not have enough WETH for this transaction.");
+      return;
+    }
+    let allowanceValue = await mumbaiTokenContract.allowance(
+      await getConnectedSignerAddress(),
+      mumbaiTournamentContractAddress
+    );
+
+    if (allowanceValue.lt(dnaAmount)) {
+      console.log(`setting allowance for dnaAmount: ${dnaAmount}`);
+      let tx = await mumbaiTokenContract.approve(
+        mumbaiTournamentContractAddress,
+        dnaAmount
+      );
+      await waitForTransactionWithModal(tx);
+    }
+
+    let tx = await mumbaiTournamentContract.buyLives(numberOfLives);
+    await waitForTransactionWithModal(tx);
+    window.location.reload();
   };
-
   return (
     <div
       className={style.cardLives}
@@ -59,7 +102,9 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
       />
 
       <div className={style.cardContent}>
-        <p className={style.cardTitle}>{`${lives} lives`}</p>
+        <p className={style.cardTitle}>{`${lives} ${
+          lives === 1 ? "life" : "lives"
+        }`}</p>
 
         <div className={style.compassBlock}>
           <p>{lives * value}</p>
@@ -67,7 +112,9 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
         </div>
 
         <ButtonCustom
-          onClick={triggerBuyLives}
+          onClick={async () => {
+            await buyLives(lives);
+          }}
           className={style.buyBtn}
           widthMobile={233}
           heightMobile={40}

@@ -1,17 +1,15 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import style from "./TournamentsPage.module.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CardItem } from "./CardItem/CardItem";
 import { useAppDispatch } from "../../store/hooks";
 import {
-  HomeModalEnum,
-  setBurgerOpen,
-  setErrorModalText,
-  setHomeModalType,
   setLeaderboardModal,
   setModal,
-  setOnErrorModal,
-  setShowChooseTheCoinModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
 } from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
 import { desktopBreakPoint } from "../../constants";
@@ -20,27 +18,25 @@ import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
 
 // leaderboard
 import imgMobileDefault from "../../assets/png/buttons/tournaments page - leaderboard/lb_default.png";
-import imgMobileClick from "../../assets/png/buttons/tournaments page - leaderboard/lb_clicked.png";
 import imgDesktopDefault from "../../assets/png/buttons/tournaments page - leaderboard/lb_default.png";
-import imgDesktopHover from "../../assets/png/buttons/tournaments page - leaderboard/lb_hover.png";
+import imgMobileClick from "../../assets/png/buttons/tournaments page - leaderboard/lb_clicked.png";
 import imgDesktopClick from "../../assets/png/buttons/tournaments page - leaderboard/lb_clicked.png";
+import imgDesktopHover from "../../assets/png/buttons/tournaments page - leaderboard/lb_hover.png";
 
 // enter
 import mobileDefault from "../../assets/png/buttons/tournaments page - enter/enter_default.png";
-import mobileClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
 import desktopDefault from "../../assets/png/buttons/tournaments page - enter/enter_default.png";
-import desktopHover from "../../assets/png/buttons/tournaments page - enter/enter_hover.png";
+import mobileClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
 import desktopClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
-import { useEffect, useState } from "react";
+import desktopHover from "../../assets/png/buttons/tournaments page - enter/enter_hover.png";
 import {
   connectWallet,
   getConnectedSignerAddress,
   mumbaiTokenContract,
   mumbaiTournamentContract,
   signMessage,
+  waitForTransactionWithModal,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
-import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
-import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
 import { ethers } from "ethers";
 import {
   authorizeWithDiscord,
@@ -63,8 +59,13 @@ export const TournamentsPage = () => {
     await connectWallet();
 
     let enterPrice = ethers.utils.formatEther(
-      await mumbaiTournamentContract.registrationFee()
+      await mumbaiTournamentContract.userBasedRegistrationFee(
+        await getConnectedSignerAddress()
+      )
     );
+    let enterPriceString = enterPrice.toString();
+    let num = Number(enterPriceString);
+
     let pricePool = ethers.utils.formatEther(
       await mumbaiTournamentContract.pricePool()
     );
@@ -75,7 +76,7 @@ export const TournamentsPage = () => {
     setParticipants(result["n_participants"]);
 
     console.log(await mumbaiTournamentContract.maxUsers());
-    setEnterPrice(enterPrice);
+    setEnterPrice(num.toFixed(2));
     setPricePool(pricePool);
     setMaxParticipants(maxParticipants);
   }, []);
@@ -92,20 +93,25 @@ export const TournamentsPage = () => {
         mumbaiTournamentContractAddress,
         priceToPay
       );
-      await tx.wait();
+      await waitForTransactionWithModal(tx);
     } catch (e) {
       console.log(`Error while approving DNA: ${e}`);
-      dispatch(setErrorModalText("DNA approval failed"));
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText("DNA approval failed"));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
     }
+    dispatch(setModal(false));
+    dispatch(setOnPopUpModal(false));
 
     try {
       let tx = await mumbaiTournamentContract.register();
-      await tx.wait();
+      await waitForTransactionWithModal(tx);
     } catch (e) {
       console.log(`Error while registering for tournament: ${e}`);
     }
+    dispatch(setModal(false));
+    dispatch(setOnPopUpModal(false));
     setBlockEnter(false);
   };
 
@@ -113,11 +119,10 @@ export const TournamentsPage = () => {
     let currentTournamentPhase = await mumbaiTournamentContract.currentPhase();
     console.log(currentTournamentPhase);
 
+    let userResult = await fetchUser(await getConnectedSignerAddress());
+
     //Check if user is registered for the tournament and register if not
-    let isUserRegisteredForTournament =
-      await mumbaiTournamentContract.registeredUsers(
-        await getConnectedSignerAddress()
-      );
+    let isUserRegisteredForTournament = userResult["is_registered"];
 
     if (!isUserRegisteredForTournament && currentTournamentPhase === 1) {
       //Check if discord auth token exists in db and create if not
@@ -128,20 +133,19 @@ export const TournamentsPage = () => {
         authorizeWithDiscord();
         return;
       }
-
-      //Check if user exists in db and create if not
-      let result = await fetchUser(await getConnectedSignerAddress());
-      console.log(result);
-      if (result === null) {
-        dispatch(setErrorModalText("User doesn't exist."));
+      console.log(userResult);
+      if (userResult === null) {
+        dispatch(setPopUpModalTitle("Error"));
+        dispatch(setPopUpModalText("User does not exist"));
         dispatch(setModal(true));
-        dispatch(setOnErrorModal(true));
+        dispatch(setOnPopUpModal(true));
 
         let idString = window.localStorage.getItem("discordUserId");
         if (idString === null) {
-          dispatch(setErrorModalText("Discord authorization failed."));
+          dispatch(setPopUpModalTitle("Error"));
+          dispatch(setPopUpModalText("Discord authorization failed"));
           dispatch(setModal(true));
-          dispatch(setOnErrorModal(true));
+          dispatch(setOnPopUpModal(true));
           return;
         }
         let ob = {
@@ -163,20 +167,18 @@ export const TournamentsPage = () => {
         await registerForTournament();
         return;
       }
-      dispatch(
-        setErrorModalText(
-          "Registration failed. You need to stake at least 1 NFT."
-        )
-      );
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText("Stake at least 1 NFT at Setup."));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
       return;
     }
 
     if (!isUserRegisteredForTournament) {
-      dispatch(setErrorModalText("Registration phase is not open."));
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText("Registration phase is not open"));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
       return;
     }
     matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");

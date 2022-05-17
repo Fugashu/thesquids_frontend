@@ -16,6 +16,9 @@ import {
   setHomeModalType,
   setLifeBalance,
   setModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
   setShowChooseTheCoinModal,
   setWalletAddress,
   walletAddress,
@@ -91,6 +94,11 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       label: "Claim",
       onClick: async () => {
         let tx = await mumbaiTournamentContract.claim();
+        dispatch(setShowChooseTheCoinModal(false));
+        dispatch(setPopUpModalTitle("Waiting..."));
+        dispatch(setPopUpModalText(`Waiting for transaction to confirm.`));
+        dispatch(setModal(true));
+        dispatch(setOnPopUpModal(true));
         await tx.wait();
       },
     },
@@ -98,7 +106,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     {
       src: src0,
       text: `Lives:${lifeBal}`,
-      label: "Buy more",
+      label: "Buy",
       onClick: () => {
         dispatch(setModal(true));
         dispatch(setHomeModalType(HomeModalEnum.lives));
@@ -109,7 +117,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
     {
       src: src1,
       text: `Balance:${dnaBal ? dnaBal : null}`,
-      label: "Buy more",
+      label: "Buy",
       onClick: () => {
         dispatch(setModal(true));
         dispatch(setHomeModalType(HomeModalEnum.dna));

@@ -8,6 +8,9 @@ import {
   selectHomeModalType,
   setHomeModalType,
   setModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
   setShowChooseTheCoinModal,
 } from "../../../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
@@ -35,13 +38,16 @@ import imgDesktopHover from "../../../../assets/png/buttons/choose the coins - d
 import imgDesktopClick from "../../../../assets/png/buttons/choose the coins - dna - buy/desktopClick.png";
 import {
   connectWallet,
+  getConnectedSignerAddress,
   mumbaiTokenContract,
   mumbaiTournamentContract,
+  mumbaiWethContract,
+  waitForTransactionWithModal,
 } from "../../../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { CojodiNetworkSwitcher } from "../../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../../../components/cojodi/BackendCalls/chainRpcData";
-import { ethers } from "ethers";
-import { buyDNA } from "../../../../components/cojodi/BackendCalls/BackendCalls";
+import { BigNumber, ethers } from "ethers";
+import { mumbaiTokenContractAddress } from "../../../../components/cojodi/ContractConfig";
 
 export interface ICardLives {
   lives: number;
@@ -49,10 +55,10 @@ export interface ICardLives {
 }
 
 const cards: ICardLives[] = [
-  { lives: 5, value: -1 },
+  { lives: 1, value: -1 },
+  { lives: 2, value: -1 },
+  { lives: 3, value: -1 },
   { lives: 10, value: -1 },
-  { lives: 20, value: -1 },
-  { lives: 50, value: -1 },
 ];
 
 export const ChooseTheCoinModal = () => {
@@ -88,10 +94,36 @@ export const ChooseTheCoinModal = () => {
     setPriceOfOneToken(gweiPrice.toString());
   }, [dnaAmount]);
 
-  const requestBuyDNA = async () => {
-    console.log(`user wants to buy dna for ${parseInt(dnaAmount)}`);
+  const buyDNA = async (tokenAmount: number) => {
+    let balance: BigNumber = await mumbaiWethContract.balanceOf(
+      await getConnectedSignerAddress()
+    );
 
-    await buyDNA(parseInt(dnaAmount));
+    let price: BigNumber = await mumbaiTokenContract.price();
+    let ethAmount = price.mul(tokenAmount);
+
+    if (balance.lt(ethAmount)) {
+      alert("You do not have enough WETH for this transaction.");
+      return;
+    }
+    let allowanceValue = await mumbaiWethContract.allowance(
+      await getConnectedSignerAddress(),
+      mumbaiTokenContractAddress
+    );
+
+    if (allowanceValue.lt(ethAmount)) {
+      console.log(`setting allowance for ${ethAmount}`);
+      let tx = await mumbaiWethContract.approve(
+        mumbaiTokenContractAddress,
+        ethAmount
+      );
+
+      await waitForTransactionWithModal(tx);
+    }
+
+    let tx = await mumbaiTokenContract.buy(ethAmount);
+    await waitForTransactionWithModal(tx);
+    window.location.reload();
   };
 
   return (
@@ -164,7 +196,7 @@ export const ChooseTheCoinModal = () => {
               imgDesktopDefault={imgDesktopDefault}
               imgDesktopHover={imgDesktopHover}
               imgDesktopClick={imgDesktopClick}
-              onClick={requestBuyDNA}
+              onClick={() => buyDNA(parseInt(dnaAmount))}
             >
               <p>BUY</p>
             </ButtonCustom>

@@ -11,6 +11,7 @@ import {
   getConnectedSignerAddress,
   mumbaiNFTContract,
   mumbaiTournamentContract,
+  waitForTransactionWithModal,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
@@ -20,9 +21,10 @@ import imgDefault from "../../assets/png/buttons/staking page button/default.png
 import imgClick from "../../assets/png/buttons/staking page button/click.png";
 import imgHover from "../../assets/png/buttons/staking page button/click.png";
 import {
-  setErrorModalText,
   setModal,
-  setOnErrorModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
 } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { getImageUrlForTokenId } from "../../components/cojodi/BackendCalls/BackendCalls";
@@ -49,7 +51,10 @@ export const StakingPage = () => {
       mumbaiTournamentContractAddress,
       true
     );
-
+    dispatch(setPopUpModalTitle("Waiting..."));
+    dispatch(setPopUpModalText(`Waiting for transaction to confirm.`));
+    dispatch(setModal(true));
+    dispatch(setOnPopUpModal(true));
     await tx.wait();
   }
   async function stake(id) {
@@ -57,12 +62,13 @@ export const StakingPage = () => {
     await setApprovalForAll();
     try {
       let tx = await mumbaiTournamentContract.stake([id]);
-      await tx.wait();
+      await waitForTransactionWithModal(tx);
       await fetchNFTs();
     } catch (e) {
-      dispatch(setErrorModalText(`Error while trying to stake token ${id}`));
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText(`Error while trying to stake token ${id}`));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
     }
   }
 
@@ -71,16 +77,17 @@ export const StakingPage = () => {
     await setApprovalForAll();
     try {
       let tx = await mumbaiTournamentContract.unstake([id]);
-      await tx.wait();
+      await waitForTransactionWithModal(tx);
       await fetchNFTs();
     } catch (e) {
+      dispatch(setPopUpModalTitle("Error"));
       dispatch(
-        setErrorModalText(
+        setPopUpModalText(
           `Error while trying to unstake token ${id}. Wrong tournament phase.`
         )
       );
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
     }
   }
 

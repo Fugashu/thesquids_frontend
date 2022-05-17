@@ -4,10 +4,11 @@ import {
   dnaBuyAmount,
   setDiscordUsername,
   setDNABalance,
-  setErrorModalText,
   setLifeBalance,
   setModal,
-  setOnErrorModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
   setTestRecordingModal,
   setTournamentsWarningModal,
   setWalletAddress,
@@ -37,6 +38,7 @@ import { createUser } from "../../components/cojodi/BackendCalls/BackendCalls";
 import { clientId, clientSecret, redirectUrl } from "../../constants";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
+import useCountdown from "react-hook-final-countdown";
 
 export interface IHomeCard {
   label: string;
@@ -54,7 +56,8 @@ export const HomePage = () => {
     } catch (error) {}
   }, []);
   const dispatch = useAppDispatch();
-
+  //todo
+  const countdownTournament = useCountdown(1653857541 * 1000, 1000);
   const queryParams = new URLSearchParams(window.location.search);
   const queryCode = queryParams.get("code");
 
@@ -63,9 +66,11 @@ export const HomePage = () => {
     await connectWallet();
     // @ts-ignore
     await discordCallback(queryCode);
-  }, []);
+  }, [""]);
 
   async function discordCallback(code: string) {
+    console.log("called");
+    console.log(code);
     if (code === null) {
       let username = window.localStorage.getItem("discordUserName");
       if (username !== null) {
@@ -111,9 +116,13 @@ export const HomePage = () => {
           } catch (e) {
             console.log("Could not get the user");
           }
+        })
+        .catch((reason) => {
+          console.log(reason);
         });
     } catch (e) {
       console.log("Error while fetching Discord Token");
+      console.log(e);
     }
   }
 
@@ -129,9 +138,10 @@ export const HomePage = () => {
       to: "/app2",
       icon: cardIcon1,
       onClick: () => {
-        dispatch(setErrorModalText("Loot Boxes coming soon!"));
+        dispatch(setPopUpModalTitle("Error"));
+        dispatch(setPopUpModalText("Loot Boxes coming soon."));
         dispatch(setModal(true));
-        dispatch(setOnErrorModal(true));
+        dispatch(setOnPopUpModal(true));
       },
     },
     /*{
@@ -167,7 +177,9 @@ export const HomePage = () => {
     <div className={style.homePage}>
       <div className={style.inner}>
         <h1>First Tournament starting in:</h1>
-        <p className={style.timer}>3D:24H:24M</p>
+        <p className={style.timer}>
+          {new Date(countdownTournament).toISOString().substring(8, 16)}
+        </p>
 
         <div className={style.links}>
           {links.map((link, index) => (

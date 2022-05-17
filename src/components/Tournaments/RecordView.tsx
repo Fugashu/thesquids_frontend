@@ -21,9 +21,10 @@ import {
 import { useState } from "react";
 import {
   lifeBalance,
-  setErrorModalText,
   setModal,
-  setOnErrorModal,
+  setOnPopUpModal,
+  setPopUpModalText,
+  setPopUpModalTitle,
 } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
@@ -38,14 +39,21 @@ const RecordView = (props: Game) => {
   const lives = useAppSelector(lifeBalance);
   const dispatch = useAppDispatch();
   const {
-    //status,
+    status,
     startRecording,
     stopRecording,
     //mediaBlobUrl,
   } = useReactMediaRecorder({
     screen: true,
-    video: true,
-    onStop: (blobUrl, blob) => upload(blobUrl, blob),
+    video: false,
+    audio: false,
+    blobPropertyBag: { type: "video/mp4" },
+
+    onStop: async (blobUrl, blob) => {
+      console.log("callback on stop");
+      await upload(blobUrl, blob);
+      window.location.reload();
+    },
   });
 
   async function upload(blobUrl: string, blob: Blob) {
@@ -80,35 +88,41 @@ const RecordView = (props: Game) => {
       console.log(event.data.data);
       score = await event.data.data.v1;
       stopRecording();
+
+      console.log("stopped");
     }
   };
 
   const startRecordingAndRetrieveGameUrl = async () => {
     let result = await fetchTournamentStats();
+
     console.log(result);
     if (
       result["phase"] !== "IN_PLAY" ||
       (await mumbaiTournamentContract.currentPhase()) !== 2
     ) {
-      dispatch(setErrorModalText("Currently there are no games."));
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText("Currently there are no games"));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
       return;
     }
 
     if (parseInt(lives) <= 0) {
-      dispatch(setErrorModalText("You have no lives left."));
+      dispatch(setPopUpModalTitle("Error"));
+      dispatch(setPopUpModalText("You have no lives left"));
       dispatch(setModal(true));
-      dispatch(setOnErrorModal(true));
+      dispatch(setOnPopUpModal(true));
       return;
     }
-
     setIsPlaying(true);
     await props.handleClick();
     startRecording();
   };
   return (
     <div>
+      <h1>{status}</h1>
+
       {isPlaying ? null : (
         <div>
           <ButtonCustom

@@ -2,13 +2,15 @@ import * as React from "react";
 import style from "./TournamentPage.module.scss";
 import { useAppDispatch } from "../../store/hooks";
 import {
+  setGameplayModal,
+  setGameplayUrl,
   setModal,
+  setNickname,
   setStakingNftErrorModal,
   setTournamentsModal,
   setTournamentsWarningModal,
   setVoteModal,
 } from "../../store/appSlice";
-import { useNavigate } from "react-router-dom";
 
 import cardBack from "../../assets/png/cards/tournament page/desktop.png";
 import cardIcon0 from "../../assets/png/icons/tournament page/card icon 0.png";
@@ -23,13 +25,35 @@ import imgClickPlay from "../../assets/png/buttons/tournament page card/play_cli
 import imgDefaultVote from "../../assets/png/buttons/tournament page card/vote_default.png";
 import imgHoverVote from "../../assets/png/buttons/tournament page card/vote_hover.png";
 import imgClickVote from "../../assets/png/buttons/tournament page card/vote_clicked.png";
+import useCountdown from "react-hook-final-countdown";
+import { useEffect, useState } from "react";
 
 export const TournamentPage = () => {
   const dispatch = useAppDispatch();
+  //todo
+  const countdownGames = useCountdown(1653857541 * 1000, 1000);
+  const countdownVotes = useCountdown(1653857541 * 1000, 1000);
 
+  console.log();
   const cards = [
     {
-      title: "End in 3H:24M:24S",
+      title: "IMPORTANT",
+      //todo tutorial
+      icon: cardIcon0,
+      buttonLabel: "TUTORIAL",
+      onClick: () => {
+        dispatch(setNickname("THE SQUIDS TUTORIAL"));
+        dispatch(setGameplayUrl(""));
+        dispatch(setGameplayModal(true));
+        dispatch(setModal(true));
+      },
+      imgDefault: imgDefaultPlay,
+      imgHover: imgHoverPlay,
+      imgClicked: imgClickPlay,
+    },
+    {
+      title:
+        "Start: " + new Date(countdownGames).toISOString().substring(8, 16),
       icon: cardIcon0,
       buttonLabel: "PLAY",
       onClick: () => {
@@ -41,7 +65,8 @@ export const TournamentPage = () => {
       imgClicked: imgClickPlay,
     },
     {
-      title: "Start in 3H:24M:24S",
+      title:
+        "Start: " + new Date(countdownVotes).toISOString().substring(8, 16),
       icon: cardIcon2,
       buttonLabel: "VOTE",
       onClick: () => {

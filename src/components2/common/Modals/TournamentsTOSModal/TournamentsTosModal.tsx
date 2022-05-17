@@ -10,10 +10,9 @@ import { useNavigate } from "react-router-dom";
 export const TournamentsTOSModal = () => {
   const dispatch = useAppDispatch();
   const text = [
-    "bla",
-    "You will not be able to purchase lives during the tournament, only before entering",
-    "Test your recording, any entries without a gameplay recording will be voided",
-    "You will need to Stake your Squids in order to enter and pay the $DNA fee to participate",
+    "The Squids are not responsible for any losses occurred during the tournaments ",
+    "Cheating and exploits (intentional / unintentional) are forbidden and will result in a ban from the occurring tournament and a blacklist of your address / discord id",
+    "We reserve the right to disqualify a player during a tournament at any point in time at our own discretion",
   ];
   const onClose = () => {
     dispatch(setModal(false));

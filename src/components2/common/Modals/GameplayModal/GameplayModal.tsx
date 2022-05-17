@@ -76,7 +76,7 @@ export const GameplayModal = () => {
 
         <p className={style.title}>
           <span>{nickname}</span>
-          <span> Gameplay</span>
+          {nickname === "THE SQUIDS TUTORIAL" ? null : <span> Gameplay</span>}
         </p>
 
         <div className={style.field}>
@@ -93,40 +93,41 @@ export const GameplayModal = () => {
             src={videoUrl + "?title=0&byline=0&portrait=0"}
           />
         </div>
+        {nickname === "THE SQUIDS TUTORIAL" ? null : (
+          <div className={style.buttons}>
+            <ButtonCustom
+              className={style.legitBtn}
+              widthMobile={256}
+              heightMobile={75}
+              widthDesktop={288}
+              heightDesktop={75}
+              imgMobileDefault={imgMobileDefault}
+              imgMobileClick={imgMobileClick}
+              imgDesktopDefault={imgDesktopDefault}
+              imgDesktopHover={imgDesktopHover}
+              imgDesktopClick={imgDesktopClick}
+              onClick={() => vote(true)}
+            >
+              <p>Verified</p>
+            </ButtonCustom>
 
-        <div className={style.buttons}>
-          <ButtonCustom
-            className={style.legitBtn}
-            widthMobile={256}
-            heightMobile={75}
-            widthDesktop={288}
-            heightDesktop={75}
-            imgMobileDefault={imgMobileDefault}
-            imgMobileClick={imgMobileClick}
-            imgDesktopDefault={imgDesktopDefault}
-            imgDesktopHover={imgDesktopHover}
-            imgDesktopClick={imgDesktopClick}
-            onClick={() => vote(true)}
-          >
-            <p>Verified</p>
-          </ButtonCustom>
-
-          <ButtonCustom
-            className={style.cheatingBtn}
-            widthMobile={256}
-            heightMobile={75}
-            widthDesktop={288}
-            heightDesktop={75}
-            imgMobileDefault={mobileDefault}
-            imgMobileClick={mobileClick}
-            imgDesktopDefault={desktopDefault}
-            imgDesktopHover={desktopHover}
-            imgDesktopClick={desktopClick}
-            onClick={() => vote(false)}
-          >
-            <p>Suspect</p>
-          </ButtonCustom>
-        </div>
+            <ButtonCustom
+              className={style.cheatingBtn}
+              widthMobile={256}
+              heightMobile={75}
+              widthDesktop={288}
+              heightDesktop={75}
+              imgMobileDefault={mobileDefault}
+              imgMobileClick={mobileClick}
+              imgDesktopDefault={desktopDefault}
+              imgDesktopHover={desktopHover}
+              imgDesktopClick={desktopClick}
+              onClick={() => vote(false)}
+            >
+              <p>Suspect</p>
+            </ButtonCustom>
+          </div>
+        )}
       </div>
     </div>
   );

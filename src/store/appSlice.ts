@@ -23,7 +23,7 @@ const initialState = {
   tournamentsWarningModal: false,
   tournamentsTOSModal: false,
   leaderboardModal: false,
-  onErrorModal: false,
+  popUpModal: false,
   nickname: "",
   gameplayModal: false,
   stakingNftErrorModal: false,
@@ -41,7 +41,8 @@ const initialState = {
   lifeBalance: "",
   highScoreId: "",
   claimablePrizeAmount: "",
-  errorModalText: "",
+  popUpModalText: "",
+  popUpModalTitle: "",
 };
 
 type InitialStateType = typeof initialState;
@@ -98,8 +99,8 @@ export const appSlice = createSlice({
     setTournamentsModal: (state, action: PayloadAction<boolean>) => {
       state.tournamentsModal = action.payload;
     },
-    setOnErrorModal: (state, action: PayloadAction<boolean>) => {
-      state.onErrorModal = action.payload;
+    setOnPopUpModal: (state, action: PayloadAction<boolean>) => {
+      state.popUpModal = action.payload;
     },
 
     setWalletAddress: (state, action: PayloadAction<string>) => {
@@ -127,8 +128,11 @@ export const appSlice = createSlice({
     setClaimablePrizeAmount: (state, action: PayloadAction<string>) => {
       state.claimablePrizeAmount = action.payload;
     },
-    setErrorModalText: (state, action: PayloadAction<string>) => {
-      state.errorModalText = action.payload;
+    setPopUpModalText: (state, action: PayloadAction<string>) => {
+      state.popUpModalText = action.payload;
+    },
+    setPopUpModalTitle: (state, action: PayloadAction<string>) => {
+      state.popUpModalTitle = action.payload;
     },
   },
 });
@@ -139,7 +143,7 @@ export const {
   setHomeModalType,
   setShowChooseTheCoinModal,
   setTournamentsWarningModal,
-  setOnErrorModal,
+  setOnPopUpModal,
   setTOSModal,
   setLeaderboardModal,
   setNickname,
@@ -151,8 +155,8 @@ export const {
   setTestRecordingModal,
   setTimeLeftModal,
   setTournamentsModal,
-  setErrorModalText,
-
+  setPopUpModalText,
+  setPopUpModalTitle,
   setWalletAddress,
   setDiscordUsername,
   setGameplayUrl,
@@ -180,6 +184,7 @@ export const selectGameplayModal = (state: RootState) =>
   state.app.gameplayModal;
 export const selectStakingNftErrorModal = (state: RootState) =>
   state.app.stakingNftErrorModal;
+
 export const selectVoteModal = (state: RootState) => state.app.voteModal;
 export const selectLootBox = (state: RootState) => state.app.lootBox;
 export const selectOpenBoxModal = (state: RootState) => state.app.openBoxModal;
@@ -189,9 +194,11 @@ export const selectTimeLeftModal = (state: RootState) =>
   state.app.timeLeftModal;
 export const selectTournamentsModal = (state: RootState) =>
   state.app.tournamentsModal;
-export const selectOnErrorModal = (state: RootState) => state.app.onErrorModal;
-export const selectErrorModalText = (state: RootState) =>
-  state.app.errorModalText;
+export const selectPopUpModal = (state: RootState) => state.app.popUpModal;
+export const selectPopUpModalText = (state: RootState) =>
+  state.app.popUpModalText;
+export const selectPopUpModalTitle = (state: RootState) =>
+  state.app.popUpModalTitle;
 
 export const walletAddress = (state: RootState) => state.app.walletAddress;
 export const discordUserName = (state: RootState) => state.app.discordUserName;
