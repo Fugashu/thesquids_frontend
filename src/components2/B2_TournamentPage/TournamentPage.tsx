@@ -53,7 +53,11 @@ export const TournamentPage = () => {
     },
     {
       title:
-        "Start: " + new Date(countdownGames).toISOString().substring(8, 16),
+        "Start: " +
+        new Date(countdownGames)
+          .toISOString()
+          .substring(8, 16)
+          .replace("T", ":"),
       icon: cardIcon0,
       buttonLabel: "PLAY",
       onClick: () => {
@@ -66,7 +70,11 @@ export const TournamentPage = () => {
     },
     {
       title:
-        "Start: " + new Date(countdownVotes).toISOString().substring(8, 16),
+        "Start: " +
+        new Date(countdownVotes)
+          .toISOString()
+          .substring(8, 16)
+          .replace("T", ":"),
       icon: cardIcon2,
       buttonLabel: "VOTE",
       onClick: () => {

@@ -59,10 +59,8 @@ const get = async (endpoint: string) => {
       console.log(error);
 
       if (error.response) {
-        store.dispatch(setPopUpModalTitle("Error"));
-        store.dispatch(setPopUpModalText(error.response.data.detail));
-        store.dispatch(setModal(true));
-        store.dispatch(setOnPopUpModal(true));
+        displayPopUpModal(EPopUpModal.Error, error.response.data.detail);
+
         // Request made and server responded
         console.log(error.response.data);
         console.log(error.response.status);
@@ -108,10 +106,8 @@ export const patchHighscore = async (highscoreId: string, formData: any) => {
   })
     .catch(function (error) {
       if (error.response) {
-        store.dispatch(setPopUpModalTitle("Error"));
-        store.dispatch(setPopUpModalText(error.response.data.detail));
-        store.dispatch(setModal(true));
-        store.dispatch(setOnPopUpModal(true));
+        displayPopUpModal(EPopUpModal.Error, error.response.data.detail);
+
         // Request made and server responded
         console.log(error.response.data.detail);
         console.log(error.response.status);
@@ -222,4 +218,30 @@ export async function getImageUrlForTokenId(tokenId: number) {
   } catch (e) {
     return null;
   }
+}
+
+export enum EPopUpModal {
+  Error,
+  Info,
+  Waiting,
+}
+export function displayPopUpModal(type: EPopUpModal, text?: string) {
+  let title;
+  switch (type) {
+    case EPopUpModal.Error:
+      title = "Error";
+      break;
+    case EPopUpModal.Info:
+      title = "Info";
+      break;
+    case EPopUpModal.Waiting:
+      title = "Info";
+      text = "Waiting for transaction to confirm.";
+      break;
+  }
+
+  store.dispatch(setPopUpModalTitle(title));
+  if (text !== undefined) store.dispatch(setPopUpModalText(text));
+  store.dispatch(setModal(true));
+  store.dispatch(setOnPopUpModal(true));
 }

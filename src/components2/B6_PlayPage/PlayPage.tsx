@@ -61,9 +61,13 @@ export const PlayPage = () => {
     let signedMsg = await signMessage({});
     console.log(signedMsg);
     let session_id = await requestSessionId(signedMsg);
-    console.log(session_id);
+    console.log(`Session ID: ${session_id}`);
+    if (session_id === "") {
+      return false;
+    }
 
     setGameUrl(backendEndpoint + "/tournament/game/" + session_id);
+    return true;
   };
 
   const destroyGame = async () => {

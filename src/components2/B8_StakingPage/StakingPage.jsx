@@ -27,7 +27,11 @@ import {
   setPopUpModalTitle,
 } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { getImageUrlForTokenId } from "../../components/cojodi/BackendCalls/BackendCalls";
+import {
+  displayPopUpModal,
+  EPopUpModal,
+  getImageUrlForTokenId,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
 
 export const StakingPage = () => {
   const [stakedCount, setStakedCount] = useState(0);
@@ -51,11 +55,7 @@ export const StakingPage = () => {
       mumbaiTournamentContractAddress,
       true
     );
-    dispatch(setPopUpModalTitle("Waiting..."));
-    dispatch(setPopUpModalText(`Waiting for transaction to confirm.`));
-    dispatch(setModal(true));
-    dispatch(setOnPopUpModal(true));
-    await tx.wait();
+    await waitForTransactionWithModal(tx);
   }
   async function stake(id) {
     console.log(`trying to stake token with id:${id}`);
@@ -65,10 +65,10 @@ export const StakingPage = () => {
       await waitForTransactionWithModal(tx);
       await fetchNFTs();
     } catch (e) {
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText(`Error while trying to stake token ${id}`));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
+      displayPopUpModal(
+        EPopUpModal.Error,
+        `Error while trying to stake token ${id}.`
+      );
     }
   }
 
@@ -80,14 +80,10 @@ export const StakingPage = () => {
       await waitForTransactionWithModal(tx);
       await fetchNFTs();
     } catch (e) {
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(
-        setPopUpModalText(
-          `Error while trying to unstake token ${id}. Wrong tournament phase.`
-        )
+      displayPopUpModal(
+        EPopUpModal.Error,
+        `Error while trying to unstake token ${id}. Wrong tournament phase.`
       );
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
     }
   }
 

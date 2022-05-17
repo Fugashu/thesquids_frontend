@@ -15,15 +15,14 @@ import {
   mumbaiWethContractAbi,
   mumbaiWethContractAddress,
 } from "../ContractConfig";
-import { useAppDispatch } from "../../../store/hooks";
 import {
   setModal,
   setOnPopUpModal,
-  setPopUpModalText,
-  setPopUpModalTitle,
   setShowChooseTheCoinModal,
 } from "../../../store/appSlice";
 import { store } from "../../../store/store";
+import { displayPopUpModal, EPopUpModal } from "../BackendCalls/BackendCalls";
+let stringify = require("json-stable-stringify");
 
 export var signer: ethers.Signer;
 export var mumbaiNFTContract: ethers.Contract;
@@ -153,7 +152,7 @@ export async function signMessage(incomingMessage: Object) {
   incomingMessage["timestamp"] = Math.floor(new Date().getTime() / 1000);
   // @ts-ignore
   incomingMessage["addr"] = await getConnectedSignerAddress();
-  let signpayload = JSON.stringify(
+  let signpayload = stringify(
     incomingMessage,
     Object.keys(incomingMessage).sort()
   );
@@ -170,10 +169,7 @@ export async function waitForTransactionWithModal(transaction: {
 }) {
   store.dispatch(setModal(false));
   store.dispatch(setShowChooseTheCoinModal(false));
-  store.dispatch(setPopUpModalTitle("Waiting..."));
-  store.dispatch(setPopUpModalText(`Waiting for transaction to confirm.`));
-  store.dispatch(setModal(true));
-  store.dispatch(setOnPopUpModal(true));
+  displayPopUpModal(EPopUpModal.Waiting);
   await transaction.wait();
   store.dispatch(setModal(false));
   store.dispatch(setOnPopUpModal(false));

@@ -23,6 +23,7 @@
     "discord-oauth2": "^2.10.0",
     "ethers": "^5.5.4",
     "formik": "^2.2.9",
+    "json-stable-stringify": "^1.0.1",
     "keccak256": "^1.0.6",
     "merkletreejs": "^0.2.31",
     "msw": "^0.39.2",

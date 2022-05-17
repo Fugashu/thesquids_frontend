@@ -4,13 +4,7 @@ import style from "./TournamentsPage.module.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CardItem } from "./CardItem/CardItem";
 import { useAppDispatch } from "../../store/hooks";
-import {
-  setLeaderboardModal,
-  setModal,
-  setOnPopUpModal,
-  setPopUpModalText,
-  setPopUpModalTitle,
-} from "../../store/appSlice";
+import { setLeaderboardModal, setModal } from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
 import { desktopBreakPoint } from "../../constants";
 import sandTimerIcon from "../../assets/png/icons/sandTimer.png";
@@ -41,6 +35,8 @@ import { ethers } from "ethers";
 import {
   authorizeWithDiscord,
   createUser,
+  displayPopUpModal,
+  EPopUpModal,
   fetchTournamentStats,
   fetchUser,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
@@ -82,12 +78,9 @@ export const TournamentsPage = () => {
   }, []);
 
   const registerForTournament = async () => {
-    setBlockEnter(true);
-
     let priceToPay = await mumbaiTournamentContract.userBasedRegistrationFee(
       await getConnectedSignerAddress()
     );
-    console.log(priceToPay);
     try {
       let tx = await mumbaiTokenContract.approve(
         mumbaiTournamentContractAddress,
@@ -95,92 +88,97 @@ export const TournamentsPage = () => {
       );
       await waitForTransactionWithModal(tx);
     } catch (e) {
-      console.log(`Error while approving DNA: ${e}`);
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText("DNA approval failed"));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
+      displayPopUpModal(EPopUpModal.Error, "DNA approval failed.");
     }
-    dispatch(setModal(false));
-    dispatch(setOnPopUpModal(false));
 
     try {
       let tx = await mumbaiTournamentContract.register();
       await waitForTransactionWithModal(tx);
+      matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
     } catch (e) {
-      console.log(`Error while registering for tournament: ${e}`);
+      displayPopUpModal(EPopUpModal.Error, "Registration failed.");
     }
-    dispatch(setModal(false));
-    dispatch(setOnPopUpModal(false));
-    setBlockEnter(false);
   };
 
-  const onClickTournamentOne = async () => {
-    let currentTournamentPhase = await mumbaiTournamentContract.currentPhase();
-    console.log(currentTournamentPhase);
-
+  const isDiscordAuthorized = () => {
+    //Check if discord auth token exists in db and create if not
+    return !(
+      window.localStorage.getItem("discordAccessToken") === null ||
+      window.localStorage.getItem("discordUserName") === null
+    );
+  };
+  const isUserInDatabase = async () => {
     let userResult = await fetchUser(await getConnectedSignerAddress());
+    return userResult !== null;
+  };
+  const createNewUser = async () => {
+    let idString = window.localStorage.getItem("discordUserId");
+    if (idString !== null) {
+      let ob = {
+        id: parseInt(idString),
+        username: window.localStorage.getItem("discordUserName"),
+      };
 
-    //Check if user is registered for the tournament and register if not
-    let isUserRegisteredForTournament = userResult["is_registered"];
+      let signedMessage = await signMessage(ob);
+      await createUser(signedMessage);
+      return;
+    }
+    displayPopUpModal(EPopUpModal.Error, "Could not create User");
+  };
 
-    if (!isUserRegisteredForTournament && currentTournamentPhase === 1) {
-      //Check if discord auth token exists in db and create if not
-      if (
-        window.localStorage.getItem("discordAccessToken") === null ||
-        window.localStorage.getItem("discordUserName") === null
-      ) {
-        authorizeWithDiscord();
+  const isRegistrationPhase = async () => {
+    let currentTournamentPhase = await mumbaiTournamentContract.currentPhase();
+    return currentTournamentPhase === 1;
+  };
+
+  const isUserRegisteredForTournament = async () => {
+    let userResult = await fetchUser(await getConnectedSignerAddress());
+    return !!userResult["is_registered"];
+  };
+
+  const hasUserStakedNFT = async () => {
+    let numNFTsStaked = await mumbaiTournamentContract.stakedBalance(
+      await getConnectedSignerAddress()
+    );
+    if (numNFTsStaked > 0) {
+      return true;
+    } else {
+      displayPopUpModal(EPopUpModal.Error, "Stake at least 1 NFT at Setup.");
+      return false;
+    }
+  };
+
+  const onClickEnter = async () => {
+    if (!isDiscordAuthorized()) {
+      authorizeWithDiscord();
+      return;
+    }
+
+    if (!(await isUserInDatabase())) {
+      await createNewUser();
+      return;
+    }
+
+    if (await isRegistrationPhase()) {
+      if (await isUserRegisteredForTournament()) {
+        displayPopUpModal(
+          EPopUpModal.Info,
+          "You are already registered. The games will start soon."
+        );
         return;
       }
-      console.log(userResult);
-      if (userResult === null) {
-        dispatch(setPopUpModalTitle("Error"));
-        dispatch(setPopUpModalText("User does not exist"));
-        dispatch(setModal(true));
-        dispatch(setOnPopUpModal(true));
-
-        let idString = window.localStorage.getItem("discordUserId");
-        if (idString === null) {
-          dispatch(setPopUpModalTitle("Error"));
-          dispatch(setPopUpModalText("Discord authorization failed"));
-          dispatch(setModal(true));
-          dispatch(setOnPopUpModal(true));
-          return;
-        }
-        let ob = {
-          id: parseInt(idString),
-          username: window.localStorage.getItem("discordUserName"),
-        };
-
-        let signedMessage = await signMessage(ob);
-        console.log(signedMessage);
-        await createUser(signedMessage);
-        return;
-      }
-
-      let numNFTsStaked = await mumbaiTournamentContract.stakedBalance(
-        await getConnectedSignerAddress()
-      );
-      console.log(numNFTsStaked);
-      if (numNFTsStaked > 0) {
+      if (await hasUserStakedNFT()) {
         await registerForTournament();
         return;
       }
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText("Stake at least 1 NFT at Setup."));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
       return;
     }
 
-    if (!isUserRegisteredForTournament) {
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText("Registration phase is not open"));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
+    if (!(await isUserRegisteredForTournament())) {
+      displayPopUpModal(EPopUpModal.Info, "Registration is not open.");
       return;
     }
+
     matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
   };
 
@@ -192,7 +190,7 @@ export const TournamentsPage = () => {
         { title: "Price pool (DNA)", value: pricePool },
         { title: "Participants", value: `${participants}/${maxParticipants}` },
       ],
-      onClick: onClickTournamentOne,
+      onClick: onClickEnter,
     },
     // {
     //     title: "Tournament 2",

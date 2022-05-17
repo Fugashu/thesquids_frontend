@@ -178,7 +178,10 @@ export const HomePage = () => {
       <div className={style.inner}>
         <h1>First Tournament starting in:</h1>
         <p className={style.timer}>
-          {new Date(countdownTournament).toISOString().substring(8, 16)}
+          {new Date(countdownTournament)
+            .toISOString()
+            .substring(8, 16)
+            .replace("T", ":")}
         </p>
 
         <div className={style.links}>

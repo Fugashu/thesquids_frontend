@@ -21,6 +21,10 @@ import testRecordingIcon from "../../assets/png/icons/setup_page/test recording 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { desktopBreakPoint } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import {
+  displayPopUpModal,
+  EPopUpModal,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
 export interface IHomeCard {
   label: string;
   to: string;
@@ -45,10 +49,7 @@ export const SetupPage = () => {
       to: "/app2/setup",
       icon: bridgeIcon,
       onClick: () => {
-        dispatch(setPopUpModalTitle("Error"));
-        dispatch(setPopUpModalText("Bridge coming soon"));
-        dispatch(setModal(true));
-        dispatch(setOnPopUpModal(true));
+        displayPopUpModal(EPopUpModal.Error, "Bridge is coming soon.");
       },
     },
     {
@@ -84,9 +85,6 @@ export const SetupPage = () => {
   return (
     <div className={style.homePage}>
       <div className={style.inner}>
-        <h1>First Tournament starting in:</h1>
-        <p className={style.timer}>3D:24H:24M</p>
-
         <div className={style.links}>
           {links.map((link, index) => (
             <HomeCard key={index} {...link} />

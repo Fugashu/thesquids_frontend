@@ -1,8 +1,7 @@
 import { useReactMediaRecorder } from "react-media-recorder";
-import axios from "axios";
 import * as React from "react";
+import { useState } from "react";
 import {
-  getConnectedSignerAddress,
   mumbaiTournamentContract,
   signMessage,
 } from "../cojodi/MetamaskConnection/MetamaskWallet";
@@ -14,18 +13,12 @@ import playClicked from "../../assets/png/buttons/play page - play/play_clicked.
 import { ButtonCustom } from "../../components2/common/ButtonCustom/ButtonCustom";
 import {
   createHighscore,
-  createUser,
+  displayPopUpModal,
+  EPopUpModal,
   fetchTournamentStats,
   patchHighscore,
 } from "../cojodi/BackendCalls/BackendCalls";
-import { useState } from "react";
-import {
-  lifeBalance,
-  setModal,
-  setOnPopUpModal,
-  setPopUpModalText,
-  setPopUpModalTitle,
-} from "../../store/appSlice";
+import { lifeBalance } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 interface Game {
@@ -51,8 +44,11 @@ const RecordView = (props: Game) => {
 
     onStop: async (blobUrl, blob) => {
       console.log("callback on stop");
+      displayPopUpModal(
+        EPopUpModal.Info,
+        "Your replay is being uploaded. Sign the message and WAIT!"
+      );
       await upload(blobUrl, blob);
-      window.location.reload();
     },
   });
 
@@ -101,27 +97,23 @@ const RecordView = (props: Game) => {
       result["phase"] !== "IN_PLAY" ||
       (await mumbaiTournamentContract.currentPhase()) !== 2
     ) {
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText("Currently there are no games"));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
+      displayPopUpModal(EPopUpModal.Error, "Currently there are no games");
       return;
     }
 
     if (parseInt(lives) <= 0) {
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText("You have no lives left"));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
+      displayPopUpModal(EPopUpModal.Error, "Insufficient lives.");
       return;
     }
-    setIsPlaying(true);
-    await props.handleClick();
-    startRecording();
+
+    if (await props.handleClick()) {
+      setIsPlaying(true);
+      startRecording();
+    }
   };
   return (
     <div>
-      <h1>{status}</h1>
+      {/*<h1>{status}</h1>*/}
 
       {isPlaying ? null : (
         <div>
