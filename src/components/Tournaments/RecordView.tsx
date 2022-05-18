@@ -18,7 +18,12 @@ import {
   fetchTournamentStats,
   patchHighscore,
 } from "../cojodi/BackendCalls/BackendCalls";
-import { lifeBalance, setModal, setOnPopUpModal } from "../../store/appSlice";
+import {
+  lifeBalance,
+  oldHighscore,
+  setModal,
+  setOnPopUpModal,
+} from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { store } from "../../store/store";
 
@@ -31,7 +36,7 @@ var score: any;
 const RecordView = (props: Game) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const lives = useAppSelector(lifeBalance);
-  const dispatch = useAppDispatch();
+  const oldScore = useAppSelector(oldHighscore);
   const {
     status,
     startRecording,
@@ -45,10 +50,21 @@ const RecordView = (props: Game) => {
 
     onStop: async (blobUrl, blob) => {
       console.log("callback on stop");
+      props.destroyGame();
+      setIsPlaying(false);
+      console.log("old highscore:" + oldScore);
+      if (score < oldScore) {
+        displayPopUpModal(
+          EPopUpModal.Info,
+          "Your old highscore was higher. Try again?"
+        );
+        return;
+      }
       displayPopUpModal(
         EPopUpModal.Info,
         "Your replay is being uploaded. Sign the message and WAIT!"
       );
+
       await upload(blobUrl, blob);
       store.dispatch(setModal(false));
       store.dispatch(setOnPopUpModal(false));
@@ -61,7 +77,6 @@ const RecordView = (props: Game) => {
       score: score,
     };
 
-    props.destroyGame();
     let signedMessage = await signMessage(ob);
     console.log(signedMessage);
 
@@ -73,7 +88,6 @@ const RecordView = (props: Game) => {
 
     await patchHighscore(highscore_id.toString(), formData);
     console.log(blob);
-    setIsPlaying(false);
   }
 
   window.onmessage = async function (event) {

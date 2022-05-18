@@ -66,9 +66,9 @@ export const TournamentsPage = () => {
       await mumbaiTournamentContract.pricePool()
     );
     let maxParticipants = await mumbaiTournamentContract.maxUsers();
-    console.log(await fetchTournamentStats());
-    let result = await fetchTournamentStats();
 
+    let result = await fetchTournamentStats();
+    console.log(result);
     setParticipants(result["n_participants"]);
 
     console.log(await mumbaiTournamentContract.maxUsers());

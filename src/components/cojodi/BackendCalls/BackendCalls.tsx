@@ -30,17 +30,17 @@ const post = async (endpoint: string, message: any) => {
     .catch(function (error) {
       if (error.response) {
         // Request made and server responded
-        store.dispatch(setPopUpModalTitle("Error"));
-        store.dispatch(setPopUpModalText(error.response.data.detail));
-        store.dispatch(setModal(true));
-        store.dispatch(setOnPopUpModal(true));
+        displayPopUpModal(EPopUpModal.Error, error.response.data.detail);
         console.log(error.response.data.detail);
         console.log(error.response.status);
         console.log(error.response.headers);
       } else if (error.request) {
+        displayPopUpModal(EPopUpModal.Error, error.request);
         // The request was made but no response was received
         console.log(error.request);
       } else {
+        displayPopUpModal(EPopUpModal.Error, error);
+
         // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
@@ -68,7 +68,10 @@ const get = async (endpoint: string) => {
       } else if (error.request) {
         // The request was made but no response was received
         console.log(error.request);
+        displayPopUpModal(EPopUpModal.Error, error.request);
       } else {
+        displayPopUpModal(EPopUpModal.Error, error);
+
         // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
@@ -115,7 +118,10 @@ export const patchHighscore = async (highscoreId: string, formData: any) => {
       } else if (error.request) {
         // The request was made but no response was received
         console.log(error.request);
+        displayPopUpModal(EPopUpModal.Error, error.request);
       } else {
+        displayPopUpModal(EPopUpModal.Error, error);
+
         // Something happened in setting up the request that triggered an Error
         console.log("Error", error.message);
       }
@@ -193,6 +199,18 @@ export const fetchUser = async (userWalletAddr: string) => {
   }
 };
 
+//fixme
+export const fetchTimer = async () => {
+  return 0;
+  try {
+    let res = await get("/user/");
+    console.log(res);
+    // @ts-ignore
+    return res["data"];
+  } catch (e) {
+    return null;
+  }
+};
 export function authorizeWithDiscord() {
   let response_type = "code";
   let client_id = clientId;
@@ -244,4 +262,8 @@ export function displayPopUpModal(type: EPopUpModal, text?: string) {
   if (text !== undefined) store.dispatch(setPopUpModalText(text));
   store.dispatch(setModal(true));
   store.dispatch(setOnPopUpModal(true));
+}
+
+export function getTime() {
+  return Math.floor(new Date().getTime() / 1000);
 }

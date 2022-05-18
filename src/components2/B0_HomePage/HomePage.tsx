@@ -4,6 +4,7 @@ import {
   dnaBuyAmount,
   setDiscordUsername,
   setDNABalance,
+  setGameTimer,
   setLifeBalance,
   setModal,
   setOnPopUpModal,
@@ -11,7 +12,10 @@ import {
   setPopUpModalTitle,
   setTestRecordingModal,
   setTournamentsWarningModal,
+  setTournamentTimer,
+  setVoteTimer,
   setWalletAddress,
+  tournamentTimer,
   walletAddress,
 } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
@@ -33,7 +37,12 @@ import {
   connectWallet,
   signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
-import { createUser } from "../../components/cojodi/BackendCalls/BackendCalls";
+import {
+  createUser,
+  fetchTimer,
+  fetchTournamentStats,
+  getTime,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
 
 import { clientId, clientSecret, redirectUrl } from "../../constants";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
@@ -48,6 +57,8 @@ export interface IHomeCard {
 }
 
 export const HomePage = () => {
+  const dispatch = useAppDispatch();
+  const countdown = useAppSelector(tournamentTimer);
   // @ts-ignore
   useEffect(async () => {
     try {
@@ -55,11 +66,11 @@ export const HomePage = () => {
       await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     } catch (error) {}
   }, []);
-  const dispatch = useAppDispatch();
-  //todo
-  const countdownTournament = useCountdown(1653857541 * 1000, 1000);
+
+  const countdownTournament = useCountdown(countdown * 1000, 1000);
   const queryParams = new URLSearchParams(window.location.search);
   const queryCode = queryParams.get("code");
+  let countdownDate = new Date(countdownTournament);
 
   // @ts-ignore
   useEffect(async () => {
@@ -177,12 +188,11 @@ export const HomePage = () => {
     <div className={style.homePage}>
       <div className={style.inner}>
         <h1>First Tournament starting in:</h1>
-        <p className={style.timer}>
-          {new Date(countdownTournament)
-            .toISOString()
-            .substring(8, 16)
-            .replace("T", ":")}
-        </p>
+        {countdownTournament > 0 ? (
+          <p className={style.timer}>{countdownDate.toISOString()}</p>
+        ) : (
+          <p className={style.timer}>Now</p>
+        )}
 
         <div className={style.links}>
           {links.map((link, index) => (

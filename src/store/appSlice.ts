@@ -43,6 +43,10 @@ const initialState = {
   claimablePrizeAmount: "",
   popUpModalText: "",
   popUpModalTitle: "",
+  oldHighscore: 0,
+  tournamentTimer: 0,
+  gameTimer: 0,
+  voteTimer: 0,
 };
 
 type InitialStateType = typeof initialState;
@@ -125,6 +129,9 @@ export const appSlice = createSlice({
     setHighscoreId: (state, action: PayloadAction<string>) => {
       state.highScoreId = action.payload;
     },
+    setOldHighscore: (state, action: PayloadAction<number>) => {
+      state.oldHighscore = action.payload;
+    },
     setClaimablePrizeAmount: (state, action: PayloadAction<string>) => {
       state.claimablePrizeAmount = action.payload;
     },
@@ -133,6 +140,15 @@ export const appSlice = createSlice({
     },
     setPopUpModalTitle: (state, action: PayloadAction<string>) => {
       state.popUpModalTitle = action.payload;
+    },
+    setTournamentTimer: (state, action: PayloadAction<number>) => {
+      state.tournamentTimer = action.payload;
+    },
+    setGameTimer: (state, action: PayloadAction<number>) => {
+      state.gameTimer = action.payload;
+    },
+    setVoteTimer: (state, action: PayloadAction<number>) => {
+      state.voteTimer = action.payload;
     },
   },
 });
@@ -164,7 +180,11 @@ export const {
   setDNABalance,
   setLifeBalance,
   setHighscoreId,
+  setOldHighscore,
   setClaimablePrizeAmount,
+  setTournamentTimer,
+  setGameTimer,
+  setVoteTimer,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -209,4 +229,10 @@ export const lifeBalance = (state: RootState) => state.app.lifeBalance;
 export const claimPrizeAmount = (state: RootState) =>
   state.app.claimablePrizeAmount;
 export const highScoreId = (state: RootState) => state.app.highScoreId;
+export const oldHighscore = (state: RootState) => state.app.oldHighscore;
+
+export const tournamentTimer = (state: RootState) => state.app.tournamentTimer;
+export const gameTimer = (state: RootState) => state.app.gameTimer;
+export const voteTimer = (state: RootState) => state.app.voteTimer;
+
 export const appReducer = appSlice.reducer;

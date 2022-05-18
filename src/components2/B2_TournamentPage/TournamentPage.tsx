@@ -1,7 +1,8 @@
 import * as React from "react";
 import style from "./TournamentPage.module.scss";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
+  gameTimer,
   setGameplayModal,
   setGameplayUrl,
   setModal,
@@ -10,6 +11,7 @@ import {
   setTournamentsModal,
   setTournamentsWarningModal,
   setVoteModal,
+  voteTimer,
 } from "../../store/appSlice";
 
 import cardBack from "../../assets/png/cards/tournament page/desktop.png";
@@ -29,12 +31,19 @@ import useCountdown from "react-hook-final-countdown";
 import { useEffect, useState } from "react";
 
 export const TournamentPage = () => {
+  const tutorialVideoUrl = "";
   const dispatch = useAppDispatch();
-  //todo
-  const countdownGames = useCountdown(1653857541 * 1000, 1000);
-  const countdownVotes = useCountdown(1653857541 * 1000, 1000);
+  const cdGames = useAppSelector(gameTimer);
+  const cdVotes = useAppSelector(voteTimer);
+  const countdownGames = useCountdown(cdGames * 1000, 1000);
+  const countdownVotes = useCountdown(cdVotes * 1000, 1000);
 
-  console.log();
+  const displayTimerStringGame =
+    countdownGames > 0 ? new Date(countdownGames).toISOString() : "Now";
+
+  const displayTimerStringVote =
+    countdownVotes > 0 ? new Date(countdownVotes).toISOString() : "Now";
+
   const cards = [
     {
       title: "IMPORTANT",
@@ -43,7 +52,7 @@ export const TournamentPage = () => {
       buttonLabel: "TUTORIAL",
       onClick: () => {
         dispatch(setNickname("THE SQUIDS TUTORIAL"));
-        dispatch(setGameplayUrl(""));
+        dispatch(setGameplayUrl(tutorialVideoUrl));
         dispatch(setGameplayModal(true));
         dispatch(setModal(true));
       },
@@ -52,12 +61,7 @@ export const TournamentPage = () => {
       imgClicked: imgClickPlay,
     },
     {
-      title:
-        "Start: " +
-        new Date(countdownGames)
-          .toISOString()
-          .substring(8, 16)
-          .replace("T", ":"),
+      title: "Start: " + displayTimerStringGame,
       icon: cardIcon0,
       buttonLabel: "PLAY",
       onClick: () => {
@@ -69,12 +73,7 @@ export const TournamentPage = () => {
       imgClicked: imgClickPlay,
     },
     {
-      title:
-        "Start: " +
-        new Date(countdownVotes)
-          .toISOString()
-          .substring(8, 16)
-          .replace("T", ":"),
+      title: "Start: " + displayTimerStringVote,
       icon: cardIcon2,
       buttonLabel: "VOTE",
       onClick: () => {

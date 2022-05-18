@@ -18,7 +18,20 @@ import {
   requestSessionId,
   voteHighscore,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
-import { signMessage } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  connectWallet,
+  getConnectedSignerAddress,
+  signMessage,
+} from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
+import {
+  setGameplayModal,
+  setGameplayUrl,
+  setHighscoreId,
+  setLeaderboardModal,
+  setNickname,
+  setOldHighscore,
+} from "../../store/appSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 export const PlayPage = () => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -28,12 +41,17 @@ export const PlayPage = () => {
   const [gameUrl, setGameUrl] = useState("");
   const [inputTextValue, setInputTextValue] = useState("");
   const [leaderboardCardsArray, setLeaderboardCardsArray] = useState([]);
+  const dispatch = useAppDispatch();
 
   // @ts-ignore
   useEffect(async () => {
+    await connectWallet();
     let data = await fetchLeaderboard();
     for (let i = 0; i < data.length; i++) {
       data[i]["index"] = i;
+      if (data[i]["user"]["addr"] === (await getConnectedSignerAddress())) {
+        dispatch(setOldHighscore(data[i]["score"]));
+      }
     }
     setLeaderboardCardsArray(data);
   }, []);
@@ -127,7 +145,16 @@ export const PlayPage = () => {
                         {svgIcons.leaderboardCard}
                       </div>
                       <div className={style.leaderboardCardContent}>
-                        <button>
+                        <button
+                          onClick={() => {
+                            console.log(card["link"]);
+                            dispatch(setLeaderboardModal(false));
+                            dispatch(setGameplayModal(true));
+                            dispatch(setNickname(card["user"]["username"]));
+                            dispatch(setHighscoreId(card["id"]));
+                            dispatch(setGameplayUrl(card["link"]));
+                          }}
+                        >
                           <img src={numberButton} alt="" />
                           <p>{card["index"] + 1}</p>
                         </button>

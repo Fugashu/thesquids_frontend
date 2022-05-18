@@ -13,6 +13,7 @@ import {
   setClaimablePrizeAmount,
   setDiscordUsername,
   setDNABalance,
+  setGameTimer,
   setHomeModalType,
   setLifeBalance,
   setModal,
@@ -20,6 +21,8 @@ import {
   setPopUpModalText,
   setPopUpModalTitle,
   setShowChooseTheCoinModal,
+  setTournamentTimer,
+  setVoteTimer,
   setWalletAddress,
   walletAddress,
 } from "../../../store/appSlice";
@@ -41,6 +44,7 @@ import { backendEndpoint } from "../../../constants";
 import { CojodiNetworkSwitcher } from "../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../../components/cojodi/BackendCalls/chainRpcData";
 import { ethers } from "ethers";
+import { fetchTournamentStats } from "../../../components/cojodi/BackendCalls/BackendCalls";
 
 interface IHeaderButtons {
   className?: string;
@@ -64,13 +68,28 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
         dispatch(setDiscordUsername(userId));
       }
 
+      let result = await fetchTournamentStats();
+      console.log('Timestamps"');
+      console.log(result["tournament_start_timestamp"]);
+      console.log(result["game_start_timestamp"]);
+      console.log(result["game_voting_start_timestamp"]);
+      var date = new Date();
+      var offset = date.getTimezoneOffset();
+
+      let t = result["tournament_start_timestamp"];
+
+      console.log(t);
+      dispatch(setTournamentTimer(t));
+      dispatch(setGameTimer(result["game_start_timestamp"]));
+      dispatch(setVoteTimer(result["game_voting_start_timestamp"]));
+
       let userBalance = ethers.utils.formatEther(
         await mumbaiTournamentContract.userBalances(
           await getConnectedSignerAddress()
         )
       );
-      let userBalanceSrting = userBalance.toString();
-      let num = Number(userBalanceSrting);
+      let userBalanceString = userBalance.toString();
+      let num = Number(userBalanceString);
       dispatch(setClaimablePrizeAmount(num.toFixed(2)));
       let dnaBalanceOfUser = ethers.utils.formatEther(
         await mumbaiTokenContract.balanceOf(await getConnectedSignerAddress())
