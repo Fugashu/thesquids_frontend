@@ -38,11 +38,23 @@ export const TournamentPage = () => {
   const countdownGames = useCountdown(cdGames * 1000, 1000);
   const countdownVotes = useCountdown(cdVotes * 1000, 1000);
 
-  const displayTimerStringGame =
-    countdownGames > 0 ? new Date(countdownGames).toISOString() : "Now";
+  let minGames = countdownGames % (1000 * 3600);
+  let secGames = minGames % (1000 * 60);
+  let gameTime =
+    countdownGames > 0
+      ? `${Math.floor(countdownGames / (1000 * 3600))}:${Math.floor(
+          minGames / (1000 * 60)
+        )}:${Math.floor(secGames / 1000)} `
+      : "Now";
 
-  const displayTimerStringVote =
-    countdownVotes > 0 ? new Date(countdownVotes).toISOString() : "Now";
+  let minVotes = countdownVotes % (1000 * 3600);
+  let secVotes = minVotes % (1000 * 60);
+  let voteTime =
+    countdownVotes > 0
+      ? `${Math.floor(countdownGames / (1000 * 3600))}:${Math.floor(
+          minVotes / (1000 * 60)
+        )}:${Math.floor(secVotes / 1000)} `
+      : "Now";
 
   const cards = [
     {
@@ -61,7 +73,7 @@ export const TournamentPage = () => {
       imgClicked: imgClickPlay,
     },
     {
-      title: "Start: " + displayTimerStringGame,
+      title: "Start: " + gameTime,
       icon: cardIcon0,
       buttonLabel: "PLAY",
       onClick: () => {
@@ -73,7 +85,7 @@ export const TournamentPage = () => {
       imgClicked: imgClickPlay,
     },
     {
-      title: "Start: " + displayTimerStringVote,
+      title: "Start: " + voteTime,
       icon: cardIcon2,
       buttonLabel: "VOTE",
       onClick: () => {

@@ -199,18 +199,6 @@ export const fetchUser = async (userWalletAddr: string) => {
   }
 };
 
-//fixme
-export const fetchTimer = async () => {
-  return 0;
-  try {
-    let res = await get("/user/");
-    console.log(res);
-    // @ts-ignore
-    return res["data"];
-  } catch (e) {
-    return null;
-  }
-};
 export function authorizeWithDiscord() {
   let response_type = "code";
   let client_id = clientId;

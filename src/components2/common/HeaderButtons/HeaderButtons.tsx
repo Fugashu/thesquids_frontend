@@ -37,6 +37,7 @@ import {
   mumbaiTokenContract,
   mumbaiTournamentContract,
   signer,
+  waitForTransactionWithModal,
 } from "../../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { store } from "../../../store/store";
 import axios from "axios";
@@ -113,12 +114,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       label: "Claim",
       onClick: async () => {
         let tx = await mumbaiTournamentContract.claim();
-        dispatch(setShowChooseTheCoinModal(false));
-        dispatch(setPopUpModalTitle("Waiting..."));
-        dispatch(setPopUpModalText(`Waiting for transaction to confirm.`));
-        dispatch(setModal(true));
-        dispatch(setOnPopUpModal(true));
-        await tx.wait();
+        await waitForTransactionWithModal(tx);
       },
     },
 

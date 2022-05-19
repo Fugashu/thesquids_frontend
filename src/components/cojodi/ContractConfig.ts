@@ -678,19 +678,79 @@ export const mumbaiTournamentContractAbi = [
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: "uint256",
+        name: "pricePool",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "numRegisteredUsers",
+        type: "uint256",
+      },
+    ],
+    name: "ResetTournament",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "bytes32", name: "role", type: "bytes32" },
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "previousAdminRole",
+        type: "bytes32",
+      },
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "newAdminRole",
+        type: "bytes32",
+      },
+    ],
+    name: "RoleAdminChanged",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "bytes32", name: "role", type: "bytes32" },
+      {
         indexed: true,
         internalType: "address",
-        name: "previousOwner",
+        name: "account",
         type: "address",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "newOwner",
+        name: "sender",
         type: "address",
       },
     ],
-    name: "OwnershipTransferred",
+    name: "RoleGranted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "bytes32", name: "role", type: "bytes32" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+    ],
+    name: "RoleRevoked",
     type: "event",
   },
   {
@@ -722,6 +782,27 @@ export const mumbaiTournamentContractAbi = [
     ],
     name: "UserRegistered",
     type: "event",
+  },
+  {
+    inputs: [],
+    name: "DEFAULT_ADMIN_ROLE",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "OWNER_ROLE",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "STATE_ROLE",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [{ internalType: "uint256", name: "amount_", type: "uint256" }],
@@ -758,9 +839,36 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "bytes32", name: "role", type: "bytes32" }],
+    name: "getRoleAdmin",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "address", name: "user_", type: "address" }],
     name: "getStake",
     outputs: [{ internalType: "uint256[]", name: "", type: "uint256[]" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "grantRole",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "hasRole",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
     stateMutability: "view",
     type: "function",
   },
@@ -794,16 +902,16 @@ export const mumbaiTournamentContractAbi = [
   },
   {
     inputs: [],
-    name: "owner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "pricePool",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [],
-    name: "pricePool",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
+    inputs: [{ internalType: "uint256", name: "amount_", type: "uint256" }],
+    name: "reducePool",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -814,13 +922,6 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "registeredUsers",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "registrationFee",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
@@ -828,8 +929,11 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "renounceOwnership",
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "renounceRole",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -842,8 +946,11 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "resetOwner",
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "revokeRole",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -909,6 +1016,7 @@ export const mumbaiTournamentContractAbi = [
     inputs: [
       { internalType: "address[]", name: "users_", type: "address[]" },
       { internalType: "uint256[]", name: "amounts_", type: "uint256[]" },
+      { internalType: "uint256", name: "tournamentId_", type: "uint256" },
     ],
     name: "setUserBalances",
     outputs: [],
@@ -952,6 +1060,13 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
+    name: "supportsInterface",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "theSquids",
     outputs: [{ internalType: "contract IERC721", name: "", type: "address" }],
@@ -959,10 +1074,10 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
+    inputs: [],
+    name: "tournamentId",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -1000,7 +1115,7 @@ export const mumbaiTournamentContractAbi = [
   },
 ];
 export const mumbaiTournamentContractAddress =
-  "0xEA05a7f8fff6C60FF775FE86F1e19B123DAfCc3D";
+  "0x92AcbE187Cb1FD3d57a815b006Dbb50FB2Eea408";
 
 export const mumbaiTokenContractAbi = [
   {
@@ -1873,4 +1988,4 @@ export const goerliBridgeContractAbi = [
 export const goerliBridgeContractAddress =
   "0x54049060Cf7586453B45Cc25b990D60648CBED80";
 
-export const maxSupply = 20;
+export const maxSupply = 2000;

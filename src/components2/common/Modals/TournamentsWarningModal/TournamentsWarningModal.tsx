@@ -10,9 +10,9 @@ export const TournamentsWarningModal = () => {
   const dispatch = useAppDispatch();
   const text = [
     "Make sure to read our TOS and policy before entering the tournaments",
-    "You will not be able to purchase lives during the tournament, only before entering",
+    "WATCH OUR TUTORIAL. If you do not follow the exact steps your entry might become invalid.",
     "Test your recording, any entries without a gameplay recording will be voided",
-    "You will need to Stake your Squids in order to enter and pay the $DNA fee to participate",
+    "You need to use Google Chrome or Edge.",
   ];
   const onClose = () => {
     dispatch(setModal(false));

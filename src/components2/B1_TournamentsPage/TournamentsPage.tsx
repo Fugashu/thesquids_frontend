@@ -28,6 +28,7 @@ import {
   getConnectedSignerAddress,
   mumbaiTokenContract,
   mumbaiTournamentContract,
+  mumbaiWethContract,
   signMessage,
   waitForTransactionWithModal,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
@@ -40,7 +41,10 @@ import {
   fetchTournamentStats,
   fetchUser,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
-import { mumbaiTournamentContractAddress } from "../../components/cojodi/ContractConfig";
+import {
+  mumbaiTokenContractAddress,
+  mumbaiTournamentContractAddress,
+} from "../../components/cojodi/ContractConfig";
 
 export const TournamentsPage = () => {
   const [blockEnter, setBlockEnter] = useState(false);
@@ -81,22 +85,32 @@ export const TournamentsPage = () => {
     let priceToPay = await mumbaiTournamentContract.userBasedRegistrationFee(
       await getConnectedSignerAddress()
     );
-    try {
-      let tx = await mumbaiTokenContract.approve(
-        mumbaiTournamentContractAddress,
-        priceToPay
-      );
-      await waitForTransactionWithModal(tx);
-    } catch (e) {
-      displayPopUpModal(EPopUpModal.Error, "DNA approval failed.");
+
+    let allowanceValue = await mumbaiTokenContract.allowance(
+      await getConnectedSignerAddress(),
+      mumbaiTournamentContractAddress
+    );
+
+    if (allowanceValue.lt(priceToPay)) {
+      try {
+        let tx = await mumbaiTokenContract.approve(
+          mumbaiTournamentContractAddress,
+          priceToPay
+        );
+        await waitForTransactionWithModal(tx);
+      } catch (e) {
+        displayPopUpModal(EPopUpModal.Error, "DNA approval failed.");
+      }
     }
 
     try {
       let tx = await mumbaiTournamentContract.register();
       await waitForTransactionWithModal(tx);
-      matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error");
     } catch (e) {
-      displayPopUpModal(EPopUpModal.Error, "Registration failed.");
+      displayPopUpModal(
+        EPopUpModal.Error,
+        "Registration failed. Do you have enough DNA?"
+      );
     }
   };
 
@@ -133,7 +147,7 @@ export const TournamentsPage = () => {
 
   const isUserRegisteredForTournament = async () => {
     let userResult = await fetchUser(await getConnectedSignerAddress());
-    return !!userResult["is_registered"];
+    return userResult["is_registered"];
   };
 
   const hasUserStakedNFT = async () => {

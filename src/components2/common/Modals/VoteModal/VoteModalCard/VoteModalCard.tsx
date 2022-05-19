@@ -61,17 +61,19 @@ export const VoteModalCard: FC<IVoteModalCard> = ({
       />
 
       <div className={style.content}>
-        <Rating
-          max={3}
-          value={value}
-          onChange={onChangeHandler}
-          emptyIcon={svgIcons.ratingIconEmpty}
-          icon={svgIcons.ratingIconFull}
-          className={style.rating}
-        />
+        {value === -1 ? null : (
+          <Rating
+            max={3}
+            value={value}
+            onChange={onChangeHandler}
+            emptyIcon={svgIcons.ratingIconEmpty}
+            icon={svgIcons.ratingIconFull}
+            className={style.rating}
+          />
+        )}
 
         <img className={style.icon} src={link} alt="" />
-        <p className={style.gameName}>{""}</p>
+        <p className={style.gameName}>{value === -1 ? "Stop Games" : ""}</p>
 
         <ButtonCustom
           className={style.voteButton}

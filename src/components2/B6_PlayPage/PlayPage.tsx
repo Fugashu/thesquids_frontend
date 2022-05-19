@@ -47,6 +47,7 @@ export const PlayPage = () => {
   useEffect(async () => {
     await connectWallet();
     let data = await fetchLeaderboard();
+    //todo check if we are in play and
     for (let i = 0; i < data.length; i++) {
       data[i]["index"] = i;
       if (data[i]["user"]["addr"] === (await getConnectedSignerAddress())) {

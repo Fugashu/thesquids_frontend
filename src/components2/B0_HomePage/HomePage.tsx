@@ -39,7 +39,6 @@ import {
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import {
   createUser,
-  fetchTimer,
   fetchTournamentStats,
   getTime,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
@@ -68,6 +67,14 @@ export const HomePage = () => {
   }, []);
 
   const countdownTournament = useCountdown(countdown * 1000, 1000);
+
+  let min = countdownTournament % (1000 * 3600);
+  let sec = min % (1000 * 60);
+
+  let tournamentTime = `${Math.floor(
+    countdownTournament / (1000 * 3600)
+  )}:${Math.floor(min / (1000 * 60))}:${Math.floor(sec / 1000)} `;
+
   const queryParams = new URLSearchParams(window.location.search);
   const queryCode = queryParams.get("code");
   let countdownDate = new Date(countdownTournament);
@@ -189,7 +196,7 @@ export const HomePage = () => {
       <div className={style.inner}>
         <h1>First Tournament starting in:</h1>
         {countdownTournament > 0 ? (
-          <p className={style.timer}>{countdownDate.toISOString()}</p>
+          <p className={style.timer}>{tournamentTime}</p>
         ) : (
           <p className={style.timer}>Now</p>
         )}
