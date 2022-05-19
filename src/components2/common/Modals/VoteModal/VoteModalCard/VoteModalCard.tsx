@@ -71,9 +71,9 @@ export const VoteModalCard: FC<IVoteModalCard> = ({
             className={style.rating}
           />
         )}
+        <p className={style.gameName}>{value === -1 ? "Stop Games" : ""}</p>
 
         <img className={style.icon} src={link} alt="" />
-        <p className={style.gameName}>{value === -1 ? "Stop Games" : ""}</p>
 
         <ButtonCustom
           className={style.voteButton}
