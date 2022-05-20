@@ -18,11 +18,16 @@ import cardBack from "../../assets/png/cards/tournament page/desktop.png";
 import cardIcon0 from "../../assets/png/icons/tournament page/card icon 0.png";
 import cardIcon1 from "../../assets/png/icons/tournament page/card icon 1.png";
 import cardIcon2 from "../../assets/png/icons/tournament page/card icon 2.png";
+import tutorialIcon from "../../assets/png/icons/tutorial_icon.png";
 import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
 
 import imgDefaultPlay from "../../assets/png/buttons/tournament page card/play_default.png";
 import imgHoverPlay from "../../assets/png/buttons/tournament page card/play_hover.png";
 import imgClickPlay from "../../assets/png/buttons/tournament page card/play_clicked.png";
+
+import imgDefaultTutorial from "../../assets/png/buttons/tutorial/tutorial_default.png";
+import imgHoverTutorial from "../../assets/png/buttons/tutorial/tutorial_hover.png";
+import imgClickTutorial from "../../assets/png/buttons/tutorial/tutorial_clicked.png";
 
 import imgDefaultVote from "../../assets/png/buttons/tournament page card/vote_default.png";
 import imgHoverVote from "../../assets/png/buttons/tournament page card/vote_hover.png";
@@ -31,7 +36,6 @@ import useCountdown from "react-hook-final-countdown";
 import { useEffect, useState } from "react";
 
 export const TournamentPage = () => {
-  const tutorialVideoUrl = "";
   const dispatch = useAppDispatch();
   const cdGames = useAppSelector(gameTimer);
   const cdVotes = useAppSelector(voteTimer);
@@ -57,21 +61,6 @@ export const TournamentPage = () => {
       : "Now";
 
   const cards = [
-    {
-      title: "IMPORTANT",
-      //todo tutorial
-      icon: cardIcon0,
-      buttonLabel: "TUTORIAL",
-      onClick: () => {
-        dispatch(setNickname("THE SQUIDS TUTORIAL"));
-        dispatch(setGameplayUrl(tutorialVideoUrl));
-        dispatch(setGameplayModal(true));
-        dispatch(setModal(true));
-      },
-      imgDefault: imgDefaultPlay,
-      imgHover: imgHoverPlay,
-      imgClicked: imgClickPlay,
-    },
     {
       title: "Start: " + gameTime,
       icon: cardIcon0,

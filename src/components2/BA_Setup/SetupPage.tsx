@@ -1,7 +1,10 @@
 import * as React from "react";
 import style from "./SetupPage.module.scss";
 import {
+  setGameplayModal,
+  setGameplayUrl,
   setModal,
+  setNickname,
   setOnPopUpModal,
   setPopUpModalText,
   setPopUpModalTitle,
@@ -19,12 +22,16 @@ import stakeIcon from "../../assets/png/icons/setup_page/staking 1.png";
 import tosIcon from "../../assets/png/icons/setup_page/tos.png";
 import testRecordingIcon from "../../assets/png/icons/setup_page/test recording 1.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { desktopBreakPoint } from "../../constants";
+import { desktopBreakPoint, tutorialVideoUrl } from "../../constants";
 import { useNavigate } from "react-router-dom";
 import {
   displayPopUpModal,
   EPopUpModal,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
+import tutorialIcon from "../../assets/png/icons/tutorial_icon.png";
+import imgDefaultTutorial from "../../assets/png/buttons/tutorial/tutorial_default.png";
+import imgHoverTutorial from "../../assets/png/buttons/tutorial/tutorial_hover.png";
+import imgClickTutorial from "../../assets/png/buttons/tutorial/tutorial_clicked.png";
 export interface IHomeCard {
   label: string;
   to: string;
@@ -38,6 +45,17 @@ export const SetupPage = () => {
   const navigate = useNavigate();
 
   const links = [
+    {
+      icon: tutorialIcon,
+      to: "/app2/setup",
+      label: "Tutorial",
+      onClick: () => {
+        dispatch(setNickname("THE SQUIDS TUTORIAL"));
+        dispatch(setGameplayUrl(tutorialVideoUrl));
+        dispatch(setGameplayModal(true));
+        dispatch(setModal(true));
+      },
+    },
     {
       label: "Stake",
       to: "/app2/stake",
