@@ -64,11 +64,9 @@ export const SetupPage = () => {
     },
     {
       label: "Bridge",
-      to: "/app2/setup",
+      to: "/app2/bridge",
       icon: bridgeIcon,
-      onClick: () => {
-        displayPopUpModal(EPopUpModal.Error, "Bridge is coming soon.");
-      },
+      onClick: () => {},
     },
     {
       label: "Terms of Service",

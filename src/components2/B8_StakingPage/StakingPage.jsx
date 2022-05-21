@@ -39,6 +39,7 @@ export const StakingPage = () => {
   const dispatch = useAppDispatch();
   useEffect(async () => {
     await connectWallet();
+    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     await fetchNFTs();
   }, []);
 

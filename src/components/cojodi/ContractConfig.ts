@@ -2,7 +2,6 @@ export const mintingContractAbi = [
   {
     inputs: [
       { internalType: "address", name: "dev1_", type: "address" },
-      { internalType: "address", name: "dev2_", type: "address" },
       { internalType: "address", name: "projectOwner_", type: "address" },
     ],
     stateMutability: "nonpayable",
@@ -293,6 +292,23 @@ export const mintingContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "uint256", name: "index", type: "uint256" }],
+    name: "tokenByIndex",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "owner", type: "address" },
+      { internalType: "uint256", name: "index", type: "uint256" },
+    ],
+    name: "tokenOfOwnerByIndex",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "tokenURI",
     outputs: [{ internalType: "string", name: "", type: "string" }],
@@ -347,7 +363,7 @@ export const mintingContractAbi = [
   },
 ];
 export const mintingContractAddress =
-  "0x1fed6C2f27Da508997Ef454F33Af0015bd7d22e0";
+  "0x4c1c1642eE5b85aDD737Cf3C14eF62585865E527";
 
 export const mumbaiNFTContractAbi = [
   {
@@ -1612,6 +1628,26 @@ export const mumbaiBridgeContractAbi = [
   {
     anonymous: false,
     inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "childToken",
+        type: "address",
+      },
+      { indexed: true, internalType: "address", name: "user", type: "address" },
+      {
+        indexed: false,
+        internalType: "uint256[]",
+        name: "tokenIds",
+        type: "uint256[]",
+      },
+    ],
+    name: "Deposit",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
       { indexed: false, internalType: "bytes", name: "message", type: "bytes" },
     ],
     name: "MessageSent",
@@ -1763,7 +1799,6 @@ export const mumbaiBridgeContractAbi = [
     inputs: [
       { internalType: "address", name: "childToken_", type: "address" },
       { internalType: "uint256[]", name: "tokenIds_", type: "uint256[]" },
-      { internalType: "bytes", name: "data_", type: "bytes" },
     ],
     name: "withdraw",
     outputs: [],
@@ -1772,7 +1807,7 @@ export const mumbaiBridgeContractAbi = [
   },
 ];
 export const mumbaiBridgeContractAddress =
-  "0xEb892FA693073D04E5a6C6F48FbF4078E5eEe62F";
+  "0xf041267cC7b26607165A018DB09c3d1709A1D716";
 
 export const goerliBridgeContractAbi = [
   {
@@ -1888,7 +1923,6 @@ export const goerliBridgeContractAbi = [
     inputs: [
       { internalType: "address", name: "rootToken_", type: "address" },
       { internalType: "uint256[]", name: "tokenIds_", type: "uint256[]" },
-      { internalType: "bytes", name: "data_", type: "bytes" },
     ],
     name: "deposit",
     outputs: [],
@@ -1986,6 +2020,6 @@ export const goerliBridgeContractAbi = [
   },
 ];
 export const goerliBridgeContractAddress =
-  "0x54049060Cf7586453B45Cc25b990D60648CBED80";
+  "0xfFD719FdB9B27b0b7A63F6a08852b0E68f7167EF";
 
 export const maxSupply = 2000;

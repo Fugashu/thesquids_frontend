@@ -37,11 +37,7 @@ import {
   connectWallet,
   signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
-import {
-  createUser,
-  fetchTournamentStats,
-  getTime,
-} from "../../components/cojodi/BackendCalls/BackendCalls";
+import { createUser } from "../../components/cojodi/BackendCalls/BackendCalls";
 
 import { clientId, clientSecret, redirectUrl } from "../../constants";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";

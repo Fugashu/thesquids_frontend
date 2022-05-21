@@ -133,6 +133,7 @@ export async function setApprovalForAll(
   rootContract: ethers.Contract,
   targetContractAddress: string
 ) {
+  console.log("Trying to set approval");
   let isAlreadyApproved = await rootContract.isApprovedForAll(
     await getConnectedSignerAddress(),
     targetContractAddress
@@ -142,8 +143,7 @@ export async function setApprovalForAll(
     return;
   }
   let tx = await rootContract.setApprovalForAll(targetContractAddress, true);
-
-  await tx.wait();
+  await waitForTransactionWithModal(tx);
 }
 
 export async function signMessage(incomingMessage: Object) {

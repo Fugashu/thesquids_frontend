@@ -23,6 +23,9 @@ const rpcData = {
   rinkeby: {
     chainId: "0x4",
   },
+  goerli: {
+    chainId: "0x5",
+  },
   eth_mainnet: {
     chainId: "0x1",
   },

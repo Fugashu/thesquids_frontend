@@ -9,7 +9,10 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@fxportal/maticjs-fxportal": "^1.1.1",
     "@inlightmedia/react-countdown-timer": "^1.1.2",
+    "@maticnetwork/maticjs": "^3.3.0",
+    "@maticnetwork/maticjs-ethers": "^1.0.2",
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.4.0",
     "@reduxjs/toolkit": "^1.8.1",

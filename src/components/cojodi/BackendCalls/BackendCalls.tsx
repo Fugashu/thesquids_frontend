@@ -252,6 +252,13 @@ export function displayPopUpModal(type: EPopUpModal, text?: string) {
   store.dispatch(setOnPopUpModal(true));
 }
 
-export function getTime() {
-  return Math.floor(new Date().getTime() / 1000);
+export async function fetchUserNFTs(address: string) {
+  try {
+    let res = await get("/user/" + address + "/nfts");
+    console.log(res);
+    // @ts-ignore
+    return res["data"];
+  } catch (e) {
+    return null;
+  }
 }

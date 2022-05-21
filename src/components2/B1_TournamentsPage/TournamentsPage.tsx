@@ -201,7 +201,7 @@ export const TournamentsPage = () => {
       title: "Tournament 1",
       items: [
         { title: "Enter price (DNA)", value: enterPrice },
-        { title: "Price pool (DNA)", value: pricePool },
+        { title: "Prize pool (DNA)", value: pricePool },
         { title: "Participants", value: `${participants}/${maxParticipants}` },
       ],
       onClick: onClickEnter,
