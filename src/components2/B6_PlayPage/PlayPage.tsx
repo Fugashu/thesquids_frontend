@@ -176,7 +176,11 @@ export const PlayPage = () => {
               <>
                 <div className={style.chat}>
                   {messages.map((message, i) => (
-                    <div key={i} className={style.chatItem}>
+                    <div
+                      key={i}
+                      className={style.chatItem}
+                      style={{ overflowY: "scroll", overflowX: "hidden" }}
+                    >
                       <div className={style.back}>{svgIcons.chatItemBack}</div>
                       <p className={style.nickname}>{message["nickname"]}</p>
                       <p className={style.message}>{message["body"]}</p>

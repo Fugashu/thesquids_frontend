@@ -107,7 +107,7 @@ export const BridgePage = () => {
     //we are on eth
     if (currentChainId === 1 || currentChainId === 4 || currentChainId === 5) {
       setIsConnectedToEth(true);
-      // await getNFTsOnETH();
+      await getNFTsOnETH();
       return;
     }
 
