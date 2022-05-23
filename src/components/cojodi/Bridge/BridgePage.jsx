@@ -32,19 +32,23 @@ import imgClick from "../../../assets/png/buttons/staking page button/click.png"
 import imgHover from "../../../assets/png/buttons/staking page button/click.png";
 import { ButtonCustom } from "../../../components2/common/ButtonCustom/ButtonCustom";
 import {
+  displayPopUpModal,
+  EPopUpModal,
   fetchUserNFTs,
   getImageUrlForTokenId,
 } from "../BackendCalls/BackendCalls";
 
 import { useAppDispatch } from "../../../store/hooks";
-import { ethers } from "ethers";
+import { ethers, Wallet } from "ethers";
 const matic = require("@maticnetwork/maticjs");
 const { Web3ClientPlugin } = require("@maticnetwork/maticjs-ethers");
 const { FxPortalClient } = require("@fxportal/maticjs-fxportal");
+
 export const BridgePage = () => {
   const [ownedNFTs, setOwnedNFTs] = useState([]);
   const [isConnectedToEth, setIsConnectedToEth] = useState(false);
   const [txHashValue, setTxHashValue] = useState("");
+  const dispatch = useAppDispatch();
   useEffect(async () => {
     await connectWallet();
     await fetchNFTs();
@@ -80,7 +84,6 @@ export const BridgePage = () => {
   };
 
   async function getNFTsOnETH() {
-    setIsConnectedToEth(true);
     let ownedTokenIds = await fetchUserNFTs(await getConnectedSignerAddress());
 
     console.log(ownedTokenIds);
@@ -103,7 +106,8 @@ export const BridgePage = () => {
 
     //we are on eth
     if (currentChainId === 1 || currentChainId === 4 || currentChainId === 5) {
-      await getNFTsOnETH();
+      setIsConnectedToEth(true);
+      // await getNFTsOnETH();
       return;
     }
 
@@ -130,63 +134,69 @@ export const BridgePage = () => {
   async function claimWithdrawal(txHash) {
     console.log(`trying to claim withdrawal for tx ${txHash}`);
 
+    console.log(window.ethereum);
     matic.use(Web3ClientPlugin);
-    // usefull when we have our own proof api
-    // matic.setProofApi("https://apis.matic.network/");
-    matic.setProofApi("localhost:3000/");
+    matic.setProofApi("https://apis.matic.network/");
+    await window.ethereum.enable();
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     let childProvider, parentProvider;
     parentProvider = new ethers.providers.JsonRpcProvider(
-      "http://goerli.prylabs.net/"
+      "https://rpc.goerli.mudit.blog/"
     );
     childProvider = new ethers.providers.JsonRpcProvider(
       "https://matic-mumbai.chainstacklabs.com"
     );
 
-    // const client = new matic.POSClient();
+    //const type = 'mainnet';
+    //const version = "polygon";
+    const type = "testnet";
+    const version = "mumbai";
+
     const client = new FxPortalClient();
-    /*await client.init({
+    await client.init({
+      log: true,
       network: type,
       version: version,
       parent: {
-        provider: new ethers.Wallet(privateKey, parentProvider),
+        provider: new ethers.Wallet(
+          "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
+          parentProvider
+        ),
         defaultConfig: {
           from: await getConnectedSignerAddress(),
         },
       },
       child: {
-        provider: new ethers.Wallet(privateKey, childProvider),
+        provider: new ethers.Wallet(
+          "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
+          childProvider
+        ),
         defaultConfig: {
           from: await getConnectedSignerAddress(),
         },
       },
-    });*/
+    });
 
-    // 4 not minted
-    // availbel 6 7
-
-    // token id 5
-    // hash = "0x36c96c292aae9070a31356b67acd772344b1b91a4be69219f51fc2e95bc3138e"
-    // hash = "0xdf3040152ed069c645525fe12c19dc672eea444506417f6958a4a9404e729cb3"
-
-    // withdraw batch 36
-    // hash = "0x51c954e90992cfeae12170a61dc0e6833c590c1ef5708ae9bdd49ebabf97b396";
-
-    // withdraw batch 37
-    // hash = "0x7048146fbe082b6b4d1b7cdf8b70da38f94db6cb45e921842634791995556a35";
-
-    // withdraw batch 38,39,40
-    //hash = "0xdc23dc98ef3a5250ea0772cd7b7dc53d4f9a2569eca6d68d1ec82a5908f3367c";
+    console.log(txHash);
 
     let topic =
       "0x8c5261668696ce22758910d05bab8f186d6eb247ceac2af2e82c7dc17669b036";
-    const proof = await client.exitUtil.buildPayloadForExit(
-      txHash,
-      topic,
-      false
-    );
-
-    console.log(proof);
+    try {
+      const proof = await client.exitUtil.buildPayloadForExit(
+        txHash,
+        topic,
+        false
+      );
+      let tx = await goerliBridgeContract.receiveMessage(proof);
+      await waitForTransactionWithModal(tx);
+    } catch (error) {
+      console.log(error);
+      displayPopUpModal(
+        EPopUpModal.Error,
+        "Invalid hash or hash has not been checkpointed yet."
+      );
+    }
   }
   const handleChangeTxHash = (event) => {
     setTxHashValue(event.target.value);
@@ -230,22 +240,28 @@ export const BridgePage = () => {
             imgDesktopClick={imgSwitchPoly}
           />
           <div>
-            <label>
-              Claim Withdrawal:
-              <input
-                type="text"
-                name="name"
-                placeholder="TX HASH"
-                value={txHashValue}
-                onChange={handleChangeTxHash}
-              />
-            </label>
-            <button
-              onClick={() => claimWithdrawal(txHashValue)}
-              value="Claim Withdrawal"
-            >
-              Claim Withdrawal
-            </button>
+            {isConnectedToEth ? (
+              <div className={style.buttonClaim}>
+                <label>
+                  <input
+                    style={{ color: "black" }}
+                    type="text"
+                    name="name"
+                    placeholder="TX HASH"
+                    value={txHashValue}
+                    onChange={handleChangeTxHash}
+                  />
+                </label>
+
+                <button
+                  onClick={() => claimWithdrawal(txHashValue)}
+                  value="Claim Withdrawal"
+                >
+                  <img src={btn} alt="" />
+                  <p>Claim</p>
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
         <div className={style.cards}>

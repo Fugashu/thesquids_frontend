@@ -126,5 +126,38 @@
       }
     }
   }
+
+  .buttonClaim {
+    display: flex;
+justify-content: center;
+    align-items: center;
+    label{
+      display: flex;
+    }
+    button {
+      position: relative;
+      @include button();
+      width: 139px;
+      height: 40px;
+
+      &:last-child {
+        margin-left: 20px;
+      }
+
+      img {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 139px;
+        height: 40px;
+      }
+
+      p {
+        @include absoluteCenter();
+        z-index: 2;
+        @include buttonTextSmall();
+      }
+    }
+  }
 }
 
