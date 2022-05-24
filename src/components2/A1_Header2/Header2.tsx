@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import style from "./Header2.module.scss";
 import logo from "../../assets/png/header2/logo.png";
 import clsx from "clsx";

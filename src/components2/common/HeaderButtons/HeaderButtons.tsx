@@ -45,7 +45,10 @@ import { backendEndpoint } from "../../../constants";
 import { CojodiNetworkSwitcher } from "../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../../components/cojodi/BackendCalls/chainRpcData";
 import { ethers } from "ethers";
-import { fetchTournamentStats } from "../../../components/cojodi/BackendCalls/BackendCalls";
+import {
+  fetchTournamentStats,
+  fetchUser,
+} from "../../../components/cojodi/BackendCalls/BackendCalls";
 
 interface IHeaderButtons {
   className?: string;
@@ -70,17 +73,13 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       }
 
       let result = await fetchTournamentStats();
+      /*
       console.log('Timestamps"');
       console.log(result["tournament_start_timestamp"]);
       console.log(result["game_start_timestamp"]);
-      console.log(result["game_voting_start_timestamp"]);
-      var date = new Date();
-      var offset = date.getTimezoneOffset();
+      console.log(result["game_voting_start_timestamp"]);*/
 
-      let t = result["tournament_start_timestamp"];
-
-      console.log(t);
-      dispatch(setTournamentTimer(t));
+      dispatch(setTournamentTimer(result["tournament_start_timestamp"]));
       dispatch(setGameTimer(result["game_start_timestamp"]));
       dispatch(setVoteTimer(result["game_voting_start_timestamp"]));
 
@@ -99,13 +98,11 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       num = Number(dnaString);
 
       dispatch(setDNABalance(num.toFixed(2)));
-      await axios
-        .get(backendEndpoint + `/user/${await signer.getAddress()}`)
-        .then(function (res) {
-          dispatch(setLifeBalance(res.data.lives));
-        });
+
+      let userResult = await fetchUser(await getConnectedSignerAddress());
+      dispatch(setLifeBalance(userResult["lives"]));
     } catch (error) {}
-  }, [walletAddr]);
+  }, []);
 
   const buttons = [
     {

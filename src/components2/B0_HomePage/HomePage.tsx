@@ -39,7 +39,12 @@ import {
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
 import { createUser } from "../../components/cojodi/BackendCalls/BackendCalls";
 
-import { clientId, clientSecret, redirectUrl } from "../../constants";
+import {
+  clientId,
+  clientSecret,
+  PRODUCTION,
+  redirectUrl,
+} from "../../constants";
 import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
 import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
 import useCountdown from "react-hook-final-countdown";
@@ -58,6 +63,9 @@ export const HomePage = () => {
   useEffect(async () => {
     try {
       await connectWallet();
+      if (PRODUCTION) {
+        await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+      }
       await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     } catch (error) {}
   }, []);

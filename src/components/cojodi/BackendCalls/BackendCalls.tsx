@@ -1,27 +1,11 @@
 import axios from "axios";
 import { backendEndpoint, clientId } from "../../../constants";
-import { CojodiNetworkSwitcher } from "./CojodiNetworkSwitcher";
-import rpcData from "./chainRpcData";
-import {
-  getConnectedSignerAddress,
-  mumbaiNFTContract,
-  mumbaiTokenContract,
-  mumbaiTournamentContract,
-  mumbaiWethContract,
-} from "../MetamaskConnection/MetamaskWallet";
-import {
-  mumbaiTokenContractAbi,
-  mumbaiTokenContractAddress,
-  mumbaiTournamentContractAddress,
-} from "../ContractConfig";
-import { BigNumber } from "ethers";
 import {
   setModal,
   setOnPopUpModal,
   setPopUpModalText,
   setPopUpModalTitle,
 } from "../../../store/appSlice";
-import { useAppDispatch } from "../../../store/hooks";
 import { store } from "../../../store/store";
 
 const post = async (endpoint: string, message: any) => {

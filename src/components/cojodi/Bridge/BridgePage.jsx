@@ -40,6 +40,7 @@ import {
 
 import { useAppDispatch } from "../../../store/hooks";
 import { ethers, Wallet } from "ethers";
+import { PRODUCTION } from "../../../constants";
 const matic = require("@maticnetwork/maticjs");
 const { Web3ClientPlugin } = require("@maticnetwork/maticjs-ethers");
 const { FxPortalClient } = require("@fxportal/maticjs-fxportal");
@@ -210,9 +211,14 @@ export const BridgePage = () => {
         <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
           <ButtonCustom
             className={isConnectedToEth ? null : style.trans}
-            onClick={() =>
-              CojodiNetworkSwitcher.switchToChain(chainRpcData.goerli)
-            }
+            onClick={async () => {
+              if (PRODUCTION) {
+                await CojodiNetworkSwitcher.switchToChain(
+                  chainRpcData.eth_mainnet
+                );
+              }
+              await CojodiNetworkSwitcher.switchToChain(chainRpcData.goerli);
+            }}
             widthMobile={136}
             heightMobile={50}
             widthDesktop={136}
@@ -226,9 +232,12 @@ export const BridgePage = () => {
 
           <ButtonCustom
             className={isConnectedToEth ? style.trans : null}
-            onClick={() =>
-              CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai)
-            }
+            onClick={async () => {
+              if (PRODUCTION) {
+                await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+              }
+              await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+            }}
             widthMobile={136}
             heightMobile={50}
             widthDesktop={136}

@@ -174,8 +174,6 @@ export const LeaderboardModal = () => {
             </div>
           ))}
         </div>
-
-        <div className={style.blur} />
       </div>
     </div>
   );

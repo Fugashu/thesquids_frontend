@@ -168,7 +168,6 @@ export const PlayPage = () => {
                     </div>
                   ))}
                 </div>
-                <div className={style.blur} />
               </>
             )}
 

@@ -32,6 +32,7 @@ import {
   EPopUpModal,
   getImageUrlForTokenId,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
+import { PRODUCTION } from "../../constants";
 
 export const StakingPage = () => {
   const [stakedCount, setStakedCount] = useState(0);
@@ -39,6 +40,9 @@ export const StakingPage = () => {
   const dispatch = useAppDispatch();
   useEffect(async () => {
     await connectWallet();
+    if (PRODUCTION) {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    }
     await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     await fetchNFTs();
   }, []);
@@ -89,6 +93,9 @@ export const StakingPage = () => {
   }
 
   async function fetchNFTs() {
+    if (PRODUCTION) {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    }
     await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     setOwnedNFTs([]);
     setStakedCount(

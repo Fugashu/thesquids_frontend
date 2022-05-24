@@ -17,7 +17,7 @@ import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CloseButton } from "../CloseButton/CloseButton";
 import { TopButton } from "./TopButton/TopButton";
-import { desktopBreakPoint } from "../../../../constants";
+import { desktopBreakPoint, PRODUCTION } from "../../../../constants";
 import { InputCustom } from "./InputCustom/InputCustom";
 import buyBtnDnaMobile from "../../../../assets/png/buttons/choose the coins/dna - buy/mobile.png";
 import buyBtnDnaDesktop from "../../../../assets/png/buttons/choose the coins/dna - buy/desktop.png";
@@ -83,7 +83,12 @@ export const ChooseTheCoinModal = () => {
   // @ts-ignore
   useEffect(async () => {
     await connectWallet();
+
+    if (PRODUCTION) {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    }
     await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+
     setLifePrice(
       ethers.utils.formatEther(await mumbaiTournamentContract.lifeFee())
     );

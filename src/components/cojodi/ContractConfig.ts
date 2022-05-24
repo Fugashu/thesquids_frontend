@@ -1,3 +1,5 @@
+import { PRODUCTION } from "../../constants";
+
 export const mintingContractAbi = [
   {
     inputs: [
@@ -362,8 +364,9 @@ export const mintingContractAbi = [
     type: "function",
   },
 ];
-export const mintingContractAddress =
-  "0x4c1c1642eE5b85aDD737Cf3C14eF62585865E527";
+export const mintingContractAddress = PRODUCTION
+  ? ""
+  : "0x4c1c1642eE5b85aDD737Cf3C14eF62585865E527";
 
 export const mumbaiNFTContractAbi = [
   {
@@ -678,8 +681,9 @@ export const mumbaiNFTContractAbi = [
     type: "function",
   },
 ];
-export const mumbaiNFTContractAddress =
-  "0xfd5fA903Da9102C8c8e44a678dC6Bcba8F5F3088";
+export const mumbaiNFTContractAddress = PRODUCTION
+  ? ""
+  : "0xfd5fA903Da9102C8c8e44a678dC6Bcba8F5F3088";
 
 export const mumbaiTournamentContractAbi = [
   {
@@ -1130,8 +1134,9 @@ export const mumbaiTournamentContractAbi = [
     type: "function",
   },
 ];
-export const mumbaiTournamentContractAddress =
-  "0x92AcbE187Cb1FD3d57a815b006Dbb50FB2Eea408";
+export const mumbaiTournamentContractAddress = PRODUCTION
+  ? ""
+  : "0x92AcbE187Cb1FD3d57a815b006Dbb50FB2Eea408";
 
 export const mumbaiTokenContractAbi = [
   {
@@ -1409,8 +1414,9 @@ export const mumbaiTokenContractAbi = [
     type: "function",
   },
 ];
-export const mumbaiTokenContractAddress =
-  "0x47D4aD526F08B2d7E77344A66C0f8D28dd2f00bB";
+export const mumbaiTokenContractAddress = PRODUCTION
+  ? ""
+  : "0x47D4aD526F08B2d7E77344A66C0f8D28dd2f00bB";
 
 //todo abi weth aus dna contract ziehen
 export const mumbaiWethContractAbi = [
@@ -1616,8 +1622,9 @@ export const mumbaiWethContractAbi = [
     type: "function",
   },
 ];
-export const mumbaiWethContractAddress =
-  "0xA51fed174208E5fF68B9C82164B450Df322190CF";
+export const mumbaiWethContractAddress = PRODUCTION
+  ? ""
+  : "0xA51fed174208E5fF68B9C82164B450Df322190CF";
 
 export const mumbaiBridgeContractAbi = [
   {
@@ -1806,8 +1813,9 @@ export const mumbaiBridgeContractAbi = [
     type: "function",
   },
 ];
-export const mumbaiBridgeContractAddress =
-  "0xf041267cC7b26607165A018DB09c3d1709A1D716";
+export const mumbaiBridgeContractAddress = PRODUCTION
+  ? ""
+  : "0xf041267cC7b26607165A018DB09c3d1709A1D716";
 
 export const goerliBridgeContractAbi = [
   {
@@ -2019,7 +2027,8 @@ export const goerliBridgeContractAbi = [
     type: "function",
   },
 ];
-export const goerliBridgeContractAddress =
-  "0xfFD719FdB9B27b0b7A63F6a08852b0E68f7167EF";
+export const goerliBridgeContractAddress = PRODUCTION
+  ? ""
+  : "0xfFD719FdB9B27b0b7A63F6a08852b0E68f7167EF";
 
 export const maxSupply = 2000;

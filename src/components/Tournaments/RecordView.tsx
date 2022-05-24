@@ -2,7 +2,9 @@ import { useReactMediaRecorder } from "react-media-recorder";
 import * as React from "react";
 import { useState } from "react";
 import {
+  getConnectedSignerAddress,
   mumbaiTournamentContract,
+  signer,
   signMessage,
 } from "../cojodi/MetamaskConnection/MetamaskWallet";
 import style from "./PlayPage.module.scss";
@@ -16,16 +18,20 @@ import {
   displayPopUpModal,
   EPopUpModal,
   fetchTournamentStats,
+  fetchUser,
   patchHighscore,
 } from "../cojodi/BackendCalls/BackendCalls";
 import {
   lifeBalance,
   oldHighscore,
+  setLifeBalance,
   setModal,
   setOnPopUpModal,
 } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { store } from "../../store/store";
+import axios from "axios";
+import { backendEndpoint } from "../../constants";
 
 interface Game {
   handleClick: any;
@@ -37,6 +43,7 @@ const RecordView = (props: Game) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const lives = useAppSelector(lifeBalance);
   const oldScore = useAppSelector(oldHighscore);
+  const dispatch = useAppDispatch();
   const {
     status,
     startRecording,
@@ -51,6 +58,8 @@ const RecordView = (props: Game) => {
     onStop: async (blobUrl, blob) => {
       console.log("callback on stop");
       props.destroyGame();
+      let userResult = await fetchUser(await getConnectedSignerAddress());
+      dispatch(setLifeBalance(userResult["lives"]));
       setIsPlaying(false);
       console.log("old highscore:" + oldScore);
       if (score < oldScore) {
@@ -66,6 +75,7 @@ const RecordView = (props: Game) => {
       );
 
       await upload(blobUrl, blob);
+
       store.dispatch(setModal(false));
       store.dispatch(setOnPopUpModal(false));
     },
