@@ -18,6 +18,7 @@ import {
   setLifeBalance,
   setModal,
   setOnPopUpModal,
+  setPlayersAdvancing,
   setPopUpModalText,
   setPopUpModalTitle,
   setShowChooseTheCoinModal,
@@ -82,6 +83,9 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       dispatch(setTournamentTimer(result["tournament_start_timestamp"]));
       dispatch(setGameTimer(result["game_start_timestamp"]));
       dispatch(setVoteTimer(result["game_voting_start_timestamp"]));
+      if (result["n_players_advancing"] !== undefined) {
+        dispatch(setPlayersAdvancing(result["n_players_advancing"]));
+      }
 
       let userBalance = ethers.utils.formatEther(
         await mumbaiTournamentContract.userBalances(

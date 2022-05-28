@@ -11,7 +11,7 @@ export const Footer2 = () => {
             <SocialIcon key={icon} icon={icon} className={style.icon} />
           ))}
         </div>
-        <p className={style.text}>@2022 | All rights reserved</p>
+        <p className={style.text}>The Squids | All rights reserved</p>
       </div>
     </footer>
   );

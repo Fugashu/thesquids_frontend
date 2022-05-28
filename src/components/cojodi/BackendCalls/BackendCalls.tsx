@@ -202,7 +202,6 @@ export function authorizeWithDiscord() {
 export async function getImageUrlForTokenId(tokenId: number) {
   try {
     let res = await get("/nft/" + tokenId);
-    console.log(res);
     // @ts-ignore
     return res["data"];
   } catch (e) {
@@ -229,11 +228,14 @@ export function displayPopUpModal(type: EPopUpModal, text?: string) {
       text = "Waiting for transaction to confirm.";
       break;
   }
-
-  store.dispatch(setPopUpModalTitle(title));
-  if (text !== undefined) store.dispatch(setPopUpModalText(text));
-  store.dispatch(setModal(true));
-  store.dispatch(setOnPopUpModal(true));
+  try {
+    store.dispatch(setPopUpModalTitle(title));
+    if (text !== undefined) store.dispatch(setPopUpModalText(text));
+    store.dispatch(setModal(true));
+    store.dispatch(setOnPopUpModal(true));
+  } catch (error) {
+    console.log("Could not display popup");
+  }
 }
 
 export async function fetchUserNFTs(address: string) {

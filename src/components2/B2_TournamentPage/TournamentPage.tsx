@@ -3,6 +3,7 @@ import style from "./TournamentPage.module.scss";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   gameTimer,
+  playersAdvancing,
   setGameplayModal,
   setGameplayUrl,
   setModal,
@@ -37,6 +38,7 @@ import { useEffect, useState } from "react";
 
 export const TournamentPage = () => {
   const dispatch = useAppDispatch();
+  const advancing = useAppSelector(playersAdvancing);
   const cdGames = useAppSelector(gameTimer);
   const cdVotes = useAppSelector(voteTimer);
   const countdownGames = useCountdown(cdGames * 1000, 1000);
@@ -137,6 +139,11 @@ export const TournamentPage = () => {
           )
         )}
       </div>
+      {advancing === undefined || advancing === 0 ? null : (
+        <p style={{ display: "flex", justifyContent: "center" }}>
+          Only {advancing} players will advance to the next round
+        </p>
+      )}
     </div>
   );
 };

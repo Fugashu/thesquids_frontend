@@ -47,6 +47,7 @@ const initialState = {
   tournamentTimer: 0,
   gameTimer: 0,
   voteTimer: 0,
+  playersAdvancing: 0,
 };
 
 type InitialStateType = typeof initialState;
@@ -150,6 +151,9 @@ export const appSlice = createSlice({
     setVoteTimer: (state, action: PayloadAction<number>) => {
       state.voteTimer = action.payload;
     },
+    setPlayersAdvancing: (state, action: PayloadAction<number>) => {
+      state.voteTimer = action.payload;
+    },
   },
 });
 
@@ -185,6 +189,7 @@ export const {
   setTournamentTimer,
   setGameTimer,
   setVoteTimer,
+  setPlayersAdvancing,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -234,5 +239,6 @@ export const oldHighscore = (state: RootState) => state.app.oldHighscore;
 export const tournamentTimer = (state: RootState) => state.app.tournamentTimer;
 export const gameTimer = (state: RootState) => state.app.gameTimer;
 export const voteTimer = (state: RootState) => state.app.voteTimer;
-
+export const playersAdvancing = (state: RootState) =>
+  state.app.playersAdvancing;
 export const appReducer = appSlice.reducer;

@@ -18,6 +18,7 @@ import { LootBoxPage } from "../../components2/B4_LootBoxPage/LootBoxPage";
 import { MarketplacePage } from "../../components2/B9_MarketplacePage/MarketplacePage";
 import { SetupPage } from "../../components2/BA_Setup/SetupPage";
 import { BridgePage } from "../cojodi/Bridge/BridgePage";
+import { TutorialPage } from "../../components2/BB_TutorialPage/TutorialPage";
 
 export const AppContainer = () => {
   AOS.init();
@@ -36,7 +37,8 @@ export const AppContainer = () => {
             <Route path="play" element={<PlayPage />} />
             <Route path="tournament" element={<TournamentPage />} />
             <Route path="stake" element={<StakingPage />} />
-            {/* <Route path="bridge" element={<BridgePage />} />*/}
+            {/* <Route path="tutorials" element={<TutorialPage />} />*/}
+            <Route path="bridge" element={<BridgePage />} />
             <Route path="marketplace" element={<MarketplacePage />} />
             <Route path="setup" element={<SetupPage />} />
           </Route>

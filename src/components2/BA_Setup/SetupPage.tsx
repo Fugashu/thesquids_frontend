@@ -48,7 +48,8 @@ export const SetupPage = () => {
     {
       icon: tutorialIcon,
       to: "/app2/setup",
-      label: "Tutorial",
+      //to: "/app2/tutorials",
+      label: "Tutorials",
       onClick: () => {
         dispatch(setNickname("THE SQUIDS TUTORIAL"));
         dispatch(setGameplayUrl(tutorialVideoUrl));

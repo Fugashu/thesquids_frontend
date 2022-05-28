@@ -35,7 +35,7 @@ export const VoteModal = () => {
       .then((result) => {
         setCards(result.data);
       });
-  }, [cards]);
+  }, []);
 
   const ref = useRef<HTMLDivElement>(null);
 
