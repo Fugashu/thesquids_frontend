@@ -248,3 +248,14 @@ export async function fetchUserNFTs(address: string) {
     return null;
   }
 }
+
+export async function fetchWinnersForTournament(tournamentId: number) {
+  try {
+    let res = await get("/tournament/winners/" + tournamentId);
+    console.log(res);
+    // @ts-ignore
+    return res["data"];
+  } catch (e) {
+    return [];
+  }
+}

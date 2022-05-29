@@ -33,6 +33,7 @@ import claimImg from "../../../assets/png/header2/btn2.png";
 
 import src2 from "../../../assets/png/buttons/metamaskBtnIdle.png";
 import {
+  addTokenToMetamask,
   connectWallet,
   getConnectedSignerAddress,
   mumbaiTokenContract,
@@ -50,6 +51,7 @@ import {
   fetchTournamentStats,
   fetchUser,
 } from "../../../components/cojodi/BackendCalls/BackendCalls";
+import { mumbaiTokenContractAddress } from "../../../components/cojodi/ContractConfig";
 
 interface IHeaderButtons {
   className?: string;
@@ -84,6 +86,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       dispatch(setGameTimer(result["game_start_timestamp"]));
       dispatch(setVoteTimer(result["game_voting_start_timestamp"]));
       if (result["n_players_advancing"] !== undefined) {
+        console.log(result["n_players_advancing"]);
         dispatch(setPlayersAdvancing(result["n_players_advancing"]));
       }
 
@@ -147,6 +150,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       label: nickName,
       onClick: () => {
         dispatch(setBurgerOpen(false));
+        addTokenToMetamask(mumbaiTokenContractAddress, 18, "DNA");
       },
     },
   ];

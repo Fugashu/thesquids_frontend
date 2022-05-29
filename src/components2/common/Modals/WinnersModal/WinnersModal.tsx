@@ -1,7 +1,7 @@
 import * as React from "react";
-import style from "./LeaderboardModal.module.scss";
+import style from "./WinnersModal.module.scss";
 import { useEffect, useRef, useState } from "react";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import {
   setGameplayModal,
   setGameplayUrl,
@@ -10,6 +10,8 @@ import {
   setNickname,
   setHighscoreId,
   setShowVerifiedButtons,
+  setWinnersModal,
+  winnerCards,
 } from "../../../../store/appSlice";
 import { useOutsideClick } from "../../../../hooks/useOutsideClick";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -32,20 +34,15 @@ import imgDesktopHover from "../../../../assets/png/buttons/leaderboard modal - 
 import imgDesktopClick from "../../../../assets/png/buttons/leaderboard modal - watch replay/desktopClick.png";
 import { fetchLeaderboard } from "../../../../components/cojodi/BackendCalls/BackendCalls";
 
-export const LeaderboardModal = () => {
-  const [cards, setCards] = useState([]);
-  // @ts-ignore
-  useEffect(async () => {
-    setCards(await fetchLeaderboard());
-  }, []);
+export const WinnersModal = () => {
+  const dispatch = useAppDispatch();
+  const cards = useAppSelector(winnerCards);
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const dispatch = useAppDispatch();
-
   const onClose = () => {
     dispatch(setModal(false));
-    dispatch(setLeaderboardModal(false));
+    dispatch(setWinnersModal(false));
   };
 
   useOutsideClick(ref, onClose);
@@ -62,7 +59,7 @@ export const LeaderboardModal = () => {
           alt=""
         />
 
-        <p className={style.title}>Leaderboard</p>
+        <p className={style.title}>Winners</p>
 
         <div className={style.cardsHeader}>
           <p>Avatar</p>
@@ -72,7 +69,7 @@ export const LeaderboardModal = () => {
         </div>
 
         <div className={style.cards}>
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <div className={style.card} key={card["user"]["addr"]}>
               <img
                 className={style.cardBack}
@@ -168,7 +165,7 @@ export const LeaderboardModal = () => {
                       {card["user"]["votes_left"] ? (
                         <p>{`${card["user"]["votes_left"]} Replays left`}</p>
                       ) : null}
-                      <p>Earn $1 DNA</p>
+                      <p>Rank {index + 1}</p>
                     </div>
                   </div>
                 </div>

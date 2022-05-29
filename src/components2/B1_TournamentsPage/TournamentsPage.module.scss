@@ -151,6 +151,17 @@
         }
 
       }
+      .trophy {
+        display: block;
+        margin-top: 24px;
+        width: 280px;
+        height: 200px;
+        @include desktop() {
+          width: 280px;
+          height: 200px;
+        }
+
+      }
 
 
     }

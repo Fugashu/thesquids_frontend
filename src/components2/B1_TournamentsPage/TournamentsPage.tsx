@@ -4,10 +4,16 @@ import style from "./TournamentsPage.module.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CardItem } from "./CardItem/CardItem";
 import { useAppDispatch } from "../../store/hooks";
-import { setLeaderboardModal, setModal } from "../../store/appSlice";
+import {
+  setLeaderboardModal,
+  setModal,
+  setWinnerCards,
+  setWinnersModal,
+} from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
 import { desktopBreakPoint } from "../../constants";
 import sandTimerIcon from "../../assets/png/icons/sandTimer.png";
+import thropyIcon from "../../assets/png/icons/home page/card icon 0.png";
 import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
 
 // leaderboard
@@ -23,6 +29,9 @@ import desktopDefault from "../../assets/png/buttons/tournaments page - enter/en
 import mobileClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
 import desktopClick from "../../assets/png/buttons/tournaments page - enter/enter_clicked.png";
 import desktopHover from "../../assets/png/buttons/tournaments page - enter/enter_hover.png";
+
+//winners
+
 import {
   connectWallet,
   getConnectedSignerAddress,
@@ -40,6 +49,7 @@ import {
   EPopUpModal,
   fetchTournamentStats,
   fetchUser,
+  fetchWinnersForTournament,
 } from "../../components/cojodi/BackendCalls/BackendCalls";
 import {
   mumbaiTokenContractAddress,
@@ -198,7 +208,7 @@ export const TournamentsPage = () => {
 
   const cards = [
     {
-      title: "Tournament 1",
+      title: "Tournament Now",
       items: [
         { title: "Enter price (DNA)", value: enterPrice },
         { title: "Prize pool (DNA)", value: pricePool },
@@ -206,17 +216,6 @@ export const TournamentsPage = () => {
       ],
       onClick: onClickEnter,
     },
-    // {
-    //     title: "Tournament 2",
-    //     items: [
-    //         {title: "Enter price", value: "3 $DNA "},
-    //         {title: "Price pool", value: "10 $DNA "},
-    //         {title: "Participant", value: "5/500"},
-    //     ],
-    //     onClick: () => {
-    //         matchDesktop ? navigate("/app2/tournament") : navigate("/app2/error")
-    //     }
-    // },
   ];
 
   const dispatch = useAppDispatch();
@@ -225,6 +224,12 @@ export const TournamentsPage = () => {
     dispatch(setLeaderboardModal(true));
   };
 
+  const openWinnersModal = async (tournamentId: number) => {
+    let winners = await fetchWinnersForTournament(tournamentId);
+    dispatch(setWinnerCards(winners));
+    dispatch(setModal(true));
+    dispatch(setWinnersModal(true));
+  };
   return (
     <div className={style.tournamentsPage}>
       <div className={style.inner}>
@@ -284,9 +289,24 @@ export const TournamentsPage = () => {
           ))}
           <CardItem>
             <>
-              <p className={style.title}>Tournament 2</p>
-              <p className={style.soon}>soon</p>
-              <img className={style.sandTimer} src={sandTimerIcon} alt="" />
+              <p className={style.title}>Tournament 1</p>
+              <p className={style.soon}>ENDED</p>
+              <img className={style.trophy} src={thropyIcon} alt="" />
+              <ButtonCustom
+                className={style.enterBtn}
+                onClick={() => openWinnersModal(8)}
+                widthMobile={240}
+                heightMobile={40}
+                widthDesktop={294}
+                heightDesktop={40}
+                imgMobileDefault={mobileDefault}
+                imgMobileClick={mobileClick}
+                imgDesktopDefault={desktopDefault}
+                imgDesktopHover={desktopHover}
+                imgDesktopClick={desktopClick}
+              >
+                <p>Winners</p>
+              </ButtonCustom>
             </>
           </CardItem>
           <CardItem>

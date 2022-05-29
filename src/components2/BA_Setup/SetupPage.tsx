@@ -8,6 +8,7 @@ import {
   setOnPopUpModal,
   setPopUpModalText,
   setPopUpModalTitle,
+  setShowVerifiedButtons,
   setTestRecordingModal,
   setTOSModal,
   setTournamentsWarningModal,
@@ -47,15 +48,10 @@ export const SetupPage = () => {
   const links = [
     {
       icon: tutorialIcon,
-      to: "/app2/setup",
-      //to: "/app2/tutorials",
+      //to: "/app2/setup",
+      to: "/app2/tutorials",
       label: "Tutorials",
-      onClick: () => {
-        dispatch(setNickname("THE SQUIDS TUTORIAL"));
-        dispatch(setGameplayUrl(tutorialVideoUrl));
-        dispatch(setGameplayModal(true));
-        dispatch(setModal(true));
-      },
+      onClick: () => {},
     },
     {
       label: "Stake",

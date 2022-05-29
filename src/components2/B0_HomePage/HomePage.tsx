@@ -1,43 +1,29 @@
 import * as React from "react";
+import { useEffect } from "react";
 import style from "./HomePage.module.scss";
 import {
-  dnaBuyAmount,
   setDiscordUsername,
-  setDNABalance,
-  setGameTimer,
-  setLifeBalance,
   setModal,
   setOnPopUpModal,
   setPopUpModalText,
   setPopUpModalTitle,
-  setTestRecordingModal,
-  setTournamentsWarningModal,
-  setTournamentTimer,
-  setVoteTimer,
-  setWalletAddress,
   tournamentTimer,
-  walletAddress,
 } from "../../store/appSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { svgIcons } from "../../assets/svg/svgIcons";
 import { HomeCard } from "./HomeCard/HomeCard";
-import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
-
-import btnDefault from "../../assets/png/buttons/enter/default.png";
-import btnHover from "../../assets/png/buttons/enter/hover.png";
-import btnClick from "../../assets/png/buttons/enter/click.png";
 import cardIcon0 from "../../assets/png/icons/home page/card icon 0.png";
 import cardIcon1 from "../../assets/png/icons/home page/card icon 1.png";
-import cardIcon2 from "../../assets/png/icons/home page/card icon 2.png";
-import cardIcon3 from "../../assets/png/icons/home page/card icon 3.png";
 import setupIcon from "../../assets/png/icons/home page/setup.png";
-import { useEffect } from "react";
 import DiscordOauth2 from "discord-oauth2";
 import {
   connectWallet,
   signMessage,
 } from "../../components/cojodi/MetamaskConnection/MetamaskWallet";
-import { createUser } from "../../components/cojodi/BackendCalls/BackendCalls";
+import {
+  createUser,
+  displayPopUpModal,
+  EPopUpModal,
+} from "../../components/cojodi/BackendCalls/BackendCalls";
 
 import {
   clientId,
@@ -118,7 +104,17 @@ export const HomePage = () => {
           try {
             oauth.getUser(value.access_token).then(async (user) => {
               console.log(user);
-              window.localStorage.setItem("discordUserName", user.username);
+              const regexExp =
+                /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi;
+              if (regexExp.test(user.username)) {
+                displayPopUpModal(
+                  EPopUpModal.Error,
+                  "Special characters/emojis are forbidden."
+                );
+                return;
+              }
+              if (user.username)
+                window.localStorage.setItem("discordUserName", user.username);
               window.localStorage.setItem("discordUserId", user.id);
               if (typeof user.avatar === "string") {
                 window.localStorage.setItem("discordUserAvatar", user.avatar);

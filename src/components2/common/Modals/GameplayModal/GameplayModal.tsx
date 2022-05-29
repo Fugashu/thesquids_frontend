@@ -9,6 +9,7 @@ import {
   setGameplayModal,
   setHighscoreId,
   setModal,
+  verifiedButtonsActive,
 } from "../../../../store/appSlice";
 import { useOutsideClick } from "../../../../hooks/useOutsideClick";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -42,6 +43,7 @@ export const GameplayModal = () => {
   const scoreId = useAppSelector(highScoreId);
   const nickname = useAppSelector(selectNickname);
   const videoUrl = useAppSelector(gameplayUrl);
+  const showVerifiedButtons = useAppSelector(verifiedButtonsActive);
   const dispatch = useAppDispatch();
 
   const onClose = () => {
@@ -76,7 +78,7 @@ export const GameplayModal = () => {
 
         <p className={style.title}>
           <span>{nickname}</span>
-          {nickname === "THE SQUIDS TUTORIAL" ? null : <span> Gameplay</span>}
+          {showVerifiedButtons ? <span> Gameplay</span> : null}
         </p>
 
         <div className={style.field}>
@@ -93,7 +95,7 @@ export const GameplayModal = () => {
             src={videoUrl + "?title=0&byline=0&portrait=0"}
           />
         </div>
-        {nickname === "THE SQUIDS TUTORIAL" ? null : (
+        {showVerifiedButtons ? (
           <div className={style.buttons}>
             <ButtonCustom
               className={style.legitBtn}
@@ -127,7 +129,7 @@ export const GameplayModal = () => {
               <p>Suspect</p>
             </ButtonCustom>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

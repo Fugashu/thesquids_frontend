@@ -30,6 +30,7 @@ import {
   setLeaderboardModal,
   setNickname,
   setOldHighscore,
+  setShowVerifiedButtons,
 } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
 
@@ -47,7 +48,6 @@ export const PlayPage = () => {
   useEffect(async () => {
     await connectWallet();
     let data = await fetchLeaderboard();
-    //todo check if we are in play and
     for (let i = 0; i < data.length; i++) {
       data[i]["index"] = i;
       if (data[i]["user"]["addr"] === (await getConnectedSignerAddress())) {
@@ -152,6 +152,8 @@ export const PlayPage = () => {
                             dispatch(setLeaderboardModal(false));
                             dispatch(setGameplayModal(true));
                             dispatch(setNickname(card["user"]["username"]));
+                            dispatch(setShowVerifiedButtons(true));
+
                             dispatch(setHighscoreId(card["id"]));
                             dispatch(setGameplayUrl(card["link"]));
                           }}

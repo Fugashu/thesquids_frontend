@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import style from "./TutorialPage.scss";
+import style from "./TutorialPage.module.scss";
 import { svgIcons } from "../../assets/svg/svgIcons";
 
 import btn from "../../assets/png/buttons/staking page button/desktop.png";
@@ -25,6 +25,7 @@ import {
   setGameplayUrl,
   setModal,
   setNickname,
+  setShowVerifiedButtons,
 } from "../../store/appSlice";
 import { useAppDispatch } from "../../store/hooks";
 
@@ -36,19 +37,20 @@ export const TutorialPage = () => {
     {
       id: 1,
       image: "",
-      videoTitle: "",
-      videoUrl: "",
+      videoTitle: "Vid1",
+      videoUrl: "https://player.vimeo.com/video/712188045",
     },
     {
       id: 2,
       image: "",
-      videoTitle: "",
-      videoUrl: "",
+      videoTitle: "Vid2",
+      videoUrl: "https://player.vimeo.com/video/712188045",
     },
   ];
 
   const watch = (name, url) => {
     dispatch(setNickname(name));
+    dispatch(setShowVerifiedButtons(false));
     dispatch(setGameplayUrl(url));
     dispatch(setGameplayModal(true));
     dispatch(setModal(true));
@@ -65,7 +67,7 @@ export const TutorialPage = () => {
             <div className={style.card} key={tutorial.id}>
               <div className={style.back}>{svgIcons.stackingPageCardBack}</div>
               <div className={style.content}>
-                <img src={tutorial["image"]} alt="" className={style.nftGif} />
+                <img src={tutorial.image} alt="" className={style.nftGif} />
                 <div className={style.buttons}>
                   <ButtonCustom
                     className={style.btnStaking}

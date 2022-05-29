@@ -52,6 +52,29 @@ window.onload = async function () {
   await connectWallet();
 };
 
+export async function addTokenToMetamask(
+  tokenAddress: string,
+  tokenDecimals: number,
+  tokenSymbol: string
+) {
+  try {
+    // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+    const wasAdded = await window.ethereum.request({
+      method: "wallet_watchAsset",
+      params: {
+        type: "ERC20", // Initially only supports ERC20, but eventually more!
+        options: {
+          address: tokenAddress, // The address that the token is at.
+          symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+          decimals: tokenDecimals, // The number of decimals in the token
+        },
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function connectWallet() {
   provider = new ethers.providers.Web3Provider(window.ethereum, "any");
   await provider.send("eth_requestAccounts", []);

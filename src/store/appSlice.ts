@@ -29,6 +29,7 @@ const initialState = {
   stakingNftErrorModal: false,
   openBoxModal: false,
   voteModal: false,
+  winnersModal: false,
   testRecordingModal: false,
   timeLeftModal: false,
   tournamentsModal: false,
@@ -48,6 +49,8 @@ const initialState = {
   gameTimer: 0,
   voteTimer: 0,
   playersAdvancing: 0,
+  verifiedButtonsActive: true,
+  winnerCards: [],
 };
 
 type InitialStateType = typeof initialState;
@@ -154,6 +157,16 @@ export const appSlice = createSlice({
     setPlayersAdvancing: (state, action: PayloadAction<number>) => {
       state.voteTimer = action.payload;
     },
+    setShowVerifiedButtons: (state, action: PayloadAction<boolean>) => {
+      state.verifiedButtonsActive = action.payload;
+    },
+
+    setWinnersModal: (state, action: PayloadAction<boolean>) => {
+      state.winnersModal = action.payload;
+    },
+    setWinnerCards: (state, action: PayloadAction<any>) => {
+      state.winnerCards = action.payload;
+    },
   },
 });
 
@@ -190,6 +203,9 @@ export const {
   setGameTimer,
   setVoteTimer,
   setPlayersAdvancing,
+  setShowVerifiedButtons,
+  setWinnersModal,
+  setWinnerCards,
 } = appSlice.actions;
 
 export const selectBurgerOpen = (state: RootState) => state.app.burgerOpen;
@@ -239,6 +255,10 @@ export const oldHighscore = (state: RootState) => state.app.oldHighscore;
 export const tournamentTimer = (state: RootState) => state.app.tournamentTimer;
 export const gameTimer = (state: RootState) => state.app.gameTimer;
 export const voteTimer = (state: RootState) => state.app.voteTimer;
+export const winnerCards = (state: RootState) => state.app.winnerCards;
+export const selectWinnersModal = (state: RootState) => state.app.winnersModal;
+export const verifiedButtonsActive = (state: RootState) =>
+  state.app.verifiedButtonsActive;
 export const playersAdvancing = (state: RootState) =>
   state.app.playersAdvancing;
 export const appReducer = appSlice.reducer;

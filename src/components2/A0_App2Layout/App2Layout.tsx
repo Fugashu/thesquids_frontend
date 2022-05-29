@@ -16,6 +16,7 @@ import {
   selectTournamentsTOSModal,
   selectTournamentsWarningModal,
   selectVoteModal,
+  selectWinnersModal,
 } from "../../store/appSlice";
 import { Header2 } from "../A1_Header2/Header2";
 import { BurgerMenu2 } from "../A3_BurgerMenu2/BurgerMenu2";
@@ -35,6 +36,7 @@ import { TimeLeftModal } from "../common/Modals/TimeLeftModal/TimeLeftModal";
 import { TournamentsModal } from "../common/Modals/TournamentsModal/TournamentsModal";
 import { TournamentsTOSModal } from "../common/Modals/TournamentsTOSModal/TournamentsTosModal";
 import { PopUpModal } from "../common/Modals/PopUpModal/PopUpModal";
+import { WinnersModal } from "../common/Modals/WinnersModal/WinnersModal";
 
 export const App2Layout = () => {
   const showChooseTheCoinModal = useAppSelector(selectShowChooseTheCoinModal);
@@ -50,6 +52,7 @@ export const App2Layout = () => {
   const tournamentsModal = useAppSelector(selectTournamentsModal);
   const tosModal = useAppSelector(selectTournamentsTOSModal);
   const onPopUpModal = useAppSelector(selectPopUpModal);
+  const winnersModal = useAppSelector(selectWinnersModal);
   return (
     <div
       className={clsx({
@@ -64,6 +67,7 @@ export const App2Layout = () => {
       {showChooseTheCoinModal && <ChooseTheCoinModal />}
       {tournamentsWarningModal && <TournamentsWarningModal />}
       {leaderboardModal && <LeaderboardModal />}
+      {winnersModal && <WinnersModal />}
       {gameplayModal && <GameplayModal />}
       {stakingNftErrorModal && <StakingNftErrorModal />}
       {voteModal && <VoteModal />}

@@ -1,7 +1,8 @@
 .tournamentsPage {
   height: 100%;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage {
+@media all and (min-width: 1224px) {
+  .tournamentsPage {
     min-height: 940px;
     height: 100vh;
   }
@@ -11,7 +12,8 @@
   box-sizing: border-box;
   padding: 104px 0 157px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner {
     padding: 164px 0 0;
     width: 1160px;
     margin: 0 auto;
@@ -22,7 +24,8 @@
   flex-direction: column;
   align-items: center;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .titleBlock {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .titleBlock {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -35,41 +38,21 @@
   line-height: 145%;
   text-align: center;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .titleBlock .title {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .titleBlock .title {
     font-size: 42px;
     line-height: 150%;
   }
 }
-.tournamentsPage .inner .titleBlock .btn {
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-  position: relative;
+.tournamentsPage .inner .titleBlock .leaderboardBtn {
   margin-top: 24px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .titleBlock .btn {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .titleBlock .leaderboardBtn {
     margin-top: 0;
   }
 }
-.tournamentsPage .inner .titleBlock .btn img {
-  display: block;
-  position: relative;
-  z-index: 1;
-  width: 287px;
-  height: 75px;
-}
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .titleBlock .btn img {
-    width: 360px;
-    height: 75px;
-  }
-}
-.tournamentsPage .inner .titleBlock .btn span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+.tournamentsPage .inner .titleBlock .leaderboardBtn p {
   font-family: "Press Start 2P", cursive;
   font-style: normal;
   font-weight: normal;
@@ -85,7 +68,8 @@
   align-items: center;
   margin-top: 32px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards {
     flex-direction: row;
     justify-content: center;
     margin-top: 64px;
@@ -98,14 +82,16 @@
   font-size: 17px;
   line-height: 160%;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .title {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .title {
     font-size: 24px;
   }
 }
 .tournamentsPage .inner .cards .items {
   margin-top: 24px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .items {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .items {
     margin-top: 32px;
   }
 }
@@ -117,7 +103,8 @@
 .tournamentsPage .inner .cards .items .item:not(:first-child) {
   margin-top: 24px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .items .item:not(:first-child) {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .items .item:not(:first-child) {
     margin-top: 28px;
   }
 }
@@ -128,7 +115,8 @@
   font-size: 10px;
   line-height: 135%;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .items .item .title {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .items .item .title {
     font-size: 14px;
   }
 }
@@ -142,35 +130,20 @@
   text-transform: uppercase;
   color: #E7B223;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .items .item .value {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .items .item .value {
     font-size: 24px;
   }
 }
 .tournamentsPage .inner .cards .enterBtn {
-  position: relative;
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
   margin-top: 23px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .enterBtn {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .enterBtn {
     margin-top: 32px;
   }
 }
-.tournamentsPage .inner .cards .enterBtn img {
-  display: block;
-  position: relative;
-  z-index: 1;
-  width: 240px;
-  height: 40px;
-}
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .enterBtn img {
-    width: 294px;
-    height: 40px;
-  }
-}
-.tournamentsPage .inner .cards .enterBtn span {
+.tournamentsPage .inner .cards .enterBtn p {
   font-family: "Press Start 2P", cursive;
   font-style: normal;
   font-weight: normal;
@@ -179,11 +152,6 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #715021;
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 .tournamentsPage .inner .cards .soon {
   margin-top: 24px;
@@ -195,29 +163,34 @@
   text-transform: uppercase;
   color: #E7B223;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .soon {
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .soon {
     margin-top: 28px;
     font-size: 24px;
   }
 }
 .tournamentsPage .inner .cards .sandTimer {
-  margin-top: 44px;
-  width: 332px;
-  height: 265px;
+  display: block;
+  margin-top: 24px;
+  width: 249px;
+  height: 199px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .sandTimer {
-    margin-top: 57px;
-    width: 164px;
-    height: 222px;
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .sandTimer {
+    width: 332px;
+    height: 265px;
   }
 }
-.tournamentsPage .inner .cards .sandTimer svg {
-  width: 140px;
-  height: 190px;
+.tournamentsPage .inner .cards .trophy {
+  display: block;
+  margin-top: 24px;
+  width: 280px;
+  height: 200px;
 }
-@media all and (min-width: 1224px) {  .tournamentsPage .inner .cards .sandTimer svg {
-    width: 164px;
-    height: 222px;
+@media all and (min-width: 1224px) {
+  .tournamentsPage .inner .cards .trophy {
+    width: 280px;
+    height: 200px;
   }
 }
 

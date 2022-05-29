@@ -37,7 +37,7 @@ export const AppContainer = () => {
             <Route path="play" element={<PlayPage />} />
             <Route path="tournament" element={<TournamentPage />} />
             <Route path="stake" element={<StakingPage />} />
-            {/* <Route path="tutorials" element={<TutorialPage />} />*/}
+            <Route path="tutorials" element={<TutorialPage />} />
             <Route path="bridge" element={<BridgePage />} />
             <Route path="marketplace" element={<MarketplacePage />} />
             <Route path="setup" element={<SetupPage />} />
