@@ -107,7 +107,9 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       dispatch(setDNABalance(num.toFixed(2)));
 
       let userResult = await fetchUser(await getConnectedSignerAddress());
-      dispatch(setLifeBalance(userResult["lives"]));
+      if (userResult["lives"] !== null) {
+        dispatch(setLifeBalance(userResult["lives"]));
+      }
     } catch (error) {}
   }, []);
 

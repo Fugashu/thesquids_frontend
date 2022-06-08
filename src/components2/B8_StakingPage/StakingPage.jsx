@@ -42,8 +42,9 @@ export const StakingPage = () => {
     await connectWallet();
     if (PRODUCTION) {
       await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    } else {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     }
-    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     await fetchNFTs();
   }, []);
 
@@ -95,8 +96,10 @@ export const StakingPage = () => {
   async function fetchNFTs() {
     if (PRODUCTION) {
       await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    } else {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     }
-    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+
     setOwnedNFTs([]);
     setStakedCount(
       await mumbaiTournamentContract.stakedBalance(

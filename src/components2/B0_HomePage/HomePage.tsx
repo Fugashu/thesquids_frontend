@@ -51,8 +51,9 @@ export const HomePage = () => {
       await connectWallet();
       if (PRODUCTION) {
         await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+      } else {
+        await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
       }
-      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
     } catch (error) {}
   }, []);
 

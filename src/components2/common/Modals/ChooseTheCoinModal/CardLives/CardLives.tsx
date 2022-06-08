@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import * as React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { desktopBreakPoint } from "../../../../../constants";
+import { desktopBreakPoint, PRODUCTION } from "../../../../../constants";
 import style from "./CardLives.module.scss";
 import { ICardLives } from "../ChooseTheCoinModal";
 import btnMobile from "../../../../../assets/png/buttons/choose the coins/buyNowMobile.png";
@@ -37,6 +37,8 @@ import {
   setShowChooseTheCoinModal,
 } from "../../../../../store/appSlice";
 import { useAppDispatch } from "../../../../../store/hooks";
+import { CojodiNetworkSwitcher } from "../../../../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../../../../../components/cojodi/BackendCalls/chainRpcData";
 
 export const CardLives: FC<ICardLives> = ({ lives, value }) => {
   const matchDesktop = useMediaQuery(`(min-width:${desktopBreakPoint}px)`);
@@ -44,12 +46,18 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
   const [click, setClick] = useState(false);
   const dispatch = useAppDispatch();
   const buyLives = async (numberOfLives: number) => {
+    if (PRODUCTION) {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    } else {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+    }
     let balance: BigNumber = await mumbaiTokenContract.balanceOf(
       await getConnectedSignerAddress()
     );
+
     let lifePrice: BigNumber = await mumbaiTournamentContract.lifeFee();
 
-    console.log(lifePrice);
+    console.log("The price of one life: " + lifePrice);
 
     let dnaAmount = lifePrice.mul(numberOfLives);
 

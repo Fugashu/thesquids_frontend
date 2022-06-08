@@ -11,7 +11,7 @@ import {
   setWinnersModal,
 } from "../../store/appSlice";
 import { useNavigate } from "react-router-dom";
-import { desktopBreakPoint } from "../../constants";
+import { desktopBreakPoint, PRODUCTION } from "../../constants";
 import sandTimerIcon from "../../assets/png/icons/sandTimer.png";
 import thropyIcon from "../../assets/png/icons/home page/card icon 0.png";
 import { ButtonCustom } from "../common/ButtonCustom/ButtonCustom";
@@ -55,6 +55,8 @@ import {
   mumbaiTokenContractAddress,
   mumbaiTournamentContractAddress,
 } from "../../components/cojodi/ContractConfig";
+import { CojodiNetworkSwitcher } from "../../components/cojodi/BackendCalls/CojodiNetworkSwitcher";
+import chainRpcData from "../../components/cojodi/BackendCalls/chainRpcData";
 
 export const TournamentsPage = () => {
   const [blockEnter, setBlockEnter] = useState(false);
@@ -173,6 +175,11 @@ export const TournamentsPage = () => {
   };
 
   const onClickEnter = async () => {
+    if (PRODUCTION) {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    } else {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+    }
     if (!isDiscordAuthorized()) {
       authorizeWithDiscord();
       return;

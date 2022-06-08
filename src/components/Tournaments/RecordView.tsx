@@ -59,7 +59,9 @@ const RecordView = (props: Game) => {
       console.log("callback on stop");
       props.destroyGame();
       let userResult = await fetchUser(await getConnectedSignerAddress());
-      dispatch(setLifeBalance(userResult["lives"]));
+      if (userResult["lives"] !== null) {
+        dispatch(setLifeBalance(userResult["lives"]));
+      }
       setIsPlaying(false);
       console.log("old highscore:" + oldScore);
       if (score < oldScore) {

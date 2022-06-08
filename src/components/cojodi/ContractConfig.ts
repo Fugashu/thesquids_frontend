@@ -294,23 +294,6 @@ export const mintingContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "index", type: "uint256" }],
-    name: "tokenByIndex",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "owner", type: "address" },
-      { internalType: "uint256", name: "index", type: "uint256" },
-    ],
-    name: "tokenOfOwnerByIndex",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "tokenURI",
     outputs: [{ internalType: "string", name: "", type: "string" }],
@@ -365,7 +348,7 @@ export const mintingContractAbi = [
   },
 ];
 export const mintingContractAddress = PRODUCTION
-  ? ""
+  ? "0x1fed6C2f27Da508997Ef454F33Af0015bd7d22e0"
   : "0x4c1c1642eE5b85aDD737Cf3C14eF62585865E527";
 
 export const mumbaiNFTContractAbi = [
@@ -531,16 +514,6 @@ export const mumbaiNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "address", name: "to_", type: "address" },
-      { internalType: "uint256", name: "amount_", type: "uint256" },
-    ],
-    name: "mintOwner",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "name",
     outputs: [{ internalType: "string", name: "", type: "string" }],
@@ -682,7 +655,7 @@ export const mumbaiNFTContractAbi = [
   },
 ];
 export const mumbaiNFTContractAddress = PRODUCTION
-  ? ""
+  ? "0x643E6C34aB284DD4c8a0485fC6FD667CA94AF930"
   : "0xfd5fA903Da9102C8c8e44a678dC6Bcba8F5F3088";
 
 export const mumbaiTournamentContractAbi = [
@@ -1135,7 +1108,7 @@ export const mumbaiTournamentContractAbi = [
   },
 ];
 export const mumbaiTournamentContractAddress = PRODUCTION
-  ? ""
+  ? "0xf838e8778FEFc29367D5f13974EeA8267F0FD86A"
   : "0x92AcbE187Cb1FD3d57a815b006Dbb50FB2Eea408";
 
 export const mumbaiTokenContractAbi = [
@@ -1172,20 +1145,61 @@ export const mumbaiTokenContractAbi = [
   {
     anonymous: false,
     inputs: [
+      { indexed: true, internalType: "bytes32", name: "role", type: "bytes32" },
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "previousAdminRole",
+        type: "bytes32",
+      },
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "newAdminRole",
+        type: "bytes32",
+      },
+    ],
+    name: "RoleAdminChanged",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "bytes32", name: "role", type: "bytes32" },
       {
         indexed: true,
         internalType: "address",
-        name: "previousOwner",
+        name: "account",
         type: "address",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "newOwner",
+        name: "sender",
         type: "address",
       },
     ],
-    name: "OwnershipTransferred",
+    name: "RoleGranted",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "bytes32", name: "role", type: "bytes32" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+    ],
+    name: "RoleRevoked",
     type: "event",
   },
   {
@@ -1202,6 +1216,20 @@ export const mumbaiTokenContractAbi = [
     ],
     name: "Transfer",
     type: "event",
+  },
+  {
+    inputs: [],
+    name: "DEFAULT_ADMIN_ROLE",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "OWNER_ROLE",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [
@@ -1286,6 +1314,33 @@ export const mumbaiTokenContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "bytes32", name: "role", type: "bytes32" }],
+    name: "getRoleAdmin",
+    outputs: [{ internalType: "bytes32", name: "", type: "bytes32" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "grantRole",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "hasRole",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       { internalType: "address", name: "spender", type: "address" },
       { internalType: "uint256", name: "addedValue", type: "uint256" },
@@ -1304,21 +1359,27 @@ export const mumbaiTokenContractAbi = [
   },
   {
     inputs: [],
-    name: "owner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "price",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [],
-    name: "renounceOwnership",
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "renounceRole",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "role", type: "bytes32" },
+      { internalType: "address", name: "account", type: "address" },
+    ],
+    name: "revokeRole",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -1335,6 +1396,13 @@ export const mumbaiTokenContractAbi = [
     name: "setWETH",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
+    name: "supportsInterface",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -1380,13 +1448,6 @@ export const mumbaiTokenContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "weth",
     outputs: [{ internalType: "address", name: "", type: "address" }],
@@ -1415,7 +1476,7 @@ export const mumbaiTokenContractAbi = [
   },
 ];
 export const mumbaiTokenContractAddress = PRODUCTION
-  ? ""
+  ? "0x1fed6C2f27Da508997Ef454F33Af0015bd7d22e0"
   : "0x47D4aD526F08B2d7E77344A66C0f8D28dd2f00bB";
 
 //todo abi weth aus dna contract ziehen
@@ -1623,7 +1684,7 @@ export const mumbaiWethContractAbi = [
   },
 ];
 export const mumbaiWethContractAddress = PRODUCTION
-  ? ""
+  ? "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
   : "0xA51fed174208E5fF68B9C82164B450Df322190CF";
 
 export const mumbaiBridgeContractAbi = [
@@ -1814,7 +1875,7 @@ export const mumbaiBridgeContractAbi = [
   },
 ];
 export const mumbaiBridgeContractAddress = PRODUCTION
-  ? ""
+  ? "0xf9fa2A8214986D9D94553e9D1C2993fBEa8Dd000"
   : "0xf041267cC7b26607165A018DB09c3d1709A1D716";
 
 export const goerliBridgeContractAbi = [
@@ -2028,7 +2089,7 @@ export const goerliBridgeContractAbi = [
   },
 ];
 export const goerliBridgeContractAddress = PRODUCTION
-  ? ""
+  ? "0x0b58E77a8Dec2f67dDb0b12925F77210585246e5"
   : "0xfFD719FdB9B27b0b7A63F6a08852b0E68f7167EF";
 
 export const maxSupply = 2000;

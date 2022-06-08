@@ -259,3 +259,14 @@ export async function fetchWinnersForTournament(tournamentId: number) {
     return [];
   }
 }
+
+export async function fetchGameTutorial() {
+  try {
+    let res = await get("/tournament/game/tutorial");
+    console.log(res);
+    // @ts-ignore
+    return res["data"];
+  } catch (e) {
+    return [];
+  }
+}

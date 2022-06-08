@@ -12,6 +12,7 @@ import useChat from "../../components/cojodi/Chat/useChat";
 import axios from "axios";
 import { backendEndpoint } from "../../constants";
 import {
+  fetchGameTutorial,
   fetchLeaderboard,
   fetchTournamentStats,
   requestGameUrl,
@@ -48,6 +49,10 @@ export const PlayPage = () => {
   useEffect(async () => {
     await connectWallet();
     let data = await fetchLeaderboard();
+
+    //todo fetch current game tutorial and set game url
+    setGameUrl(await fetchGameTutorial());
+
     for (let i = 0; i < data.length; i++) {
       data[i]["index"] = i;
       if (data[i]["user"]["addr"] === (await getConnectedSignerAddress())) {

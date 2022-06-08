@@ -1,7 +1,7 @@
 const rpcData = {
   matic: {
     chainId: "0x89",
-    rpcUrls: ["https://rpc-mainnet.matic.network/"],
+    rpcUrls: ["https://matic-mainnet.chainstacklabs.com"],
     chainName: "Matic Mainnet",
     currencyName: "MATIC",
     symbol: "MATIC",

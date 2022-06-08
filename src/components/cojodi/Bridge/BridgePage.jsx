@@ -216,8 +216,9 @@ export const BridgePage = () => {
                 await CojodiNetworkSwitcher.switchToChain(
                   chainRpcData.eth_mainnet
                 );
+              } else {
+                await CojodiNetworkSwitcher.switchToChain(chainRpcData.goerli);
               }
-              await CojodiNetworkSwitcher.switchToChain(chainRpcData.goerli);
             }}
             widthMobile={136}
             heightMobile={50}
@@ -235,8 +236,9 @@ export const BridgePage = () => {
             onClick={async () => {
               if (PRODUCTION) {
                 await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+              } else {
+                await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
               }
-              await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
             }}
             widthMobile={136}
             heightMobile={50}

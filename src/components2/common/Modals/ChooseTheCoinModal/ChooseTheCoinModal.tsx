@@ -84,14 +84,10 @@ export const ChooseTheCoinModal = () => {
   useEffect(async () => {
     await connectWallet();
 
-    if (PRODUCTION) {
-      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
-    }
-    await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
-
     setLifePrice(
       ethers.utils.formatEther(await mumbaiTournamentContract.lifeFee())
     );
+
     let gweiPrice = ethers.utils.formatEther(await mumbaiTokenContract.price());
     console.log(gweiPrice);
 
@@ -100,6 +96,11 @@ export const ChooseTheCoinModal = () => {
   }, [dnaAmount]);
 
   const buyDNA = async (tokenAmount: number) => {
+    if (PRODUCTION) {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.matic);
+    } else {
+      await CojodiNetworkSwitcher.switchToChain(chainRpcData.mumbai);
+    }
     let balance: BigNumber = await mumbaiWethContract.balanceOf(
       await getConnectedSignerAddress()
     );
