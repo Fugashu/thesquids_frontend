@@ -32,6 +32,9 @@ import desktopHover from "../../assets/png/buttons/tournaments page - enter/ente
 
 //winners
 
+import winnersIdle from "../../assets/png/buttons/tournaments page - enter/winners_idle.png";
+import winnersClick from "../../assets/png/buttons/tournaments page - enter/winners_click.png";
+import winnersHover from "../../assets/png/buttons/tournaments page - enter/winners_hover.png";
 import {
   connectWallet,
   getConnectedSignerAddress,
@@ -306,13 +309,13 @@ export const TournamentsPage = () => {
                 heightMobile={40}
                 widthDesktop={294}
                 heightDesktop={40}
-                imgMobileDefault={mobileDefault}
-                imgMobileClick={mobileClick}
-                imgDesktopDefault={desktopDefault}
-                imgDesktopHover={desktopHover}
-                imgDesktopClick={desktopClick}
+                imgMobileDefault={winnersIdle}
+                imgMobileClick={winnersClick}
+                imgDesktopDefault={winnersIdle}
+                imgDesktopHover={winnersHover}
+                imgDesktopClick={winnersClick}
               >
-                <p>Winners</p>
+                <p></p>
               </ButtonCustom>
             </>
           </CardItem>
