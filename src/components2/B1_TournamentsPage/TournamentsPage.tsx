@@ -218,7 +218,7 @@ export const TournamentsPage = () => {
 
   const cards = [
     {
-      title: "Tournament Now",
+      title: "Tournament 0",
       items: [
         { title: "Enter price (DNA)", value: enterPrice },
         { title: "Prize pool (DNA)", value: pricePool },
@@ -321,7 +321,7 @@ export const TournamentsPage = () => {
           </CardItem>
           <CardItem>
             <>
-              <p className={style.title}>Tournament 3</p>
+              <p className={style.title}>Tournament 2</p>
               <p className={style.soon}>soon</p>
               <img className={style.sandTimer} src={sandTimerIcon} alt="" />
             </>

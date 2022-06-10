@@ -1,7 +1,9 @@
 export const PRODUCTION = true;
 
 export const desktopBreakPoint = 1224;
-export const backendEndpoint = "https://minting.dns.army";
+export const backendEndpoint = PRODUCTION
+  ? "https://minting.dns.army"
+  : "https://minting.dns.army/test";
 export const clientSecret = "-3SU_sNnbtvMOgWnhSPcJxRV3QOa0JnZ";
 export const clientId = "970248803808587797";
 export const redirectUrl = PRODUCTION

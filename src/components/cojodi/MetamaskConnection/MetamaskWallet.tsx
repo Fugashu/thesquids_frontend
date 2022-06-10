@@ -22,6 +22,7 @@ import {
 } from "../../../store/appSlice";
 import { store } from "../../../store/store";
 import { displayPopUpModal, EPopUpModal } from "../BackendCalls/BackendCalls";
+import squidImg from "../../../../src/assets/png/logo512.png";
 let stringify = require("json-stable-stringify");
 
 export var signer: ethers.Signer;
@@ -67,6 +68,7 @@ export async function addTokenToMetamask(
           address: tokenAddress, // The address that the token is at.
           symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
           decimals: tokenDecimals, // The number of decimals in the token
+          image: squidImg,
         },
       },
     });

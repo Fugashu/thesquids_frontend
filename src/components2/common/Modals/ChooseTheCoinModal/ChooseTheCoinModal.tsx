@@ -206,6 +206,17 @@ export const ChooseTheCoinModal = () => {
             >
               <p>BUY</p>
             </ButtonCustom>
+            <a
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "1rem",
+              }}
+              href={"https://google.com"}
+            >
+              Purchase DNA on UniSwap
+            </a>
           </div>
         )}
 

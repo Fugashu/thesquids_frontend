@@ -48,6 +48,49 @@ export const TutorialPage = () => {
     },
   ];
 
+  const tutorialGitbook = [
+    {
+      title: "Connect to the website",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/connect-to-the-website",
+    },
+    {
+      title: "Buy $DNA",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/buy-usddna",
+    },
+    {
+      title: "Buy Lives",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/buy-lives",
+    },
+    {
+      title: "Bridge your NFT",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/bridge-your-nft",
+    },
+    {
+      title: "Stake your NFT",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/stake-your-nft",
+    },
+    {
+      title: "Enter a tournament",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/enter-a-tournament",
+    },
+    {
+      title: "Vote",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/vote",
+    },
+    {
+      title: "Play",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/play",
+    },
+    {
+      title: "Watch games and earn $DNA",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/watch-games-and-earn-usddna",
+    },
+    {
+      title: "Claim your prizes",
+      link: "https://the-squids-nft.gitbook.io/docs/tutorials/claim-your-prizes",
+    },
+  ];
+
   const watch = (name, url) => {
     dispatch(setNickname(name));
     dispatch(setShowVerifiedButtons(false));
@@ -62,7 +105,22 @@ export const TutorialPage = () => {
         <div className={style.titleBlock}>
           <h2 className={style.title}>Tutorials:</h2>
         </div>
-        <div className={style.cards}>
+        <br />
+        {tutorialGitbook.map((item, index) => (
+          <a
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "1rem",
+              textDecoration: "none",
+            }}
+            href={item.link}
+          >
+            <p className={style.text}>{item.title}</p>
+          </a>
+        ))}
+
+        {/*todo <div className={style.cards}>
           {tutorials.map((tutorial) => (
             <div className={style.card} key={tutorial.id}>
               <div className={style.back}>{svgIcons.stackingPageCardBack}</div>
@@ -90,7 +148,7 @@ export const TutorialPage = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div>*/}
       </div>
     </div>
   );
