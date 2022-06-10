@@ -142,17 +142,23 @@ export const BridgePage = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     let childProvider, parentProvider;
-    parentProvider = new ethers.providers.JsonRpcProvider(
-      "https://rpc.goerli.mudit.blog/"
-    );
-    childProvider = new ethers.providers.JsonRpcProvider(
-      "https://matic-mumbai.chainstacklabs.com"
-    );
 
-    //const type = 'mainnet';
-    //const version = "polygon";
-    const type = "testnet";
-    const version = "mumbai";
+    parentProvider = PRODUCTION
+      ? new ethers.providers.JsonRpcProvider(
+          "https://main-light.eth.linkpool.io"
+        )
+      : new ethers.providers.JsonRpcProvider("https://rpc.goerli.mudit.blog/");
+
+    childProvider = PRODUCTION
+      ? new ethers.providers.JsonRpcProvider(
+          "https://matic-mainnet.chainstacklabs.com"
+        )
+      : new ethers.providers.JsonRpcProvider(
+          "https://matic-mumbai.chainstacklabs.com"
+        );
+
+    const type = PRODUCTION ? "mainnet" : "testnet";
+    const version = PRODUCTION ? "v1" : "mumbai";
 
     const client = new FxPortalClient();
     await client.init({

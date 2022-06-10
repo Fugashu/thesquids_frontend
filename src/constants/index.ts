@@ -1,4 +1,4 @@
-export const PRODUCTION = true;
+export const PRODUCTION = false;
 
 export const desktopBreakPoint = 1224;
 export const backendEndpoint = PRODUCTION

@@ -84,6 +84,8 @@ export const TournamentsPage = () => {
     let pricePool = ethers.utils.formatEther(
       await mumbaiTournamentContract.pricePool()
     );
+    let pricePoolWithDNA = parseFloat(pricePool) + 400;
+
     let maxParticipants = await mumbaiTournamentContract.maxUsers();
 
     let result = await fetchTournamentStats();
@@ -92,7 +94,7 @@ export const TournamentsPage = () => {
 
     console.log(await mumbaiTournamentContract.maxUsers());
     setEnterPrice(num.toFixed(2));
-    setPricePool(pricePool);
+    setPricePool(pricePoolWithDNA.toString());
     setMaxParticipants(maxParticipants);
   }, []);
 
