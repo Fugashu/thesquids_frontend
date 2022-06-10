@@ -213,7 +213,7 @@ export const ChooseTheCoinModal = () => {
                 alignItems: "center",
                 marginTop: "1rem",
               }}
-              href={"https://google.com"}
+              href={"https://app.uniswap.org/#/pool/136485?chain=polygon"}
             >
               Purchase DNA on UniSwap
             </a>
