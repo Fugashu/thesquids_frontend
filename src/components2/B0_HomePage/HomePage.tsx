@@ -128,9 +128,9 @@ export const HomePage = () => {
                 //avatar_hash: window.localStorage.getItem("discordUserAvatar"),
               };
 
-              let signedMessage = await signMessage(ob);
-              console.log(signedMessage);
-              await createUser(signedMessage);
+              // let signedMessage = await signMessage(ob);
+              //console.log(signedMessage);
+              //await createUser(signedMessage);
             });
           } catch (e) {
             console.log("Could not get the user");
