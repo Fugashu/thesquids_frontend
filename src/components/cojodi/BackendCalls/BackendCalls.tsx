@@ -7,6 +7,7 @@ import {
   setPopUpModalTitle,
 } from "../../../store/appSlice";
 import { store } from "../../../store/store";
+import { signMessage } from "../MetamaskConnection/MetamaskWallet";
 
 const post = async (endpoint: string, message: any) => {
   return await axios
@@ -179,6 +180,18 @@ export const fetchUser = async (userWalletAddr: string) => {
     // @ts-ignore
     return res["data"];
   } catch (e) {
+    let idString = window.localStorage.getItem("discordUserId");
+    if (idString !== null) {
+      let ob = {
+        id: parseInt(idString),
+        username: window.localStorage.getItem("discordUserName"),
+      };
+
+      let signedMessage = await signMessage(ob);
+      await createUser(signedMessage);
+      return;
+    }
+    displayPopUpModal(EPopUpModal.Error, "Could not create User");
     return null;
   }
 };
