@@ -87,6 +87,7 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
       dispatch(setVoteTimer(result["game_voting_start_timestamp"]));
       if (result["n_players_advancing"] !== undefined) {
         console.log(result["n_players_advancing"]);
+
         dispatch(setPlayersAdvancing(result["n_players_advancing"]));
       }
 

@@ -155,7 +155,7 @@ export const appSlice = createSlice({
       state.voteTimer = action.payload;
     },
     setPlayersAdvancing: (state, action: PayloadAction<number>) => {
-      state.voteTimer = action.payload;
+      state.playersAdvancing = action.payload;
     },
     setShowVerifiedButtons: (state, action: PayloadAction<boolean>) => {
       state.verifiedButtonsActive = action.payload;
