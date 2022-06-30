@@ -11,7 +11,6 @@ import imgSwitchPoly from "../../../assets/png/buttons/staking page button/switc
 
 import {
   goerliBridgeContractAddress,
-  maxSupply,
   mintingContractAddress,
   mumbaiBridgeContractAddress,
   mumbaiNFTContractAddress,
@@ -145,7 +144,7 @@ export const BridgePage = () => {
 
     parentProvider = PRODUCTION
       ? new ethers.providers.JsonRpcProvider(
-          "https://main-light.eth.linkpool.io"
+          "https://minting.dns.army/geth/mainnet"
         )
       : new ethers.providers.JsonRpcProvider("https://rpc.goerli.mudit.blog/");
 

@@ -2091,5 +2091,3 @@ export const goerliBridgeContractAbi = [
 export const goerliBridgeContractAddress = PRODUCTION
   ? "0x0b58E77a8Dec2f67dDb0b12925F77210585246e5"
   : "0xfFD719FdB9B27b0b7A63F6a08852b0E68f7167EF";
-
-export const maxSupply = 2000;
