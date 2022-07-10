@@ -57,7 +57,7 @@ export const TournamentPage = () => {
   let secVotes = minVotes % (1000 * 60);
   let voteTime =
     countdownVotes > 0
-      ? `${Math.floor(countdownGames / (1000 * 3600))}:${Math.floor(
+      ? `${Math.floor(countdownVotes / (1000 * 3600))}:${Math.floor(
           minVotes / (1000 * 60)
         )}:${Math.floor(secVotes / 1000)} `
       : "Now";
