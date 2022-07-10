@@ -51,14 +51,14 @@ import { mumbaiTokenContractAddress } from "../../../../components/cojodi/Contra
 
 export interface ICardLives {
   lives: number;
-  value: number;
+  value: string;
 }
 
 const cards: ICardLives[] = [
-  { lives: 1, value: -1 },
-  { lives: 2, value: -1 },
-  { lives: 3, value: -1 },
-  { lives: 10, value: -1 },
+  { lives: 3, value: "-1" },
+  { lives: 6, value: "-1" },
+  { lives: 9, value: "-1" },
+  { lives: 30, value: "-1" },
 ];
 
 export const ChooseTheCoinModal = () => {
@@ -227,11 +227,7 @@ export const ChooseTheCoinModal = () => {
             )}
 
             {cards.map((card, index) => (
-              <CardLives
-                key={index}
-                lives={card.lives}
-                value={parseInt(lifePrice)}
-              />
+              <CardLives key={index} lives={card.lives} value={lifePrice} />
             ))}
           </div>
         )}

@@ -168,7 +168,7 @@ export const LeaderboardModal = () => {
                       {card["user"]["votes_left"] ? (
                         <p>{`${card["user"]["votes_left"]} Replays left`}</p>
                       ) : null}
-                      <p>Earn $1 DNA</p>
+                      <p>Earn $DNA</p>
                     </div>
                   </div>
                 </div>

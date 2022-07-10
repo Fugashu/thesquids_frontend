@@ -59,6 +59,9 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
 
     console.log("The price of one life: " + lifePrice);
 
+    numberOfLives = parseInt(String(numberOfLives / 3));
+    console.log("numberof lives" + numberOfLives);
+
     let dnaAmount = lifePrice.mul(numberOfLives);
 
     if (balance.lt(dnaAmount)) {
@@ -115,7 +118,7 @@ export const CardLives: FC<ICardLives> = ({ lives, value }) => {
         }`}</p>
 
         <div className={style.compassBlock}>
-          <p>{lives * value}</p>
+          <p>{((parseFloat(value) * lives) / 3).toFixed(2)}</p>
           <img src={dnaicon} alt="" />
         </div>
 
