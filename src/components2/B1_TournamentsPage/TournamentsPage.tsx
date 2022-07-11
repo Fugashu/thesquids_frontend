@@ -211,7 +211,10 @@ export const TournamentsPage = () => {
     }
 
     if (!(await isUserRegisteredForTournament())) {
-      displayPopUpModal(EPopUpModal.Info, "Registration is not open.");
+      displayPopUpModal(
+        EPopUpModal.Info,
+        "Registration is not open or a tournament is ongoing."
+      );
       return;
     }
 
