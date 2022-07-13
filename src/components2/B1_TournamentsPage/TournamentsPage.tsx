@@ -84,7 +84,7 @@ export const TournamentsPage = () => {
     let pricePool = ethers.utils.formatEther(
       await mumbaiTournamentContract.pricePool()
     );
-    let pricePoolWithDNA = parseFloat(pricePool) + 400;
+    let pricePoolWithDNA = parseFloat(pricePool);
 
     let maxParticipants = await mumbaiTournamentContract.maxUsers();
 
@@ -309,7 +309,7 @@ export const TournamentsPage = () => {
               <img className={style.trophy} src={thropyIcon} alt="" />
               <ButtonCustom
                 className={style.enterBtn}
-                onClick={() => openWinnersModal(8)}
+                onClick={() => openWinnersModal(1)}
                 widthMobile={240}
                 heightMobile={40}
                 widthDesktop={294}
