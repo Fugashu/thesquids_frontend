@@ -89,7 +89,6 @@ export const PlayPage = () => {
     if (session_id === "") {
       return false;
     }
-
     setGameUrl(backendEndpoint + "/tournament/game/" + session_id);
     return true;
   };

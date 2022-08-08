@@ -149,9 +149,7 @@ export const BridgePage = () => {
       : new ethers.providers.JsonRpcProvider("https://rpc.goerli.mudit.blog/");
 
     childProvider = PRODUCTION
-      ? new ethers.providers.JsonRpcProvider(
-          "https://matic-mainnet.chainstacklabs.com"
-        )
+      ? new ethers.providers.JsonRpcProvider("https://polygon-rpc.com")
       : new ethers.providers.JsonRpcProvider(
           "https://matic-mumbai.chainstacklabs.com"
         );
