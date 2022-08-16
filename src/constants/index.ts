@@ -2,8 +2,8 @@ export const PRODUCTION = true;
 
 export const desktopBreakPoint = 1224;
 export const backendEndpoint = PRODUCTION
-  ? "https://minting.dns.army"
-  : "https://minting.dns.army/test";
+  ? "https://thesquids.cojodi.com"
+  : "https://thesquids.cojodi.com/test";
 export const clientSecret = PRODUCTION
   ? "-3SU_sNnbtvMOgWnhSPcJxRV3QOa0JnZ"
   : "JT-iFy9whjkxdlfBc35AU28UPb7hN5ON";

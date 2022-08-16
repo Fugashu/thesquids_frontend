@@ -4,7 +4,7 @@ import { discordUserName } from "../../../store/appSlice";
 import { useAppSelector } from "../../../store/hooks";
 
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // Name of the event
-const SOCKET_SERVER_URL = "https://minting.dns.army/squids/chat";
+const SOCKET_SERVER_URL = "https://thesquids.cojodi.com/chat";
 
 const useChat = (roomId) => {
   const nick = useAppSelector(discordUserName);
