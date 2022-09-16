@@ -143,9 +143,12 @@ export const BridgePage = () => {
     let childProvider, parentProvider;
 
     parentProvider = PRODUCTION
-      ? new ethers.providers.JsonRpcProvider(
-          "https://minting.dns.army/geth/mainnet"
-        )
+      ? new ethers.providers.JsonRpcProvider({
+          url: "https://mainnet.eth.cojodi.com",
+          headers: {
+            ["Authorization"]: "UfJCmmNhzZF73MZbnP25UdNJKFNhQv9KTDccdthK",
+          },
+        })
       : new ethers.providers.JsonRpcProvider("https://rpc.goerli.mudit.blog/");
 
     childProvider = PRODUCTION
