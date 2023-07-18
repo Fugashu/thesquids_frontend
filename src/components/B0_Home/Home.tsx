@@ -49,21 +49,21 @@ export const Home: FC<IHome> = () => {
     [navigate]
   );
   async function tryNavigateToTournament() {
-    if (!(await isUnlocked())) {
-      dispatch(setPopUpModalTitle("Error"));
-      dispatch(setPopUpModalText("Connect your Metamask wallet"));
-      dispatch(setModal(true));
-      dispatch(setOnPopUpModal(true));
-      return;
-    }
-
-    if (
-      window.localStorage.getItem("discordAccessToken") === null ||
-      window.localStorage.getItem("discordUserName") === null
-    ) {
-      authorizeWithDiscord();
-      return;
-    }
+    // if (!(await isUnlocked())) {
+    //   dispatch(setPopUpModalTitle("Error"));
+    //   dispatch(setPopUpModalText("Connect your Metamask wallet"));
+    //   dispatch(setModal(true));
+    //   dispatch(setOnPopUpModal(true));
+    //   return;
+    // }
+    //
+    // if (
+    //   window.localStorage.getItem("discordAccessToken") === null ||
+    //   window.localStorage.getItem("discordUserName") === null
+    // ) {
+    //   authorizeWithDiscord();
+    //   return;
+    // }
     navigateToTournament();
   }
   return (
