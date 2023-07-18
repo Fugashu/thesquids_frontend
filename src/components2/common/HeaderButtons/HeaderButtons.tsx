@@ -68,7 +68,6 @@ export const HeaderButtons: FC<IHeaderButtons> = ({ className }) => {
   // @ts-ignore
   useEffect(async () => {
     try {
-      await connectWallet();
       await dispatch(setWalletAddress(await signer.getAddress()));
       let userId = localStorage.getItem("discordUserName");
       if (userId !== null) {

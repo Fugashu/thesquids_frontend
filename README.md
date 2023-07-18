@@ -14,4 +14,5 @@ Web3 application, which was built for one of my clients.
 ### Disclaimer
 
 This repo is not maintained and updated anymore.
-A build can be access on https://
+A (slow and unoptimized) build can be accessed on https://64b6e1bfa13f111d940139e1--superb-shortbread-b9222b.netlify.app/
+
